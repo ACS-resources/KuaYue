@@ -1,22 +1,22 @@
 package willow.train.kuayue.Util;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.DoorHingeSide;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.Vec3;
-import org.jline.utils.Log;
-
-import javax.annotation.Nullable;
-import java.util.logging.Logger;
 
 public class SideMirrorBlock extends Block {
     public static final EnumProperty<DoorHingeSide> HINGE = BlockStateProperties.DOOR_HINGE;
@@ -45,8 +45,10 @@ public class SideMirrorBlock extends Block {
                 blockpos2) ? -1 : 0) + (blockstate1.isCollisionShapeFullBlock(blockgetter, blockpos3) ? -1 : 0)
                 + (blockstate2.isCollisionShapeFullBlock(blockgetter, blockpos4) ? 1 : 0)
                 + (blockstate3.isCollisionShapeFullBlock(blockgetter, blockpos5) ? 1 : 0);
-        //boolean flag = blockstate.is(this) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER;
-        //boolean flag1 = blockstate2.is(this) && blockstate2.getValue(HALF) == DoubleBlockHalf.LOWER;
+        // boolean flag = blockstate.is(this) && blockstate.getValue(HALF) ==
+        // DoubleBlockHalf.LOWER;
+        // boolean flag1 = blockstate2.is(this) && blockstate2.getValue(HALF) ==
+        // DoubleBlockHalf.LOWER;
         if (i <= 0) {
             if (i >= 0) {
                 int j = direction.getStepX();
@@ -54,7 +56,8 @@ public class SideMirrorBlock extends Block {
                 Vec3 vec3 = pContext.getClickLocation();
                 double d0 = vec3.x - (double) blockpos.getX();
                 double d1 = vec3.z - (double) blockpos.getZ();
-                return (j >= 0 || !(d1 < 0.5D)) && (j <= 0 || !(d1 > 0.5D)) && (k >= 0 || !(d0 > 0.5D)) && (k <= 0 || !(d0 < 0.5D)) ? DoorHingeSide.LEFT : DoorHingeSide.RIGHT;
+                return (j >= 0 || !(d1 < 0.5D)) && (j <= 0 || !(d1 > 0.5D)) && (k >= 0 || !(d0 > 0.5D))
+                        && (k <= 0 || !(d0 < 0.5D)) ? DoorHingeSide.LEFT : DoorHingeSide.RIGHT;
             } else {
                 return DoorHingeSide.LEFT;
             }
@@ -74,7 +77,8 @@ public class SideMirrorBlock extends Block {
     }
 
     public BlockState mirror(BlockState pState, Mirror pMirror) {
-        return pMirror == Mirror.NONE ? pState : pState.rotate(pMirror.getRotation(pState.getValue(FACING))).cycle(HINGE);
+        return pMirror == Mirror.NONE ? pState
+                : pState.rotate(pMirror.getRotation(pState.getValue(FACING))).cycle(HINGE);
     }
 
     public BlockState rotate(BlockState pState, Rotation pRotation) {

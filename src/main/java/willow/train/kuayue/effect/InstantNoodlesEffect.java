@@ -1,10 +1,11 @@
 package willow.train.kuayue.effect;
 
+import org.jetbrains.annotations.NotNull;
+
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import org.jetbrains.annotations.NotNull;
 
 public class InstantNoodlesEffect extends MobEffect {
 
@@ -15,7 +16,7 @@ public class InstantNoodlesEffect extends MobEffect {
     @Override
     public void applyEffectTick(@NotNull LivingEntity pLivingEntity, int pAmplifier) {
         super.applyEffectTick(pLivingEntity, pAmplifier);
-        ((Player)pLivingEntity).causeFoodExhaustion(-0.05F * (float)(pAmplifier + 1));
+        ((Player) pLivingEntity).causeFoodExhaustion(-0.05F * (float) (pAmplifier + 1));
     }
 
     @Override

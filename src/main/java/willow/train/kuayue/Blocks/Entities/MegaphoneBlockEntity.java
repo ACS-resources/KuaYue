@@ -9,20 +9,21 @@ import willow.train.kuayue.Blocks.MegaPhoneBlock;
 import willow.train.kuayue.init.BlockEntitiesInit;
 import willow.train.kuayue.sounds.ModSounds;
 
-
 public class MegaphoneBlockEntity extends BlockEntity {
     private int timer;
+
     public MegaphoneBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(BlockEntitiesInit.MEGAPHONE_BLOCK_ENTITIES.get(), pPos, pBlockState);
         this.timer = 0;
     }
+
     public static void tick(Level level, BlockPos blockPos, BlockState blockState, MegaphoneBlockEntity entity) {
-        if(!level.isClientSide()){
+        if (!level.isClientSide()) {
             entity.timer--;
-            if(entity.timer <= 0) {
+            if (entity.timer <= 0) {
                 entity.timer = 24;
-                if(blockState.getValue(MegaPhoneBlock.POWERED)) {
-                    level.playSound(null, blockPos ,ModSounds.CROSSING_RINGING.get(), SoundSource.BLOCKS, 10f, 1f);
+                if (blockState.getValue(MegaPhoneBlock.POWERED)) {
+                    level.playSound(null, blockPos, ModSounds.CROSSING_RINGING.get(), SoundSource.BLOCKS, 10f, 1f);
                 }
             }
         }

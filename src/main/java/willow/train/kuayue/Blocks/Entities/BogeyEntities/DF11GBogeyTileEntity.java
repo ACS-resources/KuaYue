@@ -3,6 +3,7 @@ package willow.train.kuayue.Blocks.Entities.BogeyEntities;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
 import com.simibubi.create.foundation.utility.animation.LerpedFloat;
 import com.simibubi.create.foundation.utility.animation.LerpedFloat.Chaser;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -10,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import willow.train.kuayue.Util.IBogeyWheel;
 
-public final class DF11GBogeyTileEntity extends KineticTileEntity implements IBogeyWheel{
+public final class DF11GBogeyTileEntity extends KineticTileEntity implements IBogeyWheel {
     boolean hasForcedSpeed = false;
     public float forcedSpeed = 0;
     public LerpedFloat visualSpeed = LerpedFloat.linear();

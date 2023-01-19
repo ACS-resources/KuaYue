@@ -9,6 +9,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import willow.train.kuayue.Util.HorizontalBlockBase;
 
+@SuppressWarnings("unused")
 public class PanelBlockHalf extends HorizontalBlockBase {
     private static VoxelShape shape;
     protected static final float AABB_OFFSET = 3.0F;
@@ -20,8 +21,10 @@ public class PanelBlockHalf extends HorizontalBlockBase {
     public PanelBlockHalf(Properties p_49795_) {
         super(p_49795_);
     }
-    public VoxelShape getShape(BlockState p_54372_, BlockGetter p_54373_, BlockPos p_54374_, CollisionContext p_54375_) {
-        switch((Direction)p_54372_.getValue(FACING)) {
+
+    public VoxelShape getShape(BlockState p_54372_, BlockGetter p_54373_, BlockPos p_54374_,
+            CollisionContext p_54375_) {
+        switch ((Direction) p_54372_.getValue(FACING)) {
             case NORTH:
                 return NORTH_AABB;
             case SOUTH:

@@ -1,16 +1,17 @@
 package willow.train.kuayue.Blocks.Supplier;
 
+import java.util.Map;
+
 import com.simibubi.create.content.contraptions.components.structureMovement.MovementBehaviour;
 import com.simibubi.create.content.contraptions.components.structureMovement.MovementContext;
 import com.simibubi.create.content.logistics.trains.entity.CarriageContraption;
 import com.simibubi.create.content.logistics.trains.entity.CarriageContraptionEntity;
 import com.simibubi.create.foundation.utility.VecHelper;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
-
-import java.util.Map;
 
 public class FakeDF11GBogeyBehavior implements MovementBehaviour {
     @Override
@@ -31,6 +32,7 @@ public class FakeDF11GBogeyBehavior implements MovementBehaviour {
     }
 
     @Override
+    @SuppressWarnings("unused")
     public void tick(MovementContext context) {
         if (context.contraption.entity instanceof CarriageContraptionEntity cce) {
             if (!context.world.isClientSide)
@@ -50,12 +52,12 @@ public class FakeDF11GBogeyBehavior implements MovementBehaviour {
 
             double wheelRadius = speedForcible.getWheelRadius();
 
-            //Update angles
+            // Update angles
             double angleDiff = 360 * distanceTo / (Math.PI * 2 * wheelRadius);
 
-            //Now figure out speed to achieve this
+            // Now figure out speed to achieve this
             float speed = (float) (angleDiff * 10 / 3f);
-            //speedForcible.setForcedSpeed((float) angleDiff * 3 / 10f);
+            // speedForcible.setForcedSpeed((float) angleDiff * 3 / 10f);
             speedForcible.setAngle((float) ((speedForcible.getAngle() + (angleDiff * 3 / 10f)) % 360));
         }
     }

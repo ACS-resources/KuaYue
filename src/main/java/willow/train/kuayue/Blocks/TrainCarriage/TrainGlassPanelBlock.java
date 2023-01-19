@@ -1,5 +1,7 @@
 package willow.train.kuayue.Blocks.TrainCarriage;
 
+import org.jetbrains.annotations.NotNull;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
@@ -8,11 +10,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.NotNull;
 import willow.train.kuayue.Util.HorizontalGlassBlockBase;
 
-
-
+@SuppressWarnings("unused")
 public class TrainGlassPanelBlock extends HorizontalGlassBlockBase {
     private static VoxelShape shape;
     protected static final float AABB_OFFSET = 3.0F;
@@ -25,9 +25,9 @@ public class TrainGlassPanelBlock extends HorizontalGlassBlockBase {
         super(p_52325_);
     }
 
-
-    public VoxelShape getShape(BlockState p_54372_, BlockGetter p_54373_, BlockPos p_54374_, CollisionContext p_54375_) {
-        switch((Direction)p_54372_.getValue(FACING)) {
+    public VoxelShape getShape(BlockState p_54372_, BlockGetter p_54373_, BlockPos p_54374_,
+            CollisionContext p_54375_) {
+        switch ((Direction) p_54372_.getValue(FACING)) {
             case NORTH:
                 return NORTH_AABB;
             case SOUTH:
@@ -39,7 +39,9 @@ public class TrainGlassPanelBlock extends HorizontalGlassBlockBase {
                 return EAST_AABB;
         }
     }
-    public @NotNull VoxelShape getVisualShape(BlockState p_48735_, BlockGetter p_48736_, BlockPos p_48737_, CollisionContext p_48738_) {
+
+    public @NotNull VoxelShape getVisualShape(BlockState p_48735_, BlockGetter p_48736_, BlockPos p_48737_,
+            CollisionContext p_48738_) {
         return Shapes.empty();
     }
 
@@ -50,6 +52,5 @@ public class TrainGlassPanelBlock extends HorizontalGlassBlockBase {
     public boolean propagatesSkylightDown(BlockState p_48740_, BlockGetter p_48741_, BlockPos p_48742_) {
         return true;
     }
-
 
 }
