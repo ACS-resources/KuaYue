@@ -16,6 +16,7 @@
     "client": ["willow.train.kuayue.Main"]
   },
   "mixins": ["kuayue.mixins.json"],
+  "accessWidener": "kuayue.accesswidener",
   "depends": {
     "fabricloader": ">=0.14.6",
     "fabric": "*",

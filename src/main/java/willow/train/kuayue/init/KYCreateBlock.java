@@ -21,12 +21,10 @@ import willow.train.kuayue.Blocks.Supplier.FakeDF11GBogeyBehavior;
 import willow.train.kuayue.Items.ToolTipsItemHelper;
 
 public class KYCreateBlock {
-    private static final CreateRegistrate REGISTRATE = Main.registrate()
-            .creativeModeTab(() -> Main.KUAYUE_MAIN);
-    private static final CreateRegistrate LocoREGISTRATE = Main.registrate()
-            .creativeModeTab(() -> Main.KUAYUE_LOCOS);
+    private static final CreateRegistrate REGISTRATE = Main.registrate();
 
-    public static final BlockEntry<DF11GFrontBlock> DF11G_FRONT_BLOCK = LocoREGISTRATE
+    public static final BlockEntry<DF11GFrontBlock> DF11G_FRONT_BLOCK = REGISTRATE
+            .creativeModeTab(() -> Main.KUAYUE_LOCOS)
             .block("df11g_front2", DF11GFrontBlock::new)
             .initialProperties(SharedProperties::softMetal)
             .properties(p -> p.color(MaterialColor.COLOR_BLUE))
@@ -38,10 +36,10 @@ public class KYCreateBlock {
             // .addLayer(() -> RenderType::cutoutMipped)
             .item(ToolTipsItemHelper::new)
             .transform(customItemModel())
-
             .register();
 
-    public static final BlockEntry<DF11GFrontBlock> HXD3D_FRONT_BLOCK = LocoREGISTRATE
+    public static final BlockEntry<DF11GFrontBlock> HXD3D_FRONT_BLOCK = REGISTRATE
+            .creativeModeTab(() -> Main.KUAYUE_LOCOS)
             .block("hxd3d_front", DF11GFrontBlock::new)
             .initialProperties(SharedProperties::softMetal)
             .properties(p -> p.color(MaterialColor.COLOR_BLUE))
@@ -55,12 +53,13 @@ public class KYCreateBlock {
             .transform(customItemModel())
             .register();
 
-    public static final BlockEntry<DF11GBogeyBlock> DF11G_BOGEY = REGISTRATE
+    public static final BlockEntry<DF11GBogeyBlock> DF11G_BOGEY = REGISTRATE.creativeModeTab(() -> Main.KUAYUE_MAIN)
             .block("df11g_bogey", p -> new DF11GBogeyBlock(p, true))
             .properties(p -> p.color(MaterialColor.PODZOL))
             .transform(BuilderTransformers.bogey())
             .register();
     public static final BlockEntry<FakeDF11GBogeyBlock> fake_DF11G_BOGEY = REGISTRATE
+            .creativeModeTab(() -> Main.KUAYUE_MAIN)
             .block("fake_df11g_bogey", p -> FakeDF11GBogeyBlock.brass("none", p))
             .initialProperties(SharedProperties::softMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)

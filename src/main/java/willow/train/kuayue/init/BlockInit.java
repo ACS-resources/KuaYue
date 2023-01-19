@@ -1033,6 +1033,7 @@ public class BlockInit {
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(),
                     new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
     public static final RegistryObject<CatenaryGridBlock> Catenary_Grid = register("catenary_grid",
             () -> new CatenaryGridBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
@@ -1044,6 +1045,7 @@ public class BlockInit {
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(),
                     new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
     public static final RegistryObject<SeatedSignalBlock> Station_Entrance_Signal = register("station_entrance_signal",
             () -> new SeatedSignalBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
@@ -1299,7 +1301,7 @@ public class BlockInit {
             Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> obj = registerBlock(name, block);
         ITEMS.register(name, item.apply(obj));
-        LOGGER.info("rigister block:" + name);
+        // LOGGER.info("rigister block:" + name);
         return obj;
     }
 
@@ -1307,7 +1309,7 @@ public class BlockInit {
             Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> obj = registerBlock(name, block);
         // ITEMS.register(name, item.apply(obj));
-        LOGGER.info("rigister block:" + name);
+        // LOGGER.info("rigister block:" + name);
         return obj;
     }
 

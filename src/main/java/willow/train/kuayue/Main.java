@@ -31,6 +31,7 @@ public class Main implements ModInitializer, ClientModInitializer {
     public static final String MOD_ID = "kuayue";
 
     private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
+
     public static final CreativeModeTab KUAYUE_MAIN = FabricItemGroupBuilder.build(asResource("item_group_main"),
             BlockInit.CR_LOGO.get().asItem()::getDefaultInstance);
     public static final CreativeModeTab KUAYUE_LOCOS = FabricItemGroupBuilder.build(asResource("item_locos"),
@@ -40,7 +41,7 @@ public class Main implements ModInitializer, ClientModInitializer {
     public static final CreativeModeTab KUAYUE_DIET = FabricItemGroupBuilder.build(asResource("item_group_diet"),
             ItemInit.CA_25T.get()::getDefaultInstance);
     public static final CreativeModeTab KUAYUE_CATENARY = FabricItemGroupBuilder
-            .build(asResource("item_group_catenary"), BlockInit.Catenary_Pole.get().asItem()::getDefaultInstance);
+            .build(asResource("item_group_catenary"), BlockInit.Catenary_Grid.get().asItem()::getDefaultInstance);
 
     // public static final GroundTab KUAYUE_GROUND = new GroundTab(MOD_ID) {
     // @Override
@@ -56,14 +57,15 @@ public class Main implements ModInitializer, ClientModInitializer {
 
     @Override
     public void onInitialize() {
-        ItemInit.ITEMS.register();
         BlockInit.BLOCKS.register();
+        ItemInit.ITEMS.register();
         BlockEntitiesInit.BLOCK_ENTITIES.register();
         ModSounds.register();
         EffectInit.rigister();
 
         KYCreateBlock.register();
         KYCreateEntities.register();
+        REGISTRATE.register();
 
         WoodType.register(WoodTypeInit.TrainPanel);
     }

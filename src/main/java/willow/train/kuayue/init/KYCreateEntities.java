@@ -14,7 +14,7 @@ import willow.train.kuayue.renderer.FakeDF11GBogeyRenderer;
 public class KYCreateEntities {
     public static final BlockEntityEntry<DF11GFrontTileEntity> DF11G_FRONT = Main.registrate()
             .tileEntity("df11g_front_block", DF11GFrontTileEntity::new)
-            //.instance(() -> DF11GFrontInstance::new)
+            // .instance(() -> DF11GFrontInstance::new)
             .validBlocks(AllBlocks.MECHANICAL_CRAFTER)
             .renderer(() -> DF11GTileEntityRenderer::new)
             .register();
@@ -23,8 +23,6 @@ public class KYCreateEntities {
             .renderer(() -> BogeyTileEntityRenderer::new)
             .validBlocks(KYCreateBlock.DF11G_BOGEY)
             .register();
-
-
 
     public static final BlockEntityEntry<DF11GBogeyTileEntity> fake_DF11G_BOGEY = Main.registrate()
             .tileEntity("fake_bogey", DF11GBogeyTileEntity::new)
@@ -35,9 +33,10 @@ public class KYCreateEntities {
 
     public static void register() {
     }
-//    public static final BlockEntityEntry<SteamEngineTileEntity> STEAM_ENGINE = Create.registrate()
-//            .tileEntity("steam_engine", SteamEngineTileEntity::new)
-//            .validBlocks(AllBlocks.STEAM_ENGINE)
-//            .renderer(() -> SteamEngineRenderer::new)
-//            .register();
+    // public static final BlockEntityEntry<SteamEngineTileEntity> STEAM_ENGINE =
+    // Create.registrate()
+    // .tileEntity("steam_engine", SteamEngineTileEntity::new)
+    // .validBlocks(AllBlocks.STEAM_ENGINE)
+    // .renderer(() -> SteamEngineRenderer::new)
+    // .register();
 }
