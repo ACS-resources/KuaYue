@@ -1,35 +1,70 @@
 package willow.train.kuayue.init;
 
-import com.google.common.base.Supplier;
+
+import java.util.function.Function;
+import java.util.function.Supplier;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import io.github.fabricators_of_create.porting_lib.util.LazyRegistrar;
+import io.github.fabricators_of_create.porting_lib.util.RegistryObject;
+import net.minecraft.core.Registry;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import willow.train.kuayue.Blocks.*;
+import willow.train.kuayue.Main;
+import willow.train.kuayue.Blocks.CatenaryGridBlock;
+import willow.train.kuayue.Blocks.CatenaryPoleBlock;
+import willow.train.kuayue.Blocks.FlourescentLightBlock;
+import willow.train.kuayue.Blocks.MegaPhoneBlock;
+import willow.train.kuayue.Blocks.SeatedSignalBlock;
+import willow.train.kuayue.Blocks.SignalPoleBlock;
+import willow.train.kuayue.Blocks.SignalPoleLightBlock;
+import willow.train.kuayue.Blocks.TactilePavingBlock;
+import willow.train.kuayue.Blocks.Locos.PantographBlock;
 import willow.train.kuayue.Blocks.Locos.HXD3D.HXD3DCabDoorBlock;
 import willow.train.kuayue.Blocks.Locos.HXD3D.HXD3DPanelBlocks;
-import willow.train.kuayue.Blocks.Locos.PantographBlock;
-import willow.train.kuayue.Blocks.Locos.df11g.*;
-import willow.train.kuayue.Blocks.Structure.*;
-import willow.train.kuayue.Blocks.TrainCarriage.*;
+import willow.train.kuayue.Blocks.Locos.df11g.DF11GCarportBlock;
+import willow.train.kuayue.Blocks.Locos.df11g.DF11GCowcatcherBlock;
+import willow.train.kuayue.Blocks.Locos.df11g.DF11GEndFaceBlock;
+import willow.train.kuayue.Blocks.Locos.df11g.DF11GMirrorCarportBlock;
+import willow.train.kuayue.Blocks.Locos.df11g.DF11GPanel3Wide;
+import willow.train.kuayue.Blocks.Structure.AngleBlock22;
+import willow.train.kuayue.Blocks.Structure.GreenInsulationFenceBlock;
+import willow.train.kuayue.Blocks.Structure.PanelBlock2;
+import willow.train.kuayue.Blocks.Structure.PanelBlock4;
+import willow.train.kuayue.Blocks.Structure.PanelBlockHalf;
+import willow.train.kuayue.Blocks.TrainCarriage.BSP25TAirConditionBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.CarPortBlockBGKZ;
+import willow.train.kuayue.Blocks.TrainCarriage.PanelBlock25Side;
+import willow.train.kuayue.Blocks.TrainCarriage.TopPanelSlabBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.Train25BGEndFaceBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.Train25GLadderBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.Train25KTEndFaceBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.TrainDoorBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.TrainGlassPanelBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.TrainIsolationDoorBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.TrainOpenableWindowBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.TrainPanelBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.TrainPanelSignBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.TrainPanelSignBlock2;
+import willow.train.kuayue.Blocks.TrainCarriage.TrainSealedWindowBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.TrainSignBlock;
 import willow.train.kuayue.Items.ToolTipsItemHelper;
-import willow.train.kuayue.Main;
-
-import java.util.function.Function;
 
 public class BlockInit {
     public static final Logger LOGGER = LoggerFactory.getLogger("KuaYue");
     //注册机
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
-            Main.MOD_ID);
-    public static final DeferredRegister<Item> ITEMS = ItemInit.ITEMS;
+    public static final LazyRegistrar<Block> BLOCKS = LazyRegistrar.create(Registry.BLOCK,Main.MOD_ID);
+    public static final LazyRegistrar<Item> ITEMS = ItemInit.ITEMS;
 
 
     public static final RegistryObject<Block> CR_LOGO = register("cr_logo",
@@ -696,7 +731,7 @@ public class BlockInit {
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_MAIN)));
     //clay_stairs
     public static final RegistryObject<StairBlock> CLAY_STAIRS = register("clay_stairs",
-            () -> new StairBlock(Blocks.CLAY::defaultBlockState, BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NONE).strength(3.0f)
+            () -> new StairBlock(Blocks.CLAY.defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_MAIN)));
     public static final RegistryObject<GreenInsulationFenceBlock> GREEN_FENCE = register("green_fence",
@@ -934,8 +969,7 @@ public class BlockInit {
                     .sound(SoundType.STONE).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_MAIN)));
 
-    private static <T extends Block> RegistryObject<T> registerBlock(final String name,
-                                                                     final Supplier<? extends T> block) {
+    private static <T extends Block> RegistryObject<T> registerBlock(final String name,final Supplier<? extends T> block) {
         //LOGGER.info("rigister block:"+name);
         return BLOCKS.register(name, block);
 
