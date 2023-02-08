@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "kuayue:switch_on_sigh"
+      "item": "kuayue:switch_on_sigh"
     }
   ],
   "result": {
