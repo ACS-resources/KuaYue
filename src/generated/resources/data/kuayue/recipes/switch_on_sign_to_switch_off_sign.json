@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "kuayue:switch_on_sigh"
+    }
+  ],
+  "result": {
+    "item": "kuayue:switch_off_sigh"
+  }
+}
