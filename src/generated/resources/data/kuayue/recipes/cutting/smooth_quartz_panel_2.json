@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "kuayue:smooth_quartz_panel_4"
+  },
+  "result": "kuayue:smooth_quartz_panel_2",
+  "count": 2
+}
