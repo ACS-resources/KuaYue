@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#g#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:paltes/iron"
+    },
+    "g": {
+      "tag": "forge:glass_panel/colorless"
+    }
+  },
+  "result": {
+    "item": "original_colour_window_25_sealed",
+    "count": 2
+  }
+}
