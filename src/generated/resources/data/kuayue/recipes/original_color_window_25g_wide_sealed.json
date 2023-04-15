@@ -2,8 +2,16 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "kuayue:original_color_window_25_sealed",
-      "count": 4
+      "item": "kuayue:original_color_window_25_sealed"
+    },
+    {
+      "item": "kuayue:original_color_window_25_sealed"
+    },
+    {
+      "item": "kuayue:original_color_window_25_sealed"
+    },
+    {
+      "item": "kuayue:original_color_window_25_sealed"
     },
     {
       "tag": "forge:dyes/red"
