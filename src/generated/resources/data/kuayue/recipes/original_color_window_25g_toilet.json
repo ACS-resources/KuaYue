@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "kuayue:original_color_window_25g_small"
+    },
+    {
+      "item": "minecraft:iron_bars"
+    }
+  ],
+  "result": {
+    "item": "kuayue:original_color_window_25g_toilet",
+    "count": 1
+  }
+}

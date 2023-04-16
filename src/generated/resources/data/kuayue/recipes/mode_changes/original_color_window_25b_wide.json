@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "kuayue:original_color_window_25b_small"
+    },
+    {
+      "item": "kuayue:original_color_window_25b_small"
+    }
+  ],
+  "result": {
+    "item": "kuayue:original_color_window_25b_wide",
+    "count": 1
+  }
+}
