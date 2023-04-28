@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "kuayue:original_25k_door"
+    }
+  ],
+  "result": {
+    "item": "kuayue:original_25k_sliding_door"
+  }
+}

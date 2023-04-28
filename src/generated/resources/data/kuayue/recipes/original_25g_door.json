@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "w",
+    "x"
+  ],
+  "key": {
+    "w": {
+      "item": "kuayue:original_color_window_25g_small"
+    },
+   "x": {
+      "item": "kuayue:panel_25g_original_bottom"
+    }
+  },
+  "result": {
+    "item": "kuayue:original_25g_door"
+  }
+}
