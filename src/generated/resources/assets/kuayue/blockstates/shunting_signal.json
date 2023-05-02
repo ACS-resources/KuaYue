@@ -1,19 +1,35 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "kuayue:block/shunting_signal",
+    "facing=east,powered=False": {
+      "model": "kuayue:block/shunting_signal_neg",
       "y": 270
     },
-    "facing=north": {
-      "model": "kuayue:block/shunting_signal",
+    "facing=north,powered=False": {
+      "model": "kuayue:block/shunting_signal_neg",
       "y": 180
     },
-    "facing=south": {
-      "model": "kuayue:block/shunting_signal",
+    "facing=south,powered=False": {
+      "model": "kuayue:block/shunting_signal_neg",
       "y": 0
     },
-    "facing=west": {
-      "model": "kuayue:block/shunting_signal",
+    "facing=west,powered=False": {
+      "model": "kuayue:block/shunting_signal_neg",
+      "y": 90
+    },
+    "facing=east,powered=True": {
+      "model": "kuayue:block/shunting_signal_pass",
+      "y": 270
+    },
+    "facing=north,powered=True": {
+      "model": "kuayue:block/shunting_signal_pass",
+      "y": 180
+    },
+    "facing=south,powered=True": {
+      "model": "kuayue:block/shunting_signal_pass",
+      "y": 0
+    },
+    "facing=west,powered=True": {
+      "model": "kuayue:block/shunting_signal_pass",
       "y": 90
     }
   }
