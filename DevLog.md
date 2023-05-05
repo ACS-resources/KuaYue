@@ -5,6 +5,8 @@
 ##### version 0.1.2-HoanMeirin
 
 更新部分的合成表（HTony03）
+修改模型：
+- 调车信号机（HTony03）
 
 ----
 
