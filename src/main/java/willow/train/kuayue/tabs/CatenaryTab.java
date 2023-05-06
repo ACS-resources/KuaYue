@@ -12,7 +12,7 @@ public class CatenaryTab extends CreativeModeTab {
 
     @Override
     public @NotNull ItemStack makeIcon() {
-        return new ItemStack(BlockInit.Catenary_Pole.get());
+        return new ItemStack(BlockInit.Catenary_Grid_C1.get());
     }
 }
 
