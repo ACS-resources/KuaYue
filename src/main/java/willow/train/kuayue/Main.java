@@ -59,7 +59,7 @@ public class Main {
     public static final CatenaryTab KUAYUE_CATENARY = new CatenaryTab(MOD_ID) {
         @Override
         @OnlyIn(Dist.CLIENT)
-        public @NotNull ItemStack makeIcon() { return new ItemStack(BlockInit.Catenary_Pole.get());}
+        public @NotNull ItemStack makeIcon() { return new ItemStack(BlockInit.Catenary_Grid_C1.get());}
     };
 
 //    public static final GroundTab KUAYUE_GROUND = new GroundTab(MOD_ID) {
@@ -166,9 +166,37 @@ public class Main {
         ItemBlockRenderTypes.setRenderLayer(BlockInit.CARPORT_25BGZK.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.CARPORT_25T.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.PANTOGRAPH.get(), RenderType.translucent());
+
         ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_Pole.get(),RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_Grid.get(),RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(BlockInit.Hang_Catenary_Grid.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_Grid_A1.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_Grid_A2.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_Grid_C1.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_Grid_C2.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_Grid_B.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_A_1125.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_1600.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_End_1600.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_End_1255.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Falling_Weight_Cable.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Falling_Weight.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Gantry_Pillar.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Steel_Gantry_Pillar.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Platform_Line_Block.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Gantry_Cast_Head.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Gantry_Cast.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Gantry_Cast_Pole_Base.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Gantry_Cast_Pole_Base2.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Gantry_Cast_Pole.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Gantry_Cast_Pole2.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Gantry_Pillar_Grid_Connector_A.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Gantry_Pillar_Grid_Connector_C.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Gantry_Pillar_End_Connector.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.CATENARY_1600_WITH_PLUMB.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_A_1125_With_Plumb.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_Hang_Point_1125.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_Hang_Point_1125_C.get(),RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_Hang_Point_1600_To_1125.get(),RenderType.translucent());
+
         ItemBlockRenderTypes.setRenderLayer(BlockInit.Station_Entrance_Signal.get(),RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.Shunting_Signal.get(),RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.No_Double_Pantograph.get(),RenderType.translucent());

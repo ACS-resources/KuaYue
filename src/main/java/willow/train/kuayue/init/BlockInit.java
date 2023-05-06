@@ -19,6 +19,7 @@ import willow.train.kuayue.Blocks.Locos.PantographBlock;
 import willow.train.kuayue.Blocks.Locos.df11g.*;
 import willow.train.kuayue.Blocks.Structure.*;
 import willow.train.kuayue.Blocks.TrainCarriage.*;
+import willow.train.kuayue.Blocks.catenary.*;
 import willow.train.kuayue.Items.ToolTipsItemHelper;
 import willow.train.kuayue.Main;
 
@@ -714,14 +715,145 @@ public class BlockInit {
     public static final RegistryObject<CatenaryPoleBlock> Catenary_Pole = register("catenary_pole",
             () -> new CatenaryPoleBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
-                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
-    public static final RegistryObject<CatenaryGridBlock> Catenary_Grid = register("catenary_grid",
-            () -> new CatenaryGridBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    new Item.Properties()));
+
+    public static final RegistryObject<CatenaryGridA1Block> Catenary_Grid_A1 = register("catenary_grid_a1",
+            () -> new CatenaryGridA1Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
                     new Item.Properties().tab(Main.KUAYUE_CATENARY)));
 
-    public static final RegistryObject<CatenaryGridBlock> Hang_Catenary_Grid = register("hang_catenary_grid",
-            () -> new CatenaryGridBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<CatenaryGridA2Block> Catenary_Grid_A2 = register("catenary_grid_a2",
+            () -> new CatenaryGridA2Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<CatenaryGridBBlock> Catenary_Grid_B = register("catenary_grid_b",
+            () -> new CatenaryGridBBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<CatenaryGridC1Block> Catenary_Grid_C1 = register("catenary_grid_c1",
+            () -> new CatenaryGridC1Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<CatenaryGridC2Block> Catenary_Grid_C2 = register("catenary_grid_c2",
+            () -> new CatenaryGridC2Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<CatenaryA1125Block> Catenary_A_1125 = register("catenary_a_1125",
+            () -> new CatenaryA1125Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<Catenary1600Block> Catenary_1600 = register("catenary_1600",
+            () -> new Catenary1600Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<CatenaryEnd1600Block> Catenary_End_1600 = register("catenary_end_1600",
+            () -> new CatenaryEnd1600Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<FallingWeightCableBlock> Falling_Weight_Cable = register("falling_weight_cable",
+            () -> new FallingWeightCableBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<FallingWeightBlock> Falling_Weight = register("falling_weight",
+            () -> new FallingWeightBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<GantryPillarBlock> Gantry_Pillar = register("gantry_pillar",
+            () -> new GantryPillarBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<SteelGantryPillarBlock> Steel_Gantry_Pillar = register("steel_gantry_pillar",
+            () -> new SteelGantryPillarBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<GantryCastHeadBlock> Gantry_Cast_Head = register("gantry_cast_head",
+            () -> new GantryCastHeadBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<GantryCastBlock> Gantry_Cast = register("gantry_cast",
+            () -> new GantryCastBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<PlatformLineBlock> Platform_Line_Block = register("platform_line_block",
+            () -> new PlatformLineBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_MAIN)));
+
+    public static final RegistryObject<GantryCastPoleBaseBlock> Gantry_Cast_Pole_Base = register("gantry_cast_pole_base",
+            () -> new GantryCastPoleBaseBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<GantryCastPoleBase2Block> Gantry_Cast_Pole_Base2 = register("gantry_cast_pole_base2",
+            () -> new GantryCastPoleBase2Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<GantryCastPoleBlock> Gantry_Cast_Pole = register("gantry_cast_pole",
+            () -> new GantryCastPoleBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<GantryCastPole2Block> Gantry_Cast_Pole2 = register("gantry_cast_pole2",
+            () -> new GantryCastPole2Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<GantryPillarGridConnectorABlock> Gantry_Pillar_Grid_Connector_A = register("gantry_pillar_grid_connector_a",
+            () -> new GantryPillarGridConnectorABlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<GantryPillarGridConnectorCBlock> Gantry_Pillar_Grid_Connector_C = register("gantry_pillar_grid_connector_c",
+            () -> new GantryPillarGridConnectorCBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<GantryPillarEndConnectorBlock> Gantry_Pillar_End_Connector = register("gantry_pillar_end_connector",
+            () -> new GantryPillarEndConnectorBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<CatenaryEnd1255Block> Catenary_End_1255 = register("catenary_end_1255",
+            () -> new CatenaryEnd1255Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<Catenary1600WithPlumbBlock> CATENARY_1600_WITH_PLUMB = register("catenary_1600_with_plumb",
+            () -> new Catenary1600WithPlumbBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<CatenaryA1125WithPlumbBlock> Catenary_A_1125_With_Plumb = register("catenary_a_1125_with_plumb",
+            () -> new CatenaryA1125WithPlumbBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<CatenaryHangPoint1125Block> Catenary_Hang_Point_1125 = register("catenary_hang_point_1125",
+            () -> new CatenaryHangPoint1125Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<CatenaryHangPoint1125CBlock> Catenary_Hang_Point_1125_C = register("catenary_hang_point_1125_c",
+            () -> new CatenaryHangPoint1125CBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
+                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<CatenaryHangPoint1600To1125Block> Catenary_Hang_Point_1600_To_1125 = register("catenary_hang_point_1600_to_1125",
+            () -> new CatenaryHangPoint1600To1125Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
                     new Item.Properties().tab(Main.KUAYUE_CATENARY)));
     public static final RegistryObject<SeatedSignalBlock> Station_Entrance_Signal = register("station_entrance_signal",
@@ -760,7 +892,7 @@ public class BlockInit {
     public static final RegistryObject<CatenaryPoleBlock> Concrete_Pole = register("concrete_pole",
             () -> new CatenaryPoleBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
-                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+                    new Item.Properties()));
 
     public static final RegistryObject<TactilePavingBlock> TactilePavingStraight = register("tactile_paving_straight",
             () -> new TactilePavingBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)

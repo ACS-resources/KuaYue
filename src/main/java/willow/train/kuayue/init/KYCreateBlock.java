@@ -30,7 +30,8 @@ public class KYCreateBlock {
                     .initialProperties(SharedProperties::softMetal)
                     .properties(p -> p.color(MaterialColor.COLOR_BLUE))
                     .properties(BlockBehaviour.Properties::noOcclusion)
-                    .transform(axeOrPickaxe())
+                    .transform(
+                            axeOrPickaxe())
                     //.blockstate(BlockStateGen.horizontalBlockProvider(true))
                     .transform(BlockStressDefaults.setImpact(2.0))
                     //.onRegister(CreateRegistrate.connectedTextures(CrafterCTBehaviour::new))
