@@ -46,11 +46,7 @@ public class CatenaryBaseEntity extends AbstractArrow {
     }
 
     @Override
-    protected void tickDespawn() {
-        if (this.inGroundTime > 30){
-            this.discard();
-        }
-    }
+    protected void tickDespawn() {}
 
     @Override
     public Packet<?> getAddEntityPacket() {

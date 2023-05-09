@@ -114,13 +114,18 @@ public class CatenaryGridBBlock extends HorizontalBlockBase implements CatenaryB
 
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
-        discardCatenary(level , pos , 68);
+
+        if(!level.isClientSide()){
+            discardCatenary(level , pos , 68.0);
+        }
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
 
     @Override
     public void onBlockExploded(BlockState state, Level level, BlockPos pos, Explosion explosion) {
-        discardCatenary(level , pos , 68);
+        if(!level.isClientSide()){
+            discardCatenary(level , pos , 68.0);
+        }
         super.onBlockExploded(state, level, pos, explosion);
     }
 }

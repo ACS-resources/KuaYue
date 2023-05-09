@@ -7,10 +7,13 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
@@ -20,6 +23,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import willow.train.kuayue.Catenary.CatenaryBlockInterface;
 import willow.train.kuayue.Entity.CatenaryBaseEntity;
 import willow.train.kuayue.Entity.SmallCatenaryBaseEntity;
@@ -116,19 +120,23 @@ public class CatenaryGridC1Block extends HorizontalBlockBase implements Catenary
                 return new Vec3(((double)pPos.getX()) + 1.5  , pPos.getY() , (double) pPos.getZ() + 0.5);
             case EAST:
             default:
-                return new Vec3(((double)pPos.getX()) - 0.5  , pPos.getY() , (double) pPos.getZ() - 0.5);
+                return new Vec3(((double)pPos.getX()) - 0.5  , pPos.getY() , (double) pPos.getZ() + 0.5);
         }
     }
 
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
-        discardCatenary(level , pos , 68);
+        if(!level.isClientSide()){
+            discardCatenary(level , pos , 68.0);
+        }
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
 
     @Override
     public void onBlockExploded(BlockState state, Level level, BlockPos pos, Explosion explosion) {
-        discardCatenary(level , pos , 68);
+        if(!level.isClientSide()){
+            discardCatenary(level , pos , 68.0);
+        }
         super.onBlockExploded(state, level, pos, explosion);
     }
 }
