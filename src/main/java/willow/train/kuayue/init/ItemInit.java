@@ -10,6 +10,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import willow.train.kuayue.Items.catenary.CatenaryScissors;
+import willow.train.kuayue.Items.catenary.GeneralCatenary;
 import willow.train.kuayue.Items.foods.Food1;
 import willow.train.kuayue.Main;
 import willow.train.kuayue.effect.EffectInit;
@@ -35,6 +37,13 @@ public class ItemInit {
                     effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 1000, 0,false,true), 1.0F).
                     effect(() -> new MobEffectInstance(EffectInit.NOODLE_SMELL.get(), 2000, 0,false,true), 1.0F).
                     alwaysEat().alwaysEat().build())));
+
+    //接触网
+    public static final RegistryObject<Item> GeneralCatenry = register("general_catenary",
+            () -> new GeneralCatenary(new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<Item> CatenaryScissors = register("catenary_scissors",
+            () -> new CatenaryScissors(new Item.Properties().tab(Main.KUAYUE_CATENARY)));
 //   public static final RegistryObject<Item> TRAIN_PANEL_SIGN_ITEM = register("train_panel_sign_item",
 //            () -> new SignItem(new Item.Properties().tab(Main.KUAYUE_MAIN),
 //                    BlockInit.TRAIN_PANEL_SIGN_BLOCK.get(),

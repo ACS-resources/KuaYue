@@ -175,6 +175,7 @@
   "block.kuayue.catenary_hang_point_1125": "1125 规格接触网挂点",
   "block.kuayue.catenary_hang_point_1125_c": "1125 规格接触网挂点(c类挂架)",
   "block.kuayue.catenary_hang_point_1600_to_1125": "1600 转 1125 规格接触网挂点",
+  "block.kuayue.catenary_hang_point_1600_to_1125_c": "1600 1255 规格接触网转接器(c类接触网挂架)",
   "block.kuayue.hang_catenary_grid": "接触网支架(悬吊)",
   "block.kuayue.station_entrance_signal": "进站信号机",
   "block.kuayue.shunting_signal": "调车信号机",
@@ -229,6 +230,8 @@
   "tips.item": "--------------------------------以下是物品-------------------------------------------",
   "item.kuayue.train_diet_1": "火车餐A",
   "item.kuayue.ca_25t": "餐车25T",
+  "item.kuayue.general_catenary": "通用接触网",
+  "item.kuayue.catenary_scissors": "剪线钳",
   "tips.tips": "--------------------------------以下是提示-------------------------------------------",
   "item.kuayue.train_diet_1.tooltip": "不会真有人喜欢吃火车餐吧，不会吧不会吧",
   "block.kuayue.df11g_front2.tooltip": "§7才不是猪头!",
@@ -272,5 +275,15 @@
 
   "effect.kuayue.noodle_smell": "难闻的泡面味",
 
-  "": "此去，二百由旬↑↑"
+  "": "此去，二百由旬↑↑",
+
+  "tips.msg": "显示信息",
+  "msg.kuayue.too_far_away": "接触网距离过长!",
+  "msg.kuayue.catenary_removed": "成功删除接触网",
+  "msg.kuayue.excessive_slope": "斜率过大",
+  "msg.kuayue.redundant_operation": "操作重复",
+  "msg.kuayue.first_block_chosen": "接触网起点 ",
+  "msg.kuayue.second_block_chosen": "接触网终点 ",
+  "msg.kuayue.cancelled": "操作取消"
+
 }

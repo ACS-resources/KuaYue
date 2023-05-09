@@ -182,7 +182,6 @@
   "block.kuayue.shunting_signal": "Shunting signal",
   "block.kuayue.no_double_pantograph": "No_double_pantograph",
 
-
   "block.kuayue.megaphone": "Grade Crossing Megaphone",
 
   "block.kuayue.widepanel_cr200j_marshalled_mid": "Masharlled CR200J trailer window",
@@ -230,6 +229,8 @@
   "tips.item": "--------------------------------all items above here-------------------------------------------",
   "item.kuayue.train_diet_1": "Train Meal A",
   "item.kuayue.ca_25t": "Dining Car CA25T",
+  "item.kuayue.general_catenary": "general catenary",
+  "item.kuayue.catenary_scissors": "catenary scissors",
   "tips.tips": "--------------------------------all tips above here-------------------------------------------",
   "item.kuayue.train_diet_1.tooltip": "Guess who loves to eat it?",
   "block.kuayue.df11g_front2.tooltip": "§7I’am not A PIG!",
@@ -271,5 +272,14 @@
 
   "effect.kuayue.noodle_smell": "Smelly instant noodles!",
 
-  "": "Never gonna give you up~"
+  "": "Never gonna give you up~",
+
+  "tips.msg": "display messages",
+  "msg.kuayue.too_far_away": "too far away!",
+  "msg.kuayue.catenary_removed": "catenary removed",
+  "msg.kuayue.excessive_slope": "excessive slope",
+  "msg.kuayue.redundant_operation": "redundant operation",
+  "msg.kuayue.first_block_chosen": "start point at",
+  "msg.kuayue.second_block_chosen": "end point at ",
+  "msg.kuayue.cancelled": "operation cancelled"
 }

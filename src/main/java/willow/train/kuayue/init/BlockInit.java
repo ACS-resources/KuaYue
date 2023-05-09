@@ -712,6 +712,7 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
 
     //接触网
     //Catenary_Pole
+    @Deprecated
     public static final RegistryObject<CatenaryPoleBlock> Catenary_Pole = register("catenary_pole",
             () -> new CatenaryPoleBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
@@ -742,15 +743,17 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
                     new Item.Properties().tab(Main.KUAYUE_CATENARY)));
 
+    @Deprecated
     public static final RegistryObject<CatenaryA1125Block> Catenary_A_1125 = register("catenary_a_1125",
             () -> new CatenaryA1125Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
-                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+                    new Item.Properties()));
 
+    @Deprecated
     public static final RegistryObject<Catenary1600Block> Catenary_1600 = register("catenary_1600",
             () -> new Catenary1600Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
-                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+                    new Item.Properties()));
 
     public static final RegistryObject<CatenaryEnd1600Block> Catenary_End_1600 = register("catenary_end_1600",
             () -> new CatenaryEnd1600Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
@@ -832,30 +835,35 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
                     new Item.Properties().tab(Main.KUAYUE_CATENARY)));
 
+    @Deprecated
     public static final RegistryObject<Catenary1600WithPlumbBlock> CATENARY_1600_WITH_PLUMB = register("catenary_1600_with_plumb",
             () -> new Catenary1600WithPlumbBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
-                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+                    new Item.Properties()));
 
+    @Deprecated
     public static final RegistryObject<CatenaryA1125WithPlumbBlock> Catenary_A_1125_With_Plumb = register("catenary_a_1125_with_plumb",
             () -> new CatenaryA1125WithPlumbBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
-                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+                    new Item.Properties()));
 
+    @Deprecated
     public static final RegistryObject<CatenaryHangPoint1125Block> Catenary_Hang_Point_1125 = register("catenary_hang_point_1125",
             () -> new CatenaryHangPoint1125Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
-                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+                    new Item.Properties()));
 
+    @Deprecated
     public static final RegistryObject<CatenaryHangPoint1125CBlock> Catenary_Hang_Point_1125_C = register("catenary_hang_point_1125_c",
             () -> new CatenaryHangPoint1125CBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
-                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+                    new Item.Properties()));
 
+    @Deprecated
     public static final RegistryObject<CatenaryHangPoint1600To1125Block> Catenary_Hang_Point_1600_To_1125 = register("catenary_hang_point_1600_to_1125",
             () -> new CatenaryHangPoint1600To1125Block(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
-                    new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+                    new Item.Properties()));
     public static final RegistryObject<SeatedSignalBlock> Station_Entrance_Signal = register("station_entrance_signal",
             () -> new SeatedSignalBlock(BlockBehaviour.Properties.of(Material.STONE,MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),

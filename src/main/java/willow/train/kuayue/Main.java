@@ -6,19 +6,25 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import willow.train.kuayue.Client.CatenaryConnectionHandler;
+import willow.train.kuayue.Items.catenary.GeneralCatenary;
 import willow.train.kuayue.effect.EffectInit;
 import willow.train.kuayue.init.*;
 import willow.train.kuayue.renderer.TrainPanelSignRenderer;
@@ -32,6 +38,8 @@ public class Main {
     public static final String MOD_ID = "kuayue";
 
     private static final NonNullSupplier<CreateRegistrate> REGISTRATE = CreateRegistrate.lazy(MOD_ID);
+
+    public static CatenaryConnectionHandler CATENARYCONNECTIONHANDLER = new CatenaryConnectionHandler();
     public static final MainTab KUAYUE_MAIN = new MainTab(MOD_ID) {
         @Override
         @OnlyIn(Dist.CLIENT)
@@ -69,8 +77,6 @@ public class Main {
 //    };
 
 
-
-
     public Main() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         //添加物品，方块的初始化信息
@@ -79,6 +85,8 @@ public class Main {
         BlockInit.BLOCKS.register(bus);
 
         BlockEntitiesInit.BLOCK_ENTITIES.register(bus);
+
+        EntityInit.ENTITY_TYPES.register(bus);
 
         ModSounds.register(bus);
 
@@ -212,6 +220,7 @@ public class Main {
         BlockEntityRenderers.register(BlockEntitiesInit.TRAIN_BLOCK_ENTITES_BLOCK.get(), TrainPanelSignRenderer::new);
         //test text
     }
+
     protected void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
         Sheets.addWoodType(WoodTypeInit.TrainPanel);
