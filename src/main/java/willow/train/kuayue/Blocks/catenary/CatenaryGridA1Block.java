@@ -119,19 +119,23 @@ public class CatenaryGridA1Block extends HorizontalBlockBase implements Catenary
                 return new Vec3(((double)pPos.getX()) + 1.5  , pPos.getY() , (double) pPos.getZ() + 0.5);
             case EAST:
             default:
-                return new Vec3(((double)pPos.getX()) - 0.5  , pPos.getY() , (double) pPos.getZ() - 0.5);
+                return new Vec3(((double)pPos.getX()) - 0.5  , pPos.getY() , (double) pPos.getZ() + 0.5);
         }
     }
 
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
-        discardCatenary(level , pos , 68);
+        if(!level.isClientSide()){
+            discardCatenary(level , pos , 68.0);
+        }
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
 
     @Override
     public void onBlockExploded(BlockState state, Level level, BlockPos pos, Explosion explosion) {
-        discardCatenary(level , pos , 68);
+        if(!level.isClientSide()){
+            discardCatenary(level , pos , 68.0);
+        }
         super.onBlockExploded(state, level, pos, explosion);
     }
 }
