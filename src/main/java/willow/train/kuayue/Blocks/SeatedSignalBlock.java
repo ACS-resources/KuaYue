@@ -3,14 +3,17 @@ package willow.train.kuayue.Blocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import willow.train.kuayue.Util.HorizontalBlockBase;
+import willow.train.kuayue.Util.ShuntingSignalBlockBase;
 
-public class SeatedSignalBlock extends HorizontalBlockBase {
+public class SeatedSignalBlock extends ShuntingSignalBlockBase {
 
     public SeatedSignalBlock(Properties p_49795_) {
         super(p_49795_);
@@ -34,5 +37,10 @@ public class SeatedSignalBlock extends HorizontalBlockBase {
             default:
                 return EAST_AABB;
         }
+    }
+
+    public void neighborChanged(BlockState pState, Level pLevel, @NotNull BlockPos pPos, @NotNull Block pBlock, @NotNull BlockPos pFromPos, boolean pIsMoving) {
+        boolean flag = pLevel.hasNeighborSignal(pPos);
+        pLevel.setBlock(pPos, pState.setValue(POWERED, flag), 2);
     }
 }

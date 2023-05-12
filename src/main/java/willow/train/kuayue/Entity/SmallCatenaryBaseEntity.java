@@ -83,4 +83,15 @@ public class SmallCatenaryBaseEntity extends AbstractArrow {
         this.blockPosB = pCompound.getString("blockB");
         super.readAdditionalSaveData(pCompound);
     }
+
+    @Override
+    public boolean shouldRenderAtSqrDistance(double pDistance) {
+        double d0 = this.getBoundingBox().getSize() * 20.0D;
+        if (Double.isNaN(d0)) {
+            d0 = 1.0D;
+        }
+
+        d0 *= 256.0D * getViewScale();
+        return pDistance < d0 * d0;
+    }
 }
