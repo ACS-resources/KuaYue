@@ -42,6 +42,12 @@ public class ItemInit {
     public static final RegistryObject<Item> GeneralCatenry = register("general_catenary",
             () -> new GeneralCatenary(new Item.Properties().tab(Main.KUAYUE_CATENARY)));
 
+    public static final RegistryObject<Item> GeneralStraight = register("general_straight",
+            () -> new GeneralCatenary(new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<Item> GeneralHyperbolic = register("general_hyperbolic",
+            () -> new GeneralCatenary(new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
     public static final RegistryObject<Item> CatenaryScissors = register("catenary_scissors",
             () -> new CatenaryScissors(new Item.Properties().tab(Main.KUAYUE_CATENARY)));
 //   public static final RegistryObject<Item> TRAIN_PANEL_SIGN_ITEM = register("train_panel_sign_item",

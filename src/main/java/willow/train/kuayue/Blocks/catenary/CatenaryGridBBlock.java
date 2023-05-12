@@ -29,6 +29,7 @@ import willow.train.kuayue.init.ItemInit;
 
 import java.util.Collection;
 
+import static willow.train.kuayue.Catenary.Connections.DISCARDAREAWIDTH;
 import static willow.train.kuayue.Main.CATENARYCONNECTIONHANDLER;
 
 public class CatenaryGridBBlock extends HorizontalBlockBase implements CatenaryBlockInterface {
@@ -37,24 +38,11 @@ public class CatenaryGridBBlock extends HorizontalBlockBase implements CatenaryB
         super(p_49795_);
     }
 
-    protected static final VoxelShape SOUTH_AABB = Shapes.or(Block.box(7, 0, 7, 9, 16, 9));
-    protected static final VoxelShape WEST_AABB = Shapes.or(Block.box(7, 0, 7,9 , 16, 9));
-    protected static final VoxelShape NORTH_AABB = Shapes.or(Block.box(7, 0, 7, 9, 16, 9));
-    protected static final VoxelShape EAST_AABB = Shapes.or(Block.box(7, 0, 7, 9, 16, 9));
+    protected static final VoxelShape AABB = Shapes.or(Block.box(7, 0, 7, 9, 16, 9));
 
 
     public VoxelShape getShape(BlockState p_54372_, BlockGetter p_54373_, BlockPos p_54374_, CollisionContext p_54375_) {
-        switch ((Direction) p_54372_.getValue(FACING)) {
-            case NORTH:
-                return NORTH_AABB;
-            case SOUTH:
-                return SOUTH_AABB;
-            case WEST:
-                return WEST_AABB;
-            case EAST:
-            default:
-                return EAST_AABB;
-        }
+        return AABB;
     }
 
     @Override
@@ -66,11 +54,19 @@ public class CatenaryGridBBlock extends HorizontalBlockBase implements CatenaryB
         } else {
             if(pPlayer.getMainHandItem().is(ItemInit.GeneralCatenry.get())) {
                 Vec3 pos = getCatenaryPort(pPos, pState, pPlayer.getDirection());
-                CATENARYCONNECTIONHANDLER.registerPos(pPlayer, pLevel, pos, "catenary", pPos);
+                CATENARYCONNECTIONHANDLER.registerPos(pPlayer, pLevel, pos.add(new Vec3(0 , 0.05 , 0)), "catenary", pPos);
                 if (CATENARYCONNECTIONHANDLER.canConnect(pPlayer)) CATENARYCONNECTIONHANDLER.connect(pPlayer);
             }else if(pPlayer.getMainHandItem().is(ItemInit.CatenaryScissors.get())) {
-                discardCatenary(pLevel , pPos , 68.0);
+                discardCatenary(pLevel , pPos , DISCARDAREAWIDTH);
                 pPlayer.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".catenary_removed") , true);
+            } else if (pPlayer.getMainHandItem().is(ItemInit.GeneralStraight.get())) {
+                Vec3 pos = getCatenaryPort(pPos, pState, pPlayer.getDirection());
+                CATENARYCONNECTIONHANDLER.registerPos(pPlayer, pLevel, pos.add(new Vec3(0 ,1.9 , 0)), "straight", pPos);
+                if (CATENARYCONNECTIONHANDLER.canConnect(pPlayer)) CATENARYCONNECTIONHANDLER.connect(pPlayer);
+            } else if (pPlayer.getMainHandItem().is(ItemInit.GeneralHyperbolic.get())) {
+                Vec3 pos = getCatenaryPort(pPos, pState, pPlayer.getDirection());
+                CATENARYCONNECTIONHANDLER.registerPos(pPlayer, pLevel, pos.add(new Vec3(0 ,1 , 0)), "hyperbolic", pPos);
+                if (CATENARYCONNECTIONHANDLER.canConnect(pPlayer)) CATENARYCONNECTIONHANDLER.connect(pPlayer);
             }
             return InteractionResult.CONSUME;
         }
@@ -116,7 +112,7 @@ public class CatenaryGridBBlock extends HorizontalBlockBase implements CatenaryB
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
 
         if(!level.isClientSide()){
-            discardCatenary(level , pos , 68.0);
+            discardCatenary(level , pos , DISCARDAREAWIDTH);
         }
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
@@ -124,7 +120,7 @@ public class CatenaryGridBBlock extends HorizontalBlockBase implements CatenaryB
     @Override
     public void onBlockExploded(BlockState state, Level level, BlockPos pos, Explosion explosion) {
         if(!level.isClientSide()){
-            discardCatenary(level , pos , 68.0);
+            discardCatenary(level , pos , DISCARDAREAWIDTH);
         }
         super.onBlockExploded(state, level, pos, explosion);
     }

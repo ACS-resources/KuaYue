@@ -27,6 +27,7 @@ import willow.train.kuayue.Main;
 import willow.train.kuayue.Util.HorizontalBlockBase;
 import willow.train.kuayue.init.ItemInit;
 
+import static willow.train.kuayue.Catenary.Connections.DISCARDAREAWIDTH;
 import static willow.train.kuayue.Main.CATENARYCONNECTIONHANDLER;
 
 public class CatenaryGridA2Block extends HorizontalBlockBase implements CatenaryBlockInterface {
@@ -66,7 +67,7 @@ public class CatenaryGridA2Block extends HorizontalBlockBase implements Catenary
                 CATENARYCONNECTIONHANDLER.registerPos(pPlayer, pLevel, pos, "catenary", pPos);
                 if (CATENARYCONNECTIONHANDLER.canConnect(pPlayer)) CATENARYCONNECTIONHANDLER.connect(pPlayer);
             }else if(pPlayer.getMainHandItem().is(ItemInit.CatenaryScissors.get())) {
-                discardCatenary(pLevel , pPos , 68.0);
+                discardCatenary(pLevel , pPos , DISCARDAREAWIDTH);
                 pPlayer.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".catenary_removed") , true);
             }
             return InteractionResult.CONSUME;
@@ -108,21 +109,21 @@ public class CatenaryGridA2Block extends HorizontalBlockBase implements Catenary
     public Vec3 getCatenaryPort(BlockPos pPos, BlockState pState, Direction direction) {
         switch ((Direction) pState.getValue(FACING)) {
             case NORTH:
-                return new Vec3(((double)pPos.getX())+0.5  , pPos.getY() , (double)(pPos.getZ())+1.5);
+                return new Vec3(((double)pPos.getX())+0.5  , pPos.getY() , (double)(pPos.getZ())+1.5 - 0.125);
             case SOUTH:
-                return new Vec3((double)pPos.getX()+0.5  , pPos.getY() ,  ((double)pPos.getZ())-0.5);
+                return new Vec3((double)pPos.getX()+0.5  , pPos.getY() ,  ((double)pPos.getZ())-0.5 + 0.125);
             case WEST:
-                return new Vec3(((double)pPos.getX()) + 1.5  , pPos.getY() , (double) pPos.getZ() + 0.5);
+                return new Vec3(((double)pPos.getX()) + 1.5 - 0.125 , pPos.getY() , (double) pPos.getZ() + 0.5);
             case EAST:
             default:
-                return new Vec3(((double)pPos.getX()) - 0.5  , pPos.getY() , (double) pPos.getZ() + 0.5);
+                return new Vec3(((double)pPos.getX()) - 0.5 + 0.125 , pPos.getY() , (double) pPos.getZ() + 0.5);
         }
     }
 
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
         if(!level.isClientSide()){
-            discardCatenary(level , pos , 68.0);
+            discardCatenary(level , pos , DISCARDAREAWIDTH);
         }
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
@@ -130,7 +131,7 @@ public class CatenaryGridA2Block extends HorizontalBlockBase implements Catenary
     @Override
     public void onBlockExploded(BlockState state, Level level, BlockPos pos, Explosion explosion) {
         if(!level.isClientSide()){
-            discardCatenary(level , pos , 68.0);
+            discardCatenary(level , pos , DISCARDAREAWIDTH);
         }
         super.onBlockExploded(state, level, pos, explosion);
     }
