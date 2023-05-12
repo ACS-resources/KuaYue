@@ -1,8 +1,16 @@
 # 开发日志
 
 ----
+### 2023.5.12
+##### version 0.2.1-Patchouli
+
+接触网下垂系数修正为0.0007（MegumiKasuga）
+悬链线下垂系数修正为120（MegumiKasuga）
+
+
+
 ### 2023.3.4
-##### version 0.1.2-HoanMeirin
+##### version 0.2.0-Patchouli
 
 更新部分的合成表（HTony03）
 修改模型：
