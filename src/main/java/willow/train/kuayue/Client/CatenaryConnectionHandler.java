@@ -20,8 +20,7 @@ public class CatenaryConnectionHandler {
         if(!EVENT.containsKey(player)){
             EVENT.put(player , new ConnectionEvent(player , level , catenaryType));
         }
-        EVENT.get(player).setBlock(block);
-        EVENT.get(player).setPos(pos);
+        EVENT.get(player).setPos(pos , block);
     }
 
     public boolean canConnect(Player player){

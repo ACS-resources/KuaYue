@@ -7,9 +7,9 @@
 	"elements": [
 		{
 			"name": "pulley_line_a7",
-			"from": [7.5, 0, -4.625],
-			"to": [8.5, 16, -4.375],
-			"rotation": {"angle": 0, "axis": "x", "origin": [0, 18, 6]},
+			"from": [7.5, 0, -2.625],
+			"to": [8.5, 16, -2.375],
+			"rotation": {"angle": 0, "axis": "x", "origin": [0, 18, 8]},
 			"faces": {
 				"north": {"uv": [0, 0, 1, 1], "rotation": 180, "texture": "#3"},
 				"east": {"uv": [0, 0, 1, 1], "rotation": 90, "texture": "#3"},
