@@ -3,7 +3,7 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"11": "kuayue:block/shunting_signal_base",
-		"12": "kuayue:shunting_signal_light_off",
+		"12": "kuayue:block/shunting_signal_light_off",
 		"13": "kuayue:block/shunting_signal_signal_controller_base",
 		"particle": "kuayue:block/shunting_signal_base",
 		"0_0": "kuayue:block/station_entrance_signal_bottom_side",
