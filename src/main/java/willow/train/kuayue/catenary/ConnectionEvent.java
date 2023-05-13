@@ -2,10 +2,9 @@ package willow.train.kuayue.Catenary;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import willow.train.kuayue.Entity.CatenaryBaseEntity;
@@ -41,7 +40,7 @@ public class ConnectionEvent {
                 case "hyperbolic":
                     ccp = Connections.hyperbolicConnect(posA , posB , 80 , "hyperbolic" , 0.75);
                     if(ccp.getCatenaryType().equals("error")){
-                        player.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".uncovergence") , true);
+                        player.displayClientMessage(Component.translatable("msg." + Main.MOD_ID + ".uncovergence") , true);
                         cep = null;
                         break;
                     }
@@ -69,21 +68,21 @@ public class ConnectionEvent {
         if(posA == null){
             posA = pos;
             blockA = block;
-            player.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".first_block_chosen").copy().append(posStr) , true);
+            player.displayClientMessage(Component.translatable("msg." + Main.MOD_ID + ".first_block_chosen").copy().append(posStr) , true);
             return;
         }else {
             blockB = block;
             if(blockA.equals(blockB)){
-                player.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".same_block") , true);
+                player.displayClientMessage(Component.translatable("msg." + Main.MOD_ID + ".same_block") , true);
                 return;
             }
             if(!posA.closerThan(pos , MAXWIRELENGTH)){
-                player.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".too_far_away") , true);
+                player.displayClientMessage(Component.translatable("msg." + Main.MOD_ID + ".too_far_away") , true);
                 return;
             }
             Vec3 posX = new Vec3(pos.x , posA.y, pos.z);
             if( !catenaryType.equals("straight") && !catenaryType.equals("hyperbolic") && pos.distanceTo(posX)/posA.distanceTo(posX) > 1.1){
-                player.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".excessive_slope") , true);
+                player.displayClientMessage(Component.translatable("msg." + Main.MOD_ID + ".excessive_slope") , true);
                 return;
             }
             posB = pos;
@@ -99,7 +98,7 @@ public class ConnectionEvent {
                         || (tag.get("blockB").getAsString()).equals(blockA.getX() + "," + blockA.getY() + "," + blockA.getZ()) &&
                         (tag.get("blockA").getAsString()).equals(blockB.getX() + "," + blockB.getY() + "," +blockB.getZ()))
                 {
-                    player.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".redundant_operation") , true);
+                    player.displayClientMessage(Component.translatable("msg." + Main.MOD_ID + ".redundant_operation") , true);
                     posB = null;
                     return;
                 }
@@ -114,12 +113,12 @@ public class ConnectionEvent {
                         || (tag.get("blockB").getAsString()).equals(blockA.getX() + "," + blockA.getY() + "," + blockA.getZ()) &&
                         (tag.get("blockA").getAsString()).equals(blockB.getX() + "," + blockB.getY() + "," +blockB.getZ()))
                 {
-                    player.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".redundant_operation") , true);
+                    player.displayClientMessage(Component.translatable("msg." + Main.MOD_ID + ".redundant_operation") , true);
                     posB = null;
                     return;
                 }
             }
-            player.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".second_block_chosen").copy().append(posStr) , true);
+            player.displayClientMessage(Component.translatable("msg." + Main.MOD_ID + ".second_block_chosen").copy().append(posStr) , true);
         }
     }
 

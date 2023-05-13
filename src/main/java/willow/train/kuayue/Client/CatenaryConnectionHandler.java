@@ -1,10 +1,9 @@
 package willow.train.kuayue.Client;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import willow.train.kuayue.Catenary.ConnectionEvent;
 import willow.train.kuayue.Main;
@@ -36,7 +35,7 @@ public class CatenaryConnectionHandler {
     public void remove(Player player){
         if (EVENT.containsKey(player)){
             EVENT.remove(player);
-            player.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".cancelled") , true);
+            player.displayClientMessage(Component.translatable("msg." + Main.MOD_ID + ".cancelled") , true);
         }
     }
 }
