@@ -146,6 +146,7 @@
   "block.kuayue.smooth_quartz_panel_2": "1/8 Smooth Quartz Block",
   "block.kuayue.smooth_quartz_angle_22_up": "1/2 Smooth Quartz Block Slop",
   "block.kuayue.pantograph": "Pantograph",
+  "block.kuayue.ss8_pantograph": "Single-Arm Pantograph",
   "block.kuayue.catenary_pole": "Steel Catenary Network Frame",
   "block.kuayue.catenary_pole_side_hang_point_connector": "Catenary Network Frame Hang Point Connector",
   "block.kuayue.catenary_pole_side_hang_point_connector_45": "Catenary Network Frame Hang Point Connector 45°",
@@ -268,7 +269,7 @@
   "block.kuayue.end_face_25t_original.tooltip": "§7Tips: Are your hands clamped?",
   "block.kuayue.end_face_25b_original.tooltip": "§7It's said that someone fell from here",
   "block.kuayue.end_face_25g_original.tooltip": "§7Crunch~ Crunch~",
-  "block.kuayue.end_face_25b_original_upper_2.tooltip": "How About \'B\' to \'G\'?",
+  "block.kuayue.end_face_25b_original_upper_2.tooltip": "How About \\'B\\' to \\'G\\'?",
 
   "block.kuayue.widepanel_cr200j_marshalled_mid.tooltip": "Gonna throw Up",
   "block.kuayue.panel_cr200j_marshalled_top.tooltip": "Gonna throw Up",

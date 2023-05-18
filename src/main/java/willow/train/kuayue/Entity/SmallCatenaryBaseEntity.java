@@ -18,14 +18,17 @@ public class SmallCatenaryBaseEntity extends AbstractArrow {
 
     public SmallCatenaryBaseEntity(EntityType<? extends AbstractArrow> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        this.inGround = true;
     }
 
     public SmallCatenaryBaseEntity(EntityType<? extends AbstractArrow> pEntityType, double pX, double pY, double pZ, Level pLevel) {
         super(pEntityType, pX, pY, pZ, pLevel);
+        this.inGround = true;
     }
 
     public SmallCatenaryBaseEntity(EntityType<? extends AbstractArrow> pEntityType, LivingEntity pShooter, Level pLevel) {
         super(pEntityType, pShooter, pLevel);
+        this.inGround = true;
     }
 
     @Override
