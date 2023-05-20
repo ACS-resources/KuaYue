@@ -294,6 +294,12 @@
 
   "": "Never Gonna Give You Up~",
 
+
+  "tips.entity": "--------------------------------all entity above here-------------------------------------------",
+
+  "entity.kuayue.catenary_base": "catenary monocase",
+  "entity.kuayue.small_catenary_base": "catenary monocase(small)",
+
   "tips.msg": "--------------------------------display messages--------------------------------",
   "msg.kuayue.too_far_away": "Too Far Away!",
   "msg.kuayue.catenary_removed": "Catenary Removed",
