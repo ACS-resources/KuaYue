@@ -1,7 +1,6 @@
 package willow.train.kuayue;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
@@ -32,8 +31,7 @@ public class Main {
     public static final Logger LOGGER = LoggerFactory.getLogger("KuaYue");
     public static final String MOD_ID = "kuayue";
 
-    private static final NonNullSupplier<CreateRegistrate> REGISTRATE = CreateRegistrate.lazy(MOD_ID);
-
+    private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
     public static CatenaryConnectionHandler CATENARYCONNECTIONHANDLER = new CatenaryConnectionHandler();
     public static final MainTab KUAYUE_MAIN = new MainTab(MOD_ID) {
         @Override
@@ -90,6 +88,7 @@ public class Main {
         KYCreateBlock.register();
         KYCreateEntities.register();
         AllModulePartials.init();
+        REGISTRATE.registerEventListeners(bus);
 
         bus.addListener(this::setup);
 
@@ -240,6 +239,6 @@ public class Main {
     });
     }
     public static CreateRegistrate registrate() {
-        return REGISTRATE.get();
+        return REGISTRATE;
     }
 }

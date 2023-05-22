@@ -157,11 +157,11 @@ repositories {
     //     dir 'libs'
     // }
 
-    maven {
-        // Location of the maven that hosts JEI files (and TiC)
-        name 'Progwml6 maven'
-        url 'https://dvs1.progwml6.com/files/maven'
-    }
+//    maven {
+//        // Location of the maven that hosts JEI files (and TiC)
+//        name 'Progwml6 maven'
+//        url 'https://dvs1.progwml6.com/files/maven'
+//    }
    maven {
         // Location of a maven mirror for JEI files, as a fallback
         url 'https://repo.spongepowered.org/repository/maven-public/'
@@ -205,7 +205,7 @@ dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.60'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.2.4'
 
     implementation fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")

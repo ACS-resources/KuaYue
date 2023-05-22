@@ -1,7 +1,7 @@
 package willow.train.kuayue.init;
 
 import com.jozufozu.flywheel.core.PartialModel;
-import com.simibubi.create.content.contraptions.fluids.FluidTransportBehaviour;
+import com.simibubi.create.content.fluids.FluidTransportBehaviour;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
