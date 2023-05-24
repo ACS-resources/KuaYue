@@ -16,10 +16,9 @@ import willow.train.kuayue.Blocks.*;
 import willow.train.kuayue.Blocks.Locos.HXD3D.HXD3DCabDoorBlock;
 import willow.train.kuayue.Blocks.Locos.HXD3D.HXD3DPanelBlocks;
 import willow.train.kuayue.Blocks.Locos.PantographBlock;
+import willow.train.kuayue.Blocks.Locos.SS8PantographBlock;
 import willow.train.kuayue.Blocks.Locos.df11g.*;
 import willow.train.kuayue.Blocks.Structure.*;
-import willow.train.kuayue.Blocks.TrainCarriage.PanelBlock25Side;
-import willow.train.kuayue.Blocks.TrainCarriage.Train25GLadderBlock;
 import willow.train.kuayue.Blocks.TrainCarriage.*;
 import willow.train.kuayue.Blocks.catenary.*;
 import willow.train.kuayue.Items.ToolTipsItemHelper;
@@ -578,6 +577,7 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
             () -> new Train25BGEndFaceBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
+
     public static final RegistryObject<TrainPanelBlock> END_FACE_25T_ORIGINAL_RUBBER_UPPER = register("end_face_25t_original_rubber_upper",
             () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
@@ -667,11 +667,14 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
 
-    //刷绿shualv
-
     //受电弓
     public static final RegistryObject<PantographBlock> PANTOGRAPH = register("pantograph",
             () -> new PantographBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+            object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_LOCOS)));
+
+    public static final RegistryObject<SS8PantographBlock> SS8_PANTOGRAPH = register("ss8_pantograph",
+            () -> new SS8PantographBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_LOCOS)));
 
@@ -1159,7 +1162,6 @@ public static final RegistryObject<DF11GPanel3Wide> DF11G_PANEL_CR = register("d
             () -> new PanelBlockHalf(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.STONE).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_MAIN)));
-
 
     private static <T extends Block> RegistryObject<T> registerBlock(final String name,
                                                                      final Supplier<? extends T> block) {

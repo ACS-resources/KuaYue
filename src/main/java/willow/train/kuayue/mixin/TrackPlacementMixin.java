@@ -1,6 +1,6 @@
 package willow.train.kuayue.mixin;
 
-import com.simibubi.create.content.logistics.trains.track.TrackPlacement;
+import com.simibubi.create.content.trains.track.TrackPlacement;
 import org.jetbrains.annotations.Contract;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;

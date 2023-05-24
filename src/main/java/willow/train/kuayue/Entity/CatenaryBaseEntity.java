@@ -18,14 +18,17 @@ public class CatenaryBaseEntity extends AbstractArrow {
 
     public CatenaryBaseEntity(EntityType<? extends AbstractArrow> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        this.inGround = true;
     }
 
     public CatenaryBaseEntity(EntityType<? extends AbstractArrow> pEntityType, double pX, double pY, double pZ, Level pLevel) {
         super(pEntityType, pX, pY, pZ, pLevel);
+        this.inGround = true;
     }
 
     public CatenaryBaseEntity(EntityType<? extends AbstractArrow> pEntityType, LivingEntity pShooter, Level pLevel) {
         super(pEntityType, pShooter, pLevel);
+        this.inGround = true;
     }
 
     @Override
@@ -78,5 +81,16 @@ public class CatenaryBaseEntity extends AbstractArrow {
         this.blockPosA = pCompound.getString("blockA");
         this.blockPosB = pCompound.getString("blockB");
         super.readAdditionalSaveData(pCompound);
+    }
+
+    @Override
+    public boolean shouldRenderAtSqrDistance(double pDistance) {
+        double d0 = this.getBoundingBox().getSize() * 20.0D;
+        if (Double.isNaN(d0)) {
+            d0 = 1.0D;
+        }
+
+        d0 *= 256.0D * getViewScale();
+        return pDistance < d0 * d0;
     }
 }

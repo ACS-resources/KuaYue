@@ -36,7 +36,7 @@ public class MegaPhoneBlock extends BaseEntityBlock {
     public void neighborChanged(BlockState pState, Level pLevel, @NotNull BlockPos pPos, @NotNull Block pBlock, @NotNull BlockPos pFromPos, boolean pIsMoving) {
         boolean flag = pLevel.hasNeighborSignal(pPos);
             pLevel.setBlock(pPos, pState.setValue(POWERED, flag), 2);
-        }
+    }
     public BlockState rotate(BlockState p_54360_, Rotation p_54361_) {
         return p_54360_.setValue(FACING, p_54361_.rotate(p_54360_.getValue(FACING)));
     }

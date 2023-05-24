@@ -1,13 +1,8 @@
 package willow.train.kuayue.Blocks.Locos.df11g;
 
-import com.simibubi.create.content.contraptions.base.HorizontalKineticBlock;
-import net.minecraft.core.BlockPos;
+import com.simibubi.create.content.kinetics.base.HorizontalKineticBlock;
 import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import willow.train.kuayue.Blocks.Entities.DF11GFrontTileEntity;
 
 public class DF11GFrontBlock extends HorizontalKineticBlock
      //   implements ITE<DF11GFrontTileEntity>
@@ -19,21 +14,21 @@ public class DF11GFrontBlock extends HorizontalKineticBlock
     }
 
 
-
-    @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-        DF11GFrontTileEntity df1fte = getCrafter(pLevel, pPos);
-        if(df1fte!= null) {
-            pLevel.removeBlockEntity(pPos);
-        }
-    }
-    public static DF11GFrontTileEntity getCrafter(BlockAndTintGetter reader, BlockPos pos) {
-        BlockEntity te = reader.getBlockEntity(pos);
-        if (!(te instanceof DF11GFrontTileEntity))
-            return null;
-        return (DF11GFrontTileEntity) te;
-    }
+//
+//    @Override
+//    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+//        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+//        DF11GFrontTileEntity df1fte = getCrafter(pLevel, pPos);
+//        if(df1fte!= null) {
+//            pLevel.removeBlockEntity(pPos);
+//        }
+//    }
+//    public static DF11GFrontTileEntity getCrafter(BlockAndTintGetter reader, BlockPos pos) {
+//        BlockEntity te = reader.getBlockEntity(pos);
+//        if (!(te instanceof DF11GFrontTileEntity))
+//            return null;
+//        return (DF11GFrontTileEntity) te;
+//    }
 
 
 
