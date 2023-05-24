@@ -12,7 +12,7 @@ import willow.train.kuayue.Util.HorizontalBlockBase;
 
 public class CatenaryGridConnectorA45Block extends HorizontalBlockBase{
 
-    Vec3[] CATENARYPORTS = new Vec3[]{};
+    Vec3[] CATENARYPORTS = new Vec3[]{};//
 
     public CatenaryGridConnectorA45Block(Properties p_49795_) {
         super(p_49795_);

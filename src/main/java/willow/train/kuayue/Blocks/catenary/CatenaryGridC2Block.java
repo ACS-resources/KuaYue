@@ -78,7 +78,7 @@ public class CatenaryGridC2Block extends HorizontalBlockBase implements Catenary
     @Override
     public Vec3[] getCatenaryPorts() {
         return new Vec3[0];
-    }
+    }//
 
     @Override
     public void discardCatenary(Level level, BlockPos pos , double areaWidth) {

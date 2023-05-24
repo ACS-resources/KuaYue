@@ -80,7 +80,7 @@ public class CatenaryGridC145Block extends HorizontalBlockBase implements Catena
     @Override
     public Vec3[] getCatenaryPorts() {
         return CATENARYPORTS;
-    }
+    }//
 
     @Override
     public void discardCatenary(Level level, BlockPos pos , double areaWidth) {
