@@ -3,20 +3,15 @@ package willow.train.kuayue.Blocks.catenary;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DirectionalBlock;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
@@ -29,6 +24,7 @@ import willow.train.kuayue.Catenary.CatenaryBlockInterface;
 import willow.train.kuayue.Entity.CatenaryBaseEntity;
 import willow.train.kuayue.Entity.SmallCatenaryBaseEntity;
 import willow.train.kuayue.Main;
+import willow.train.kuayue.Util.ComponentTranslationTool;
 import willow.train.kuayue.Util.DirectionalBlockBase;
 import willow.train.kuayue.init.ItemInit;
 
@@ -85,8 +81,8 @@ public class CableHangPointBlock extends DirectionalBlockBase implements Catenar
                 CATENARYCONNECTIONHANDLER.registerPos(pPlayer, pLevel, pos, "straight", pPos);
                 if (CATENARYCONNECTIONHANDLER.canConnect(pPlayer)) CATENARYCONNECTIONHANDLER.connect(pPlayer);
             }else if(pPlayer.getMainHandItem().is(ItemInit.CatenaryScissors.get())) {
-                discardCatenary(pLevel , pPos , DISCARDAREAWIDTH);
-                pPlayer.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".catenary_removed") , true);
+                discardCatenary(pLevel, pPos, DISCARDAREAWIDTH);
+                ComponentTranslationTool.showMsg(pPlayer, "msg." + Main.MOD_ID + ".catenary_removed", true);
             } else if(pPlayer.getMainHandItem().is(ItemInit.GeneralHyperbolic.get())) {
                 Vec3 pos = getCatenaryPort(pPos, pState, pPlayer.getDirection());
                 CATENARYCONNECTIONHANDLER.registerPos(pPlayer, pLevel, pos, "hyperbolic", pPos);

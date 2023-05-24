@@ -3,17 +3,13 @@ package willow.train.kuayue.Blocks.catenary;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
@@ -23,11 +19,11 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import willow.train.kuayue.Catenary.CatenaryBlockInterface;
 import willow.train.kuayue.Entity.CatenaryBaseEntity;
 import willow.train.kuayue.Entity.SmallCatenaryBaseEntity;
 import willow.train.kuayue.Main;
+import willow.train.kuayue.Util.ComponentTranslationTool;
 import willow.train.kuayue.Util.HorizontalBlockBase;
 import willow.train.kuayue.init.ItemInit;
 
@@ -72,8 +68,8 @@ public class CatenaryGridC1Block extends HorizontalBlockBase implements Catenary
                 CATENARYCONNECTIONHANDLER.registerPos(pPlayer, pLevel, pos, "catenary", pPos);
                 if (CATENARYCONNECTIONHANDLER.canConnect(pPlayer)) CATENARYCONNECTIONHANDLER.connect(pPlayer);
             }else if(pPlayer.getMainHandItem().is(ItemInit.CatenaryScissors.get())) {
-                discardCatenary(pLevel , pPos , DISCARDAREAWIDTH);
-                pPlayer.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".catenary_removed") , true);
+                discardCatenary(pLevel, pPos, DISCARDAREAWIDTH);
+                ComponentTranslationTool.showMsg(pPlayer, "msg." + Main.MOD_ID + ".catenary_removed", true);
             }
             return InteractionResult.CONSUME;
         }

@@ -3,7 +3,6 @@ package willow.train.kuayue.Blocks.catenary;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -24,10 +23,9 @@ import willow.train.kuayue.Catenary.CatenaryBlockInterface;
 import willow.train.kuayue.Entity.CatenaryBaseEntity;
 import willow.train.kuayue.Entity.SmallCatenaryBaseEntity;
 import willow.train.kuayue.Main;
+import willow.train.kuayue.Util.ComponentTranslationTool;
 import willow.train.kuayue.Util.HorizontalBlockBase;
 import willow.train.kuayue.init.ItemInit;
-
-import java.util.Collection;
 
 import static willow.train.kuayue.Catenary.Connections.DISCARDAREAWIDTH;
 import static willow.train.kuayue.Main.CATENARYCONNECTIONHANDLER;
@@ -57,8 +55,8 @@ public class CatenaryGridBBlock extends HorizontalBlockBase implements CatenaryB
                 CATENARYCONNECTIONHANDLER.registerPos(pPlayer, pLevel, pos.add(new Vec3(0 , 0.05 , 0)), "catenary", pPos);
                 if (CATENARYCONNECTIONHANDLER.canConnect(pPlayer)) CATENARYCONNECTIONHANDLER.connect(pPlayer);
             }else if(pPlayer.getMainHandItem().is(ItemInit.CatenaryScissors.get())) {
-                discardCatenary(pLevel , pPos , DISCARDAREAWIDTH);
-                pPlayer.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".catenary_removed") , true);
+                discardCatenary(pLevel, pPos, DISCARDAREAWIDTH);
+                ComponentTranslationTool.showMsg(pPlayer, "msg." + Main.MOD_ID + ".catenary_removed", true);
             } else if (pPlayer.getMainHandItem().is(ItemInit.GeneralStraight.get())) {
                 Vec3 pos = getCatenaryPort(pPos, pState, pPlayer.getDirection());
                 CATENARYCONNECTIONHANDLER.registerPos(pPlayer, pLevel, pos.add(new Vec3(0 ,1.9 , 0)), "straight", pPos);
