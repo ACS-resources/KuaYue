@@ -7,6 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import willow.train.kuayue.Blocks.Entities.MegaphoneBlockEntity;
 import willow.train.kuayue.Blocks.Entities.TrainPanelSignBlockEntities;
+import willow.train.kuayue.Entity.CarriageTypeSignEntity;
 import willow.train.kuayue.Main;
 
 public class BlockEntitiesInit {
@@ -18,6 +19,10 @@ public class BlockEntitiesInit {
     public static final RegistryObject<BlockEntityType<MegaphoneBlockEntity>> MEGAPHONE_BLOCK_ENTITIES =
             BLOCK_ENTITIES.register("megaphone_block_entity" , () ->
                     BlockEntityType.Builder.of(MegaphoneBlockEntity::new, BlockInit.MEGAPHONE.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<CarriageTypeSignEntity>> CarriageTypeSign =
+            BLOCK_ENTITIES.register("megaphone_block_entity" , () ->
+                    BlockEntityType.Builder.of(CarriageTypeSignEntity::new, BlockInit.CARRIAGE_TYPE_SIGN_BLOCK.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<TrainPanelSignBlockEntities>> TRAIN_BLOCK_ENTITES_BLOCK =
             BLOCK_ENTITIES.register("train_panel_block_entity" , () ->
