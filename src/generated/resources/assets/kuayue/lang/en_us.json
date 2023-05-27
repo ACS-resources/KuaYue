@@ -309,5 +309,9 @@
   "msg.kuayue.second_block_chosen": "End Point At ",
   "msg.kuayue.cancelled": "Operation Cancelled",
   "msg.kuayue.same_block": "Cannot Link The Same Block",
-  "msg.kuayue.uncovergence": "error : Catenary Fitting Does Not Converge Within The Specified Number Of Steps"
+  "msg.kuayue.uncovergence": "error : Catenary Fitting Does Not Converge Within The Specified Number Of Steps",
+
+  "tips.patchouli": "--------------------------------all entity above here-------------------------------------------",
+  "patchouli.kuayue.name":"跨越铁路车辆图鉴",
+  "patchouli.kuayue.landing_text": "放眼未来，走向世界"
 }

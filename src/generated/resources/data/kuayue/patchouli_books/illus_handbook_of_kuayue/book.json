@@ -1,0 +1,9 @@
+{
+  "name": "patchouli.kuayue.name",
+  "landing_text": "patchouli.kuayue.landing_text",
+  "model": "kuayue:cr_logo",
+  "creative_tab": "item_group_main",
+  "show_progress": false,
+  "i18n": false,
+  "version": 1
+}

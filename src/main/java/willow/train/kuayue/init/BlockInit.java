@@ -34,6 +34,7 @@ public class BlockInit {
     public static final DeferredRegister<Item> ITEMS = ItemInit.ITEMS;
 
 
+
     public static final RegistryObject<Block> CR_LOGO = register("cr_logo",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.POLISHED_DEEPSLATE).requiresCorrectToolForDrops()),
@@ -1175,14 +1176,14 @@ public static final RegistryObject<DF11GPanel3Wide> DF11G_PANEL_CR = register("d
                                                                 Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> obj = registerBlock(name, block);
         ITEMS.register(name, item.apply(obj));
-        LOGGER.info("rigister block:"+name);
+        //LOGGER.info("rigister block:"+name);
         return obj;
     }
     private static <T extends Block> RegistryObject<T> register2(final String name, final Supplier<? extends T> block,
                                                                 Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> obj = registerBlock(name, block);
         //ITEMS.register(name, item.apply(obj));
-        LOGGER.info("rigister block:"+name);
+        //LOGGER.info("rigister block:"+name);
         return obj;
     }
     private static <T extends Block> RegistryObject<T> registerBlockWithoutBlockItem(String name, Supplier<T> block) {
