@@ -1,21 +1,13 @@
 package willow.train.kuayue.Entity;
 
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.extensions.IForgeBlockEntity;
 import willow.train.kuayue.init.BlockEntitiesInit;
 
 import javax.annotation.Nullable;
@@ -41,11 +33,11 @@ public class CarriageTypeSignEntity extends BlockEntity {
 
     public CarriageTypeSignEntity(BlockPos pPos, BlockState pBlockState) {
         super(BlockEntitiesInit.CARRIAGE_TYPE_SIGN.get(), pPos, pBlockState);
-        messages[0] = new TextComponent("硬座车");
-        messages[1] = new TextComponent("YINGZUOCHE");
-        messages[2] = new TextComponent("YZ");
+        messages[0] = new TextComponent("撤硕车");
+        messages[1] = new TextComponent("CHESUOCHE");
+        messages[2] = new TextComponent("CS");
         messages[3] = new TextComponent("25K");
-        messages[4] = new TextComponent("345674");
+        messages[4] = new TextComponent("114514");
     }
 
     public Component getMessage(int pIndex, boolean pFiltered) {
@@ -75,7 +67,7 @@ public class CarriageTypeSignEntity extends BlockEntity {
     public void load(CompoundTag pTag) {
         this.isEditable = false;
         super.load(pTag);
-        this.color = DyeColor.byName(pTag.getString("Color"), DyeColor.BLACK);
+        this.color =DyeColor.byFireworkColor(0xc0b305); //0xC0B305；//DyeColor.byName(pTag.getString("Color"), DyeColor.BLACK);
 
         for(int i = 0; i < 4; ++i) {
             String s = pTag.getString(RAW_TEXT_FIELD_NAMES[i]);

@@ -1,23 +1,17 @@
 package willow.train.kuayue.renderer;
 
-import com.google.common.collect.ImmutableMap;
 import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.StandingSignBlock;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.phys.Vec3;
 import willow.train.kuayue.Blocks.Signs.CarriageTypeSignBlock;
 import willow.train.kuayue.Entity.CarriageTypeSignEntity;
 
@@ -32,6 +26,21 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
     }
 
     @Override
+    public boolean shouldRenderOffScreen(CarriageTypeSignEntity pBlockEntity) {
+        return true;
+    }
+
+    @Override
+    public int getViewDistance() {
+        return 512;
+    }
+
+    @Override
+    public boolean shouldRender(CarriageTypeSignEntity pBlockEntity, Vec3 pCameraPos) {
+        return true;
+    }
+
+    @Override
     public void render(CarriageTypeSignEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
         BlockState blockstate = pBlockEntity.getBlockState();
         pPoseStack.pushPose();
@@ -40,7 +49,6 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
             List<FormattedCharSequence> list = this.font.split(p_173653_, 90);
             return list.isEmpty() ? FormattedCharSequence.EMPTY : list.get(0);
         });
-
         Direction direction = blockstate.getValue(CarriageTypeSignBlock.FACING);
         switch (direction){
             case EAST :
@@ -124,6 +132,7 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
         int j = (int)((double) NativeImage.getR(i) * 0.4D);
         int k = (int)((double)NativeImage.getG(i) * 0.4D);
         int l = (int)((double)NativeImage.getB(i) * 0.4D);
-        return i == DyeColor.BLACK.getTextColor() && pBlockEntity.hasGlowingText() ? -988212 : NativeImage.combine(0, l, k, j);
+        //return i == DyeColor.BLACK.getTextColor() && pBlockEntity.hasGlowingText() ? -988212 : NativeImage.combine(0, l, k, j);
+    return 0xc0b305;
     }
 }
