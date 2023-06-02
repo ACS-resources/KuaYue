@@ -675,6 +675,11 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_LOCOS)));
 
+    public static final RegistryObject<CarriageTypeSignBlock> CARRIAGETYPESIGN = register("carriage_type_sign_block",
+            () -> new CarriageTypeSignBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+                    .sound(SoundType.WOOD).requiresCorrectToolForDrops().noOcclusion()),
+            object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_LOCOS)));
+
     public static final RegistryObject<CarriageTypeSignBlock> CARRIAGE_TYPE_SIGN_BLOCK = register("carriage_type_sign",
             () -> new CarriageTypeSignBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),

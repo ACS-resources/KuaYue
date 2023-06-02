@@ -21,9 +21,12 @@ import org.slf4j.LoggerFactory;
 import willow.train.kuayue.Client.CatenaryConnectionHandler;
 import willow.train.kuayue.effect.EffectInit;
 import willow.train.kuayue.init.*;
+import willow.train.kuayue.renderer.CarriageTypeSignRenderer;
 import willow.train.kuayue.renderer.TrainPanelSignRenderer;
 import willow.train.kuayue.sounds.ModSounds;
 import willow.train.kuayue.tabs.*;
+
+import static willow.train.kuayue.init.BlockEntitiesInit.CARRIAGE_TYPE_SIGN;
 
 @Mod("kuayue")
 public class Main {
@@ -98,6 +101,7 @@ public class Main {
 
     }
     protected void clientSetup(final FMLClientSetupEvent fmlClientSetupEvent) {
+
         ItemBlockRenderTypes.setRenderLayer(BlockInit.PANEL_25B_ORIGINAL_WINDOW.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25B.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25.get(), RenderType.translucent());
@@ -141,6 +145,7 @@ public class Main {
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25_SEALED.get(), RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(BlockInit.PANEL_25B_ORIGINAL_DOOR.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.CARRIAGE_TYPE_SIGN_BLOCK.get(), RenderType.translucent());
 
 
         ItemBlockRenderTypes.setRenderLayer(BlockInit.PANEL_25G_ORIGINAL_WINDOW.get(), RenderType.translucent());
@@ -229,6 +234,7 @@ public class Main {
 
         WoodType.register(WoodTypeInit.TrainPanel);
         BlockEntityRenderers.register(BlockEntitiesInit.TRAIN_BLOCK_ENTITES_BLOCK.get(), TrainPanelSignRenderer::new);
+        BlockEntityRenderers.register(CARRIAGE_TYPE_SIGN.get(), CarriageTypeSignRenderer::new);
         //test text
     }
 

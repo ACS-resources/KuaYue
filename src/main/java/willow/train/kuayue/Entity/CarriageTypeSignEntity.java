@@ -34,13 +34,18 @@ public class CarriageTypeSignEntity extends BlockEntity {
 
     private DyeColor color = DyeColor.YELLOW;
 
-    private final Component[] messages = new Component[]{TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY};
+    private final Component[] messages = new Component[]{TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY};
 
-    private final Component[] filteredMessages = new Component[]{TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY};
+    private final Component[] filteredMessages = new Component[]{TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY};
     private boolean renderMessagedFiltered;
 
     public CarriageTypeSignEntity(BlockPos pPos, BlockState pBlockState) {
-        super(BlockEntitiesInit.CarriageTypeSign.get(), pPos, pBlockState);
+        super(BlockEntitiesInit.CARRIAGE_TYPE_SIGN.get(), pPos, pBlockState);
+        messages[0] = new TextComponent("硬座车");
+        messages[1] = new TextComponent("YINGZUOCHE");
+        messages[2] = new TextComponent("YZ");
+        messages[3] = new TextComponent("25K");
+        messages[4] = new TextComponent("345674");
     }
 
     public Component getMessage(int pIndex, boolean pFiltered) {
@@ -107,9 +112,9 @@ public class CarriageTypeSignEntity extends BlockEntity {
     public FormattedCharSequence[] getRenderMessages(boolean pRenderMessagedFiltered, Function<Component, FormattedCharSequence> pMessageTransformer) {
         if (this.renderMessages == null || this.renderMessagedFiltered != pRenderMessagedFiltered) {
             this.renderMessagedFiltered = pRenderMessagedFiltered;
-            this.renderMessages = new FormattedCharSequence[4];
+            this.renderMessages = new FormattedCharSequence[messages.length];
 
-            for(int i = 0; i < 4; ++i) {
+            for(int i = 0; i < messages.length; ++i) {
                 this.renderMessages[i] = pMessageTransformer.apply(this.getMessage(i, pRenderMessagedFiltered));
             }
         }
