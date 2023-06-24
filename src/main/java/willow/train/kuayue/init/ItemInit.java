@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import willow.train.kuayue.Items.catenary.CatenaryScissors;
 import willow.train.kuayue.Items.catenary.GeneralCatenary;
 import willow.train.kuayue.Items.foods.Food1;
+import willow.train.kuayue.Items.resources.*;
 import willow.train.kuayue.Main;
 import willow.train.kuayue.effect.EffectInit;
 
@@ -63,6 +64,14 @@ public class ItemInit {
 //            () -> new BlockItem(KYCreateBlock.DF11G_BOGEY.get(),new Item.Properties().tab(Main.KUAYUE_DIET)));
 //public static final RegistryObject<Item> TRAIN_PANEL_SIGN_ITEM = ITEMS.register("train_panel_sign_item",
 //        () -> new BlockItem(BlockInit.TRAIN_PANEL_SIGN_BLOCK.get(), new Item.Properties().tab(Main.KUAYUE_MAIN)));
+//耐候钢和混合物
+    private static final RegistryObject<Item> WeatheringResistantSteel = register("weathering_resistant_steel",
+        () -> new weathering_resistant_steel(new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
+    private static final RegistryObject<Item> MineralMixture = register("mineral_mixture",
+        () -> new mixture(new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
+    private static final RegistryObject<Item> WeatheringResistantSteelBoard = register("weathering_resistant_steel_board",
+        () -> new weathering_resistant_steel_board(new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
+
     private static <T extends Item> RegistryObject<T> register(final String name, final Supplier<T> item) {
         //LOGGER.info("rigister item:"+name);
         return ITEMS.register(name, item);
