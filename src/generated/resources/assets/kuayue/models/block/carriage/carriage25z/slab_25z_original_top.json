@@ -1,0 +1,7 @@
+{
+  "parent": "kuayue:block/panel_slab",
+  "textures": {
+    "1": "kuayue:block/carriage_panel/origenal_25z/panel_slab_25z",
+    "particle": "kuayue:block/carriage_panel/origenal_25z/panel_slab_25z"
+  }
+}

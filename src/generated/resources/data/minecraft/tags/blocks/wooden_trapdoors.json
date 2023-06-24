@@ -3,6 +3,7 @@
   "values": [
     "kuayue:ladder_25b_original",
     "kuayue:ladder_25g_original",
+    "kuayue:ladder_25z_original",
     "kuayue:ladder_25k_original_sliding",
     "kuayue:ladder_25t_original_sliding",
     "kuayue:pantograph",
@@ -10,6 +11,7 @@
     "kuayue:end_face_25k_original",
     "kuayue:end_face_25k_original_rubber",
     "kuayue:end_face_25g_original",
+    "kuayue:end_face_25z_original",
     "kuayue:end_face_25b_original",
     "kuayue:end_face_25t_original",
     "kuayue:end_face_25t_original_rubber",
