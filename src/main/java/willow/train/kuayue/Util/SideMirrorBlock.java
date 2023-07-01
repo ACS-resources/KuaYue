@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.phys.Vec3;
 import org.jline.utils.Log;
+import willow.train.kuayue.Blocks.Signs.CarriageTypeSignBlock;
 
 import javax.annotation.Nullable;
 import java.util.logging.Logger;

@@ -4,11 +4,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import willow.train.kuayue.Entity.CarriageTypeSignEntity;
 
 public class TrainSealedWindowBlock extends PanelBlock25Side {
 
@@ -62,5 +64,4 @@ public class TrainSealedWindowBlock extends PanelBlock25Side {
                 }
             }
         }
-
 }

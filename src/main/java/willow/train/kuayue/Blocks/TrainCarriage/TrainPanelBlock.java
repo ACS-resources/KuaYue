@@ -4,9 +4,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import willow.train.kuayue.Blocks.Signs.CarriageTypeSignBlock;
+import willow.train.kuayue.Entity.CarriageTypeSignEntity;
 import willow.train.kuayue.Util.HorizontalBlockBase;
 
 public class TrainPanelBlock extends HorizontalBlockBase {
@@ -34,4 +37,13 @@ public class TrainPanelBlock extends HorizontalBlockBase {
                 return EAST_AABB;
         }
     }
+
+    /*
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+        this.ctse = new CarriageTypeSignEntity(pPos, pState);
+        ctse.setColor(CarriageTypeSignEntity.YELLOW);
+        return ctse;
+    }
+     */
 }

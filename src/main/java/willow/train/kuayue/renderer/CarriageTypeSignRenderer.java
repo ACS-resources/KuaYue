@@ -15,8 +15,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.StandingSignBlock;
+import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import willow.train.kuayue.Blocks.Signs.CarriageTypeSignBlock;
 import willow.train.kuayue.Entity.CarriageTypeSignEntity;
@@ -34,59 +36,70 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
     @Override
     public void render(CarriageTypeSignEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
         BlockState blockstate = pBlockEntity.getBlockState();
-        pPoseStack.pushPose();
+        boolean revert = blockstate.getValue(BlockStateProperties.OPEN);
 
-        FormattedCharSequence[] aformattedcharsequence = pBlockEntity.getRenderMessages(Minecraft.getInstance().isTextFilteringEnabled(), (p_173653_) -> {
+        FormattedCharSequence[] aformattedcharsequence = pBlockEntity.getRenderMessages((p_173653_) -> {
             List<FormattedCharSequence> list = this.font.split(p_173653_, 90);
             return list.isEmpty() ? FormattedCharSequence.EMPTY : list.get(0);
         });
 
-        Direction direction = blockstate.getValue(CarriageTypeSignBlock.FACING);
-        switch (direction){
-            case EAST :
-                pPoseStack.mulPose(Vector3f.YP.rotationDegrees(270));
-                pPoseStack.translate(0.5D, 0.5, -1.92);
-                pPoseStack.translate(-1.0D, 0, 0);
-                pPoseStack.scale(0.010416667F*2f, -0.010416667F*3.0f, 0.010416667F*2f);// size参数
-                renderText(aformattedcharsequence, 0, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
-                pPoseStack.translate(-0.15F*(-getOffset(aformattedcharsequence, 1)), 9.0, 0.0);
-                pPoseStack.scale(1.2f/2f, 1.2f/3.0f, 1.2f/2f);// size参数
-                renderText(aformattedcharsequence, 1, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
-                pPoseStack.translate(0.10416667F*(getOffset(aformattedcharsequence, 1)) + 70.0D, -20.0D, 0.0);
-                pPoseStack.scale(4.6f/1.2f, 4.6f/1.2f, 4.6f/1.2f);// size参数
-                renderText(aformattedcharsequence, 2, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
-                pPoseStack.translate(12.0D, 4.0D, 0.0);
-                pPoseStack.scale(1.6f/4.6f, 1.6f/4.6f, 1.6f/4.6f);// size参数
-                renderText(aformattedcharsequence, 3, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
-                pPoseStack.translate(24.0D, -10.0D, 0.0);
-                pPoseStack.scale(4.0f/1.6f, 4.0f/1.6f, 4.0f/1.6f);// size参数
-                renderText(aformattedcharsequence, 4, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
-                break;
-            case NORTH :
-                pPoseStack.mulPose(Vector3f.YP.rotationDegrees(0));
-                pPoseStack.translate(0.5D, (double)0.5F, (double)0.0F);
-                pPoseStack.scale(0.010416667F*2, -0.010416667F*2, 0.010416667F*2);// size参数
-                renderText(aformattedcharsequence, 0, -1, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
-                pPoseStack.scale(0.5f, 0.5f, 0.5f);// size参数
-                renderText(aformattedcharsequence, 1, -1, -1, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
-                break;
-            case SOUTH :
-                pPoseStack.mulPose(Vector3f.YP.rotationDegrees(180));
-                pPoseStack.translate(-0.5D, (double)0.5F, (double)-1.0F);
-                pPoseStack.scale(0.010416667F*2, -0.010416667F*2, 0.010416667F*2);// size参数
-                renderText(aformattedcharsequence, 0, -1, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
-                pPoseStack.scale(0.5f, 0.5f, 0.5f);// size参数
-                renderText(aformattedcharsequence, 1, -1, -1, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
-                break;
-            case WEST :
-                pPoseStack.mulPose(Vector3f.YP.rotationDegrees(90));
-                pPoseStack.translate(-0.5D, (double)0.5F, (double)0.0F);
-                pPoseStack.scale(0.010416667F*2, -0.010416667F*2, 0.010416667F*2);// size参数
-                renderText(aformattedcharsequence, 0, -1, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
-                pPoseStack.scale(0.5f, 0.5f, 0.5f);// size参数
-                renderText(aformattedcharsequence, 1, -1, -1, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
-                break;
+        if(aformattedcharsequence.length == 0) return;
+
+        pPoseStack.pushPose();
+
+        pPoseStack.translate(0.5d, 0.5d, 0.5d);
+        float f = - blockstate.getValue(CarriageTypeSignBlock.FACING).getOpposite().toYRot();
+        pPoseStack.mulPose(Vector3f.YP.rotationDegrees(f));
+        pPoseStack.translate(-0.5d, -0.4d, -0.4375d);
+        // width 1.2，height 0.5
+        // scale 0.133
+
+        float size0 = ((float) this.font.width(aformattedcharsequence[0])) * 0.13f;  // 硬座车
+        float size1 = ((float) this.font.width(aformattedcharsequence[1])) * 0.08f;  // YINGZUOCHE
+        float size2 = ((float) this.font.width(aformattedcharsequence[2])) * 0.23f;  // YZ
+        float size3 = ((float) this.font.width(aformattedcharsequence[3])) * 0.12f;  // 25T
+        float size4 = ((float) this.font.width(aformattedcharsequence[4])) * 0.30f; // 345674
+
+        if(revert){
+            pPoseStack.translate(1 - size1*0.133f, 0.0 , 0.0);
         }
+
+        pPoseStack.scale(0.133f, -0.133f, 0.133f);  // standard size
+
+        pPoseStack.scale(0.08f, 0.08f, 1.0f);
+        renderText(aformattedcharsequence, 1, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);  // 硬座车
+        pPoseStack.scale(12.5f, 12.5f, 1.0f);
+
+        pPoseStack.translate((size1 - size0) / 2, -1.7, 0);
+
+        pPoseStack.scale(0.13f, 0.18f, 1.0f);
+        renderText(aformattedcharsequence, 0, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);  // YINGZUOCHE
+        pPoseStack.scale(7.6923076924f, 5.555555555555f, 1.0f);
+
+        if(revert){
+            pPoseStack.translate(- size1 - size2 + 1, 0, 0);
+        }else {
+            pPoseStack.translate(size1, 0, 0);
+        }
+
+        pPoseStack.scale(0.23f, 0.32f, 1.0f);
+        renderText(aformattedcharsequence, 2, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);  // YZ
+        pPoseStack.scale(4.347826086956f, 3.1250f, 1.0f);
+
+        pPoseStack.translate(size2, 1.6, 0.0);
+
+        pPoseStack.scale(0.12f, 0.12f, 1.0f);
+        renderText(aformattedcharsequence, 3, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);  // 25k
+        pPoseStack.scale(8.333333333333f, 8.333333333333f, 1.0f);
+
+        if(revert){
+            pPoseStack.translate(- size3 - size4, -1.6, 0.0);
+        }else {
+            pPoseStack.translate(size3 + 1, -1.6, 0.0);
+        }
+
+        pPoseStack.scale(0.26f, 0.32f, 1.0f);
+        renderText(aformattedcharsequence, 4, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);  // 345674
         /*
         FormattedCharSequence[] aformattedcharsequence = pBlockEntity.getRenderMessages(Minecraft.getInstance().isTextFilteringEnabled(), (p_173653_) -> {
             List<FormattedCharSequence> list = this.font.split(p_173653_, 90);
@@ -119,11 +132,11 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
     }
 
     private static int getDarkColor(CarriageTypeSignEntity pBlockEntity) {
-        int i = pBlockEntity.getColor().getTextColor();
+        int i = pBlockEntity.getColor();
         double d0 = 0.4D;
         int j = (int)((double) NativeImage.getR(i) * 0.4D);
         int k = (int)((double)NativeImage.getG(i) * 0.4D);
         int l = (int)((double)NativeImage.getB(i) * 0.4D);
-        return i == DyeColor.BLACK.getTextColor() && pBlockEntity.hasGlowingText() ? -988212 : NativeImage.combine(0, l, k, j);
+        return NativeImage.combine(0, l, k, j);
     }
 }

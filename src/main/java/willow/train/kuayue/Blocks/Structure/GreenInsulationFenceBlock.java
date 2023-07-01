@@ -3,12 +3,14 @@ package willow.train.kuayue.Blocks.Structure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import willow.train.kuayue.Blocks.TrainCarriage.PanelBlock25Side;
+import willow.train.kuayue.Entity.CarriageTypeSignEntity;
 
 public class GreenInsulationFenceBlock extends PanelBlock25Side {
     protected int type=0;

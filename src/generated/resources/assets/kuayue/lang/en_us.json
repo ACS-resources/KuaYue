@@ -311,6 +311,13 @@
   "msg.kuayue.same_block": "Cannot Link The Same Block",
   "msg.kuayue.uncovergence": "error : Catenary Fitting Does Not Converge Within The Specified Number Of Steps",
 
+  "tips.container": "--------------------------------containers--------------------------------",
+  "container.kuayue.carriage_type_sign_edit_menu.type_chs": "type",
+  "container.kuayue.carriage_type_sign_edit_menu.type_chs_py": "type in pinyin",
+  "container.kuayue.carriage_type_sign_edit_menu.type_abbr": "pinyin reduction of cart type",
+  "container.kuayue.carriage_type_sign_edit_menu.sub_type": "subtype",
+  "container.kuayue.carriage_type_sign_edit_menu.no": "cart NO",
+
   "tips.patchouli": "--------------------------------all entity above here-------------------------------------------",
   "patchouli.kuayue.name":"跨越铁路车辆图鉴",
   "patchouli.kuayue.landing_text": "放眼未来，走向世界"

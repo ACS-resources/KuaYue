@@ -1,6 +1,7 @@
 package willow.train.kuayue;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
@@ -19,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import willow.train.kuayue.Client.CatenaryConnectionHandler;
+import willow.train.kuayue.Screen.CarriageTypeSignEditScreen;
 import willow.train.kuayue.effect.EffectInit;
 import willow.train.kuayue.init.*;
 import willow.train.kuayue.renderer.CarriageTypeSignRenderer;
@@ -30,7 +32,6 @@ import static willow.train.kuayue.init.BlockEntitiesInit.CARRIAGE_TYPE_SIGN;
 
 @Mod("kuayue")
 public class Main {
-
     public static final Logger LOGGER = LoggerFactory.getLogger("KuaYue");
     public static final String MOD_ID = "kuayue";
 
@@ -87,6 +88,8 @@ public class Main {
         ModSounds.register(bus);
 
         EffectInit.rigister(bus);
+
+        MenuInit.register(bus);
 
         KYCreateBlock.register();
         KYCreateEntities.register();
@@ -235,6 +238,8 @@ public class Main {
         WoodType.register(WoodTypeInit.TrainPanel);
         BlockEntityRenderers.register(BlockEntitiesInit.TRAIN_BLOCK_ENTITES_BLOCK.get(), TrainPanelSignRenderer::new);
         BlockEntityRenderers.register(CARRIAGE_TYPE_SIGN.get(), CarriageTypeSignRenderer::new);
+
+        MenuScreens.register(MenuInit.CARRIAGE_TYPE_SIGN_EDIT_MENU.get(), CarriageTypeSignEditScreen::new);
         //test text
     }
 

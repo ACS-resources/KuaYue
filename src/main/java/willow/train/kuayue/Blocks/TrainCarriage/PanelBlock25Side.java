@@ -17,6 +17,10 @@ public class PanelBlock25Side extends SideMirrorBlock {
     protected static final VoxelShape NORTH_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 1);
     protected static final VoxelShape EAST_AABB = Block.box(15, 0.0D, 0D, 16.0D, 16.0D, 16.0D);
 
+    public PanelBlock25Side(Properties pProperties) {
+        super(pProperties);
+    }
+
 
     public VoxelShape getShape(BlockState p_54372_, BlockGetter p_54373_, BlockPos p_54374_, CollisionContext p_54375_) {
         switch ((Direction) p_54372_.getValue(FACING)) {
@@ -31,10 +35,4 @@ public class PanelBlock25Side extends SideMirrorBlock {
                 return EAST_AABB;
         }
     }
-
-    public PanelBlock25Side(Properties pProperties) {
-        super(pProperties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HINGE, DoorHingeSide.LEFT));
-    }
-
 }

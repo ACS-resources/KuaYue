@@ -1,95 +1,127 @@
 package willow.train.kuayue.Entity;
 
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.inventory.SignEditScreen;
+import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.FormattedCharSequence;
+import net.minecraft.util.FormattedCharSink;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
+import net.minecraft.world.level.block.SignBlock;
+import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.extensions.IForgeBlockEntity;
+import willow.train.kuayue.Client.CarriageTypeSignEditMenu;
+import willow.train.kuayue.Main;
+import willow.train.kuayue.Util.Save;
+import willow.train.kuayue.Util.TextData;
 import willow.train.kuayue.init.BlockEntitiesInit;
 
 import javax.annotation.Nullable;
 import java.util.function.Function;
 
-public class CarriageTypeSignEntity extends BlockEntity {
-
-    public static final int LINES = 4;
-
-    private boolean isEditable = true;
-    @Nullable
+public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider {
+    CarriageTypeSignEditMenu ctsem;
     private FormattedCharSequence[] renderMessages;
-
-    private static final String[] RAW_TEXT_FIELD_NAMES = new String[]{"Text1", "Text2", "Text3", "Text4"};
-    private static final String[] FILTERED_TEXT_FIELD_NAMES = new String[]{"FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4"};
-
-    private DyeColor color = DyeColor.YELLOW;
-
+    public static final int YELLOW = 14725893, YELLOW2 = 16776960, RED = 15216648, BLUE = 22220, BLACK = 789516;
+    private int color = YELLOW;
     private final Component[] messages = new Component[]{TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY};
 
-    private final Component[] filteredMessages = new Component[]{TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY};
-    private boolean renderMessagedFiltered;
 
     public CarriageTypeSignEntity(BlockPos pPos, BlockState pBlockState) {
         super(BlockEntitiesInit.CARRIAGE_TYPE_SIGN.get(), pPos, pBlockState);
-        messages[0] = new TextComponent("硬座车");
-        messages[1] = new TextComponent("YINGZUOCHE");
-        messages[2] = new TextComponent("YZ");
-        messages[3] = new TextComponent("25K");
-        messages[4] = new TextComponent("345674");
+        renderMessages = new FormattedCharSequence[0];
+        fromFile(level);
+    }
+
+    public boolean setMessages(String[] messages){
+        if(messages.length != 5){
+            return false;
+        }
+
+        this.messages[0] = new TextComponent(messages[0]);
+        this.messages[1] = new TextComponent(messages[1]);
+        this.messages[2] = new TextComponent(messages[2]);
+        this.messages[3] = new TextComponent(messages[3]);
+        this.messages[4] = new TextComponent(messages[4]);
+
+        // this.markUpdated();
+        return true;
+    }
+
+    public AbstractContainerMenu createMenu(int pContainerId, Inventory pInventory, Player player){
+        this.ctsem = new CarriageTypeSignEditMenu(pContainerId, pInventory, this, new SimpleContainerData(2));
+        this.ctsem.setCtse(this);
+        return ctsem;
     }
 
     public Component getMessage(int pIndex, boolean pFiltered) {
         return this.getMessages(pFiltered)[pIndex];
     }
 
+    public String[] getData(){
+        return new String[]{messages[0].getString(), messages[1].getString(), messages[2].getString(), messages[3].getString(), messages[4].getString()};
+    }
+
     private Component[] getMessages(boolean pFiltered) {
-        return pFiltered ? this.filteredMessages : this.messages;
+        return this.messages;
     }
 
     protected void saveAdditional(CompoundTag pTag) {
         super.saveAdditional(pTag);
 
-        for(int i = 0; i < 4; ++i) {
+        for(int i = 0; i < 5; i++) {
             Component component = this.messages[i];
             String s = Component.Serializer.toJson(component);
-            pTag.putString(RAW_TEXT_FIELD_NAMES[i], s);
-            Component component1 = this.filteredMessages[i];
-            if (!component1.equals(component)) {
-                pTag.putString(FILTERED_TEXT_FIELD_NAMES[i], Component.Serializer.toJson(component1));
-            }
+            pTag.putString(i+"", s);
         }
-
-        pTag.putString("Color", this.color.getName());
+        pTag.putInt("Color", this.color);
     }
 
     public void load(CompoundTag pTag) {
-        this.isEditable = false;
         super.load(pTag);
-        this.color = DyeColor.byName(pTag.getString("Color"), DyeColor.BLACK);
+        this.color = pTag.getInt("Color");
 
-        for(int i = 0; i < 4; ++i) {
-            String s = pTag.getString(RAW_TEXT_FIELD_NAMES[i]);
+        for(int i = 0; i < 5; i++) {
+            String s = pTag.getString(i+"");
             Component component = this.loadLine(s);
             this.messages[i] = component;
-            String s1 = FILTERED_TEXT_FIELD_NAMES[i];
-            if (pTag.contains(s1, 8)) {
-                this.filteredMessages[i] = this.loadLine(pTag.getString(s1));
-            } else {
-                this.filteredMessages[i] = component;
+        }
+    }
+
+    public void save(Level level) {
+        Save.saveText(level, new TextData(this.worldPosition, getData()));
+    }
+
+    public void fromFile(Level level){
+        TextData[] textData = Save.readText(level);
+
+        if(textData == null) return;
+
+        for(TextData data : textData){
+            if (data.pos.equals(this.worldPosition)){
+                setMessages(data.data);
             }
         }
-
-        this.renderMessages = null;
     }
 
     private Component loadLine(String pLine) {
@@ -105,43 +137,40 @@ public class CarriageTypeSignEntity extends BlockEntity {
             }
         } catch (Exception exception) {
         }
-
         return TextComponent.EMPTY;
     }
 
-    public FormattedCharSequence[] getRenderMessages(boolean pRenderMessagedFiltered, Function<Component, FormattedCharSequence> pMessageTransformer) {
-        if (this.renderMessages == null || this.renderMessagedFiltered != pRenderMessagedFiltered) {
-            this.renderMessagedFiltered = pRenderMessagedFiltered;
-            this.renderMessages = new FormattedCharSequence[messages.length];
-
-            for(int i = 0; i < messages.length; ++i) {
-                this.renderMessages[i] = pMessageTransformer.apply(this.getMessage(i, pRenderMessagedFiltered));
-            }
+    public FormattedCharSequence[] getRenderMessages(Function<Component, FormattedCharSequence> pMessageTransformer) {
+        this.renderMessages = new FormattedCharSequence[messages.length];
+        for(int i = 0; i < messages.length; ++i) {
+            this.renderMessages[i] = pMessageTransformer.apply(this.getMessage(i, false));
         }
-
         return this.renderMessages;
     }
 
-    public DyeColor getColor() {
+    public int getColor() {
         return this.color;
     }
 
-    public boolean setColor(DyeColor pColor) {
-        if (pColor != this.getColor()) {
-            this.color = pColor;
-            this.markUpdated();
+    public boolean setColor(int mark) {
+        if (mark != this.getColor()) {
+            this.color = mark;
+            try {
+                this.markUpdated();
+            }catch (Exception e){}
             return true;
         } else {
             return false;
         }
     }
 
-    private void markUpdated() {
+    public void markUpdated() {
         this.setChanged();
         this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
     }
 
-    public boolean hasGlowingText() {
-        return false;
+    @Override
+    public Component getDisplayName() {
+        return new TranslatableComponent("container." + Main.MOD_ID + "carriage_type_sign");
     }
 }
