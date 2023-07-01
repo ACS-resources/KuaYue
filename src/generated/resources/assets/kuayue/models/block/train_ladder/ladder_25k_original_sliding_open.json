@@ -3,7 +3,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"3": "kuayue:block/train_ladder/ladder_25k_original_sliding",
-		"particle": "kuayue:block/panel_slab_25b"
+		"particle": "kuayue:block/train_ladder/ladder_25k_original_sliding"
 	},
 	"elements": [
 		{
