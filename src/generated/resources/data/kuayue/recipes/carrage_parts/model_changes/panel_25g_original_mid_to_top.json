@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "kuayue:panel_25g_original_mid"
+        }
+    ],
+    "result": {
+        "item": "kuayue:panel_25g_original_top",
+        "count": 1
+    }
+}
