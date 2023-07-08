@@ -1,5 +1,7 @@
 package willow.train.kuayue.init;
 
+import com.simibubi.create.content.trains.track.TrackBlockEntity;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -29,6 +31,7 @@ public class BlockEntitiesInit {
                     BlockEntityType.Builder.of(TrainPanelSignBlockEntities::new,
                             BlockInit.TRAIN_PANEL_SIGN_BLOCK.get(),BlockInit.TRAIN_PANEL_SIGN_BLOCK1.get()
                             ).build(null));
+
 //    public static final RegistryObject<BlockEntityType<MegaphoneBlockEntity>> MegaphoneBlockEntity =
 //            BLOCK_ENTITIES.register("megaphone_block_entity", () ->
 //            BlockEntityType.Builder.of(MegaphoneBlockEntity::new, BlockInit.MEGAPHONE.get()).build());

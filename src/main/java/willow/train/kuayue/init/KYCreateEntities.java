@@ -1,6 +1,14 @@
 package willow.train.kuayue.init;
 
 
+import com.simibubi.create.content.trains.track.TrackBlockEntity;
+import com.simibubi.create.content.trains.track.TrackInstance;
+import com.simibubi.create.content.trains.track.TrackMaterial;
+import com.simibubi.create.content.trains.track.TrackRenderer;
+import com.tterrag.registrate.util.entry.BlockEntityEntry;
+
+import static com.simibubi.create.Create.REGISTRATE;
+
 public class KYCreateEntities {
 //    public static final BlockEntityEntry<DF11GFrontTileEntity> DF11G_FRONT = Main.registrate()
 //            .tileEntity("df11g_front_block", DF11GFrontTileEntity::new)
@@ -22,6 +30,13 @@ public class KYCreateEntities {
 //            .validBlocks(KYCreateBlock.fake_DF11G_BOGEY)
 //            .renderer(() -> FakeDF11GBogeyRenderer::new)
 //            .register();
+
+    /*public static final BlockEntityEntry<TrackBlockEntity> STANDARD_TRACK = REGISTRATE
+            .blockEntity("standard_track", TrackBlockEntity::new)
+            .instance(() -> TrackInstance::new)
+            .validBlocksDeferred(TrackMaterial::allBlocks)
+            .renderer(() -> TrackRenderer::new)
+            .register();*/
 
     public static void register() {
     }

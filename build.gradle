@@ -4,6 +4,7 @@ buildscript {
         maven { url = 'https://maven.minecraftforge.net' }
         maven { url = 'https://maven.parchmentmc.org' }
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/'}
+
         mavenCentral()
     }
     dependencies {
@@ -162,7 +163,7 @@ repositories {
 //        name 'Progwml6 maven'
 //        url 'https://dvs1.progwml6.com/files/maven'
 //    }
-   maven {
+    maven {
         // Location of a maven mirror for JEI files, as a fallback
         url 'https://repo.spongepowered.org/repository/maven-public/'
     }
@@ -198,6 +199,7 @@ repositories {
         }
         maven { url 'https://maven.blamejared.com' }
     }
+
 }
 
 dependencies {

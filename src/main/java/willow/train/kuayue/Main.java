@@ -234,6 +234,7 @@ public class Main {
         ItemBlockRenderTypes.setRenderLayer(BlockInit.Signal_Pole_Light.get(),RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.TactilePavingStraight.get(),RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.TactilePavingPin.get(),RenderType.translucent());
+        //ItemBlockRenderTypes.setRenderLayer(BlockInit.STANDARD_TRACK.get(),RenderType.translucent());
 
         WoodType.register(WoodTypeInit.TrainPanel);
         BlockEntityRenderers.register(BlockEntitiesInit.TRAIN_BLOCK_ENTITES_BLOCK.get(), TrainPanelSignRenderer::new);

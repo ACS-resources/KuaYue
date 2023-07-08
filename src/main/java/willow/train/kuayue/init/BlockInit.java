@@ -1,6 +1,8 @@
 package willow.train.kuayue.init;
 
 import com.google.common.base.Supplier;
+import com.simibubi.create.content.trains.track.TrackBlockItem;
+import com.simibubi.create.content.trains.track.TrackMaterial;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -20,6 +22,8 @@ import willow.train.kuayue.Blocks.Locos.SS8PantographBlock;
 import willow.train.kuayue.Blocks.Locos.df11g.*;
 import willow.train.kuayue.Blocks.Signs.CarriageTypeSignBlock;
 import willow.train.kuayue.Blocks.Structure.*;
+import willow.train.kuayue.Blocks.Tracks.standard_track.StandardTrackBlock;
+
 import willow.train.kuayue.Blocks.TrainCarriage.*;
 import willow.train.kuayue.Blocks.catenary.*;
 import willow.train.kuayue.Items.ToolTipsItemHelper;
@@ -1206,6 +1210,11 @@ public static final RegistryObject<DF11GPanel3Wide> DF11G_PANEL_CR = register("d
             () -> new PanelBlockHalf(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.STONE).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_MAIN)));
+
+ /*   public static final RegistryObject<StandardTrackBlock> STANDARD_TRACK = register("standard_track",
+            () -> new StandardTrackBlock(BlockBehaviour.Properties.of(Material.METAL)
+                    .sound(SoundType.METAL), TrackMaterial.ANDESITE),
+            object -> () -> new TrackBlockItem(object.get(),new Item.Properties().tab(Main.KUAYUE_MAIN)));*/
 
     private static <T extends Block> RegistryObject<T> registerBlock(final String name,
                                                                      final Supplier<? extends T> block) {
