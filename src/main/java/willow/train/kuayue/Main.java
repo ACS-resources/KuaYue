@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -252,5 +253,9 @@ public class Main {
     }
     public static CreateRegistrate registrate() {
         return REGISTRATE;
+    }
+
+    public static ResourceLocation asResource(String name) {
+        return new ResourceLocation(MOD_ID, name);
     }
 }

@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import willow.train.kuayue.Blocks.Locos.df11g.DF11GFrontBlock;
+import willow.train.kuayue.Blocks.Tracks.CustomTrackBlockStateGenerator;
 import willow.train.kuayue.Blocks.Tracks.standard_track.StandardTrackBlock;
 import willow.train.kuayue.Blocks.Tracks.standard_track.StandardTrackBlockStateGenerator;
 import willow.train.kuayue.Items.ToolTipsItemHelper;
@@ -63,6 +64,19 @@ public class KYCreateBlock {
                 .model((c, p) -> p.generated(c, Create.asResource("item/track/" + c.getName())))
                 .build()
                 .register();
+    }
+
+    private static BlockEntry<TrackBlock> makeTrack(TrackMaterial material) {
+        return makeTrack(material, new CustomTrackBlockStateGenerator()::generate);
+    }
+
+    private static BlockEntry<TrackBlock> makeTrack(TrackMaterial material, NonNullBiConsumer<DataGenContext<Block, TrackBlock>, RegistrateBlockstateProvider> blockstateGen) {
+        return makeTrack(material, blockstateGen, (t) -> {
+        });
+    }
+
+    private static BlockEntry<TrackBlock> makeTrack(TrackMaterial material, NonNullBiConsumer<DataGenContext<Block, TrackBlock>, RegistrateBlockstateProvider> blockstateGen, NonNullConsumer<? super TrackBlock> onRegister) {
+        return makeTrack(material, blockstateGen, onRegister, (p) -> p);
     }
 
     private static BlockEntry<TrackBlock> makeTrack(TrackMaterial material, NonNullBiConsumer<DataGenContext<Block, TrackBlock>, RegistrateBlockstateProvider> blockstateGen, Function<BlockBehaviour.Properties, BlockBehaviour.Properties> collectProperties) {
