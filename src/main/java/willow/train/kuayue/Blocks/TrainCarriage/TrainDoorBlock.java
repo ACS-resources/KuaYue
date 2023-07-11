@@ -5,11 +5,12 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 
 public class TrainDoorBlock extends DoorBlock {
-    public TrainDoorBlock(Properties pProperties) {
-        super(pProperties);
+    public TrainDoorBlock(Properties pProperties, BlockSetType pType) {
+        super(pProperties,pType);
     }
     @Override
     public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {

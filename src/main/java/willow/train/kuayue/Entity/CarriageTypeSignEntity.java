@@ -1,42 +1,26 @@
 package willow.train.kuayue.Entity;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.inventory.SignEditScreen;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.network.chat.ComponentContents;
+import net.minecraft.network.chat.Style;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.FormattedCharSink;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.SimpleContainerData;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
-import net.minecraft.world.level.block.SignBlock;
-import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.extensions.IForgeBlockEntity;
 import willow.train.kuayue.Client.CarriageTypeSignEditMenu;
 import willow.train.kuayue.Main;
 import willow.train.kuayue.Util.Save;
 import willow.train.kuayue.Util.TextData;
 import willow.train.kuayue.init.BlockEntitiesInit;
 
-import javax.annotation.Nullable;
+import java.util.List;
 import java.util.function.Function;
 
 public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider {
@@ -44,7 +28,7 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
     private FormattedCharSequence[] renderMessages;
     public static final int YELLOW = 14725893, YELLOW2 = 16776960, RED = 15216648, BLUE = 22220, BLACK = 789516;
     private int color = YELLOW;
-    private final Component[] messages = new Component[]{TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY};
+    private final Component[] messages = new Component[]{(Component) Component.EMPTY, (Component) Component.EMPTY, (Component) Component.EMPTY, (Component) Component.EMPTY, (Component) Component.EMPTY};
 
 
     public CarriageTypeSignEntity(BlockPos pPos, BlockState pBlockState) {
@@ -58,11 +42,111 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
             return false;
         }
 
-        this.messages[0] = new TextComponent(messages[0]);
-        this.messages[1] = new TextComponent(messages[1]);
-        this.messages[2] = new TextComponent(messages[2]);
-        this.messages[3] = new TextComponent(messages[3]);
-        this.messages[4] = new TextComponent(messages[4]);
+        this.messages[0] = new Component() {
+            @Override
+            public Style getStyle() {
+                return null;
+            }
+
+            @Override
+            public ComponentContents getContents() {
+                return null;
+            }
+
+            @Override
+            public List<Component> getSiblings() {
+                return null;
+            }
+
+            @Override
+            public FormattedCharSequence getVisualOrderText() {
+                return null;
+            }
+        };
+        this.messages[1] = new Component() {
+            @Override
+            public Style getStyle() {
+                return null;
+            }
+
+            @Override
+            public ComponentContents getContents() {
+                return null;
+            }
+
+            @Override
+            public List<Component> getSiblings() {
+                return null;
+            }
+
+            @Override
+            public FormattedCharSequence getVisualOrderText() {
+                return null;
+            }
+        };
+        this.messages[2] = new Component() {
+            @Override
+            public Style getStyle() {
+                return null;
+            }
+
+            @Override
+            public ComponentContents getContents() {
+                return null;
+            }
+
+            @Override
+            public List<Component> getSiblings() {
+                return null;
+            }
+
+            @Override
+            public FormattedCharSequence getVisualOrderText() {
+                return null;
+            }
+        };
+        this.messages[3] = new Component() {
+            @Override
+            public Style getStyle() {
+                return null;
+            }
+
+            @Override
+            public ComponentContents getContents() {
+                return null;
+            }
+
+            @Override
+            public List<Component> getSiblings() {
+                return null;
+            }
+
+            @Override
+            public FormattedCharSequence getVisualOrderText() {
+                return null;
+            }
+        };
+        this.messages[4] = new Component() {
+            @Override
+            public Style getStyle() {
+                return null;
+            }
+
+            @Override
+            public ComponentContents getContents() {
+                return null;
+            }
+
+            @Override
+            public List<Component> getSiblings() {
+                return null;
+            }
+
+            @Override
+            public FormattedCharSequence getVisualOrderText() {
+                return null;
+            }
+        };
 
         // this.markUpdated();
         return true;
@@ -137,7 +221,7 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
             }
         } catch (Exception exception) {
         }
-        return TextComponent.EMPTY;
+        return Component.empty();
     }
 
     public FormattedCharSequence[] getRenderMessages(Function<Component, FormattedCharSequence> pMessageTransformer) {
@@ -171,6 +255,6 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
 
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("container." + Main.MOD_ID + "carriage_type_sign");
+        return Component.translatable("container." + Main.MOD_ID + "carriage_type_sign");
     }
 }

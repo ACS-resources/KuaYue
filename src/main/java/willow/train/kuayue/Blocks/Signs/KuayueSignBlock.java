@@ -2,6 +2,7 @@ package willow.train.kuayue.Blocks.Signs;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
@@ -15,11 +16,9 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Random;
 
 public abstract class KuayueSignBlock extends Block implements EntityBlock {
 
@@ -60,4 +59,6 @@ public abstract class KuayueSignBlock extends Block implements EntityBlock {
     public RenderShape getRenderShape(BlockState pState) {
         return RenderShape.INVISIBLE;
     }
+
+    public abstract void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom);
 }

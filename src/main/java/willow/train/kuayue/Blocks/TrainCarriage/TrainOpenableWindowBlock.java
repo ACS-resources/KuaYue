@@ -15,10 +15,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Half;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -36,8 +33,8 @@ public class TrainOpenableWindowBlock extends TrapDoorBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     protected int type=0;
 
-    public TrainOpenableWindowBlock(Properties pProperties,int itype) {
-        super(pProperties);
+    public TrainOpenableWindowBlock(Properties pProperties, int itype, BlockSetType pType) {
+        super(pProperties,pType);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, Boolean.valueOf(false)).setValue(HALF, Half.BOTTOM).setValue(POWERED, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
 type= itype;
     }

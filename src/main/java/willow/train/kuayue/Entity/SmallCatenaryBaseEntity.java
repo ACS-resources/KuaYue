@@ -2,6 +2,7 @@ package willow.train.kuayue.Entity;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -11,6 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.NotNull;
 
 public class SmallCatenaryBaseEntity extends AbstractArrow {
 
@@ -45,7 +47,7 @@ public class SmallCatenaryBaseEntity extends AbstractArrow {
     @Override
     protected void onHitBlock(BlockHitResult ray){
         //super.onHitBlock(ray);
-        BlockState hit = this.level.getBlockState(ray.getBlockPos());
+        BlockState hit = this.level().getBlockState(ray.getBlockPos());
     }
 
     @Override
@@ -56,7 +58,7 @@ public class SmallCatenaryBaseEntity extends AbstractArrow {
     }
 
     @Override
-    public Packet<?> getAddEntityPacket() {
+    public @NotNull Packet<ClientGamePacketListener> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 

@@ -1,6 +1,5 @@
 package willow.train.kuayue.sounds;
 
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,8 +15,9 @@ public class ModSounds {
             registerSoundEvent("crossing_ringing");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name){
-    return SOUND_EVENT.register(name , () -> new SoundEvent(new ResourceLocation(Main.MOD_ID , name)));
-}
+//    return SOUND_EVENT.register(name , () -> new SoundEvent(new ResourceLocation(Main.MOD_ID , name)));
+      return null;
+    }
     public static void register(IEventBus iEventBus){
 
         SOUND_EVENT.register(iEventBus);

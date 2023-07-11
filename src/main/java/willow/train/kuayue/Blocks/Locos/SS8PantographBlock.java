@@ -1,8 +1,5 @@
 package willow.train.kuayue.Blocks.Locos;
 
-import net.minecraft.client.gui.screens.inventory.SignEditScreen;
-import net.minecraft.client.renderer.blockentity.BellRenderer;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -10,13 +7,11 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.BellBlockEntity;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Half;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -48,8 +43,8 @@ public class SS8PantographBlock extends TrapDoorBlock {
             Block.box(-2, 16, 2.5, 6, 24, 13.5),
             Block.box(6, 24, -2.5, 13, 32, 18.5));
 
-    public SS8PantographBlock(Properties pProperties) {
-        super(pProperties);
+    public SS8PantographBlock(Properties pProperties, BlockSetType pType) {
+        super(pProperties,pType);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, Boolean.valueOf(false)).setValue(HALF, Half.BOTTOM).setValue(POWERED, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
 

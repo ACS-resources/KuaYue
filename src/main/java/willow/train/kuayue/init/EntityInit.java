@@ -10,7 +10,7 @@ import willow.train.kuayue.Entity.SmallCatenaryBaseEntity;
 import willow.train.kuayue.Main;
 
 public class EntityInit {
-    public static DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES , Main.MOD_ID);
+    public static DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES , Main.MOD_ID);
 
     public static final RegistryObject<EntityType<CatenaryBaseEntity>> CATENARY_BASE = ENTITY_TYPES.register("catenary_base",
             () -> EntityType.Builder.of((EntityType.EntityFactory<CatenaryBaseEntity>) CatenaryBaseEntity::new, MobCategory.MISC).sized(0.2F, 0.2F).build("catenary_base"));

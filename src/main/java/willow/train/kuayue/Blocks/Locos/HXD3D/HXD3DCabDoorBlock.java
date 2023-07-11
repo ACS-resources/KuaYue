@@ -4,15 +4,17 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import willow.train.kuayue.Blocks.TrainCarriage.TrainDoorBlock;
 
 public class HXD3DCabDoorBlock extends TrainDoorBlock {
-    public HXD3DCabDoorBlock(Properties pProperties) {
-        super(pProperties);
+    public HXD3DCabDoorBlock(Properties pProperties, BlockSetType pType) {
+        super(pProperties,pType);
     }
+
     protected static final VoxelShape SOUTH_AABB1 = Block.box(0, 0, 15.5, 16, 16, 16.5);
     protected static final VoxelShape EAST_AABB1 = Block.box(15.5, 0, 0, 16.5, 16, 16);
     protected static final VoxelShape NORTH_AABB1 = Block.box(0, 0, -0.5, 16, 16, 0.5);

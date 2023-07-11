@@ -1,10 +1,9 @@
 package willow.train.kuayue.renderer;
 
 import com.google.common.collect.ImmutableMap;
-import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.model.geom.ModelLayers;
@@ -20,7 +19,6 @@ import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraft.world.level.block.entity.SignBlockEntity;
@@ -29,6 +27,8 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 
 import java.util.List;
 import java.util.Map;
+
+import static net.minecraft.world.level.block.SignBlock.getWoodType;
 
 public class TrainPanelSignRenderer extends SignRenderer {
 
@@ -54,18 +54,18 @@ public class TrainPanelSignRenderer extends SignRenderer {
         BlockState blockstate = pBlockEntity.getBlockState();
         pPoseStack.pushPose();
 
-        WoodType woodtype = getWoodType(blockstate.getBlock());
+        WoodType woodtype = getWoodType( blockstate.getBlock());
         SignRenderer.SignModel signrenderer$signmodel = this.signModels.get(woodtype);
         if (blockstate.getBlock() instanceof StandingSignBlock) {
            pPoseStack.translate(0.5D, 0.5D, 0.5D);
            float f1 = -((float)(blockstate.getValue(StandingSignBlock.ROTATION) * 360) / 16.0F);
-           pPoseStack.mulPose(Vector3f.YP.rotationDegrees(f1));
+           pPoseStack.mulPose(Axis.YP.rotationDegrees(f1));
            pPoseStack.translate(0.0D, -0.3125D, -0.4375D);
             signrenderer$signmodel.stick.visible = false;
        } else {
              pPoseStack.translate(0.5D, 0.5D, 0.5D);
             float f4 = -blockstate.getValue(WallSignBlock.FACING).toYRot();
-            pPoseStack.mulPose(Vector3f.YP.rotationDegrees(f4));
+            pPoseStack.mulPose(Axis.YP.rotationDegrees(f4));
             pPoseStack.translate(0.0D, -0.3125D, -0.4375D);
             signrenderer$signmodel.stick.visible = false;
       }
@@ -82,7 +82,7 @@ public class TrainPanelSignRenderer extends SignRenderer {
         pPoseStack.scale(0.010416667F, -0.010416667F, 0.010416667F);
         int i = getDarkColor(pBlockEntity);
         //int j = 20;
-        FormattedCharSequence[] aformattedcharsequence = pBlockEntity.getRenderMessages(Minecraft.getInstance().isTextFilteringEnabled(), (p_173653_) -> {
+        FormattedCharSequence[] aformattedcharsequence = pBlockEntity.getFrontText().getRenderMessages(Minecraft.getInstance().isTextFilteringEnabled(), (p_173653_) -> {
             List<FormattedCharSequence> list = this.font.split(p_173653_, 81);
             return list.isEmpty() ? FormattedCharSequence.EMPTY : list.get(0);
         });
@@ -102,7 +102,7 @@ public class TrainPanelSignRenderer extends SignRenderer {
         for(int i1 = 0; i1 < 4; ++i1) {
             FormattedCharSequence formattedcharsequence = aformattedcharsequence[i1];
             float f3 = (float)(-this.font.width(formattedcharsequence) / 2);
-            this.font.drawInBatch(formattedcharsequence, f3, (float)(i1 * 10 - 20), k, false, pPoseStack.last().pose(), pBufferSource, false, 0, l);
+            //this.font.drawInBatch(formattedcharsequence, f3, (float)(i1 * 10 - 20), k, false, pPoseStack.last().pose(), pBufferSource, false, 0, l);
         }
 
         pPoseStack.popPose();
@@ -118,12 +118,13 @@ public class TrainPanelSignRenderer extends SignRenderer {
     }
 
     private static int getDarkColor(SignBlockEntity pBlockEntity) {
-        int i = pBlockEntity.getColor().getTextColor();
-        double d0 = 0.8D;
-        int j = (int)((double) NativeImage.getR(i) * d0);
-        int k = (int)((double)NativeImage.getG(i) * d0);
-        int l = (int)((double)NativeImage.getB(i) * d0);
-        return i == DyeColor.BLACK.getTextColor() && pBlockEntity.hasGlowingText() ? -988212 : NativeImage.combine(0, l, k, j);
+        //int i = pBlockEntity.getColor().getTextColor();
+        //double d0 = 0.8D;
+        //int j = (int)((double) NativeImage.getR(i) * d0);
+        //int k = (int)((double)NativeImage.getG(i) * d0);
+        //int l = (int)((double)NativeImage.getB(i) * d0);
+        //return i == DyeColor.BLACK.getTextColor() && pBlockEntity.hasGlowingText() ? -988212 : NativeImage.combine(0, l, k, j);
+    return -988212;
     }
 
 

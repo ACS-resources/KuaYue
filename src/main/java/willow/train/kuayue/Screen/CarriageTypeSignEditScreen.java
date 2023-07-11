@@ -3,12 +3,12 @@ package willow.train.kuayue.Screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import willow.train.kuayue.Client.CarriageTypeSignEditMenu;
@@ -18,11 +18,11 @@ import willow.train.kuayue.Main;
 public class CarriageTypeSignEditScreen extends AbstractContainerScreen<CarriageTypeSignEditMenu> {
 
     private static final Component[] TEXT = new Component[]{
-            new TranslatableComponent("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.type_chs"),  // 类型(中文)
-            new TranslatableComponent("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.type_chs_py"),  // 类型(拼音)
-            new TranslatableComponent("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.type_abbr"),  // 类型(缩写)
-            new TranslatableComponent("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.sub_type"),  // 子类
-            new TranslatableComponent("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.no")  // 编号
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.type_chs"),  // 类型(中文)
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.type_chs_py"),  // 类型(拼音)
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.type_abbr"),  // 类型(缩写)
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.sub_type"),  // 子类
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.no")  // 编号
     };
 
     private static int editBoxWidth = 300;
@@ -57,18 +57,23 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
         addRenderableWidget(SubType);
         addRenderableWidget(No);
 
-        for(int i = 0; i< 2; i++){
-            buttons[i] = addRenderableWidget(new Button(100, 220+i*30, editBoxWidth, editBoxHeight, TEXT[i], b -> {
-                if(b.equals(buttons[0])){
-                    if(entity != null){
-                        entity.setMessages(new String[]{TypeChs.getValue(), TypePinyin.getValue(), TypeAbbr.getValue(), SubType.getValue(), No.getValue()});
-                        onClose();
-                    }
-                } else {
-                    onClose();
-                }
-            }));
-        }
+//        for(int i = 0; i< 2; i++){
+//            buttons[i] = addRenderableWidget(new Button(100, 220+i*30, editBoxWidth, editBoxHeight, TEXT[i], b -> {
+//                if(b.equals(buttons[0])){
+//                    if(entity != null){
+//                        entity.setMessages(new String[]{TypeChs.getValue(), TypePinyin.getValue(), TypeAbbr.getValue(), SubType.getValue(), No.getValue()});
+//                        onClose();
+//                    }
+//                } else {
+//                    onClose();
+//                }
+//            }));
+//        }
+    }
+
+    @Override
+    protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
+
     }
 
     public void loadEntity(CarriageTypeSignEntity entity){
@@ -81,7 +86,7 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
         super.onClose();
     }
 
-    @Override
+
     protected void renderBg(PoseStack pPoseStack, float pPartialTick, int pMouseX, int pMouseY) {
         RenderSystem.setShader(GameRenderer::getPositionShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
@@ -89,15 +94,15 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        this.blit(pPoseStack, x, y, 0, 0, imageWidth, imageHeight);
+        //this.blit(pPoseStack, x, y, 0, 0, imageWidth, imageHeight);
     }
 
-    @Override
-    public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {
-        renderBackground(pPoseStack);
-        super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
-        renderTooltip(pPoseStack, pMouseX, pMouseY);
-    }
+
+//    public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {
+//        renderBackground(pPoseStack);
+//        super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+//        renderTooltip(pPoseStack, pMouseX, pMouseY);
+//    }
 
     public int offset(int x){
         return x+(Minecraft.getInstance().getWindow().getWidth()-imageWidth)/2+offset;

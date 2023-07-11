@@ -11,10 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Half;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -46,8 +43,8 @@ public class PantographBlock extends TrapDoorBlock {
             Block.box(-2, 16, 2.5, 6, 24, 13.5),
             Block.box(6, 24, -2.5, 13, 32, 18.5));
 
-    public PantographBlock(Properties pProperties) {
-        super(pProperties);
+    public PantographBlock(Properties pProperties, BlockSetType pType) {
+        super(pProperties,pType);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, Boolean.valueOf(false)).setValue(HALF, Half.BOTTOM).setValue(POWERED, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
 
     }

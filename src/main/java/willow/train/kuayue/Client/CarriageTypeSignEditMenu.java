@@ -1,18 +1,13 @@
 package willow.train.kuayue.Client;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.Nullable;
 import willow.train.kuayue.Entity.CarriageTypeSignEntity;
-import willow.train.kuayue.Main;
 import willow.train.kuayue.init.MenuInit;
 
 public class CarriageTypeSignEditMenu extends AbstractContainerMenu {
@@ -31,9 +26,17 @@ public class CarriageTypeSignEditMenu extends AbstractContainerMenu {
         });
     }
 
-    public CarriageTypeSignEditMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData){
-        this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+    @Override
+    public ItemStack quickMoveStack(Player pPlayer, int pIndex) {
+        return null;
     }
+
+//    public CarriageTypeSignEditMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData){
+//        this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+//    }
+public CarriageTypeSignEditMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData){
+    this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+}
 
     public CarriageTypeSignEditMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data){
         super(MenuInit.CARRIAGE_TYPE_SIGN_EDIT_MENU.get(), pContainerId);

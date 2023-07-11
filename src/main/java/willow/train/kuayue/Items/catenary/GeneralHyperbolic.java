@@ -28,7 +28,7 @@ public class GeneralHyperbolic extends Item{
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if(!pPlayer.level.isClientSide()) {
+        if(!pPlayer.level().isClientSide()) {
             /*
             CatenaryBaseEntity test = new CatenaryBaseEntity(EntityInit.CATENARY_BASE.get(), pPlayer , pPlayer.level);
             test.setDeltaMovement(0,0,0);

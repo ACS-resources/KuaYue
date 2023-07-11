@@ -12,7 +12,7 @@ import willow.train.kuayue.Client.CarriageTypeSignEditMenu;
 import willow.train.kuayue.Main;
 
 public class MenuInit {
-    public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.CONTAINERS, Main.MOD_ID);
+    public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.MENU_TYPES, Main.MOD_ID);
 
     public static final RegistryObject<MenuType<CarriageTypeSignEditMenu>> CARRIAGE_TYPE_SIGN_EDIT_MENU = registerMenuType(CarriageTypeSignEditMenu::new, "carriage_type_sign_edit_menu");
 

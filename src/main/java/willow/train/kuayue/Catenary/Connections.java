@@ -241,14 +241,14 @@ public class Connections {
         Vec3 defaultBias = new Vec3(DEFAULTBIAS * deltaX/entireLength , 0 , DEFAULTBIAS * deltaZ/entireLength);
 
         ArrayList<Vec3[]> hangerLists = ccp.getHangerLineVectors();
-        if(player.level.isClientSide()) return null;
+        if(player.level().isClientSide()) return null;
 
         CatenaryEntitiesPacket cep = new CatenaryEntitiesPacket();
 
         for(int i = 0 ; i< xyzList.size() - 1 ; i++){
             Vec3 vec3 = xyzList.get(i);
             double length = xyzList.get(i+1).distanceTo(xyzList.get(i));
-            CatenaryBaseEntity test = new CatenaryBaseEntity(EntityInit.CATENARY_BASE.get(), player , player.level);
+            CatenaryBaseEntity test = new CatenaryBaseEntity(EntityInit.CATENARY_BASE.get(), player , player.level());
             test.setDeltaMovement(0,0,0);
             test.setPos(vec3.add(defaultBias));
             if(xyzList.get(i+1).z() < xyzList.get(i).z()) {
@@ -257,7 +257,7 @@ public class Connections {
                 test.setYRot(180f + (float) Math.toDegrees(Math.atan((xyzList.get(i + 1).x() - xyzList.get(i).x()) / (xyzList.get(i + 1).z() - xyzList.get(i).z()))));
             }
             test.setXRot(-(float) Math.toDegrees(Math.asin((xyzList.get(i + 1).y() - xyzList.get(i).y()) / length)));
-            player.level.addFreshEntity(test);
+            player.level().addFreshEntity(test);
             cep.appendEntities(test);
         }
 
@@ -265,7 +265,7 @@ public class Connections {
             for (int i = 0; i < hangerLists.get(x).length - 1; i++) {
                 Vec3 vec3 = hangerLists.get(x)[i];
                 double length = hangerLists.get(x)[i+1].distanceTo(hangerLists.get(x)[i]);
-                CatenaryBaseEntity test = new CatenaryBaseEntity(EntityInit.SMALL_CATENARY_BASE.get(), player, player.level);
+                CatenaryBaseEntity test = new CatenaryBaseEntity(EntityInit.SMALL_CATENARY_BASE.get(), player, player.level());
                 test.setDeltaMovement(0, 0, 0);
                 test.setPos(vec3.add(defaultBias));
                 if (hangerLists.get(x)[i+1].z() < hangerLists.get(x)[i].z()) {
@@ -274,7 +274,7 @@ public class Connections {
                     test.setYRot(180f + (float) Math.toDegrees(Math.atan((hangerLists.get(x)[i+1].x() - hangerLists.get(x)[i].x()) / (hangerLists.get(x)[i+1].z() - hangerLists.get(x)[i].z()))));
                 }
                 test.setXRot(-(float) Math.toDegrees(Math.asin((hangerLists.get(x)[i+1].y() - hangerLists.get(x)[i].y()) / length)));
-                player.level.addFreshEntity(test);
+                player.level().addFreshEntity(test);
                 cep.appendEntities(test);
             }
         }

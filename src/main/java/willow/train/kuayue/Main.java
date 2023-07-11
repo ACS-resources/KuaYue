@@ -6,17 +6,13 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import willow.train.kuayue.Client.CatenaryConnectionHandler;
@@ -26,7 +22,6 @@ import willow.train.kuayue.init.*;
 import willow.train.kuayue.renderer.CarriageTypeSignRenderer;
 import willow.train.kuayue.renderer.TrainPanelSignRenderer;
 import willow.train.kuayue.sounds.ModSounds;
-import willow.train.kuayue.tabs.*;
 
 import static willow.train.kuayue.init.BlockEntitiesInit.CARRIAGE_TYPE_SIGN;
 
@@ -37,35 +32,6 @@ public class Main {
 
     private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
     public static CatenaryConnectionHandler CATENARYCONNECTIONHANDLER = new CatenaryConnectionHandler();
-    public static final MainTab KUAYUE_MAIN = new MainTab(MOD_ID) {
-        @Override
-        @OnlyIn(Dist.CLIENT)
-        public @NotNull ItemStack makeIcon() {
-            return new ItemStack(BlockInit.CR_LOGO.get());
-        }
-    };
-    public static final LocosTab KUAYUE_LOCOS = new LocosTab(MOD_ID) {
-        @Override
-        @OnlyIn(Dist.CLIENT)
-        public @NotNull ItemStack makeIcon() { return new ItemStack(ItemInit.LOCO_LOGOS.get());}
-    };
-    public static final NormalSpeedPassageCarriageTab KUAYUE_NormalSpeedPassageCarriageTab = new NormalSpeedPassageCarriageTab(MOD_ID) {
-        @Override
-        @OnlyIn(Dist.CLIENT)
-        public @NotNull ItemStack makeIcon() { return new ItemStack(ItemInit.SERIES_25_LOGOS.get());}
-    };
-    public static final DietTab KUAYUE_DIET = new DietTab(MOD_ID) {
-        @Override
-        @OnlyIn(Dist.CLIENT)
-        public @NotNull ItemStack makeIcon() {
-            return new ItemStack(ItemInit.CA_25T.get());
-        }
-    };
-    public static final CatenaryTab KUAYUE_CATENARY = new CatenaryTab(MOD_ID) {
-        @Override
-        @OnlyIn(Dist.CLIENT)
-        public @NotNull ItemStack makeIcon() { return new ItemStack(BlockInit.Catenary_Grid_C1.get());}
-    };
 
 //    public static final GroundTab KUAYUE_GROUND = new GroundTab(MOD_ID) {
 //        @Override

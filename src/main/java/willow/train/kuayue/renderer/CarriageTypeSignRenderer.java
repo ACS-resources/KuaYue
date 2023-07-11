@@ -1,25 +1,14 @@
 package willow.train.kuayue.renderer;
 
-import com.google.common.collect.ImmutableMap;
-import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
-import net.minecraft.client.Minecraft;
+import com.mojang.math.Axis;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.core.Direction;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.StandingSignBlock;
-import net.minecraft.world.level.block.WallSignBlock;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import willow.train.kuayue.Blocks.Signs.CarriageTypeSignBlock;
 import willow.train.kuayue.Entity.CarriageTypeSignEntity;
 
@@ -49,7 +38,7 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
 
         pPoseStack.translate(0.5d, 0.5d, 0.5d);
         float f = - blockstate.getValue(CarriageTypeSignBlock.FACING).getOpposite().toYRot();
-        pPoseStack.mulPose(Vector3f.YP.rotationDegrees(f));
+        pPoseStack.mulPose(Axis.YP.rotationDegrees(f));
         pPoseStack.translate(-0.5d, -0.4d, -0.4375d);
         // width 1.2，height 0.5
         // scale 0.133
@@ -123,7 +112,8 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
 
     private void renderText(FormattedCharSequence[] aformattedcharsequence, int index,int pX, int pY, CarriageTypeSignEntity pBlockEntity, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight){
         FormattedCharSequence formattedcharsequence = aformattedcharsequence[index];
-        this.font.drawInBatch(formattedcharsequence, pX, pY, getDarkColor(pBlockEntity)*2, false, pPoseStack.last().pose(), pBufferSource, false, 0, pPackedLight);
+        //this.font.drawInBatch(formattedcharsequence, pX, pY, getDarkColor(pBlockEntity)*2, false, pPoseStack.last().pose(), pBufferSource, false, 0, pPackedLight);
+        //this.font.drawInBatch(formattedcharsequence,pX, pY  ,getDarkColor(pBlockEntity)*2,false,)
     }
 
     private float getOffset(FormattedCharSequence[] aformattedcharsequence, int index){
@@ -134,9 +124,10 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
     private static int getDarkColor(CarriageTypeSignEntity pBlockEntity) {
         int i = pBlockEntity.getColor();
         double d0 = 0.4D;
-        int j = (int)((double) NativeImage.getR(i) * 0.4D);
-        int k = (int)((double)NativeImage.getG(i) * 0.4D);
-        int l = (int)((double)NativeImage.getB(i) * 0.4D);
-        return NativeImage.combine(0, l, k, j);
+//        int j = (int)((double) NativeImage.read(i) * 0.4D);
+//        int k = (int)((double)NativeImage.getG(i) * 0.4D);
+//        int l = (int)((double)NativeImage.getB(i) * 0.4D);
+        //return NativeImage.combine(0, l, k, j);
+        return 123456;
     }
 }
