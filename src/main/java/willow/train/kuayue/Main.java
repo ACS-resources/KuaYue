@@ -22,6 +22,7 @@ import willow.train.kuayue.init.*;
 import willow.train.kuayue.renderer.CarriageTypeSignRenderer;
 import willow.train.kuayue.renderer.TrainPanelSignRenderer;
 import willow.train.kuayue.sounds.ModSounds;
+import willow.train.kuayue.tabs.NeoCreativeModeTabs;
 
 import static willow.train.kuayue.init.BlockEntitiesInit.CARRIAGE_TYPE_SIGN;
 
@@ -51,7 +52,7 @@ public class Main {
 
         EntityInit.ENTITY_TYPES.register(bus);
 
-        ModSounds.register(bus);
+        //ModSounds.register(bus);
 
         EffectInit.rigister(bus);
 
@@ -67,6 +68,9 @@ public class Main {
         bus.addListener(this::clientSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+
+        NeoCreativeModeTabs.TAB_REGISTER.register(bus);
+        ModSounds.SOUND_EVENT.register(bus);
 
     }
     protected void clientSetup(final FMLClientSetupEvent fmlClientSetupEvent) {

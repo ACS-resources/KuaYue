@@ -5,7 +5,9 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -26,6 +28,9 @@ import willow.train.kuayue.Items.ToolTipsItemHelper;
 import willow.train.kuayue.Main;
 
 import java.util.function.Function;
+
+import static net.minecraft.world.level.block.Blocks.OAK_SIGN;
+import static net.minecraft.world.level.block.Blocks.OAK_WALL_SIGN;
 
 public class BlockInit {
     public static final Logger LOGGER = LoggerFactory.getLogger("KuaYue");
@@ -50,14 +55,16 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25_SEALED = register("original_color_window_25_sealed",
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     //25B
@@ -66,7 +73,8 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
     public static final RegistryObject<Train25BGEndFaceBlock> END_FACE_25B = register("end_face_25b_original",
@@ -74,7 +82,8 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
     //panel_25b_original_bottom
     public static final RegistryObject<TrainPanelBlock> PANEL_25B_ORIGINAL_BOTTOM = register("panel_25b_original_bottom",
@@ -106,7 +115,8 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25B_SMALL = register("original_color_window_25b_small",
@@ -114,7 +124,8 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25B_TOILET = register("original_color_window_25b_toilet",
@@ -122,7 +133,8 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainSealedWindowBlock> ORIGINAL_COLOR_WINDOW_25B_WIDE_SEALED = register("original_color_window_25b_wide_sealed",
@@ -139,7 +151,8 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     //panel_25b_original_top
@@ -170,7 +183,8 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainPanelBlock> END_FACE_25B_ORIGINAL_UPPER = register("end_face_25b_original_upper",
@@ -194,7 +208,8 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
 //direct_drainage_toilet_original_25b
@@ -214,7 +229,8 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
     //panel_25g_original_bottom
     public static final RegistryObject<TrainPanelBlock> PANEL_25G_ORIGINAL_BOTTOM = register("panel_25g_original_bottom",
@@ -247,14 +263,16 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25G_SMALL_2 = register("original_color_window_25g_small_2",
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainPanelBlock> ORIGINAL_COLOR_WINDOW_25G_SEALED_SMALL = register("original_color_window_25g_sealed_small",
             () -> new TrainPanelBlock(BlockBehaviour.Properties.of()
@@ -270,7 +288,8 @@ public class BlockInit {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     //original_color_window_25g_wide
@@ -279,7 +298,8 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
                 .mapColor(MapColor.STONE)
                 .instrument(NoteBlockInstrument.BASEDRUM)
                 .strength(3.0f)
-                .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1),
+                .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1,
+                BlockSetType.OAK),
         object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
 
@@ -312,15 +332,17 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
-    public static final RegistryObject<TrainIsolationDoorBlock> ISOLATION_DOOR_25BG = register2("isolation_door_25bg",
+    public static final RegistryObject<TrainIsolationDoorBlock> ISOLATION_DOOR_25BG = register("isolation_door_25bg",
             () -> new TrainIsolationDoorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainPanelBlock> END_FACE_25G_ORIGINAL_UPPER = register("end_face_25g_original_upper",
             () -> new TrainPanelBlock(BlockBehaviour.Properties.of()
@@ -358,7 +380,8 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
     public static final RegistryObject<Train25BGEndFaceBlock> END_FACE_ORIGINAL_25Z = register("end_face_25z_original",
@@ -366,7 +389,8 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainPanelBlock> PANEL_25Z_ORIGINAL_BOTTOM = register("panel_25z_original_bottom",
@@ -402,7 +426,8 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainDoorBlock> PANEL_25K_ORIGINAL_SLIDING_DOOR = register("original_25k_sliding_door",
@@ -410,7 +435,8 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
     //panel_25k_original_bottom
@@ -449,7 +475,8 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25K_SMALL = register("original_color_window_25k_small",
@@ -457,7 +484,8 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainPanelBlock> ORIGINAL_COLOR_WINDOW_25K_SEALED_SMALL = register("original_color_window_25k_sealed_small",
             () -> new TrainPanelBlock(BlockBehaviour.Properties.of()
@@ -473,7 +501,8 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainSealedWindowBlock> ORIGINAL_COLOR_WINDOW_25K_WIDE_SEALED = register("original_color_window_25k_wide_sealed",
@@ -508,7 +537,7 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
                     .strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
-    public static final RegistryObject<HXD3DPanelBlocks>VENTIDUCT_25B = register("ventiduct_25b",
+    public static final RegistryObject<HXD3DPanelBlocks> VENTIDUCT_25B = register("ventiduct_25b",
             () -> new HXD3DPanelBlocks(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
@@ -558,7 +587,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
 
@@ -595,7 +625,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainPanelBlock> END_FACE_25K_ORIGINAL_UPPER = register("end_face_25k_original_upper",
             () -> new TrainPanelBlock(BlockBehaviour.Properties.of()
@@ -619,7 +650,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainPanelBlock> END_FACE_25K_ORIGINAL_RUBBER_UPPER = register("end_face_25k_original_rubber_upper",
             () -> new TrainPanelBlock(BlockBehaviour.Properties.of()
@@ -643,7 +675,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainDoorBlock> PANEL_25T_ORIGINAL_SLIDING_DOOR = register("original_25t_sliding_door",
@@ -651,7 +684,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
     //panel_25t_original_bottom
@@ -697,7 +731,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
 
@@ -709,11 +744,15 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
 //    public static final RegistryObject<Block> TRAIN_PANEL_SIGN_BLOCK1= registerBlock("train_panel_sign_block1",
 //            () -> new TrainPanelSignBlock2(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN),WoodTypeInit.TrainPanel));
 
-    public static final RegistryObject<Block> TRAIN_PANEL_SIGN_BLOCK = registerBlockWithoutBlockItem("train_panel_sign_block",
-            () -> new TrainPanelSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), WoodTypeInit.TrainPanel));
+    public static final RegistryObject<Block> TRAIN_PANEL_SIGN_BLOCK = register("train_panel_sign_block",
+            () -> new TrainPanelSignBlock(BlockBehaviour.Properties.copy(OAK_WALL_SIGN)
+                    , WoodTypeInit.TrainPanel),
+            object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
-    public static final RegistryObject<Block> TRAIN_PANEL_SIGN_BLOCK1 = registerBlockWithoutBlockItem("train_panel_sign_block1",
-            () -> new TrainPanelSignBlock2(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), WoodTypeInit.TrainPanel));
+    public static final RegistryObject<Block> TRAIN_PANEL_SIGN_BLOCK1 = register("train_panel_sign_block1",
+            () -> new TrainPanelSignBlock2(BlockBehaviour.Properties.copy(OAK_SIGN)
+                    , WoodTypeInit.TrainPanel),
+            object -> () -> new BlockItem(object.get(),new Item.Properties()));
     //panel_25t_original_window
     public static final RegistryObject<TrainGlassPanelBlock> PANEL_25T_ORIGINAL_WINDOW = register("panel_25t_original_window",
             () -> new TrainGlassPanelBlock(BlockBehaviour.Properties.of()
@@ -727,14 +766,16 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25T_SEALED_BLUE = register("original_color_window_25t_sealed_blue",
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
 
@@ -743,28 +784,32 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25T_SMALL_BLUE = register("original_color_window_25t_small_blue",
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_BSP25T_SMALL_BLUE = register("original_color_window_bsp25t_small_blue",
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25T_SEALED_SMALL = register("original_color_window_25t_sealed_small",
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25T_SEALED_SMALL_BLUE = register("original_color_window_25t_sealed_small_blue",
@@ -772,7 +817,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_BSP25T_SEALED_SMALL_BLUE = register("original_color_window_bsp25t_sealed_small_blue",
@@ -780,7 +826,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
 
@@ -789,14 +836,16 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25T_TOILET_BLUE = register("original_color_window_25t_toilet_blue",
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_BSP25T_TOILET_BLUE = register("original_color_window_bsp25t_toilet_blue",
@@ -804,7 +853,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25T_WIDE = register("original_color_window_25t_wide",
@@ -812,21 +862,24 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25T_WIDE_BLUE = register("original_color_window_25t_wide_blue",
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_BSP25T_WIDE_BLUE = register("original_color_window_bsp25t_wide_blue",
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1,
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainSealedWindowBlock> ORIGINAL_COLOR_WINDOW_25T_WIDE_SEALED = register("original_color_window_25t_wide_sealed",
@@ -943,7 +996,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainPanelBlock> END_FACE_25T_ORIGINAL_RUBBER_UPPER = register("end_face_25t_original_rubber_upper",
@@ -975,7 +1029,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainPanelBlock> PANEL_25_MARSHALLED_BOTTOM = register("panel_25_marshalled_bottom",
@@ -1085,7 +1140,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
 
@@ -1095,7 +1151,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<CarriageTypeSignBlock> CARRIAGETYPESIGN = register("carriage_type_sign_block",
@@ -1119,7 +1176,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
     public static final RegistryObject<PanelBlockHalf> SMOOTH_QUARTZ_PANEL_HALF = register("smooth_quartz_panel_half",
@@ -1652,7 +1710,7 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
 
     //cr200j
 
-    public static final RegistryObject<TrainPanelBlock> WIDEPANEL_CR200J_MARSHALLED_MID = register2("widepanel_cr200j_marshalled_mid",
+    public static final RegistryObject<TrainPanelBlock> WIDEPANEL_CR200J_MARSHALLED_MID = register("widepanel_cr200j_marshalled_mid",
             () -> new TrainPanelBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
@@ -1660,7 +1718,7 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .sound(SoundType.GLASS).requiresCorrectToolForDrops()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
-    public static final RegistryObject<TrainGlassPanelBlock> PANEL_CR200J_MARSHALLED_TOP = register2("panel_cr200j_marshalled_top",
+    public static final RegistryObject<TrainGlassPanelBlock> PANEL_CR200J_MARSHALLED_TOP = register("panel_cr200j_marshalled_top",
             () -> new TrainGlassPanelBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
@@ -1668,7 +1726,7 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
-    public static final RegistryObject<TrainGlassPanelBlock> PANEL_CR200J_MARSHALLED_BOTTOM = register2("panel_cr200j_marshalled_bottom",
+    public static final RegistryObject<TrainGlassPanelBlock> PANEL_CR200J_MARSHALLED_BOTTOM = register("panel_cr200j_marshalled_bottom",
             () -> new TrainGlassPanelBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
@@ -1676,7 +1734,7 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties()));
 
-    public static final RegistryObject<TopPanelSlabBlock> SLAB_CR200J_MARSHALLED_TOP = register2("slab_cr200j_marshalled_top",
+    public static final RegistryObject<TopPanelSlabBlock> SLAB_CR200J_MARSHALLED_TOP = register("slab_cr200j_marshalled_top",
             () -> new TopPanelSlabBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
@@ -1833,7 +1891,8 @@ public static final RegistryObject<DF11GPanel3Wide> DF11G_PANEL_CR = register("d
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
     public static final RegistryObject<HXD3DCabDoorBlock> DF11G_EQUIP_ROOM_DOOR = register("df11g_equip_room_door",
@@ -1841,7 +1900,8 @@ public static final RegistryObject<DF11GPanel3Wide> DF11G_PANEL_CR = register("d
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
     public static final RegistryObject<HXD3DPanelBlocks> HXD3D_PANEL_RED = register("hxd3d_panel_red",
@@ -1880,7 +1940,8 @@ public static final RegistryObject<DF11GPanel3Wide> DF11G_PANEL_CR = register("d
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .strength(3.0f)
-                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),
+                    BlockSetType.OAK),
             object -> () -> new BlockItem(object.get(), new Item.Properties()));
 
 

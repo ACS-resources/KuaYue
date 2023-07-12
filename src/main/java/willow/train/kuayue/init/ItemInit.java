@@ -67,11 +67,11 @@ public class ItemInit {
 //public static final RegistryObject<Item> TRAIN_PANEL_SIGN_ITEM = ITEMS.register("train_panel_sign_item",
 //        () -> new BlockItem(BlockInit.TRAIN_PANEL_SIGN_BLOCK.get(), new Item.Properties().tab(Main.KUAYUE_MAIN)));
 //耐候钢和混合物
-    private static final RegistryObject<Item> WeatheringResistantSteel = register("weathering_resistant_steel",
+    public static final RegistryObject<Item> WeatheringResistantSteel = register("weathering_resistant_steel",
         () -> new weathering_resistant_steel(new Item.Properties()));
-    private static final RegistryObject<Item> MineralMixture = register("mineral_mixture",
+    public static final RegistryObject<Item> MineralMixture = register("mineral_mixture",
         () -> new mixture(new Item.Properties()));
-    private static final RegistryObject<Item> WeatheringResistantSteelBoard = register("weathering_resistant_steel_board",
+    public static final RegistryObject<Item> WeatheringResistantSteelBoard = register("weathering_resistant_steel_board",
         () -> new weathering_resistant_steel_board(new Item.Properties()));
 
     private static <T extends Item> RegistryObject<T> register(final String name, final Supplier<T> item) {
