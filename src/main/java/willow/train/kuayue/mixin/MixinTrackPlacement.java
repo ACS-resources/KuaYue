@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(TrackPlacement.class)
-public class TrackPlacementMixin {
+public class MixinTrackPlacement {
         @Contract(pure=true)
         @ModifyConstant(method = "tryConnect",constant = @Constant(doubleValue = 1024.0),remap = false)
         private static double redirectGetSquaredDistance(double constant){

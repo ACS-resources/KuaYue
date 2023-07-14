@@ -1,21 +1,14 @@
 package willow.train.kuayue.mixin;
 
-import com.simibubi.create.AllBogeyStyles;
-import com.simibubi.create.content.trains.bogey.BogeySizes;
-import com.simibubi.create.content.trains.bogey.BogeyStyle;
 import com.simibubi.create.content.trains.track.TrackBlock;
-import com.simibubi.create.content.trains.track.TrackShape;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -23,18 +16,19 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import willow.train.kuayue.Blocks.RollerExtensions.TrackReplacePaver;
 import willow.train.kuayue.Blocks.Tracks.standard_track.StandardTrackBlock;
 import willow.train.kuayue.Blocks.Tracks.CustomTrackBlock;
 
 import java.util.Random;
 
 @Mixin(value = TrackBlock.class, remap = false)
-public abstract class TrackBlockMixin extends Block {
+public abstract class MixinTrackBlock extends Block {
 
     @Shadow
     public abstract void tick(BlockState state, ServerLevel level, BlockPos pos, Random p_60465_);
 
-    public TrackBlockMixin(Properties pProperties) {
+    public MixinTrackBlock(Properties pProperties) {
         super(pProperties);
     }
 
@@ -72,10 +66,10 @@ public abstract class TrackBlockMixin extends Block {
         );
     }*/
 
-    /*@Redirect(method = "onPlace", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;scheduleTick(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;I)V", remap = true), remap = true)
+    @Redirect(method = "onPlace", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;scheduleTick(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;I)V", remap = true), remap = true)
     private void maybeMakeTickInstant(Level instance, BlockPos blockPos, Block block, int i) {
         if (TrackReplacePaver.tickInstantly)
             i = 0;
         instance.scheduleTick(blockPos, block, i);
-    }*/
+    }
 }

@@ -20,7 +20,6 @@ public class KYTrackMaterials {
             .sleeper(Blocks.ANDESITE_SLAB)
             .defaultModels()
             .build();
-        /*这里改动一点点就容易抛异常退出世界。*/
 
     public static class KYTrackType extends TrackMaterial.TrackType{
 
