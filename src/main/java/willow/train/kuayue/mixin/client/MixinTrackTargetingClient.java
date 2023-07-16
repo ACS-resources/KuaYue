@@ -1,4 +1,4 @@
-package willow.train.kuayue.mixin;
+package willow.train.kuayue.mixin.client;
 
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;

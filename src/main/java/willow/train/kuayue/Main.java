@@ -17,6 +17,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -258,4 +259,13 @@ public class Main {
     public static ResourceLocation asResource(String name) {
         return new ResourceLocation(MOD_ID, name);
     }
+
+    @ApiStatus.Internal
+    public static boolean trackEdgeTemporarilyFlipped = false;
+
+    @ApiStatus.Internal
+    public static boolean trackEdgeCarriageTravelling = false;
+
+    @ApiStatus.Internal
+    public static boolean temporarilySkipSwitches = false;
 }

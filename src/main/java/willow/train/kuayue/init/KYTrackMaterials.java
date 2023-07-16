@@ -19,7 +19,15 @@ public class KYTrackMaterials {
             .particle(Create.asResource("block/palettes/stone_types/polished/andesite_cut_polished"))
             .sleeper(Blocks.ANDESITE_SLAB)
             .defaultModels()
-            .build();
+            .build(),
+
+        ACACIA = make(Main.asResource("acacia"))
+                .lang("Acacia")
+                .block(() -> KYCreateBlock.ACACIA_BLOCK)
+                .particle(new ResourceLocation("block/acacia_planks"))
+                .sleeper(Blocks.ACACIA_SLAB)
+                .standardModels()
+                .build();
 
     public static class KYTrackType extends TrackMaterial.TrackType{
 
