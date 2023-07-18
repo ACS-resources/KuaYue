@@ -55,8 +55,10 @@ public class KYCreateBlock {
                 .transform(pickaxeOnly())
                 .blockstate(blockstateGen)
                 //.tag(CommonTags.RELOCATION_NOT_SUPPORTED.forge, CommonTags.RELOCATION_NOT_SUPPORTED.fabric)
+                .tag(AllTags.AllBlockTags.TRACKS.tag)
+                .tag(AllTags.AllBlockTags.GIRDABLE_TRACKS.tag)
                 .tag(AllTags.AllBlockTags.RELOCATION_NOT_SUPPORTED.tag)
-                .tag((TagKey<Block>[]) trackTags.toArray(new TagKey[0])) // keep the cast, or stuff breaks
+                //.tag((TagKey<Block>[]) trackTags.toArray(new TagKey[0])) // keep the cast, or stuff breaks
                 .lang(material.langName + " Train Track")
                 .onRegister(onRegister)
                 .onRegister(CreateRegistrate.blockModel(() -> TrackModel::new))
