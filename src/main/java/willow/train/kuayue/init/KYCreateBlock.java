@@ -91,6 +91,8 @@ public class KYCreateBlock {
 
     public static final BlockEntry<TrackBlock> ACACIA_BLOCK = makeTrack(KYTrackMaterials.ACACIA);
 
+    public static final BlockEntry<TrackBlock> BIRCH_TRACK = makeTrack(KYTrackMaterials.BIRCH);
+
     private static final CreateRegistrate locoREGISTRATE = Main.registrate()
             .creativeModeTab(() -> Main.KUAYUE_LOCOS);
 

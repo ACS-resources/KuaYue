@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/track/ascending",
+  "textures": {
+    "particle": "minecraft:block/birch_planks",
+    "0": "kuayue:block/track/birch/standard_track_birch",
+    "1": "kuayue:block/track/birch/standard_track_mip_birch"
+  }
+}
