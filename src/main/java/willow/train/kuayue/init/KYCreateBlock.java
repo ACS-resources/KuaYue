@@ -61,7 +61,7 @@ public class KYCreateBlock {
                 .onRegister(onRegister)
                 .onRegister(CreateRegistrate.blockModel(() -> TrackModel::new))
                 .item(TrackBlockItem::new)
-                .model((c, p) -> p.generated(c, Create.asResource("item/track/" + c.getName())))
+                .model((c, p) -> p.generated(c, Main.asResource("item/track/" + c.getName())))
                 .build()
                 .register();
     }

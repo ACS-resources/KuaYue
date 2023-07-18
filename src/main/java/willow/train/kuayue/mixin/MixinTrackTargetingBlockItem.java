@@ -68,8 +68,6 @@ public class MixinTrackTargetingBlockItem {
         }
     }
 
-    //Ripped from LudoCrypt's Noteblock Expansion
-    // (https://github.com/LudoCrypt/Noteblock-Expansion-Forge/blob/main/src/main/java/net/ludocrypt/nbexpand/mixin/NoteblockInstrumentMixin.java)
     @Mixin(value = TrackTargetingBlockItem.OverlapResult.class, remap = false)
     public static class MixinOverlapResult {
         @Shadow
