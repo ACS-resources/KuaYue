@@ -14,7 +14,7 @@ import willow.train.kuayue.Main;
 
 public class StandardTrackBlockStateGenerator extends CustomTrackBlockStateGenerator {
 
-    @Override
+    /*@Override
     protected int getXRotation(BlockState state) {
         return 0;
     }
@@ -23,9 +23,9 @@ public class StandardTrackBlockStateGenerator extends CustomTrackBlockStateGener
     protected int getYRotation(BlockState state) {
         return state.getValue(StandardTrackBlock.SHAPE)
                 .getModelRotation();
-    }
+    }*/
 
-    /*@Override
+    @Override
     public <T extends Block> ModelFile getModel(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,
                                                 BlockState state) {
         TrackShape value = state.getValue(StandardTrackBlock.SHAPE);
@@ -33,6 +33,6 @@ public class StandardTrackBlockStateGenerator extends CustomTrackBlockStateGener
             return prov.models()
                     .getExistingFile(prov.mcLoc("block/air"));
         return prov.models()
-                .getExistingFile(Main.asResource("block/track/" + value.getModel()));
-    }*/
+                .getExistingFile(Main.asResource("block/track/standard" + value.getModel()));
+    }
 }
