@@ -9,8 +9,10 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.ModelFile;
+import willow.train.kuayue.Blocks.Tracks.CustomTrackBlockStateGenerator;
+import willow.train.kuayue.Main;
 
-public class StandardTrackBlockStateGenerator extends TrackBlockStateGenerator {
+public class StandardTrackBlockStateGenerator extends CustomTrackBlockStateGenerator {
 
     @Override
     protected int getXRotation(BlockState state) {
@@ -23,7 +25,7 @@ public class StandardTrackBlockStateGenerator extends TrackBlockStateGenerator {
                 .getModelRotation();
     }
 
-    @Override
+    /*@Override
     public <T extends Block> ModelFile getModel(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,
                                                 BlockState state) {
         TrackShape value = state.getValue(StandardTrackBlock.SHAPE);
@@ -31,6 +33,6 @@ public class StandardTrackBlockStateGenerator extends TrackBlockStateGenerator {
             return prov.models()
                     .getExistingFile(prov.mcLoc("block/air"));
         return prov.models()
-                .getExistingFile(Create.asResource("block/track/" + value.getModel()));
-    }
+                .getExistingFile(Main.asResource("block/track/" + value.getModel()));
+    }*/
 }

@@ -86,8 +86,7 @@ public class KYCreateBlock {
         }, collectProperties);
     }
 
-    public static final BlockEntry<TrackBlock> STANDARD_TRACK = makeTrack(KYTrackMaterials.STANDARD,
-            new StandardTrackBlockStateGenerator()::generate, BlockBehaviour.Properties::randomTicks);
+    public static final BlockEntry<TrackBlock> STANDARD_TRACK = makeTrack(KYTrackMaterials.STANDARD);
 
     public static final BlockEntry<TrackBlock> ACACIA_BLOCK = makeTrack(KYTrackMaterials.ACACIA);
 
