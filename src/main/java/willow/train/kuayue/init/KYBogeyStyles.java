@@ -7,11 +7,13 @@ import com.simibubi.create.content.trains.bogey.BogeySizes;
 import com.simibubi.create.content.trains.bogey.BogeyStyle;
 import com.simibubi.create.foundation.utility.Components;
 import net.minecraft.resources.ResourceLocation;
+import willow.train.kuayue.Blocks.Bogeys.CategoryIcon;
 import willow.train.kuayue.Blocks.Bogeys.KYBogeyRenderer;
 import willow.train.kuayue.Blocks.Bogeys.standard_bogey.KYStandardBogeyRenderer;
 import willow.train.kuayue.Main;
 
 import static com.simibubi.create.AllBogeyStyles.STANDARD_CYCLE_GROUP;
+import static willow.train.kuayue.Blocks.Bogeys.selection_menu.BogeyCategoryHandlerClient.registerStyleCategory;
 
 public class KYBogeyStyles {
 
@@ -94,10 +96,10 @@ public class KYBogeyStyles {
     }
 
     //@Environment(EnvType.CLIENT)
-    /*public static void registerClient() {
+    public static void registerClient() {
         registerStyleCategory(Create.asResource(STANDARD_CYCLE_GROUP), CategoryIcon.standardSupplier("default_icon"));
         registerStyleCategory(SINGLEAXLE_CYCLE_GROUP, CategoryIcon.standardSupplier("singleaxle_icon"));
         registerStyleCategory(DOUBLEAXLE_CYCLE_GROUP, CategoryIcon.standardSupplier("freight_icon"));
         registerStyleCategory(TRIPLEAXLE_CYCLE_GROUP, CategoryIcon.standardSupplier("radial_icon"));
-    }*/
+    }
 }

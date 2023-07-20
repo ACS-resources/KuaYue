@@ -17,6 +17,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import willow.train.kuayue.init.KYBogeyStyles;
 import willow.train.kuayue.init.KYCreateEntities;
 import willow.train.kuayue.init.KYTrackMaterials;
 
@@ -46,7 +47,7 @@ public class KYStandardBogeyBlock extends AbstractBogeyBlock<KYStandardBogeyBloc
 
     @Override
     public double getWheelRadius() {
-        return (size == BogeySizes.LARGE ? 12.5 : 6.5) / 16d;
+        return 6 / 16d;
     }
 
     @Override
@@ -56,7 +57,7 @@ public class KYStandardBogeyBlock extends AbstractBogeyBlock<KYStandardBogeyBloc
 
     @Override
     public BogeyStyle getDefaultStyle() {
-        return AllBogeyStyles.STANDARD;
+        return KYBogeyStyles.KYSTANDARDBOGEY;
     }
 
     @Override
