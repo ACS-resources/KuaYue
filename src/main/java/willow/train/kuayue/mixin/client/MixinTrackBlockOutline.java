@@ -17,7 +17,7 @@ import willow.train.kuayue.init.KYTrackMaterials;
 public class MixinTrackBlockOutline {
 
     @Unique
-    private static boolean railway$resultIsMonorail;
+    private static boolean railway$resultIsStandard;
 
     @ModifyVariable(
             method = "pickCurves",
@@ -44,7 +44,7 @@ public class MixinTrackBlockOutline {
         return StandardTrackBlockOutline.convert(shape, railway$resultIsStandard);
     }
 
-    private static boolean railway$resultIsStandard;
+    private static boolean railway$walkingStandard;
 
     @ModifyVariable(
             method = "drawCustomBlockSelection",
@@ -54,19 +54,19 @@ public class MixinTrackBlockOutline {
                     remap = true
             )
     )
-    private static BlockState railway$grabMonorailState(BlockState state) {
-        railway$resultIsStandard = state.getBlock() instanceof StandardTrackBlock;
+    private static BlockState railway$grabStandardState(BlockState state) {
+        railway$walkingStandard = state.getBlock() instanceof StandardTrackBlock;
         return state;
     }
 
-    /*@ModifyArg(
+    @ModifyArg(
             method = "walkShapes",
             at = @At(
                     value = "INVOKE",
                     target = "Ljava/util/function/Consumer;accept(Ljava/lang/Object;)V"
             )
     )
-    private static Object railway$renderMonorailBlockShape(Object o) {
-        return railway$resultIsStandard.convert(o, railway$resultIsStandard);
-    }*/
+    private static Object railway$renderStandardBlockShape(Object o) {
+        return StandardTrackBlockOutline.convert(o, railway$walkingStandard);
+    }
 }
