@@ -6,7 +6,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import willow.train.kuayue.Blocks.Entities.MegaphoneBlockEntity;
-import willow.train.kuayue.Blocks.Entities.TrainPanelSignBlockEntities;
 import willow.train.kuayue.Entity.CarriageTypeSignEntity;
 import willow.train.kuayue.Main;
 
@@ -22,13 +21,9 @@ public class BlockEntitiesInit {
 
     public static final RegistryObject<BlockEntityType<CarriageTypeSignEntity>> CARRIAGE_TYPE_SIGN =
             BLOCK_ENTITIES.register("carriage_type_sign" , () ->
-                    BlockEntityType.Builder.of(CarriageTypeSignEntity::new, BlockInit.CARRIAGE_TYPE_SIGN_BLOCK.get()).build(null));
+                    BlockEntityType.Builder.of(CarriageTypeSignEntity::new, BlockInit.TRAIN_BOTTOM_PANEL_BLOCK.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<TrainPanelSignBlockEntities>> TRAIN_BLOCK_ENTITES_BLOCK =
-            BLOCK_ENTITIES.register("train_panel_block_entity" , () ->
-                    BlockEntityType.Builder.of(TrainPanelSignBlockEntities::new,
-                            BlockInit.TRAIN_PANEL_SIGN_BLOCK.get(),BlockInit.TRAIN_PANEL_SIGN_BLOCK1.get()
-                            ).build(null));
+
 //    public static final RegistryObject<BlockEntityType<MegaphoneBlockEntity>> MegaphoneBlockEntity =
 //            BLOCK_ENTITIES.register("megaphone_block_entity", () ->
 //            BlockEntityType.Builder.of(MegaphoneBlockEntity::new, BlockInit.MEGAPHONE.get()).build());

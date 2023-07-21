@@ -1,10 +1,6 @@
 package willow.train.kuayue.mixin;
 
-import com.simibubi.create.content.trains.track.TrackPlacement;
-import org.jetbrains.annotations.Contract;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
+/*
 @Mixin(TrackPlacement.class)
 public class TrackPlacementMixin {
         @Contract(pure=true)
@@ -13,3 +9,6 @@ public class TrackPlacementMixin {
             return 16384.0;
         }
 }
+ */
+
+

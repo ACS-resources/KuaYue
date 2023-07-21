@@ -18,6 +18,6 @@ public class TrainPanelSignBlockEntities extends SignBlockEntity {
 
     @Override
     public @NotNull BlockEntityType<?> getType() {
-        return BlockEntitiesInit.TRAIN_BLOCK_ENTITES_BLOCK.get();
+        return BlockEntitiesInit.CARRIAGE_TYPE_SIGN.get();
     }
 }
