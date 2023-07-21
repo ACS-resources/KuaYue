@@ -1,9 +1,6 @@
 package willow.train.kuayue.Util;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import willow.train.kuayue.Main;
 
@@ -12,7 +9,7 @@ import java.util.HashSet;
 
 public class Save {
     public static void saveText(Level level, TextData textData){
-        File f = new File("/saves/" + "test" + "/" + Main.MOD_ID + "/kuayue");
+        File f = new File("/saves/" + "test" + "/" + Main.MOD_ID);
         if (!f.exists()){
             f.mkdir();
         }

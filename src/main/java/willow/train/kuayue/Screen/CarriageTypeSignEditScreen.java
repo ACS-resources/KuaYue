@@ -43,13 +43,19 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
     }
 
     public void init(){
-
+        this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
         Minecraft minecraft = Minecraft.getInstance();
         TypeChs = new EditBox(minecraft.font, 100, 45, editBoxWidth, editBoxHeight, TEXT[0]);
         TypePinyin = new EditBox(minecraft.font, 100, 80, editBoxWidth, editBoxHeight, TEXT[1]);
         TypeAbbr = new EditBox(minecraft.font, 100, 115, editBoxWidth, editBoxHeight, TEXT[2]);
         SubType = new EditBox(minecraft.font, 100, 150, editBoxWidth, editBoxHeight, TEXT[3]);
         No = new EditBox(minecraft.font, 100, 185, editBoxWidth, editBoxHeight, TEXT[4]);
+
+        TypeChs.setValue(entity.getMessage(0,false).getString());
+        TypePinyin.setValue(entity.getMessage(1,false).getString());
+        TypeAbbr.setValue(entity.getMessage(2,false).getString());
+        SubType.setValue(entity.getMessage(3,false).getString());
+        No.setValue(entity.getMessage(4,false).getString());
 
         addRenderableWidget(TypeChs);
         addRenderableWidget(TypePinyin);
@@ -62,9 +68,12 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
                 if(b.equals(buttons[0])){
                     if(entity != null){
                         entity.setMessages(new String[]{TypeChs.getValue(), TypePinyin.getValue(), TypeAbbr.getValue(), SubType.getValue(), No.getValue()});
+                        //entity.getLevel().getChunk(entity.getBlockPos()).getBlockEntityNbtForSaving(entity.getBlockPos());
+                        entity.markUpdated();
+                        //entity.setData(new String[]{TypeChs.getValue(), TypePinyin.getValue(), TypeAbbr.getValue(), SubType.getValue(), No.getValue()});
                         onClose();
                     }
-                } else {
+                } else if (b.equals(buttons[1])){
                     onClose();
                 }
             }));
@@ -73,12 +82,6 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
 
     public void loadEntity(CarriageTypeSignEntity entity){
         this.entity = entity;
-    }
-
-    public void onClose(){
-        entity.markUpdated();
-        entity.save(entity.getLevel());
-        super.onClose();
     }
 
     @Override

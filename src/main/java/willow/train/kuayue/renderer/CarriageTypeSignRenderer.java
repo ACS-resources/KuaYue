@@ -1,26 +1,24 @@
 package willow.train.kuayue.renderer;
 
-import com.google.common.collect.ImmutableMap;
 import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.StandingSignBlock;
-import net.minecraft.world.level.block.WallSignBlock;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import willow.train.kuayue.Blocks.Signs.CarriageTypeSignBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.TrainPanelBlock;
 import willow.train.kuayue.Entity.CarriageTypeSignEntity;
 
 import java.util.List;
@@ -48,9 +46,9 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
         pPoseStack.pushPose();
 
         pPoseStack.translate(0.5d, 0.5d, 0.5d);
-        float f = - blockstate.getValue(CarriageTypeSignBlock.FACING).getOpposite().toYRot();
+        float f = - blockstate.getValue(TrainPanelBlock.FACING).getOpposite().toYRot();
         pPoseStack.mulPose(Vector3f.YP.rotationDegrees(f));
-        pPoseStack.translate(-0.5d, -0.4d, -0.4375d);
+        pPoseStack.translate(-1.0d, -0.4d, -0.4370d);
         // width 1.2，height 0.5
         // scale 0.133
 
@@ -61,7 +59,7 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
         float size4 = ((float) this.font.width(aformattedcharsequence[4])) * 0.30f; // 345674
 
         if(revert){
-            pPoseStack.translate(1 - size1*0.133f, 0.0 , 0.0);
+            pPoseStack.translate(2 - size1*0.133f, 0.0 , 0.0);
         }
 
         pPoseStack.scale(0.133f, -0.133f, 0.133f);  // standard size
@@ -77,7 +75,7 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
         pPoseStack.scale(7.6923076924f, 5.555555555555f, 1.0f);
 
         if(revert){
-            pPoseStack.translate(- size1 - size2 + 1, 0, 0);
+            pPoseStack.translate(- size2 - size4 - size3 - 1, 0, 0);
         }else {
             pPoseStack.translate(size1, 0, 0);
         }
@@ -92,11 +90,7 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
         renderText(aformattedcharsequence, 3, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);  // 25k
         pPoseStack.scale(8.333333333333f, 8.333333333333f, 1.0f);
 
-        if(revert){
-            pPoseStack.translate(- size3 - size4, -1.6, 0.0);
-        }else {
-            pPoseStack.translate(size3 + 1, -1.6, 0.0);
-        }
+        pPoseStack.translate(  size3 + 1, -1.6, 0.0);
 
         pPoseStack.scale(0.26f, 0.32f, 1.0f);
         renderText(aformattedcharsequence, 4, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);  // 345674
@@ -138,5 +132,34 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
         int k = (int)((double)NativeImage.getG(i) * 0.4D);
         int l = (int)((double)NativeImage.getB(i) * 0.4D);
         return NativeImage.combine(0, l, k, j);
+    }
+}
+
+class CarriageTypeSignModel<T extends Entity> extends EntityModel<T> {
+
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "custom_model"), "main");
+    private final ModelPart root;
+
+    public CarriageTypeSignModel(ModelPart root) {
+        this.root = root.getChild("carriage_type_sign_moodel");
+    }
+
+    public static LayerDefinition createBodyLayer() {
+        MeshDefinition meshdefinition = new MeshDefinition();
+        PartDefinition partdefinition = meshdefinition.getRoot();
+
+        PartDefinition root = partdefinition.addOrReplaceChild("carriage_type_sign_moodel", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -16.0F, -8.0F, 16.0F, 16.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+
+        return LayerDefinition.create(meshdefinition, 64, 64);
+    }
+
+    @Override
+    public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        return;
+    }
+
+    @Override
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
     }
 }

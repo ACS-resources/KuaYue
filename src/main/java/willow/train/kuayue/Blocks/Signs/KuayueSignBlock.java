@@ -14,22 +14,17 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.Map;
 
-public abstract class KuayueSignBlock extends Block implements EntityBlock {
+public class KuayueSignBlock extends BaseEntityBlock {
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty MIRROR = BlockStateProperties.OPEN;
-    public static final IntegerProperty SAVED = BlockStateProperties.STAGE;
 
     public KuayueSignBlock(Properties p_49795_) {
         super(p_49795_);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(MIRROR, Boolean.valueOf(false)).setValue(SAVED, Integer.valueOf(0)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
     public BlockState rotate(BlockState p_54360_, Rotation p_54361_) {
         return p_54360_.setValue(FACING, p_54361_.rotate(p_54360_.getValue(FACING)));
@@ -40,24 +35,38 @@ public abstract class KuayueSignBlock extends Block implements EntityBlock {
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING,context.getHorizontalDirection()).setValue(MIRROR, Boolean.valueOf(false)).setValue(SAVED, Integer.valueOf(0));
+        return this.defaultBlockState().setValue(FACING,context.getHorizontalDirection()).setValue(MIRROR, Boolean.valueOf(false));
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_54370_) {
-        p_54370_.add(FACING, MIRROR, SAVED);
+        p_54370_.add(FACING, MIRROR);
     }
 
+    @Override
     public MenuProvider getMenuProvider(BlockState pState, Level pLevel, BlockPos pPos) {
         BlockEntity blockentity = pLevel.getBlockEntity(pPos);
         return blockentity instanceof MenuProvider ? (MenuProvider)blockentity : null;
     }
+
+
 
     @Nullable
     protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTickerHelper(BlockEntityType<A> pServerType, BlockEntityType<E> pClientType, BlockEntityTicker<? super E> pTicker) {
         return pClientType == pServerType ? (BlockEntityTicker<A>)pTicker : null;
     }
 
+    /**
+     * The type of render function called. MODEL for mixed tesr and static model, MODELBLOCK_ANIMATED for TESR-only,
+     * LIQUID for vanilla liquids, INVISIBLE to skip all rendering
+     * whenever possible. Implementing/overriding is fine.
+     */
     public RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.INVISIBLE;
+        return RenderShape.MODEL;
+    }
+
+    @org.jetbrains.annotations.Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+        return null;
     }
 }
