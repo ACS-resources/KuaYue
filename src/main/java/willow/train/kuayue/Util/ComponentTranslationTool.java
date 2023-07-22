@@ -7,6 +7,6 @@ import willow.train.kuayue.Main;
 public class ComponentTranslationTool {
 
     public static void showMsg(Player pPlayer, String s, boolean b) {
-        pPlayer.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".catenary_removed"), true);
+        pPlayer.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + s), b);
     }
 }
