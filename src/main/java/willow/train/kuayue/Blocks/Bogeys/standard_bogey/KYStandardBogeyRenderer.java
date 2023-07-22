@@ -30,16 +30,16 @@ public class KYStandardBogeyRenderer {
 
         @Override
         public void render(CompoundTag bogeyData, float wheelAngle, PoseStack ms, int light, VertexConsumer vb, boolean inContraption) {
-            boolean upsideDown = bogeyData.getBoolean(UPSIDE_DOWN_KEY);
+            //boolean upsideDown = bogeyData.getBoolean(UPSIDE_DOWN_KEY);
             boolean inInstancedContraption = vb == null;
-            boolean specialUpsideDown = !inContraption && upsideDown; // tile entity renderer needs special handling
-            Transform<?> transform = getTransformFromPartial(KYSTANDARDBOGEY_FRAME, ms, inInstancedContraption)
-                    .rotateZ(specialUpsideDown ? 180 : 0)
-                    .translateY(specialUpsideDown ? -3 : 0);
+            //boolean specialUpsideDown = !inContraption && upsideDown; // tile entity renderer needs special handling
+            Transform<?> transform = getTransformFromPartial(KYSTANDARDBOGEY_FRAME, ms, inInstancedContraption);
+                    //.rotateZ(specialUpsideDown ? 180 : 0)
+                    //.translateY(specialUpsideDown ? -3 : 0);
             finalize(transform, ms, light, vb);
 
             Transform<?>[] wheels = getTransformsFromPartial(KYSTANDARDBOGEY_WHEEL, ms, inInstancedContraption, 4);
-            for (boolean left : Iterate.trueAndFalse) {
+            /*for (boolean left : Iterate.trueAndFalse) {
                 for (int front : Iterate.positiveAndNegative) {
                     if (!inInstancedContraption)
                         ms.pushPose();
@@ -53,6 +53,16 @@ public class KYStandardBogeyRenderer {
                     if (!inInstancedContraption)
                         ms.popPose();
                 }
+            }*/
+            for (int side : Iterate.positiveAndNegative) {
+                if (!inInstancedContraption)
+                    ms.pushPose();
+                Transform<?> wheel = wheels[(side + 1)/2];
+                wheel.translate(0, 12 / 16f, side)
+                        .rotateX(wheelAngle);
+                finalize(wheel, ms, light, vb);
+                if (!inInstancedContraption)
+                    ms.popPose();
             }
         }
     }

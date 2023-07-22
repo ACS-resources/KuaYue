@@ -1,32 +1,18 @@
 {
   "variants": {
-    "axis=x,upside_down=false,waterlogged=false": {
+    "axis=x,waterlogged=false": {
       "model": "kuayue:block/bogey/ky_standard/top",
       "y": 90
     },
-    "axis=z,upside_down=false,waterlogged=false": {
+    "axis=z,waterlogged=false": {
       "model": "kuayue:block/bogey/ky_standard/top"
     },
-    "axis=x,upside_down=true,waterlogged=false": {
-      "model": "kuayue:block/bogey/ky_standard/top_upside_down",
-      "y": 90
-    },
-    "axis=z,upside_down=true,waterlogged=false": {
-      "model": "kuayue:block/bogey/ky_standard/top_upside_down"
-    },
-    "axis=x,upside_down=false,waterlogged=true": {
+    "axis=x,waterlogged=true": {
       "model": "kuayue:block/bogey/ky_standard/top",
       "y": 90
     },
-    "axis=z,upside_down=false,waterlogged=true": {
+    "axis=z,waterlogged=true": {
       "model": "kuayue:block/bogey/ky_standard/top"
-    },
-    "axis=x,upside_down=true,waterlogged=true": {
-      "model": "kuayue:block/bogey/ky_standard/top_upside_down",
-      "y": 90
-    },
-    "axis=z,upside_down=true,waterlogged=true": {
-      "model": "kuayue:block/bogey/ky_standard/top_upside_down"
     }
   }
 }

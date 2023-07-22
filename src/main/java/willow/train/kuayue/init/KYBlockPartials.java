@@ -228,8 +228,8 @@ public class KYBlockPartials {
             MONORAIL_SEGMENT_BOTTOM = block("monorail/monorail/segment_bottom"),
             MONORAIL_SEGMENT_MIDDLE = block("monorail/monorail/segment_middle"),
             MONORAIL_TRACK_ASSEMBLING_OVERLAY = block("monorail/monorail/assembling_overlay"),
-            KYSTANDARDBOGEY_FRAME = block("bogey/ky_standard/frame"),
-            KYSTANDARDBOGEY_WHEEL = block("bogey/ky_standard/wheel");
+            KYSTANDARDBOGEY_FRAME = block("bogey/ky_standard/bogey_cw2_temple"),
+            KYSTANDARDBOGEY_WHEEL = block("bogey/ky_standard/cw2_wheel");
 
     public static final PartialModel
             SINGLEAXLE_FRAME = block("bogey/singleaxle/singleaxle_frame"),
