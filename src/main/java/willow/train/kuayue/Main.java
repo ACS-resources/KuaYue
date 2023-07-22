@@ -7,6 +7,8 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -213,6 +215,7 @@ public class Main {
         //test text
     }
 
+    @OnlyIn(Dist.CLIENT)
     protected void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
         Sheets.addWoodType(WoodTypeInit.TrainPanel);
