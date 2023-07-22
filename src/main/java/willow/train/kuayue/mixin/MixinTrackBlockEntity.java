@@ -91,7 +91,7 @@ public abstract class MixinTrackBlockEntity extends SmartBlockEntity implements 
         }
     }
 
-    @Inject(
+    /*@Inject(
             method = "removeInboundConnections",
             at = @At(
                     value = "INVOKE",
@@ -105,7 +105,7 @@ public abstract class MixinTrackBlockEntity extends SmartBlockEntity implements 
             notifyUpdate();
             ci.cancel();
         }
-    }
+    }*/
 
     @Inject(method = "write", at = @At("RETURN"))
     private void writeCasing(CompoundTag tag, boolean clientPacket, CallbackInfo ci) {
