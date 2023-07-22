@@ -19,7 +19,7 @@ public class KYStandardBogeyRenderer {
 
         @Override
         public void initialiseContraptionModelData(MaterialManager materialManager) {
-            createModelInstances(materialManager, KYSTANDARDBOGEY_WHEEL, 4);
+            createModelInstances(materialManager, KYSTANDARDBOGEY_WHEEL, 2);
             createModelInstances(materialManager, KYSTANDARDBOGEY_FRAME);
         }
 
