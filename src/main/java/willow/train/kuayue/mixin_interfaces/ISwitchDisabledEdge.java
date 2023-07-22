@@ -1,4 +1,4 @@
-package willow.train.kuayue.mixin;
+package willow.train.kuayue.mixin_interfaces;
 
 import com.simibubi.create.content.trains.graph.TrackEdge;
 

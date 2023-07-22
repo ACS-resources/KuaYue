@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
-import willow.train.kuayue.mixin.IHasTrackCasing;
+import willow.train.kuayue.mixin_interfaces.IHasTrackCasing;
 
 import java.util.HashMap;
 import java.util.Map;

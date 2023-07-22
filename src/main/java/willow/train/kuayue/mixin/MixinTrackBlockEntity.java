@@ -23,6 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import willow.train.kuayue.MultiLoader.PlayerSelection;
 import willow.train.kuayue.init.KYPackets;
 import willow.train.kuayue.init.KYTags;
+import willow.train.kuayue.mixin_interfaces.IHasTrackCasing;
 
 import java.util.Map;
 

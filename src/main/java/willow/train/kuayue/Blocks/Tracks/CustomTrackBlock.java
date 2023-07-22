@@ -15,7 +15,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 import willow.train.kuayue.Util.EntityUtils;
 import willow.train.kuayue.init.KYTags;
-import willow.train.kuayue.mixin.IHasTrackCasing;
+import willow.train.kuayue.mixin_interfaces.IHasTrackCasing;
 
 public class CustomTrackBlock  { //done using a brass hand on a track should call TrackPropagator.onRailAdded to update materials
     @Nullable

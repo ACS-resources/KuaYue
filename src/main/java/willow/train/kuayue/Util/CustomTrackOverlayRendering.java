@@ -24,7 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import willow.train.kuayue.init.KYBlockPartials;
 import willow.train.kuayue.init.KYTrackMaterials;
-import willow.train.kuayue.mixin.IHasTrackCasing;
+import willow.train.kuayue.mixin_interfaces.IHasTrackCasing;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -16,7 +16,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import willow.train.kuayue.init.KYEdgePointTypes;
-import willow.train.kuayue.mixin.ISwitchDisabledEdge;
+import willow.train.kuayue.mixin_interfaces.ISwitchDisabledEdge;
 
 import java.util.*;
 
