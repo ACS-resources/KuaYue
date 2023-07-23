@@ -80,7 +80,7 @@ public class KYBogeyStyles {
 
     public static AllBogeyStyles.BogeyStyleBuilder create(String name, String cycleGroup) {
         return create(Main.asResource(name), Main.asResource(cycleGroup))
-                .displayName(Components.translatable("railways.bogeys.styles."+name));
+                .displayName(Components.translatable("kuayue.bogeys.styles."+name));
     }
 
     public static AllBogeyStyles.BogeyStyleBuilder create(String name, ResourceLocation cycleGroup) {
