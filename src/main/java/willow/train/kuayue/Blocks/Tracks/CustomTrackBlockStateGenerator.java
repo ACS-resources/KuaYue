@@ -1,12 +1,12 @@
 package willow.train.kuayue.Blocks.Tracks;
 
-import com.simibubi.create.Create;
 import com.simibubi.create.content.trains.track.TrackBlock;
 import com.simibubi.create.content.trains.track.TrackMaterial;
 import com.simibubi.create.content.trains.track.TrackShape;
 import com.simibubi.create.foundation.data.SpecialBlockStateGen;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
@@ -67,7 +67,8 @@ public class CustomTrackBlockStateGenerator extends SpecialBlockStateGen {
 
         BlockModelBuilder builder = prov.models()
                 .withExistingParent(prefix + value.getModel(),
-                        Create.asResource("block/track/" + value.getModel()))
+                        //Create.asResource("block/track/" + value.getModel()))
+                        new ResourceLocation(Main.MOD_ID,"block/track/" + value.getModel()))
                 .texture("particle", material.particle);
         for (String k : textureMap.keySet()) {
             builder = builder.texture(k, Main.asResource(prefix + textureMap.get(k) + material.resourceName()));
@@ -75,7 +76,7 @@ public class CustomTrackBlockStateGenerator extends SpecialBlockStateGen {
         for (String k : new String[]{"segment_left", "segment_right", "tie"}) { // obj_track
             prov.models()
                     .withExistingParent(prefix + k,
-                            Create.asResource("block/track/" + k))
+                            Main.asResource("block/track/" + k))
                     .texture("0", prefix + "standard_track_" + material.resourceName())
                     .texture("1", prefix + "standard_track_mip_" + material.resourceName())
                     .texture("particle", material.particle);

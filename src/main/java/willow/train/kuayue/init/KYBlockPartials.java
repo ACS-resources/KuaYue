@@ -1,7 +1,6 @@
 package willow.train.kuayue.init;
 
 import com.jozufozu.flywheel.core.PartialModel;
-import com.simibubi.create.Create;
 import com.simibubi.create.content.trains.track.TrackShape;
 import com.simibubi.create.foundation.utility.Lang;
 import net.minecraft.resources.ResourceLocation;
@@ -249,7 +248,7 @@ public class KYBlockPartials {
     public static final PartialModel CONDUCTOR_ANTENNA = block("conductor_antenna");
 
     private static PartialModel createBlock(String path) {
-        return new PartialModel(Create.asResource("block/" + path));
+        return new PartialModel(Main.asResource("block/" + path));
     }
 
     private static PartialModel block(String path) {
