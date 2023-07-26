@@ -1,14 +1,18 @@
 package willow.train.kuayue.Screen;
 
+import Network.CarriageTypeSignUpdatePacket;
+import Network.KuayueNetworkHandler;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.protocol.game.ServerboundSignUpdatePacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import willow.train.kuayue.Client.CarriageTypeSignEditMenu;
@@ -68,8 +72,8 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
                 if(b.equals(buttons[0])){
                     if(entity != null){
                         entity.setMessages(new String[]{TypeChs.getValue(), TypePinyin.getValue(), TypeAbbr.getValue(), SubType.getValue(), No.getValue()});
+                        KuayueNetworkHandler.sendToServer(new CarriageTypeSignUpdatePacket(this.entity.getBlockPos(), TypeChs.getValue(), TypePinyin.getValue(), TypeAbbr.getValue(), SubType.getValue(), No.getValue()));
                         //entity.getLevel().getChunk(entity.getBlockPos()).getBlockEntityNbtForSaving(entity.getBlockPos());
-                        entity.markUpdated();
                         //entity.setData(new String[]{TypeChs.getValue(), TypePinyin.getValue(), TypeAbbr.getValue(), SubType.getValue(), No.getValue()});
                         onClose();
                     }

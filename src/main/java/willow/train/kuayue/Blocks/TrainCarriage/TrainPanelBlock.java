@@ -1,5 +1,6 @@
 package willow.train.kuayue.Blocks.TrainCarriage;
 
+import Network.KuayueNetworkHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;

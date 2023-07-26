@@ -1,5 +1,6 @@
 package willow.train.kuayue;
 
+import Network.KuayueNetworkHandler;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -248,6 +249,7 @@ public class Main {
     protected void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
         Sheets.addWoodType(WoodTypeInit.TrainPanel);
+            KuayueNetworkHandler.registerPackets();
 
     });
     }

@@ -5,6 +5,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -23,7 +24,7 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
     CarriageTypeSignEditMenu ctsem;
     private FormattedCharSequence[] renderMessages;
     public static final int YELLOW = 14725893, YELLOW2 = 16776960, RED = 15216648, BLUE = 22220, BLACK = 789516;
-    private static int color = YELLOW;
+    private int color = YELLOW;
     private final Component[] messages = new Component[]{TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY, TextComponent.EMPTY};
     private static final String[] name = new String[]{"a", "b", "c", "d", "e"};
 
@@ -66,7 +67,8 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
     protected void saveAdditional(CompoundTag pTag) {
 
         for(int i = 0; i < 5; i++) {
-            pTag.putString(name[i], messages[i].getContents());
+            pTag.putString(name[i], this.messages[i].getString());
+            //pTag.putString(name[i], messages[i].getContents());
             //data[i] = messages[i].getContents();
             //System.out.println(messages[i].getContents());
             //System.out.println("saving datas " + data[i] + " aaaabbbb");
@@ -94,28 +96,13 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
         System.out.println("loading datas " + pTag.toString());
     }
 
-    private Component loadLine(String pLine) {
-        Component component = this.deserializeTextSafe(pLine);
-        return component;
-    }
-
-    private Component deserializeTextSafe(String pText) {
-        try {
-            Component component = Component.Serializer.fromJson(pText);
-            if (component != null) {
-                return component;
-            }
-        } catch (Exception exception) {
-        }
-        return TextComponent.EMPTY;
-    }
-
     public FormattedCharSequence[] getRenderMessages(Function<Component, FormattedCharSequence> pMessageTransformer) {
 
-        this.renderMessages = new FormattedCharSequence[messages.length];
-        for(int i = 0; i < messages.length; ++i) {
-            this.renderMessages[i] = pMessageTransformer.apply(messages[i]);
+        this.renderMessages = new FormattedCharSequence[this.messages.length];
+        for(int i = 0; i < this.messages.length; ++i) {
+            this.renderMessages[i] = pMessageTransformer.apply(this.messages[i]);
         }
+
         return this.renderMessages;
     }
 
@@ -143,5 +130,14 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
     @Override
     public Component getDisplayName() {
         return new TranslatableComponent("container." + Main.MOD_ID + "carriage_type_sign");
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return this.saveWithoutMetadata();
+    }
+
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 }
