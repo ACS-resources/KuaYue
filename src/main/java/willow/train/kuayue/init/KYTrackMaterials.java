@@ -1,12 +1,19 @@
 package willow.train.kuayue.init;
 
+import com.google.common.collect.ImmutableSet;
 import com.simibubi.create.Create;
+import com.simibubi.create.content.trains.track.TrackBlock;
 import com.simibubi.create.content.trains.track.TrackMaterial;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import willow.train.kuayue.Blocks.Tracks.standard_track.StandardTrackBlock;
 import willow.train.kuayue.Main;
+import willow.train.kuayue.mixin.AccessorBlockEntityType;
+
+import java.util.Set;
 
 import static com.simibubi.create.content.trains.track.TrackMaterialFactory.make;
 
@@ -49,4 +56,19 @@ public class KYTrackMaterials {
     }
 
     public static void register(){}
+
+    public static void addToBlockEntityType(TrackBlock block) {
+        BlockEntityType<?> type;
+        try {
+            type = block.getBlockEntityType();
+        } catch (NullPointerException ignored) {
+            return;
+        }
+        Set<Block> validBlocks = ((AccessorBlockEntityType) type).getValidBlocks();
+        validBlocks = new ImmutableSet.Builder<Block>()
+                .add(validBlocks.toArray(Block[]::new))
+                .add(block)
+                .build();
+        ((AccessorBlockEntityType) type).setValidBlocks(validBlocks);
+    }
 }

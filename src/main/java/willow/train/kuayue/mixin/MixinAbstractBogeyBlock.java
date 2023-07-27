@@ -24,9 +24,9 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Mixin(value = AbstractBogeyBlock.class, remap = false)
 public abstract class MixinAbstractBogeyBlock {
 
-    @Shadow
-    protected abstract BlockState copyProperties(BlockState source, BlockState target);
+    @Shadow protected abstract BlockState copyProperties(BlockState source, BlockState target);
 
+    // fixme this is a Create bug, file a report (styles not placing the correct block)
     @Inject(method = "use",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;displayClientMessage(Lnet/minecraft/network/chat/Component;Z)V", remap = true, ordinal = 0),
             locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true, remap = true)

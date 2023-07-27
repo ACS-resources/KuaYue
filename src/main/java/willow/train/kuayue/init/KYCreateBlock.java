@@ -1,7 +1,6 @@
 package willow.train.kuayue.init;
 
 import com.simibubi.create.AllTags;
-import com.simibubi.create.Create;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.trains.track.*;
 import com.simibubi.create.foundation.data.CreateRegistrate;
@@ -23,9 +22,9 @@ import willow.train.kuayue.Blocks.Bogeys.LargePlatformDoubleAxleBogeyBlock;
 import willow.train.kuayue.Blocks.Bogeys.SingleAxleBogeyBlock;
 import willow.train.kuayue.Blocks.Bogeys.TripleAxleBogeyBlock;
 import willow.train.kuayue.Blocks.Bogeys.standard_bogey.KYStandardBogeyBlock;
+import willow.train.kuayue.Blocks.Bogeys.standard_bogey.KYStandardBogeyItem;
 import willow.train.kuayue.Blocks.Locos.df11g.DF11GFrontBlock;
 import willow.train.kuayue.Blocks.Tracks.CustomTrackBlockStateGenerator;
-import willow.train.kuayue.Blocks.Tracks.standard_track.StandardTrackBlock;
 import willow.train.kuayue.Blocks.Tracks.standard_track.StandardTrackBlockStateGenerator;
 import willow.train.kuayue.Items.ToolTipsItemHelper;
 import willow.train.kuayue.Main;
@@ -35,7 +34,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-import static com.simibubi.create.Create.REGISTRATE;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
@@ -101,38 +99,48 @@ public class KYCreateBlock {
 
     public static final BlockEntry<TrackBlock> BIRCH_TRACK = makeTrack(KYTrackMaterials.BIRCH);
 
+    public static final BlockEntry<KYStandardBogeyBlock> KY_STANDARD_BOGEY =
+            REGISTRATE.block("ky_standard_bogey", KYStandardBogeyBlock::new)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .transform(BuilderTransformers.kystandardbogey())
+                    .lang("KY Standard Bogey")
+                    //.item(KYStandardBogeyItem::new)
+                    //.model((c, p) -> p.generated(c, Main.asResource("item/track/" + c.getName())))
+                    //.build()
+                    .register();
+
     private static final CreateRegistrate bogeyREGISTRATE = Main.registrate();
 
-    public static final BlockEntry<KYStandardBogeyBlock> KY_STANDARD_BOGEY =
+    /*public static final BlockEntry<KYStandardBogeyBlock> KY_STANDARD_BOGEY =
             bogeyREGISTRATE.block("ky_standard_bogey", KYStandardBogeyBlock::new)
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BuilderTransformers.kystandardbogey())
                     .lang("KY Standard Bogey")
-                    .register();
+                    .register();*/
 
     public static final BlockEntry<SingleAxleBogeyBlock> SINGLEAXLE_BOGEY =
-            REGISTRATE.block("singleaxle_bogey", SingleAxleBogeyBlock::new)
+            bogeyREGISTRATE.block("singleaxle_bogey", SingleAxleBogeyBlock::new)
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BuilderTransformers.standardBogey())
                     .lang("Single Axle Bogey")
                     .register();
 
     public static final BlockEntry<DoubleAxleBogeyBlock> DOUBLEAXLE_BOGEY =
-            REGISTRATE.block("doubleaxle_bogey", DoubleAxleBogeyBlock::new)
+            bogeyREGISTRATE.block("doubleaxle_bogey", DoubleAxleBogeyBlock::new)
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BuilderTransformers.standardBogey())
                     .lang("Double Axle Bogey")
                     .register();
 
     public static final BlockEntry<LargePlatformDoubleAxleBogeyBlock> LARGE_PLATFORM_DOUBLEAXLE_BOGEY =
-            REGISTRATE.block("large_platform_doubleaxle_bogey", LargePlatformDoubleAxleBogeyBlock::new)
+            bogeyREGISTRATE.block("large_platform_doubleaxle_bogey", LargePlatformDoubleAxleBogeyBlock::new)
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BuilderTransformers.standardBogey())
                     .lang("Large Platform Double Axle Bogey")
                     .register();
 
     public static final BlockEntry<TripleAxleBogeyBlock> TRIPLEAXLE_BOGEY =
-            REGISTRATE.block("tripleaxle_bogey", TripleAxleBogeyBlock::new)
+            bogeyREGISTRATE.block("tripleaxle_bogey", TripleAxleBogeyBlock::new)
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BuilderTransformers.standardBogey())
                     .lang("Triple Axle Bogey")

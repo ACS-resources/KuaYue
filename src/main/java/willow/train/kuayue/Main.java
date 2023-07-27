@@ -97,6 +97,7 @@ public class Main {
         KYCreateEntities.register();
         KYTrackMaterials.register();
         KYBogeyStyles.register();
+        KYItems.register();
         KYTags.register();
         KYEdgePointTypes.register();
 

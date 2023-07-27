@@ -19,7 +19,7 @@ public class KYStandardBogeyRenderer {
 
         @Override
         public void initialiseContraptionModelData(MaterialManager materialManager) {
-            createModelInstances(materialManager, KYSTANDARDBOGEY_WHEEL, 2);
+            createModelInstances(materialManager, KYSTANDARDBOGEY_WHEEL, 1);
             createModelInstances(materialManager, KYSTANDARDBOGEY_FRAME);
         }
 
@@ -30,12 +30,9 @@ public class KYStandardBogeyRenderer {
 
         @Override
         public void render(CompoundTag bogeyData, float wheelAngle, PoseStack ms, int light, VertexConsumer vb, boolean inContraption) {
-            //boolean upsideDown = bogeyData.getBoolean(UPSIDE_DOWN_KEY);
+
             boolean inInstancedContraption = vb == null;
-            //boolean specialUpsideDown = !inContraption && upsideDown; // tile entity renderer needs special handling
             Transform<?> transform = getTransformFromPartial(KYSTANDARDBOGEY_FRAME, ms, inInstancedContraption);
-                    //.rotateZ(specialUpsideDown ? 180 : 0)
-                    //.translateY(specialUpsideDown ? -3 : 0);
             finalize(transform, ms, light, vb);
 
             Transform<?>[] wheels = getTransformsFromPartial(KYSTANDARDBOGEY_WHEEL, ms, inInstancedContraption, 4);

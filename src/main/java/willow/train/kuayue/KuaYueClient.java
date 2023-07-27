@@ -10,7 +10,7 @@ public class KuaYueClient {
 
     public static void init(){
 
-        CustomTrackOverlayRendering.register(KYEdgePointTypes.COUPLER, KYBlockPartials.COUPLER_BOTH);
+        //CustomTrackOverlayRendering.register(KYEdgePointTypes.COUPLER, KYBlockPartials.COUPLER_BOTH);
         CustomTrackOverlayRendering.register(KYEdgePointTypes.SWITCH, KYBlockPartials.SWITCH_RIGHT_TURN);
 
         KYBogeyStyles.registerClient();

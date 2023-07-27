@@ -5,6 +5,7 @@ import com.simibubi.create.content.trains.bogey.BogeySizes;
 import com.simibubi.create.content.trains.bogey.BogeyStyle;
 import com.simibubi.create.content.trains.track.TrackBlock;
 import com.simibubi.create.content.trains.track.TrackShape;
+import com.simibubi.create.foundation.utility.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -40,7 +41,7 @@ public abstract class MixinTrackBlock extends Block {
         super(pProperties);
     }
 
-    @Inject(method = "use", at = @At("HEAD"), cancellable = true, remap = true)
+    /*@Inject(method = "use", at = @At("HEAD"), cancellable = true, remap = true)
     private void extendedUse(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> cir) {
         if (!(((Object) this) instanceof StandardTrackBlock)) {
             InteractionResult result = CustomTrackBlock.casingUse(state, world, pos, player, hand, hit);
@@ -48,17 +49,19 @@ public abstract class MixinTrackBlock extends Block {
                 cir.setReturnValue(result);
             }
         }
-    }
+    }*/
 
     @Inject(method = "getBogeyAnchor", at = @At("HEAD"), cancellable = true)
     private void placeCustomStyle(BlockGetter world, BlockPos pos, BlockState state, CallbackInfoReturnable<BlockState> cir) {
         if (BogeyCategoryHandlerServer.currentPlayer == null)
             return;
-        BogeyStyle style = BogeyCategoryHandlerServer.getStyle(BogeyCategoryHandlerServer.currentPlayer);
+        Pair<BogeyStyle, BogeySizes.BogeySize> styleData = BogeyCategoryHandlerServer.getStyle(BogeyCategoryHandlerServer.currentPlayer);
+        BogeyStyle style = styleData.getFirst();
+        BogeySizes.BogeySize selectedSize = styleData.getSecond();
         if (style == AllBogeyStyles.STANDARD)
             return;
 
-        BogeySizes.BogeySize size = BogeySizes.getAllSizesSmallToLarge().get(0);
+        BogeySizes.BogeySize size = selectedSize != null ? selectedSize : BogeySizes.getAllSizesSmallToLarge().get(0);
         int escape = BogeySizes.getAllSizesSmallToLarge().size();
         while (!style.validSizes().contains(size)) {
             if (escape < 0)
@@ -74,10 +77,10 @@ public abstract class MixinTrackBlock extends Block {
         );
     }
 
-    @Redirect(method = "onPlace", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;scheduleTick(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;I)V", remap = true), remap = true)
+    /*@Redirect(method = "onPlace", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;scheduleTick(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;I)V", remap = true), remap = true)
     private void maybeMakeTickInstant(Level instance, BlockPos blockPos, Block block, int i) {
         if (TrackReplacePaver.tickInstantly)
             i = 0;
         instance.scheduleTick(blockPos, block, i);
-    }
+    }*/
 }
