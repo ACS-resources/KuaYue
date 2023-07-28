@@ -1,6 +1,8 @@
 package willow.train.kuayue.init;
 
 import com.google.common.collect.ImmutableSet;
+import com.jozufozu.flywheel.core.PartialModel;
+import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.trains.track.TrackBlock;
 import com.simibubi.create.content.trains.track.TrackMaterial;
@@ -9,6 +11,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import willow.train.kuayue.Blocks.Tracks.standard_track.StandardTrackBlock;
 import willow.train.kuayue.Main;
 import willow.train.kuayue.mixin.AccessorBlockEntityType;
@@ -54,6 +58,28 @@ public class KYTrackMaterials {
             super(id, factory);
         }
     }
+
+    protected KYTrackMaterials trackMaterial;
+
+    public KYTrackMaterials getMaterial() {
+        return trackMaterial;
+    }
+
+    /*@OnlyIn(Dist.CLIENT)
+    protected KYTrackMaterials.TrackModelHolder modelHolder;
+
+    @OnlyIn(Dist.CLIENT)
+    public KYTrackMaterials.TrackModelHolder getModelHolder() {
+        return modelHolder;
+    }*/
+
+    /*@OnlyIn(Dist.CLIENT)
+    public record TrackModelHolder(PartialModel tie, PartialModel segment_left, PartialModel segment_right) {
+
+    }*/
+
+    public static final TrackMaterial.TrackModelHolder KY_DEFAULT = new TrackMaterial.TrackModelHolder(KYBlockPartials.KY_TRACK_TIE,
+            KYBlockPartials.KY_TRACK_SEGMENT_LEFT, KYBlockPartials.KY_TRACK_SEGMENT_RIGHT);
 
     public static void register(){}
 

@@ -11,7 +11,12 @@
     "MixinCarriageBogey",
     "MixinStationBlockEntity",
     "MixinTrackBlock",
-    "MixinTrackPlacement"
+    "MixinTrackPlacement",
+    "client.AccessorInstance",
+    "client.MixinBezierConnectionClient",
+    "client.MixinTrackInstance_BezierTrackInstance",
+    "client.MixinTrackRenderer",
+    "client.MixinTrackTargetingClient"
   ],
   "client": [
   ],

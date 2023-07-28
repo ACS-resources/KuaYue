@@ -6,6 +6,7 @@ import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.content.trains.track.BezierConnection;
 import com.simibubi.create.content.trains.track.TrackInstance;
+import com.simibubi.create.content.trains.track.TrackMaterial;
 import com.simibubi.create.foundation.utility.Iterate;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
@@ -19,7 +20,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import willow.train.kuayue.init.KYBlockPartials;
 import willow.train.kuayue.init.KYTrackMaterials;
+import willow.train.kuayue.mixin_interfaces.IStandardBezier;
 
 @Mixin(targets = "com.simibubi.create.content.trains.track.TrackInstance$BezierTrackInstance", remap = false)
 public abstract class MixinTrackInstance_BezierTrackInstance {
@@ -72,13 +75,13 @@ public abstract class MixinTrackInstance_BezierTrackInstance {
         return instance.getMaterial().trackType == KYTrackMaterials.KYTrackType.STANDARD ? new BezierConnection.SegmentAngles[0] : instance.getBakedSegments();
     }
 
-    /*@Inject(method = "<init>", at = @At("RETURN"))
-    private void addActualMonorail(TrackInstance trackInstance, BezierConnection bc, CallbackInfo ci) {
-        //Use right for top section
-        //Use ties for center section
-        //use left for bottom section
-        if (bc.getMaterial().trackType == KYTrackMaterials.KYTrackType.STANDARD) {
-            BlockPos tePosition = bc.tePositions.getFirst();
+    @Inject(method = "<init>", at = @At("RETURN"))
+    private void addActualStandard(TrackInstance trackInstance, BezierConnection bc, CallbackInfo ci) {
+
+        String trackMaterialId = String.valueOf(bc.getMaterial().id);
+
+        if (trackMaterialId.equals("kuayue:standard")) {
+            /*BlockPos tePosition = bc.tePositions.getFirst();
             PoseStack pose = new PoseStack();
             TransformStack.cast(pose)
                     .translate(this$0.getInstancePosition())
@@ -86,16 +89,16 @@ public abstract class MixinTrackInstance_BezierTrackInstance {
                             .asLong());
 
             BlockState air = Blocks.AIR.defaultBlockState();
-            MonorailAngles[] monorails = ((IMonorailBezier) bc).getBakedMonorails();
+            IStandardBezier.StandardAngles[] standards = ((IStandardBezier) bc).getBakedStandards();
             var mat = ((AccessorInstance) this$0).getMaterialManager().cutout(RenderType.cutoutMipped())
-                    .material(Materials.TRANSFORMED);
+                    .material(Materials.TRANSFORMED);*/
 
-            right = new ModelData[monorails.length-1];
-            ties = new ModelData[monorails.length-1];
-            left = new ModelData[monorails.length-1];
-            tiesLightPos = new BlockPos[monorails.length-1];
-            leftLightPos = new BlockPos[monorails.length-1];
-            rightLightPos = new BlockPos[monorails.length-1];
+            /*right = new ModelData[standards.length-1];
+            ties = new ModelData[standards.length-1];
+            left = new ModelData[standards.length-1];
+            tiesLightPos = new BlockPos[standards.length-1];
+            leftLightPos = new BlockPos[standards.length-1];
+            rightLightPos = new BlockPos[standards.length-1];
 
             ModelData[] top = right;
             ModelData[] middle = ties;
@@ -104,12 +107,12 @@ public abstract class MixinTrackInstance_BezierTrackInstance {
             BlockPos[] middleLight = tiesLightPos;
             BlockPos[] bottomLight = leftLightPos;
 
-            //mat.getModel(MONORAIL_SEGMENT_TOP).createInstances(top);
-            //mat.getModel(MONORAIL_SEGMENT_MIDDLE).createInstances(middle);
-            //mat.getModel(MONORAIL_SEGMENT_BOTTOM).createInstances(bottom);
+            mat.getModel(KYBlockPartials.KY_TRACK_SEGMENT_RIGHT).createInstances(top);
+            mat.getModel(KYBlockPartials.KY_TRACK_TIE).createInstances(middle);
+            mat.getModel(KYBlockPartials.KY_TRACK_SEGMENT_LEFT).createInstances(bottom);
 
-            for (int i = 1; i < monorails.length; i++) {
-                MonorailAngles segment = monorails[i];
+            for (int i = 1; i < standards.length; i++) {
+                IStandardBezier.StandardAngles segment = standards[i];
                 int modelIndex = i - 1;
 
                 PoseStack.Pose beamTransform = segment.beam;
@@ -128,7 +131,59 @@ public abstract class MixinTrackInstance_BezierTrackInstance {
                 }
             }
 
+            updateLight();*/
+
+            BlockPos tePosition = bc.tePositions.getFirst();
+            //girder = bc.hasGirder ? new TrackInstance.BezierTrackInstance.GirderInstance(bc) : null;
+
+            PoseStack pose = new PoseStack();
+            TransformStack.cast(pose)
+                    .translate(this$0.getInstancePosition());
+
+            IStandardBezier.StandardAngles[] standards = ((IStandardBezier) bc).getBakedStandards();
+
+            var mat = ((AccessorInstance) this$0).getMaterialManager().cutout(RenderType.cutoutMipped())
+                    .material(Materials.TRANSFORMED);
+
+            /*int segCount = bc.getSegmentCount();
+            ties = new ModelData[segCount];
+            left = new ModelData[segCount];
+            right = new ModelData[segCount];
+            tiesLightPos = new BlockPos[segCount];
+            leftLightPos = new BlockPos[segCount];
+            rightLightPos = new BlockPos[segCount];*/
+
+            TrackMaterial.TrackModelHolder modelHolder = KYTrackMaterials.KY_DEFAULT;
+
+            mat.getModel(modelHolder.tie())
+                    .createInstances(ties);
+            mat.getModel(modelHolder.segment_left())
+                    .createInstances(left);
+            mat.getModel(modelHolder.segment_right())
+                    .createInstances(right);
+
+            //BezierConnection.SegmentAngles[] segments = bc.getBakedSegments();
+            for (int i = 1; i < standards.length; i++) {
+                IStandardBezier.StandardAngles segment = standards[i];
+                var modelIndex = i - 1;
+
+                PoseStack.Pose beamTransform = segment.tieTransform;
+
+                ties[modelIndex].setTransform(pose)
+                        .mulPose(beamTransform.pose())
+                        .mulNormal(beamTransform.normal());
+                tiesLightPos[modelIndex] = segment.lightPosition.offset(tePosition);
+
+                for (boolean first : Iterate.trueAndFalse) {
+                    PoseStack.Pose transform = segment.railTransforms.get(first);
+                    (first ? this.left : this.right)[modelIndex].setTransform(pose)
+                            .mulPose(transform.pose())
+                            .mulNormal(transform.normal());
+                    (first ? leftLightPos : rightLightPos)[modelIndex] = segment.lightPosition.offset(tePosition);
+                }
+            }
+
             updateLight();
         }
-    }*/
+    }
 }
