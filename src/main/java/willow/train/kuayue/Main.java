@@ -95,6 +95,12 @@ public class Main {
 
         KYCreateBlock.register();
         KYCreateEntities.register();
+        KYTrackMaterials.register();
+        KYBogeyStyles.register();
+        KYItems.register();
+        KYTags.register();
+        KYEdgePointTypes.register();
+
         AllModulePartials.init();
         REGISTRATE.registerEventListeners(bus);
 
@@ -246,6 +252,7 @@ public class Main {
         //test text
     }
 
+    @OnlyIn(Dist.CLIENT)
     protected void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
         Sheets.addWoodType(WoodTypeInit.TrainPanel);

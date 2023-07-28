@@ -52,7 +52,7 @@ public class KYBlockPartials {
         CUSTOM_CONDUCTOR_SKINS_FOR_NAME.put(conductorName, Main.asResource("textures/entity/custom_conductors/"+textureLoc));
     }
 
-    public static final PartialModel
+/*    public static final PartialModel
             SEMAPHORE_ARM_RED = block("semaphore/red_arm"),
             SEMAPHORE_ARM_YELLOW = block("semaphore/yellow_arm"),
             SEMAPHORE_ARM_RED_FLIPPED = block("semaphore/red_arm_flipped"),
@@ -63,7 +63,7 @@ public class KYBlockPartials {
             SEMAPHORE_ARM_YELLOW_FLIPPED_UPSIDE_DOWN = block("semaphore/yellow_arm_flipped_down"),
             SEMAPHORE_LAMP_RED = block("semaphore/red_lamp"),
             SEMAPHORE_LAMP_YELLOW = block("semaphore/yellow_lamp"),
-            SEMAPHORE_LAMP_WHITE = block("semaphore/white_lamp");
+            SEMAPHORE_LAMP_WHITE = block("semaphore/white_lamp");*/
 
     public record ModelTransform(double x, double y, double z, float rx, float ry, float rz) {
         public static final ModelTransform ZERO = new ModelTransform(0, 0, 0, 0, 0, 0);
@@ -200,11 +200,11 @@ public class KYBlockPartials {
         TRACK_CASINGS.put(TrackShape.AW, new TrackCasingSpec(block("track_casing/aw"), ModelTransform.ZERO, 5).overlayShift(3 / 16f, 0));
     }
 
-    public static final PartialModel
+    /*public static final PartialModel
             COUPLER_COUPLE = block("track_overlay/coupler_couple"),
             COUPLER_DECOUPLE = block("track_overlay/coupler_decouple"),
             COUPLER_BOTH = block("track_overlay/coupler_both"),
-            COUPLER_NONE = block("track_overlay/coupler_none");
+            COUPLER_NONE = block("track_overlay/coupler_none");*/
 
     public static final PartialModel
             ANDESITE_SWITCH_FLAG = block("track_switch_andesite/flag"),
@@ -223,10 +223,14 @@ public class KYBlockPartials {
                     ;
 
     public static final PartialModel
-            MONORAIL_SEGMENT_TOP = block("monorail/monorail/segment_top"),
+            /*MONORAIL_SEGMENT_TOP = block("monorail/monorail/segment_top"),
             MONORAIL_SEGMENT_BOTTOM = block("monorail/monorail/segment_bottom"),
             MONORAIL_SEGMENT_MIDDLE = block("monorail/monorail/segment_middle"),
-            MONORAIL_TRACK_ASSEMBLING_OVERLAY = block("monorail/monorail/assembling_overlay"),
+            MONORAIL_TRACK_ASSEMBLING_OVERLAY = block("monorail/monorail/assembling_overlay"),*/
+
+            KY_TRACK_SEGMENT_LEFT = block("track/standard/segment_left"),
+            KY_TRACK_SEGMENT_RIGHT = block("track/standard/segment_right"),
+            KY_TRACK_TIE = block("track/standard/tie"),
             KYSTANDARDBOGEY_FRAME = block("bogey/ky_standard/bogey_cw2_temple"),
             KYSTANDARDBOGEY_WHEEL = block("bogey/ky_standard/cw2_wheel");
 

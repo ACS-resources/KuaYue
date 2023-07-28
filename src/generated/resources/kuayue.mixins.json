@@ -4,8 +4,19 @@
   "package": "willow.train.kuayue.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-
-    "MixinTrackPlacement"
+    "AccessorBlockEntityType",
+    "AccessorCarriageBogey",
+    "AccessorTrackMaterialFactory",
+    "MixinAbstractBogeyBlock",
+    "MixinCarriageBogey",
+    "MixinStationBlockEntity",
+    "MixinTrackBlock",
+    "MixinTrackPlacement",
+    "client.AccessorInstance",
+    "client.MixinBezierConnectionClient",
+    "client.MixinTrackInstance_BezierTrackInstance",
+    "client.MixinTrackRenderer",
+    "client.MixinTrackTargetingClient"
   ],
   "client": [
   ],
