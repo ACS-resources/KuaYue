@@ -153,13 +153,13 @@ public abstract class MixinTrackInstance_BezierTrackInstance {
             leftLightPos = new BlockPos[segCount];
             rightLightPos = new BlockPos[segCount];*/
 
-            TrackMaterial.TrackModelHolder modelHolder = KYTrackMaterials.KY_DEFAULT;
+            //TrackMaterial.TrackModelHolder modelHolder = KYTrackMaterials.KY_DEFAULT;
 
-            mat.getModel(modelHolder.tie())
+            mat.getModel(KYBlockPartials.KY_TRACK_TIE)
                     .createInstances(ties);
-            mat.getModel(modelHolder.segment_left())
+            mat.getModel(KYBlockPartials.KY_TRACK_SEGMENT_LEFT)
                     .createInstances(left);
-            mat.getModel(modelHolder.segment_right())
+            mat.getModel(KYBlockPartials.KY_TRACK_SEGMENT_RIGHT)
                     .createInstances(right);
 
             //BezierConnection.SegmentAngles[] segments = bc.getBakedSegments();
