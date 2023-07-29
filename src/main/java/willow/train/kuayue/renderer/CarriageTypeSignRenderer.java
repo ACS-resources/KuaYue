@@ -57,7 +57,7 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
         pPoseStack.translate(0.5d, 0.5d, 0.5d);
         float f = - blockstate.getValue(TrainPanelBlock.FACING).getOpposite().toYRot();
         pPoseStack.mulPose(Vector3f.YP.rotationDegrees(f));
-        pPoseStack.translate(-1.0d, -0.4d, -0.4370d);
+        pPoseStack.translate(0.0d, -0.3d, -0.4370d);
         // width 1.2，height 0.5
         // scale 0.133
 
@@ -67,11 +67,14 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
         float size3 = ((float) this.font.width(aformattedcharsequence[3])) * 0.12f;  // 25T
         float size4 = ((float) this.font.width(aformattedcharsequence[4])) * 0.30f; // 345674
 
+
         if(revert){
-            pPoseStack.translate(2 - size1*0.133f, 0.0 , 0.0);
+            pPoseStack.translate(0.4d - size1 * 0.133f * 0.5f, 0.0 , 0.0);
+        }else {
+            pPoseStack.translate(-0.4d, 0.0d, 0.0d);
         }
 
-        pPoseStack.scale(0.133f, -0.133f, 0.133f);  // standard size
+        pPoseStack.scale(0.133f * 0.5f, -0.133f * 0.5f, 0.133f * 0.5f);  // standard size
 
         pPoseStack.scale(0.08f, 0.08f, 1.0f);
         renderText(aformattedcharsequence, 1, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);  // 硬座车
