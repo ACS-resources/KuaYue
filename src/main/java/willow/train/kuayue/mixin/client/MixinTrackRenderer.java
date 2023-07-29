@@ -24,7 +24,7 @@ public class MixinTrackRenderer {
     @Inject(method = "renderBezierTurn",
             at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/trains/track/TrackRenderer;renderGirder(Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/BezierConnection;Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/core/BlockPos;)V", shift = At.Shift.AFTER, remap = true),
             cancellable = true)
-    private static void renderStandardMaybe(Level level, BezierConnection bc, PoseStack ms, VertexConsumer vb, CallbackInfo ci) {
+    private static void renderMonorailMaybe(Level level, BezierConnection bc, PoseStack ms, VertexConsumer vb, CallbackInfo ci) {
 
         String trackMaterialId = String.valueOf(bc.getMaterial().id);
 
@@ -35,8 +35,9 @@ public class MixinTrackRenderer {
         }
     }
 
+
     private static void renderActualStandard(Level level, BezierConnection bc, PoseStack ms, VertexConsumer vb,
-                                             BlockPos tePosition) {
+                                                    BlockPos tePosition) {
 
         BlockState air = Blocks.AIR.defaultBlockState();
         IStandardBezier.StandardAngles[] standards = ((IStandardBezier) bc).getBakedStandards();
@@ -46,6 +47,7 @@ public class MixinTrackRenderer {
             int light = LevelRenderer.getLightColor(level, segment.lightPosition.offset(tePosition));
 
             PoseStack.Pose beamTransform = segment.tieTransform;
+
             CachedBufferer.partial(KYBlockPartials.KY_TRACK_TIE, air)
                     .mulPose(beamTransform.pose())
                     .mulNormal(beamTransform.normal())

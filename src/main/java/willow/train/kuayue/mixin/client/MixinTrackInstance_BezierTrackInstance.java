@@ -6,7 +6,6 @@ import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.content.trains.track.BezierConnection;
 import com.simibubi.create.content.trains.track.TrackInstance;
-import com.simibubi.create.content.trains.track.TrackMaterial;
 import com.simibubi.create.foundation.utility.Iterate;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
@@ -81,7 +80,7 @@ public abstract class MixinTrackInstance_BezierTrackInstance {
         String trackMaterialId = String.valueOf(bc.getMaterial().id);
 
         if (trackMaterialId.equals("kuayue:standard")) {
-            /*BlockPos tePosition = bc.tePositions.getFirst();
+            BlockPos tePosition = bc.tePositions.getFirst();
             PoseStack pose = new PoseStack();
             TransformStack.cast(pose)
                     .translate(this$0.getInstancePosition())
@@ -90,8 +89,8 @@ public abstract class MixinTrackInstance_BezierTrackInstance {
 
             BlockState air = Blocks.AIR.defaultBlockState();
             IStandardBezier.StandardAngles[] standards = ((IStandardBezier) bc).getBakedStandards();
-            var mat = ((AccessorInstance) this$0).getMaterialManager().cutout(RenderType.cutoutMipped())
-                    .material(Materials.TRANSFORMED);*/
+//            var mat = ((AccessorInstance) this$0).getMaterialManager().cutout(RenderType.cutoutMipped())
+//                    .material(Materials.TRANSFORMED);
 
             /*right = new ModelData[standards.length-1];
             ties = new ModelData[standards.length-1];
@@ -133,14 +132,14 @@ public abstract class MixinTrackInstance_BezierTrackInstance {
 
             updateLight();*/
 
-            BlockPos tePosition = bc.tePositions.getFirst();
+            BlockPos tePosition1 = bc.tePositions.getFirst();
             //girder = bc.hasGirder ? new TrackInstance.BezierTrackInstance.GirderInstance(bc) : null;
 
-            PoseStack pose = new PoseStack();
-            TransformStack.cast(pose)
+            PoseStack pose1 = new PoseStack();
+            TransformStack.cast(pose1)
                     .translate(this$0.getInstancePosition());
 
-            IStandardBezier.StandardAngles[] standards = ((IStandardBezier) bc).getBakedStandards();
+            IStandardBezier.StandardAngles[] standards1 = ((IStandardBezier) bc).getBakedStandards();
 
             var mat = ((AccessorInstance) this$0).getMaterialManager().cutout(RenderType.cutoutMipped())
                     .material(Materials.TRANSFORMED);
@@ -163,23 +162,23 @@ public abstract class MixinTrackInstance_BezierTrackInstance {
                     .createInstances(right);
 
             //BezierConnection.SegmentAngles[] segments = bc.getBakedSegments();
-            for (int i = 1; i < standards.length; i++) {
-                IStandardBezier.StandardAngles segment = standards[i];
+            for (int i = 1; i < standards1.length; i++) {
+                IStandardBezier.StandardAngles segment = standards1[i];
                 var modelIndex = i - 1;
 
                 PoseStack.Pose beamTransform = segment.tieTransform;
 
-                ties[modelIndex].setTransform(pose)
+                ties[modelIndex].setTransform(pose1)
                         .mulPose(beamTransform.pose())
                         .mulNormal(beamTransform.normal());
-                tiesLightPos[modelIndex] = segment.lightPosition.offset(tePosition);
+                tiesLightPos[modelIndex] = segment.lightPosition.offset(tePosition1);
 
                 for (boolean first : Iterate.trueAndFalse) {
                     PoseStack.Pose transform = segment.railTransforms.get(first);
-                    (first ? this.left : this.right)[modelIndex].setTransform(pose)
+                    (first ? this.left : this.right)[modelIndex].setTransform(pose1)
                             .mulPose(transform.pose())
                             .mulNormal(transform.normal());
-                    (first ? leftLightPos : rightLightPos)[modelIndex] = segment.lightPosition.offset(tePosition);
+                    (first ? leftLightPos : rightLightPos)[modelIndex] = segment.lightPosition.offset(tePosition1);
                 }
             }
 

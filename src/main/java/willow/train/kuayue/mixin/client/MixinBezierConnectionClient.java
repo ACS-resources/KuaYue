@@ -36,8 +36,8 @@ public abstract class MixinBezierConnectionClient implements IStandardBezier {
             boolean end = i == 0 || i == segmentCount;
 
             IStandardBezier.StandardAngles angles = bakedStandards[i] = new IStandardBezier.StandardAngles();
-            Couple<Vec3> railOffsets = Couple.create(segment.position.add(segment.normal.scale(.740f)),
-                    segment.position.subtract(segment.normal.scale(.740f)));
+            Couple<Vec3> railOffsets = Couple.create(segment.position.add(segment.normal.scale(.755f)),
+                    segment.position.subtract(segment.normal.scale(.755f)));
             Vec3 railMiddle = railOffsets.getFirst()
                     .add(railOffsets.getSecond())
                     .scale(.5);
