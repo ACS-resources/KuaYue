@@ -31,13 +31,22 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
         this.font = pContext.getFont();
     }
 
+    /**
+     * Renderer 中最重要的一个方法，即渲染方法。每一帧都会调用
+     * @param pBlockEntity 对应的BlockEntity
+     * @param pPartialTick tick
+     * @param pPoseStack 渲染栈
+     * @param pBufferSource -
+     * @param pPackedLight 光照
+     * @param pPackedOverlay -
+     */
     @Override
     public void render(CarriageTypeSignEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
         BlockState blockstate = pBlockEntity.getBlockState();
         boolean revert = blockstate.getValue(BlockStateProperties.OPEN);
 
         FormattedCharSequence[] aformattedcharsequence = pBlockEntity.getRenderMessages((p_173653_) -> {
-            List<FormattedCharSequence> list = this.font.split(p_173653_, 90);
+            List<FormattedCharSequence> list = this.font.split(p_173653_, 180);
             return list.isEmpty() ? FormattedCharSequence.EMPTY : list.get(0);
         });
 
@@ -135,31 +144,3 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
     }
 }
 
-class CarriageTypeSignModel<T extends Entity> extends EntityModel<T> {
-
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "custom_model"), "main");
-    private final ModelPart root;
-
-    public CarriageTypeSignModel(ModelPart root) {
-        this.root = root.getChild("carriage_type_sign_moodel");
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
-
-        PartDefinition root = partdefinition.addOrReplaceChild("carriage_type_sign_moodel", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -16.0F, -8.0F, 16.0F, 16.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
-
-        return LayerDefinition.create(meshdefinition, 64, 64);
-    }
-
-    @Override
-    public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        return;
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-    }
-}

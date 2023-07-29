@@ -16,6 +16,7 @@ import willow.train.kuayue.Blocks.Entities.TrainPanelSignBlockEntities;
 
 import javax.annotation.Nullable;
 
+@Deprecated
 public class TrainPanelSignBlock extends WallSignBlock {
     public static final Logger LOGGER = LoggerFactory.getLogger("KuaYue");
 

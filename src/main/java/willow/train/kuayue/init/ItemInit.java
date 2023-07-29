@@ -10,6 +10,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import willow.train.kuayue.Items.TrainBottomPanels.Brush;
+import willow.train.kuayue.Items.TrainBottomPanels.ColoredBrush;
 import willow.train.kuayue.Items.catenary.CatenaryScissors;
 import willow.train.kuayue.Items.catenary.GeneralCatenary;
 import willow.train.kuayue.Items.foods.Food1;
@@ -51,6 +54,13 @@ public class ItemInit {
 
     public static final RegistryObject<Item> CatenaryScissors = register("catenary_scissors",
             () -> new CatenaryScissors(new Item.Properties().tab(Main.KUAYUE_CATENARY)));
+
+    public static final RegistryObject<Item> Brush = register("brush",
+            () -> new Brush(new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
+
+    public static final RegistryObject<Item> ColoredBrush = register("colored_brush",
+            () -> new ColoredBrush(new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
+
 //   public static final RegistryObject<Item> TRAIN_PANEL_SIGN_ITEM = register("train_panel_sign_item",
 //            () -> new SignItem(new Item.Properties().tab(Main.KUAYUE_MAIN),
 //                    BlockInit.TRAIN_PANEL_SIGN_BLOCK.get(),

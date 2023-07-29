@@ -1,8 +1,8 @@
 package willow.train.kuayue.Blocks.TrainCarriage;
 
-import Network.KuayueNetworkHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -22,13 +22,13 @@ import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 import willow.train.kuayue.Blocks.Signs.KuayueSignBlock;
 import willow.train.kuayue.Entity.CarriageTypeSignEntity;
-import willow.train.kuayue.Items.TrainPanelItem;
 import willow.train.kuayue.Util.PanelTypes;
 import willow.train.kuayue.init.BlockInit;
 import willow.train.kuayue.init.ItemInit;
@@ -86,8 +86,7 @@ public class TrainPanelBlock extends KuayueSignBlock {
                 blockpos2) ? -1 : 0) + (blockstate1.isCollisionShapeFullBlock(blockgetter, blockpos3) ? -1 : 0)
                 + (blockstate2.isCollisionShapeFullBlock(blockgetter, blockpos4) ? 1 : 0)
                 + (blockstate3.isCollisionShapeFullBlock(blockgetter, blockpos5) ? 1 : 0);
-        //boolean flag = blockstate.is(this) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER;
-        //boolean flag1 = blockstate2.is(this) && blockstate2.getValue(HALF) == DoubleBlockHalf.LOWER;
+
         if (i <= 0) {
             if (i >= 0) {
                 int j = direction.getStepX();
@@ -107,17 +106,24 @@ public class TrainPanelBlock extends KuayueSignBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Player pPlayer = context.getPlayer();
-        ItemStack itemStack = pPlayer.getMainHandItem();
+        ItemStack itemStack = pPlayer.getItemInHand(context.getHand());
+        getHinge(context);
 
         if (itemStack.is(BlockInit.TRAIN_BOTTOM_PANEL_BLOCK.get().asItem())){
-            TrainPanelItem item = (TrainPanelItem) itemStack.getItem();
-            return super.getStateForPlacement(context).setValue(HINGE, this.getHinge(context)).setValue(TYPE, item.panelTypes);
+            CompoundTag tag = itemStack.getTagElement("type");
+            if(tag == null) tag = itemStack.getOrCreateTagElement("type");
+            if(tag.get("type") == null) tag.putString("type","p25b");
+            return super.getStateForPlacement(context).setValue(HINGE, this.getHinge(context)).setValue(TYPE, PanelTypes.encode(tag.get("type").getAsString()));
         }
-        return super.getStateForPlacement(context).setValue(HINGE, this.getHinge(context)).setValue(TYPE, PanelTypes.P25B);
+        return super.getStateForPlacement(context).setValue(HINGE, this.getHinge(context)).setValue(TYPE, PanelTypes.P25G);
+    }
+
+    public BlockState getStateForPlacement(BlockPlaceContext context, PanelTypes type, DoorHingeSide hinge) {
+        return super.getStateForPlacement(context).setValue(HINGE, hinge).setValue(TYPE, type);
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        super.createBlockStateDefinition(   pBuilder);
+        super.createBlockStateDefinition(pBuilder);
         pBuilder.add(HINGE, TYPE);
     }
 
@@ -141,12 +147,23 @@ public class TrainPanelBlock extends KuayueSignBlock {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if(pPlayer.getMainHandItem().is(ItemInit.CA_25T.get())){
-            if(!pLevel.isClientSide){
-                NetworkHooks.openGui((ServerPlayer) pPlayer, (CarriageTypeSignEntity) pLevel.getBlockEntity(pPos), pPos);
-                pLevel.getChunk(pPos).getBlockEntity(pPos).setChanged();
-            }
+            if(pPlayer.getItemInHand(pHand).is(ItemInit.Brush.get())){
+                if(!pLevel.isClientSide){
+                    System.out.println(pPlayer.isShiftKeyDown());
+                    NetworkHooks.openGui((ServerPlayer) pPlayer, (CarriageTypeSignEntity) pLevel.getBlockEntity(pPos), pPos);
+                    ((CarriageTypeSignEntity) pLevel.getBlockEntity(pPos)).markUpdated();
+                    return InteractionResult.PASS;
+                }
             return InteractionResult.PASS;
+        }
+        if(pPlayer.getItemInHand(pHand).is(ItemInit.ColoredBrush.get())) {
+            if(!pLevel.isClientSide) {
+                CarriageTypeSignEntity entity = ((CarriageTypeSignEntity) pLevel.getBlockEntity(pPos));
+                int color = entity.nextColor();
+                System.out.println("next color: " + color);
+                entity.setColor(color);
+                entity.markUpdated();
+            }
         }
         if(pPlayer.getMainHandItem().is(ItemStack.EMPTY.getItem())) {
             pState = pState.cycle(MIRROR);
@@ -174,4 +191,30 @@ public class TrainPanelBlock extends KuayueSignBlock {
         return ctse;
     }
      */
+
+    public void changeToOrdinaryPanel(Level pLevel, Player pPlayer, InteractionHand pHand, BlockHitResult pHit){
+        //放置方块的方法
+        //pLevel.setBlock(new BlockPos(0, 0,0), BlockInit.DF11G_END_FACE.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit)), 2);
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
+        PanelTypes types = state.getValue(TYPE);
+        switch (types){
+            case P25B -> {return BlockInit.PANEL_25B_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
+            case P25G -> {return BlockInit.PANEL_25G_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
+            case P25Z -> {return BlockInit.PANEL_25Z_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
+            case P25KA -> {return BlockInit.PANEL_25K_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
+            case P25KB -> {return BlockInit.PANEL_25K_ORIGINAL_LINE.get().asItem().getDefaultInstance();}
+            case P25TA -> {return BlockInit.PANEL_25T_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
+            case P25TB -> {return BlockInit.PANEL_25T_ORIGINAL_BOTTOM_B.get().asItem().getDefaultInstance();}
+            case M25B -> {return BlockInit.PANEL_25B_MARSHALLED_SYMBOL.get().asItem().getDefaultInstance();}
+            case M25G -> {return BlockInit.PANEL_25G_MARSHALLED_SYMBOL.get().asItem().getDefaultInstance();}
+            case M25Z -> {return BlockInit.PANEL_25_MARSHALLED_BOTTOM.get().asItem().getDefaultInstance();}
+            case M25T -> {return BlockInit.PANEL_25_MARSHALLED_BOTTOM_LINE.get().asItem().getDefaultInstance();}
+            case M25KA -> {return BlockInit.PANEL_25K_MARSHALLED_SYMBOL.get().asItem().getDefaultInstance();}
+            case M25KB -> {return BlockInit.PANEL_CR200J_MARSHALLED_BOTTOM.get().asItem().getDefaultInstance();}
+            default -> {return BlockInit.PANEL_25B_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
+        }
+    }
 }

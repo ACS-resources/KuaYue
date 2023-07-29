@@ -22,7 +22,7 @@ import willow.train.kuayue.Blocks.Structure.*;
 import willow.train.kuayue.Blocks.TrainCarriage.*;
 import willow.train.kuayue.Blocks.catenary.*;
 import willow.train.kuayue.Items.ToolTipsItemHelper;
-import willow.train.kuayue.Items.TrainPanelItem;
+import willow.train.kuayue.Items.TrainBottomPanels.TrainPanelItem;
 import willow.train.kuayue.Main;
 
 import java.util.function.Function;
@@ -44,7 +44,7 @@ public class BlockInit {
     public static final RegistryObject<TrainPanelBlock> TRAIN_BOTTOM_PANEL_BLOCK = register("train_bottom_panel_block",
             () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
-            object -> () -> new TrainPanelItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
+            object -> () -> new TrainPanelItem(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25 = register("original_color_window_25",
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)
@@ -61,19 +61,20 @@ public class BlockInit {
                     .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<Train25BGEndFaceBlock> END_FACE_25B = register("end_face_25b_original",
-            () -> new Train25BGEndFaceBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<CarPortBlockBGKZ.Train25BGEndFaceBlock> END_FACE_25B = register("end_face_25b_original",
+            () -> new CarPortBlockBGKZ.Train25BGEndFaceBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     //panel_25b_original_bottom
     //猪
-    public static final RegistryObject<TrainPanelBlock> PANEL_25B_ORIGINAL_BOTTOM = register("panel_25b_original_bottom",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25B_ORIGINAL_BOTTOM = register("panel_25b_original_bottom",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     //panel_25b_original_mid
-    public static final RegistryObject<TrainPanelBlock> PANEL_25B_ORIGINAL_MID = register("panel_25b_original_mid",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25B_ORIGINAL_MID = register("panel_25b_original_mid",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     //panel_25b_original_window
@@ -127,18 +128,18 @@ public class BlockInit {
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<TrainPanelBlock> END_FACE_25B_ORIGINAL_UPPER = register("end_face_25b_original_upper",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> END_FACE_25B_ORIGINAL_UPPER = register("end_face_25b_original_upper",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<TrainPanelBlock> END_FACE_25B_ORIGINAL_UPPER_2 = register("end_face_25b_original_upper_2",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> END_FACE_25B_ORIGINAL_UPPER_2 = register("end_face_25b_original_upper_2",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<Train25BGEndFaceBlock> END_FACE_ORIGINAL_25G = register("end_face_25g_original",
-            () -> new Train25BGEndFaceBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<CarPortBlockBGKZ.Train25BGEndFaceBlock> END_FACE_ORIGINAL_25G = register("end_face_25g_original",
+            () -> new CarPortBlockBGKZ.Train25BGEndFaceBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
@@ -157,13 +158,16 @@ public class BlockInit {
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     //panel_25g_original_bottom
     //猪
-    public static final RegistryObject<TrainPanelBlock> PANEL_25G_ORIGINAL_BOTTOM = register("panel_25g_original_bottom",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25G_ORIGINAL_BOTTOM = register("panel_25g_original_bottom",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
+
+
     //panel_25g_original_mid
-    public static final RegistryObject<TrainPanelBlock> PANEL_25G_ORIGINAL_MID = register("panel_25g_original_mid",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25G_ORIGINAL_MID = register("panel_25g_original_mid",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     //panel_25g_original_window
@@ -181,8 +185,8 @@ public class BlockInit {
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
-    public static final RegistryObject<TrainPanelBlock> ORIGINAL_COLOR_WINDOW_25G_SEALED_SMALL = register("original_color_window_25g_sealed_small",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> ORIGINAL_COLOR_WINDOW_25G_SEALED_SMALL = register("original_color_window_25g_sealed_small",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
@@ -223,12 +227,12 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
             () -> new TrainIsolationDoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
-    public static final RegistryObject<TrainPanelBlock> END_FACE_25G_ORIGINAL_UPPER = register("end_face_25g_original_upper",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> END_FACE_25G_ORIGINAL_UPPER = register("end_face_25g_original_upper",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
-    public static final RegistryObject<TrainPanelBlock> END_FACE_25G_ORIGINAL_UPPER_2 = register("end_face_25g_original_upper_2",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> END_FACE_25G_ORIGINAL_UPPER_2 = register("end_face_25g_original_upper_2",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     public static final RegistryObject<TopPanelSlabBlock> DIRECT_DRAINAGE_TOILET_ORIGINAL_25G = register("direct_drainage_toilet_original_25g",
@@ -247,24 +251,24 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<Train25BGEndFaceBlock> END_FACE_ORIGINAL_25Z = register("end_face_25z_original",
-            () -> new Train25BGEndFaceBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<CarPortBlockBGKZ.Train25BGEndFaceBlock> END_FACE_ORIGINAL_25Z = register("end_face_25z_original",
+            () -> new CarPortBlockBGKZ.Train25BGEndFaceBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
     //猪
-    public static final RegistryObject<TrainPanelBlock> PANEL_25Z_ORIGINAL_BOTTOM = register("panel_25z_original_bottom",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25Z_ORIGINAL_BOTTOM = register("panel_25z_original_bottom",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<TrainPanelBlock> PANEL_25Z_ORIGINAL_MID = register("panel_25z_original_mid",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25Z_ORIGINAL_MID = register("panel_25z_original_mid",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<TrainPanelBlock> PANEL_25Z_ORIGINAL_TOP = register("panel_25z_original_top",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25Z_ORIGINAL_TOP = register("panel_25z_original_top",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
@@ -283,18 +287,18 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
 
     //panel_25k_original_bottom
     //猪
-    public static final RegistryObject<TrainPanelBlock> PANEL_25K_ORIGINAL_BOTTOM = register("panel_25k_original_bottom",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25K_ORIGINAL_BOTTOM = register("panel_25k_original_bottom",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     //猪
-    public static final RegistryObject<TrainPanelBlock> PANEL_25K_ORIGINAL_LINE = register("panel_25k_original_bottom_line",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25K_ORIGINAL_LINE = register("panel_25k_original_bottom_line",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     //panel_25k_original_mid
-    public static final RegistryObject<TrainPanelBlock> PANEL_25K_ORIGINAL_MID = register("panel_25k_original_mid",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25K_ORIGINAL_MID = register("panel_25k_original_mid",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     //panel_25k_original_window
@@ -311,8 +315,8 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
-    public static final RegistryObject<TrainPanelBlock> ORIGINAL_COLOR_WINDOW_25K_SEALED_SMALL = register("original_color_window_25k_sealed_small",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> ORIGINAL_COLOR_WINDOW_25K_SEALED_SMALL = register("original_color_window_25k_sealed_small",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
@@ -401,28 +405,28 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
             () -> new Train25KTEndFaceBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
-    public static final RegistryObject<TrainPanelBlock> END_FACE_25K_ORIGINAL_UPPER = register("end_face_25k_original_upper",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> END_FACE_25K_ORIGINAL_UPPER = register("end_face_25k_original_upper",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<TrainPanelBlock> END_FACE_25K_ORIGINAL_UPPER_2 = register("end_face_25k_original_upper_2",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> END_FACE_25K_ORIGINAL_UPPER_2 = register("end_face_25k_original_upper_2",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
 
-    public static final RegistryObject<Train25BGEndFaceBlock> END_FACE_25K_ORIGINAL_RUBBER = register("end_face_25k_original_rubber",
-            () -> new Train25BGEndFaceBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<CarPortBlockBGKZ.Train25BGEndFaceBlock> END_FACE_25K_ORIGINAL_RUBBER = register("end_face_25k_original_rubber",
+            () -> new CarPortBlockBGKZ.Train25BGEndFaceBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
-    public static final RegistryObject<TrainPanelBlock> END_FACE_25K_ORIGINAL_RUBBER_UPPER = register("end_face_25k_original_rubber_upper",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> END_FACE_25K_ORIGINAL_RUBBER_UPPER = register("end_face_25k_original_rubber_upper",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<TrainPanelBlock> END_FACE_25K_ORIGINAL_RUBBER_UPPER_2 = register("end_face_25k_original_rubber_upper_2",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> END_FACE_25K_ORIGINAL_RUBBER_UPPER_2 = register("end_face_25k_original_rubber_upper_2",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
@@ -439,13 +443,13 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
 
     //panel_25t_original_bottom
     //猪
-    public static final RegistryObject<TrainPanelBlock> PANEL_25T_ORIGINAL_BOTTOM = register("panel_25t_original_bottom",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25T_ORIGINAL_BOTTOM = register("panel_25t_original_bottom",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     //panel_25t_original_mid
-    public static final RegistryObject<TrainPanelBlock> PANEL_25T_ORIGINAL_MID = register("panel_25t_original_mid",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25T_ORIGINAL_MID = register("panel_25t_original_mid",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     public static final RegistryObject<PanelBlock25Side> PANEL_25T_ORIGINAL_MID_B = register("panel_25t_original_mid_b",
@@ -457,8 +461,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     //2猪
-    public static final RegistryObject<PanelBlock25Side> PANEL_25T_ORIGINAL_BOTTOM_B = register("panel_25t_original_bottom_b",
-            () -> new PanelBlock25Side(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25T_ORIGINAL_BOTTOM_B = register("panel_25t_original_bottom_b",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
@@ -475,12 +479,6 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
 
 //    public static final RegistryObject<Block> TRAIN_PANEL_SIGN_BLOCK1= registerBlock("train_panel_sign_block1",
 //            () -> new TrainPanelSignBlock2(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN),WoodTypeInit.TrainPanel));
-
-    public static final RegistryObject<Block> TRAIN_PANEL_SIGN_BLOCK = registerBlockWithoutBlockItem("train_panel_sign_block",
-            () -> new TrainPanelSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), WoodTypeInit.TrainPanel));
-
-    public static final RegistryObject<Block> TRAIN_PANEL_SIGN_BLOCK1 = registerBlockWithoutBlockItem("train_panel_sign_block1",
-            () -> new TrainPanelSignBlock2(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), WoodTypeInit.TrainPanel));
     //panel_25t_original_window
     public static final RegistryObject<TrainGlassPanelBlock> PANEL_25T_ORIGINAL_WINDOW = register("panel_25t_original_window",
             () -> new TrainGlassPanelBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)
@@ -565,12 +563,12 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
     //panel_25t_original_top
-    public static final RegistryObject<TrainPanelBlock> PANEL_25T_ORIGINAL_TOP = register("panel_25t_original_top",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25T_ORIGINAL_TOP = register("panel_25t_original_top",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
-    public static final RegistryObject<TrainPanelBlock> PANEL_XL25T_ORIGINAL_TOP = register("panel_xl25t_original_top",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_XL25T_ORIGINAL_TOP = register("panel_xl25t_original_top",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
@@ -604,32 +602,32 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     //widepanel_bsp25t_original_mid
-    public static final RegistryObject<TrainPanelBlock> WIDEPANEL_BSP25T_ORIGINAL_MID = register("widepanel_bsp25t_original_mid",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> WIDEPANEL_BSP25T_ORIGINAL_MID = register("widepanel_bsp25t_original_mid",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
-    public static final RegistryObject<TrainPanelBlock> END_FACE_25T_ORIGINAL_UPPER = register("end_face_25t_original_upper",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> END_FACE_25T_ORIGINAL_UPPER = register("end_face_25t_original_upper",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<TrainPanelBlock> END_FACE_25T_ORIGINAL_UPPER_2 = register("end_face_25t_original_upper_2",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> END_FACE_25T_ORIGINAL_UPPER_2 = register("end_face_25t_original_upper_2",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<Train25BGEndFaceBlock> END_FACE_25T_ORIGINAL_RUBBER = register("end_face_25t_original_rubber",
-            () -> new Train25BGEndFaceBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<CarPortBlockBGKZ.Train25BGEndFaceBlock> END_FACE_25T_ORIGINAL_RUBBER = register("end_face_25t_original_rubber",
+            () -> new CarPortBlockBGKZ.Train25BGEndFaceBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<TrainPanelBlock> END_FACE_25T_ORIGINAL_RUBBER_UPPER = register("end_face_25t_original_rubber_upper",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> END_FACE_25T_ORIGINAL_RUBBER_UPPER = register("end_face_25t_original_rubber_upper",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<TrainPanelBlock> END_FACE_25T_ORIGINAL_RUBBER_UPPER_2 = register("end_face_25t_original_rubber_upper_2",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> END_FACE_25T_ORIGINAL_RUBBER_UPPER_2 = register("end_face_25t_original_rubber_upper_2",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     public static final RegistryObject<TopPanelSlabBlock> DIRECT_DRAINAGE_TOILET_ORIGINAL_25T = register("direct_drainage_toilet_original_25t",
@@ -644,42 +642,42 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
     //猪
-    public static final RegistryObject<TrainPanelBlock> PANEL_25_MARSHALLED_BOTTOM = register("panel_25_marshalled_bottom",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25_MARSHALLED_BOTTOM = register("panel_25_marshalled_bottom",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
     //2猪
-    public static final RegistryObject<TrainPanelBlock> PANEL_25_MARSHALLED_BOTTOM_LINE = register("panel_25_marshalled_bottom_line",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25_MARSHALLED_BOTTOM_LINE = register("panel_25_marshalled_bottom_line",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<TrainPanelBlock> PANEL_25_MARSHALLED_MID = register("panel_25_marshalled_mid",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25_MARSHALLED_MID = register("panel_25_marshalled_mid",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<TrainPanelBlock> PANEL_25_MARSHALLED_TOP = register("panel_25_marshalled_top",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25_MARSHALLED_TOP = register("panel_25_marshalled_top",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<TrainPanelBlock> PANEL_25_MARSHALLED_TOP_B = register("panel_25_marshalled_top_b",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25_MARSHALLED_TOP_B = register("panel_25_marshalled_top_b",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-    public static final RegistryObject<PanelBlock25Side> PANEL_25B_MARSHALLED_SYMBOL = register("panel_25b_marshalled_symbol",
-            () -> new PanelBlock25Side(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25B_MARSHALLED_SYMBOL = register("panel_25b_marshalled_symbol",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
-    public static final RegistryObject<PanelBlock25Side> PANEL_25G_MARSHALLED_SYMBOL = register("panel_25g_marshalled_symbol",
-            () -> new PanelBlock25Side(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25G_MARSHALLED_SYMBOL = register("panel_25g_marshalled_symbol",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
-    public static final RegistryObject<PanelBlock25Side> PANEL_25K_MARSHALLED_SYMBOL = register("panel_25k_marshalled_symbol",
-            () -> new PanelBlock25Side(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> PANEL_25K_MARSHALLED_SYMBOL = register("panel_25k_marshalled_symbol",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
@@ -1069,8 +1067,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
 
     //cr200j
 
-    public static final RegistryObject<TrainPanelBlock> WIDEPANEL_CR200J_MARSHALLED_MID = register2("widepanel_cr200j_marshalled_mid",
-            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.PLANT).strength(3.0f)
+    public static final RegistryObject<OrdinaryTrainPanelBlock> WIDEPANEL_CR200J_MARSHALLED_MID = register2("widepanel_cr200j_marshalled_mid",
+            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.GLASS).requiresCorrectToolForDrops()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
@@ -1090,8 +1088,8 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-//    public static final RegistryObject<TrainPanelBlock> DF11G_FRONT = register("df11g_front",
-//            () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL,MaterialColor.NONE).strength(3.0f)
+//    public static final RegistryObject<OrdinaryTrainPanelBlock> DF11G_FRONT = register("df11g_front",
+//            () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL,MaterialColor.NONE).strength(3.0f)
 //                    .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),object -> () -> new BlockItem(object.get(),
 //                    new Item.Properties().tab(Main.KUAYUE_LOCOS)));
 public static final RegistryObject<DF11GCowcatcherBlock> DF11G_COWCATCHER = register("df11g_cowcatcher",

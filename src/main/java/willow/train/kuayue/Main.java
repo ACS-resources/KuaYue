@@ -1,6 +1,6 @@
 package willow.train.kuayue;
 
-import Network.KuayueNetworkHandler;
+import willow.train.kuayue.Network.KuayueNetworkHandler;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;

@@ -43,6 +43,10 @@ public class CarriageTypeSignEditMenu extends AbstractContainerMenu {
         this.ctse = ctse;
     }
 
+    /**
+     * 这个方法将负责将方块实体向Screen传递
+     * @return 对应的方块实体
+     */
     public CarriageTypeSignEntity getCtse(){
         return ctse;
     }

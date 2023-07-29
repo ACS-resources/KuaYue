@@ -23,6 +23,10 @@ public class BlockEntitiesInit {
             BLOCK_ENTITIES.register("carriage_type_sign" , () ->
                     BlockEntityType.Builder.of(CarriageTypeSignEntity::new, BlockInit.TRAIN_BOTTOM_PANEL_BLOCK.get()).build(null));
 
+    //public static final RegistryObject<BlockEntityType<CarriageTypeSignEntity>> CARRIAGE_TYPE_SIGN2 =
+            //BLOCK_ENTITIES.register("carriage_type_sign2" , () ->
+                    //BlockEntityType.Builder.of(CarriageTypeSignEntity::new, BlockInit.PANEL_25B_ORIGINAL_BOTTOM.get()).build(null));
+
 
 //    public static final RegistryObject<BlockEntityType<MegaphoneBlockEntity>> MegaphoneBlockEntity =
 //            BLOCK_ENTITIES.register("megaphone_block_entity", () ->

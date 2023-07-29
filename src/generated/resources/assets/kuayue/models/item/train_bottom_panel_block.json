@@ -1,6 +1,7 @@
 {
-  "parent": "item/generated",
+  "parent": "kuayue:block/kuayue_panel",
   "textures": {
-    "layer0": "kuayue:item/ca_25t"
+    "0": "kuayue:block/panel_25b_original_bottom",
+    "particle": "kuayue:block/panel_25b_original_bottom"
   }
 }

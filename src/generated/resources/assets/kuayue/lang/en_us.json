@@ -108,6 +108,13 @@
   "block.kuayue.end_face_25t_original_rubber_upper": "Original Color 25K Carriage End Face Upper 3",
   "block.kuayue.end_face_25t_original_rubber_upper_2": "Original Color 25K Carriage End Face Upper 4",
 
+  "block.kuayue.ladder_25z_original": "Original Color 25Z Carriage ladder",
+  "block.kuayue.slab_25z_original_top": "Original Color 25Z Carriage floor",
+  "block.kuayue.end_face_25z_original": "Original Color 25Z Carriage end face",
+  "block.kuayue.panel_25z_original_bottom": "Original Color 25Z Carriage Bottom Panel",
+  "block.kuayue.panel_25z_original_mid": "Original Color 25Z Carriage Middle Panel",
+  "block.kuayue.panel_25z_original_top": "Original Color 25Z Carriage Upper Panel",
+
   "block.kuayue.direct_drainage_toilet_original_25t": "Original Color 25T Carriage Direct Drainage Toilet",
 
   "block.kuayue.original_25b_door": "Original Color 25B Door",
@@ -244,6 +251,7 @@
   "block.kuayue.hxd3d_cab_door": "HXD3D Cab Door",
 
   "block.kuayue.boiling_water_place": "Tea Stove",
+  "block.kuayue.train_bottom_panel_block": "universal train bottom panel",
   "tips.item": "--------------------------------all items above here-------------------------------------------",
   "item.kuayue.train_diet_1": "Train Meal A",
   "item.kuayue.ca_25t": "Dining Car CA25T",
@@ -254,6 +262,8 @@
   "item.kuayue.weathering_resistant_steel": "Weathering Resistant Steel",
   "item.kuayue.mineral_mixture": "Mineral Mixture",
   "item.kuayue.weathering_resistant_steel_board": "Weathering Resistant Steel Board",
+  "item.kuayue.brush": "brush",
+  "item.kuayue.colored_brush": "colored brush",
   "tips.tips": "--------------------------------all tips above here-------------------------------------------",
   "item.kuayue.train_diet_1.tooltip": "Guess who loves to eat it?",
   "block.kuayue.df11g_front2.tooltip": "§7I’am not A PIG!",
@@ -278,7 +288,13 @@
   "block.kuayue.panel_cr200j_marshalled_top.tooltip": "Gonna throw Up",
   "block.kuayue.panel_cr200j_marshalled_bottom.tooltip": "Gonna throw Up",
   "block.kuayue.slab_cr200j_marshalled_top.tooltip": "Gonna throw Up",
+
+  "item.kuayue.train_panel_item.tooltip": "Press \" Shift \" and right click at the same time to change cart panel type",
+  "item.kuayue.brush.tooltip": "create letters on the panel",
+  "item.kuayue.colored_brush.tooltip": "change the letter's color",
+
   "tips.group": "--------------------------------all groups above here-------------------------------------------",
+
   "itemGroup.item_group_main": "Kuayue | Structures",
   "itemGroup.item_group_diet": "Kuayue | Foods",
   "itemGroup.item_group_catenary": "Kuayue | Catenary",
@@ -318,8 +334,10 @@
   "container.kuayue.carriage_type_sign_edit_menu.type_chs": "type",
   "container.kuayue.carriage_type_sign_edit_menu.type_chs_py": "type in pinyin",
   "container.kuayue.carriage_type_sign_edit_menu.type_abbr": "pinyin reduction of cart type",
-  "container.kuayue.carriage_type_sign_edit_menu.sub_type": "subtype",
+  "container.kuayue.carriage_type_sign_edit_menu.sub_type": "type(series no.)",
   "container.kuayue.carriage_type_sign_edit_menu.no": "cart NO",
+  "container.kuayue.carriage_type_sign_edit_menu.confirm": "confirm",
+  "container.kuayue.carriage_type_sign_edit_menu.cancel": "cancel",
 
   "tips.patchouli": "--------------------------------all entity above here-------------------------------------------",
   "patchouli.kuayue.name":"跨越铁路车辆图鉴",
