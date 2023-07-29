@@ -6,7 +6,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.Nullable;
-import willow.train.kuayue.Entity.CarriageTypeSignEntity;
+import willow.train.kuayue.BlockEntity.CarriageTypeSignEntity;
 import willow.train.kuayue.init.MenuInit;
 
 public class CarriageTypeSignEditMenu extends AbstractContainerMenu {

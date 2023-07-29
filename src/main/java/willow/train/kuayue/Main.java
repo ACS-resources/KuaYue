@@ -1,5 +1,6 @@
 package willow.train.kuayue;
 
+import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageNoSignRenderer;
 import willow.train.kuayue.Network.KuayueNetworkHandler;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -24,7 +25,7 @@ import willow.train.kuayue.Client.CatenaryConnectionHandler;
 import willow.train.kuayue.Screen.CarriageTypeSignEditScreen;
 import willow.train.kuayue.effect.EffectInit;
 import willow.train.kuayue.init.*;
-import willow.train.kuayue.renderer.CarriageTypeSignRenderer;
+import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageTypeSignRenderer;
 import willow.train.kuayue.sounds.ModSounds;
 import willow.train.kuayue.tabs.*;
 
@@ -145,11 +146,9 @@ public class Main {
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_BSP25T_SEALED_SMALL_BLUE.get(), RenderType.translucent());
 
 
-
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25_SEALED.get(), RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(BlockInit.PANEL_25B_ORIGINAL_DOOR.get(), RenderType.translucent());
-        //ItemBlockRenderTypes.setRenderLayer(BlockInit.CARRIAGE_TYPE_SIGN_BLOCK.get(), RenderType.translucent());
 
 
         ItemBlockRenderTypes.setRenderLayer(BlockInit.PANEL_25G_ORIGINAL_WINDOW.get(), RenderType.translucent());
@@ -236,14 +235,9 @@ public class Main {
         ItemBlockRenderTypes.setRenderLayer(BlockInit.TactilePavingStraight.get(),RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.TactilePavingPin.get(),RenderType.translucent());
 
-        WoodType.register(WoodTypeInit.TrainPanel);
-        //BlockEntityRenderers.register(BlockEntitiesInit.TRAIN_BLOCK_ENTITES_BLOCK.get(), TrainPanelSignRenderer::new);
-        BlockEntityRenderers.register(BlockEntitiesInit.CARRIAGE_TYPE_SIGN.get(), CarriageTypeSignRenderer::new);
-        //BlockEntityRenderers.register(BlockEntitiesInit.PANEL_25G_TYPE_SIGN.get(), CarriageTypeSignRenderer::new);
-        //BlockEntityRenderers.register(BlockEntitiesInit.PANEL_25Z_TYPE_SIGN.get(), CarriageTypeSignRenderer::new);
-
-        MenuScreens.register(MenuInit.CARRIAGE_TYPE_SIGN_EDIT_MENU.get(), CarriageTypeSignEditScreen::new);
-        //test text
+        registerRenderers(fmlClientSetupEvent);
+        registerMenus(fmlClientSetupEvent);
+        registerWoodTypes(fmlClientSetupEvent);
     }
 
     protected void setup(final FMLCommonSetupEvent event) {
@@ -255,5 +249,34 @@ public class Main {
     }
     public static CreateRegistrate registrate() {
         return REGISTRATE;
+    }
+
+    /**
+     * 注册 GUI Menu 的方法，请把 Menu 统统堆这里
+     * @param fmlClientSetupEvent -
+     */
+    protected void registerMenus(final FMLClientSetupEvent fmlClientSetupEvent){
+        MenuScreens.register(MenuInit.CARRIAGE_TYPE_SIGN_EDIT_MENU.get(), CarriageTypeSignEditScreen::new);
+    }
+
+    /**
+     * 注册 Renderer 的方法，把 Renderer 堆这里
+     * BlockEntity 和 Renderer 的连接是在这里完成的
+     * BlockEntitiesInit.Carriage_TYPE_SIGN.get() 为 BlockEntity
+     * CarriageTypeSignRenderer::new 调用 Renderer 类的构造体
+     * @param fmlClientSetupEvent -
+     */
+
+    protected void registerRenderers(final FMLClientSetupEvent fmlClientSetupEvent){
+        BlockEntityRenderers.register(BlockEntitiesInit.CARRIAGE_TYPE_SIGN.get(), CarriageTypeSignRenderer::new);
+        BlockEntityRenderers.register(BlockEntitiesInit.CARRIAGE_NO_SIGN.get(), CarriageNoSignRenderer::new);
+    }
+
+    /**
+     * WoodTypes 等杂项的注册
+     * @param fmlClientSetupEvent -
+     */
+    protected void registerWoodTypes(final FMLClientSetupEvent fmlClientSetupEvent){
+        WoodType.register(WoodTypeInit.TrainPanel);
     }
 }

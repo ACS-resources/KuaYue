@@ -18,11 +18,14 @@ import willow.train.kuayue.Blocks.Locos.HXD3D.HXD3DPanelBlocks;
 import willow.train.kuayue.Blocks.Locos.PantographBlock;
 import willow.train.kuayue.Blocks.Locos.SS8PantographBlock;
 import willow.train.kuayue.Blocks.Locos.df11g.*;
+import willow.train.kuayue.Blocks.Signs.TrainNoBlock;
+import willow.train.kuayue.Blocks.Signs.TrainPanelBlock;
 import willow.train.kuayue.Blocks.Structure.*;
 import willow.train.kuayue.Blocks.TrainCarriage.*;
 import willow.train.kuayue.Blocks.catenary.*;
+import willow.train.kuayue.Items.EditablePanels.TrainNoItem;
 import willow.train.kuayue.Items.ToolTipsItemHelper;
-import willow.train.kuayue.Items.TrainBottomPanels.TrainPanelItem;
+import willow.train.kuayue.Items.EditablePanels.TrainPanelItem;
 import willow.train.kuayue.Main;
 
 import java.util.function.Function;
@@ -45,6 +48,11 @@ public class BlockInit {
             () -> new TrainPanelBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new TrainPanelItem(object.get(), new Item.Properties()));
+
+    public static final RegistryObject<TrainNoBlock> TRAIN_NO_BLOCK = register("train_no_block",
+            () -> new TrainNoBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
+            object -> () -> new TrainNoItem(object.get(), new Item.Properties()));
 
     public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25 = register("original_color_window_25",
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)

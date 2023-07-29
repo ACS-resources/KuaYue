@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import willow.train.kuayue.Blocks.TrainCarriage.TrainPanelBlock;
+import willow.train.kuayue.Blocks.Signs.TrainPanelBlock;
 
 public class DF11GEndFaceBlock extends TrainPanelBlock {
     protected static final VoxelShape SOUTH_AABB = Shapes.or(Block.box(-1, -16, 15, 17, -15, 24),

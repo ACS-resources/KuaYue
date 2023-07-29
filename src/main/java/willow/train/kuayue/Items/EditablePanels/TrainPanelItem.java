@@ -1,4 +1,4 @@
-package willow.train.kuayue.Items.TrainBottomPanels;
+package willow.train.kuayue.Items.EditablePanels;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;

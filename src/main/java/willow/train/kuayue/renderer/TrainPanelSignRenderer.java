@@ -30,6 +30,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import java.util.List;
 import java.util.Map;
 
+@Deprecated
 public class TrainPanelSignRenderer extends SignRenderer {
 
     private static final int LINE_HEIGHT = 10;

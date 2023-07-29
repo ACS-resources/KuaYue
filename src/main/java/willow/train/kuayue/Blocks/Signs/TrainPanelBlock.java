@@ -1,4 +1,4 @@
-package willow.train.kuayue.Blocks.TrainCarriage;
+package willow.train.kuayue.Blocks.Signs;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,7 +28,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 import willow.train.kuayue.Blocks.Signs.KuayueSignBlock;
-import willow.train.kuayue.Entity.CarriageTypeSignEntity;
+import willow.train.kuayue.BlockEntity.CarriageTypeSignEntity;
 import willow.train.kuayue.Util.PanelTypes;
 import willow.train.kuayue.init.BlockInit;
 import willow.train.kuayue.init.ItemInit;
@@ -41,7 +41,6 @@ public class TrainPanelBlock extends KuayueSignBlock {
     CarriageTypeSignEntity ctse;
 
 
-    private static VoxelShape shape;
     protected static final float AABB_OFFSET = 3.0F;
     protected static final VoxelShape SOUTH_AABB = Block.box(0, 0, 15, 16, 16, 17);
     protected static final VoxelShape EAST_AABB = Block.box(15, 0, 0, 17, 16, 16);

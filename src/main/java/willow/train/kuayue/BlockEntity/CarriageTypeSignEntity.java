@@ -1,7 +1,6 @@
-package willow.train.kuayue.Entity;
+package willow.train.kuayue.BlockEntity;
 
-import net.minecraft.world.level.block.Block;
-import willow.train.kuayue.Blocks.TrainCarriage.TrainPanelBlock;
+import willow.train.kuayue.Blocks.Signs.TrainPanelBlock;
 import willow.train.kuayue.Network.CarriageTypeSignUpdatePacket;
 import willow.train.kuayue.Network.KuayueNetworkHandler;
 import net.minecraft.core.BlockPos;

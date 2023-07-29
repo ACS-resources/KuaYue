@@ -5,7 +5,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.network.NetworkEvent;
-import willow.train.kuayue.Entity.CarriageTypeSignEntity;
+import willow.train.kuayue.BlockEntity.CarriageTypeSignEntity;
 
 public class CarriageTypeSignUpdatePacket implements KuayuePacket {
     private final BlockPos pos;

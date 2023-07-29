@@ -1,4 +1,4 @@
-package willow.train.kuayue.Items.TrainBottomPanels;
+package willow.train.kuayue.Items.EditablePanels;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -11,14 +11,15 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class Brush extends Item {
-    public Brush(Properties pProperties) {
+public class ColoredBrush extends Item {
+
+    public ColoredBrush(Properties pProperties) {
         super(pProperties);
     }
 
     @Override
     public void appendHoverText(@NotNull ItemStack p_41421_, @Nullable Level p_41422_, List<Component> tooltips, TooltipFlag p_41424_) {
-        tooltips.add(new TranslatableComponent("item.kuayue.brush.tooltip"));
+        tooltips.add(new TranslatableComponent("item.kuayue.colored_brush.tooltip"));
         super.appendHoverText(p_41421_, p_41422_, tooltips, p_41424_);
     }
 }

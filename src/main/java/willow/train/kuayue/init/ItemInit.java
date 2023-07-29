@@ -11,8 +11,8 @@ import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import willow.train.kuayue.Items.TrainBottomPanels.Brush;
-import willow.train.kuayue.Items.TrainBottomPanels.ColoredBrush;
+import willow.train.kuayue.Items.EditablePanels.Brush;
+import willow.train.kuayue.Items.EditablePanels.ColoredBrush;
 import willow.train.kuayue.Items.catenary.CatenaryScissors;
 import willow.train.kuayue.Items.catenary.GeneralCatenary;
 import willow.train.kuayue.Items.foods.Food1;
