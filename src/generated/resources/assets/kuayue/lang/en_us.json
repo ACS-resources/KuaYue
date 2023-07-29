@@ -339,6 +339,9 @@
   "container.kuayue.carriage_type_sign_edit_menu.confirm": "confirm",
   "container.kuayue.carriage_type_sign_edit_menu.cancel": "cancel",
 
+  "container.kuayue.carriage_no_sign_edit_menu.content": "content",
+  "container.kuayue.carriage_no_sign_edit_menu.hinge": "mirror",
+
   "tips.patchouli": "--------------------------------all entity above here-------------------------------------------",
   "patchouli.kuayue.name":"跨越铁路车辆图鉴",
   "patchouli.kuayue.landing_text": "放眼未来，走向世界"

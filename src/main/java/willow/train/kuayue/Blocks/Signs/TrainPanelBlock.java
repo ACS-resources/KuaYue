@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -37,6 +38,8 @@ public class TrainPanelBlock extends KuayueSignBlock {
 
     public static Integer UUID;
     public static final EnumProperty<DoorHingeSide> HINGE = BlockStateProperties.DOOR_HINGE;
+
+    public static final BooleanProperty MIRROR = BlockStateProperties.OPEN;
     public static final EnumProperty<PanelTypes> TYPE = EnumProperty.create("type", PanelTypes.class);
     CarriageTypeSignEntity ctse;
 
@@ -112,18 +115,18 @@ public class TrainPanelBlock extends KuayueSignBlock {
             CompoundTag tag = itemStack.getTagElement("type");
             if(tag == null) tag = itemStack.getOrCreateTagElement("type");
             if(tag.get("type") == null) tag.putString("type","p25b");
-            return super.getStateForPlacement(context).setValue(HINGE, this.getHinge(context)).setValue(TYPE, PanelTypes.encode(tag.get("type").getAsString()));
+            return super.getStateForPlacement(context).setValue(HINGE, this.getHinge(context)).setValue(TYPE, PanelTypes.encode(tag.get("type").getAsString())).setValue(MIRROR, Boolean.valueOf(false));
         }
         return super.getStateForPlacement(context).setValue(HINGE, this.getHinge(context)).setValue(TYPE, PanelTypes.P25G);
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext context, PanelTypes type, DoorHingeSide hinge) {
-        return super.getStateForPlacement(context).setValue(HINGE, hinge).setValue(TYPE, type);
+        return super.getStateForPlacement(context).setValue(HINGE, hinge).setValue(TYPE, type).setValue(MIRROR, Boolean.valueOf(false));
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         super.createBlockStateDefinition(pBuilder);
-        pBuilder.add(HINGE, TYPE);
+        pBuilder.add(HINGE, TYPE, MIRROR);
     }
 
     @Override
@@ -148,7 +151,6 @@ public class TrainPanelBlock extends KuayueSignBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
             if(pPlayer.getItemInHand(pHand).is(ItemInit.Brush.get())){
                 if(!pLevel.isClientSide){
-                    System.out.println(pPlayer.isShiftKeyDown());
                     NetworkHooks.openGui((ServerPlayer) pPlayer, (CarriageTypeSignEntity) pLevel.getBlockEntity(pPos), pPos);
                     ((CarriageTypeSignEntity) pLevel.getBlockEntity(pPos)).markUpdated();
                     return InteractionResult.PASS;
@@ -159,7 +161,6 @@ public class TrainPanelBlock extends KuayueSignBlock {
             if(!pLevel.isClientSide) {
                 CarriageTypeSignEntity entity = ((CarriageTypeSignEntity) pLevel.getBlockEntity(pPos));
                 int color = entity.nextColor();
-                System.out.println("next color: " + color);
                 entity.setColor(color);
                 entity.markUpdated();
             }

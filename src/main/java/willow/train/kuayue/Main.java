@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import willow.train.kuayue.Client.CatenaryConnectionHandler;
+import willow.train.kuayue.Screen.CarriageNoSignEditScreen;
 import willow.train.kuayue.Screen.CarriageTypeSignEditScreen;
 import willow.train.kuayue.effect.EffectInit;
 import willow.train.kuayue.init.*;
@@ -183,13 +184,14 @@ public class Main {
      */
     protected void registerMenus(final FMLClientSetupEvent fmlClientSetupEvent){
         MenuScreens.register(MenuInit.CARRIAGE_TYPE_SIGN_EDIT_MENU.get(), CarriageTypeSignEditScreen::new);
+        MenuScreens.register(MenuInit.CARRIAGE_NO_SIGN_EDIT_MENU.get(), CarriageNoSignEditScreen::new);
     }
 
     /**
      * 注册 Renderer 的方法，把 Renderer 堆这里
      * BlockEntity 和 Renderer 的连接是在这里完成的
      * BlockEntitiesInit.Carriage_TYPE_SIGN.get() 为 BlockEntity
-     * <p> 
+     * <p>
      * CarriageTypeSignRenderer::new 调用 Renderer 类的构造体
      * @param fmlClientSetupEvent -
      */

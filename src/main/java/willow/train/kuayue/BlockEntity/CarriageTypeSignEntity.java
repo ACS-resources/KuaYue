@@ -163,7 +163,6 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
         }
     }
 
-
     /**
      * 这个方法用于在区块更新时调用
      * 在ClientSide和ServerSide间同步数据

@@ -22,6 +22,7 @@ public class KuayueNetworkHandler {
         INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(Main.MOD_ID, "main"), () -> "1.0", s -> true, s -> true);
 
         register(CarriageTypeSignUpdatePacket.class, CarriageTypeSignUpdatePacket::new);
+        register(CarriageNoSignUpdatePacket.class, CarriageNoSignUpdatePacket::new);
     }
 
     private static <T extends KuayuePacket> void register(Class<T> type, Function<FriendlyByteBuf, T> decoder){

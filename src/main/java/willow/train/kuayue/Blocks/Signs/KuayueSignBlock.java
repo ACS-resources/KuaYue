@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 public class KuayueSignBlock extends BaseEntityBlock {
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-    public static final BooleanProperty MIRROR = BlockStateProperties.OPEN;
+
 
     public KuayueSignBlock(Properties p_49795_) {
         super(p_49795_);
@@ -35,11 +35,11 @@ public class KuayueSignBlock extends BaseEntityBlock {
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING,context.getHorizontalDirection()).setValue(MIRROR, Boolean.valueOf(false));
+        return this.defaultBlockState().setValue(FACING,context.getHorizontalDirection());
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_54370_) {
-        p_54370_.add(FACING, MIRROR);
+        p_54370_.add(FACING);
     }
 
     @Override
