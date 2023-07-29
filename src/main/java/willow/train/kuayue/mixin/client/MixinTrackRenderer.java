@@ -22,9 +22,14 @@ import willow.train.kuayue.mixin_interfaces.IStandardBezier;
 public class MixinTrackRenderer {
 
     @Inject(method = "renderBezierTurn",
-            at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/trains/track/TrackRenderer;renderGirder(Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/BezierConnection;Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/core/BlockPos;)V", shift = At.Shift.AFTER, remap = true),
+            at = @At(value = "INVOKE",
+                    target = "Lcom/simibubi/create/content/trains/track/TrackRenderer;" +
+                            "renderGirder(Lnet/minecraft/world/level/Level;" +
+                            "Lcom/simibubi/create/content/trains/track/BezierConnection;Lcom/mojang/blaze3d/vertex/PoseStack;" +
+                            "Lcom/mojang/blaze3d/vertex/VertexConsumer;" +
+                            "Lnet/minecraft/core/BlockPos;)V", shift = At.Shift.AFTER, remap = false),
             cancellable = true)
-    private static void renderMonorailMaybe(Level level, BezierConnection bc, PoseStack ms, VertexConsumer vb, CallbackInfo ci) {
+    private static void renderStandardMaybe(Level level, BezierConnection bc, PoseStack ms, VertexConsumer vb, CallbackInfo ci) {
 
         String trackMaterialId = String.valueOf(bc.getMaterial().id);
 
@@ -46,19 +51,19 @@ public class MixinTrackRenderer {
             IStandardBezier.StandardAngles segment = standards[i];
             int light = LevelRenderer.getLightColor(level, segment.lightPosition.offset(tePosition));
 
-            PoseStack.Pose beamTransform = segment.tieTransform;
+            PoseStack.Pose tieTransform = segment.tieTransform;
 
             CachedBufferer.partial(KYBlockPartials.KY_TRACK_TIE, air)
-                    .mulPose(beamTransform.pose())
-                    .mulNormal(beamTransform.normal())
+                    .mulPose(tieTransform.pose())
+                    .mulNormal(tieTransform.normal())
                     .light(light)
                     .renderInto(ms, vb);
 
-            for (boolean top : Iterate.trueAndFalse) {
-                PoseStack.Pose beamCapTransform = segment.railTransforms.get(top);
-                CachedBufferer.partial(top ? KYBlockPartials.KY_TRACK_SEGMENT_RIGHT : KYBlockPartials.KY_TRACK_SEGMENT_LEFT, air)
-                        .mulPose(beamCapTransform.pose())
-                        .mulNormal(beamCapTransform.normal())
+            for (boolean first : Iterate.trueAndFalse) {
+                PoseStack.Pose railTransforms = segment.railTransforms.get(first);
+                CachedBufferer.partial(first ? KYBlockPartials.KY_TRACK_SEGMENT_RIGHT : KYBlockPartials.KY_TRACK_SEGMENT_LEFT, air)
+                        .mulPose(railTransforms.pose())
+                        .mulNormal(railTransforms.normal())
                         .light(light)
                         .renderInto(ms, vb);
             }

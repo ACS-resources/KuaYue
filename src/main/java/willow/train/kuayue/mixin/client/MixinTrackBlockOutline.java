@@ -24,7 +24,7 @@ public class MixinTrackBlockOutline {
             at = @At(
                     value = "INVOKE",
                     target = "Lcom/simibubi/create/content/trains/track/BezierTrackPointLocation;<init>(Lnet/minecraft/core/BlockPos;I)V",
-                    remap = true
+                    remap = false
             )
     )
     private static BezierConnection railway$grabResultStandardState(BezierConnection bc) {
@@ -37,7 +37,7 @@ public class MixinTrackBlockOutline {
             at = @At(
                     value = "INVOKE",
                     target = "Lcom/simibubi/create/content/trains/track/TrackBlockOutline;renderShape(Lnet/minecraft/world/phys/shapes/VoxelShape;Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Ljava/lang/Boolean;)V",
-                    remap = true
+                    remap = false
             )
     )
     private static VoxelShape railway$renderCurvedStandardShape(VoxelShape shape) {
