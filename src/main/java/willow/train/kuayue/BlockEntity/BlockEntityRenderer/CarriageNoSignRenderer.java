@@ -73,6 +73,7 @@ public class CarriageNoSignRenderer implements BlockEntityRenderer<CarriageNoSig
         }else {
             pPoseStack.translate(- 0.03f, -0.55f, 0.0f);
         }
+
         //这句话是渲染模型用的
         this.model.renderToBuffer(pPoseStack, pBufferSource.getBuffer(RenderType.entitySolid(CarriageNoSignModel.CARRIAGE_NO_SIGN_MODEL_LAYER.getModel())), pPackedLight, pPackedOverlay);
         if(isLeftSide) {

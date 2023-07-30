@@ -23,6 +23,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 import willow.train.kuayue.BlockEntity.CarriageNoSignEntity;
@@ -118,14 +119,29 @@ public class TrainNoBlock extends KuayueSignBlock {
         }
     }
 
+    /**
+     * 关于 use 方法的一些注意事项：如果要使玩家右键时方块实体直接响应，不需要判断是否为clientSide，就像下例中的 mirror() 的使用
+     * @param pState 方块状态
+     * @param pLevel 世界
+     * @param pPos 方块位置
+     * @param pPlayer 操作玩家
+     * @param pHand 操作手
+     * @param pHit 点击事件
+     * @return 交互结果
+     */
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
-        if (pLevel.isClientSide) return InteractionResult.SUCCESS;
+        CarriageNoSignEntity entity = ((CarriageNoSignEntity)pLevel.getBlockEntity(pPos));
         if (pPlayer.getItemInHand(pHand).is(ItemInit.ColoredBrush.get())) {
-            CarriageNoSignEntity entity = ((CarriageNoSignEntity)pLevel.getBlockEntity(pPos));
+            if (pLevel.isClientSide) return InteractionResult.SUCCESS;
             NetworkHooks.openGui((ServerPlayer) pPlayer, entity, pPos);
             entity.markUpdated();
+            return InteractionResult.SUCCESS;
+        } else if (pPlayer.getItemInHand(pHand).is(ItemStack.EMPTY.getItem())) {
+            entity.mirror();
+            entity.setChanged();
+            return InteractionResult.sidedSuccess(pLevel.isClientSide);
         }
         return InteractionResult.SUCCESS;
     }
@@ -147,4 +163,6 @@ public class TrainNoBlock extends KuayueSignBlock {
             default -> {return BlockInit.PANEL_25B_ORIGINAL_TOP.get().asItem().getDefaultInstance();}
         }
     }
+
+
 }

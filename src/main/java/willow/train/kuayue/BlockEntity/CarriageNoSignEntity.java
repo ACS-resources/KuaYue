@@ -12,13 +12,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import willow.train.kuayue.Client.CarriageNoSignEditMenu;
 import willow.train.kuayue.Network.CarriageNoSignUpdatePacket;
 import willow.train.kuayue.Network.KuayueNetworkHandler;
-import willow.train.kuayue.Screen.CarriageNoSignEditScreen;
 import willow.train.kuayue.init.BlockEntitiesInit;
 
 import java.util.function.Function;
@@ -52,6 +50,11 @@ public class CarriageNoSignEntity extends BlockEntity implements MenuProvider {
 
     public boolean isLeftSide() {
         return isLeftSide;
+    }
+
+    public void mirror(){
+        this.isLeftSide = !this.isLeftSide;
+        //this.markUpdated();
     }
 
     public int getColor(){return this.color;}
@@ -123,4 +126,6 @@ public class CarriageNoSignEntity extends BlockEntity implements MenuProvider {
         cnses.setCtse(this);
         return cnses;
     }
+
+
 }
