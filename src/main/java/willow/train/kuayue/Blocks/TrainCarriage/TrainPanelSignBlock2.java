@@ -11,6 +11,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import willow.train.kuayue.Blocks.Entities.TrainPanelSignBlockEntities;
 
+@Deprecated
 public class TrainPanelSignBlock2 extends StandingSignBlock {
 
     public TrainPanelSignBlock2(Properties p_56990_, WoodType p_56991_) {

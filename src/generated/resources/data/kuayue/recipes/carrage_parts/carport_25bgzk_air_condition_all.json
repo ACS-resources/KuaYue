@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ww",
+        "sww"
+    ],
+    "key": {
+        "s": {
+            "item": "create:propeller"
+        },
+        "w": {
+            "item": "kuayue:weathering_resistant_steel_board"
+        }
+    },
+    "result": {
+        "item": " kuayue:carport_25bgzk_air_condition_all",
+        "count": 2
+    }
+}

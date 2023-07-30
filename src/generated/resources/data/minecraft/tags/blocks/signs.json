@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "kuayue:carriage_type_sign_block",
+    "kuayue:carriage_type_sign",
+    "kuayue:train_bottom_panel_block"
+  ]
+}

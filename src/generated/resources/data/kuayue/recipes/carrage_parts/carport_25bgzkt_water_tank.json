@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ww",
+        "sww"
+    ],
+    "key": {
+        "s": {
+            "item": "create:fluid_tank"
+        },
+        "w": {
+            "item": "kuayue:weathering_resistant_steel_board"
+        }
+    },
+    "result": {
+        "item": "kuayue:carport_25bgzkt_water_tank",
+        "count": 2
+    }
+}

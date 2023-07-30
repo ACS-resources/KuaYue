@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "kuayue:carport_25bgzk_air_condition_all"
+    }
+  ],
+  "result": {
+    "item": "kuayue:carport_25bgzk_air_condition_side"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "kuayue:green_fence_45"
+    }
+  ],
+  "result": {
+    "item": "kuayue:green_fence"
+  }
+}

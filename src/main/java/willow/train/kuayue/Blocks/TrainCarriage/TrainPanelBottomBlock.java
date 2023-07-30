@@ -9,6 +9,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import willow.train.kuayue.Util.HorizontalBlockBase;
 
+@Deprecated
 public class TrainPanelBottomBlock extends HorizontalBlockBase {
     private static VoxelShape shape;
     protected static final float AABB_OFFSET = 3.0F;
