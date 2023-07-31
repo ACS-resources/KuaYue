@@ -5,9 +5,9 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import willow.train.kuayue.init.BlockInit;
 
-public class CatenaryTab extends CreativeModeTab {
+public class CatenaryTab extends TabBuilder {
     public CatenaryTab(String modId) {
-        super("item_group_catenary");
+        super(modId, "item_group_catenary");
     }
 
     @Override

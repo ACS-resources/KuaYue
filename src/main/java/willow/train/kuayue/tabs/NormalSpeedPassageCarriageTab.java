@@ -5,9 +5,9 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import willow.train.kuayue.init.ItemInit;
 
-public class NormalSpeedPassageCarriageTab extends CreativeModeTab {
+public class NormalSpeedPassageCarriageTab extends TabBuilder {
     public NormalSpeedPassageCarriageTab(String modId) {
-        super("item_group_normal_speed_passage_carriage");
+        super(modId, "item_group_normal_speed_passage_carriage");
     }
 
     @Override

@@ -18,14 +18,13 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import javax.annotation.Nullable;
 
 public class KuayueSignBlock extends BaseEntityBlock {
-
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-
 
     public KuayueSignBlock(Properties p_49795_) {
         super(p_49795_);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
+
     public BlockState rotate(BlockState p_54360_, Rotation p_54361_) {
         return p_54360_.setValue(FACING, p_54361_.rotate(p_54360_.getValue(FACING)));
     }
@@ -45,12 +44,11 @@ public class KuayueSignBlock extends BaseEntityBlock {
     @Override
     public MenuProvider getMenuProvider(BlockState pState, Level pLevel, BlockPos pPos) {
         BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-        return blockentity instanceof MenuProvider ? (MenuProvider)blockentity : null;
+        return blockentity instanceof MenuProvider provider ? provider : null;
     }
 
-
-
     @Nullable
+    @SuppressWarnings("unchecked")
     protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTickerHelper(BlockEntityType<A> pServerType, BlockEntityType<E> pClientType, BlockEntityTicker<? super E> pTicker) {
         return pClientType == pServerType ? (BlockEntityTicker<A>)pTicker : null;
     }

@@ -1,13 +1,14 @@
 package willow.train.kuayue.init;
 
 import com.google.common.base.Supplier;
+
+import io.github.fabricators_of_create.porting_lib.util.LazyRegistrar;
+import io.github.fabricators_of_create.porting_lib.util.RegistryObject;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.core.Registry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,10 +21,11 @@ import willow.train.kuayue.Items.resources.*;
 import willow.train.kuayue.Main;
 import willow.train.kuayue.effect.EffectInit;
 
+@SuppressWarnings("unused")
 public class ItemInit {
     public static final Logger LOGGER = LoggerFactory.getLogger("KuaYue");
     //注册机
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
+    public static final LazyRegistrar<Item> ITEMS = LazyRegistrar.create(Registry.ITEM,
             Main.MOD_ID);
     public static final RegistryObject<Item> CA_25T = register("ca_25t",
             () -> new Item(new Item.Properties()));
@@ -37,9 +39,9 @@ public class ItemInit {
     public static final RegistryObject<Item> TRAIN_DIET_1 = register("train_diet_1",
             () -> new Food1(new Item.Properties().tab(Main.KUAYUE_DIET).food(
                     new FoodProperties.Builder().nutrition(4).saturationMod(2.5F).
-                    effect(() -> new MobEffectInstance(MobEffects.HUNGER, 1000, 0,false,true), 1.0F).
-                    effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 1000, 0,false,true), 1.0F).
-                    effect(() -> new MobEffectInstance(EffectInit.NOODLE_SMELL.get(), 2000, 0,false,true), 1.0F).
+                    effect(new MobEffectInstance(MobEffects.HUNGER, 1000, 0,false,true), 1.0F).
+                    effect(new MobEffectInstance(MobEffects.CONFUSION, 1000, 0,false,true), 1.0F).
+                    effect(new MobEffectInstance(EffectInit.NOODLE_SMELL.get(), 2000, 0,false,true), 1.0F).
                     alwaysEat().alwaysEat().build())));
 
     //接触网

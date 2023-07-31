@@ -1,15 +1,16 @@
 package willow.train.kuayue.init;
 
 import com.google.common.base.Supplier;
+
+import io.github.fabricators_of_create.porting_lib.util.LazyRegistrar;
+import io.github.fabricators_of_create.porting_lib.util.RegistryObject;
+import net.minecraft.core.Registry;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import willow.train.kuayue.Blocks.*;
@@ -33,11 +34,9 @@ import java.util.function.Function;
 public class BlockInit {
     public static final Logger LOGGER = LoggerFactory.getLogger("KuaYue");
     //注册机
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+    public static final LazyRegistrar<Block> BLOCKS = LazyRegistrar.create(Registry.BLOCK,
             Main.MOD_ID);
-    public static final DeferredRegister<Item> ITEMS = ItemInit.ITEMS;
-
-
+    public static final LazyRegistrar<Item> ITEMS = ItemInit.ITEMS;
 
     public static final RegistryObject<Block> CR_LOGO = register("cr_logo",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
@@ -205,7 +204,7 @@ public class BlockInit {
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
     //original_color_window_25g_wide
-public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25G_WIDE = register("original_color_window_25g_wide",
+    public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WINDOW_25G_WIDE = register("original_color_window_25g_wide",
         () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)
                 .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),1),
         object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
@@ -280,10 +279,7 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-
-
     //25K
-
     public static final RegistryObject<TrainDoorBlock> PANEL_25K_ORIGINAL_DOOR = register("original_25k_door",
             () -> new TrainDoorBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.WATER).strength(3.0f)
                     .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()),
@@ -323,6 +319,7 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
             () -> new TrainOpenableWindowBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion(),0),
             object -> () -> new ToolTipsItemHelper(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
+
     public static final RegistryObject<OrdinaryTrainPanelBlock> ORIGINAL_COLOR_WINDOW_25K_SEALED_SMALL = register("original_color_window_25k_sealed_small",
             () -> new OrdinaryTrainPanelBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()),
@@ -354,6 +351,7 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
             () -> new CarPortBlockBGKZ(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
+
     public static final RegistryObject<HXD3DPanelBlocks>VENTIDUCT_25B = register("ventiduct_25b",
             () -> new HXD3DPanelBlocks(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(), 2),
@@ -365,13 +363,14 @@ public static final RegistryObject<TrainOpenableWindowBlock> ORIGINAL_COLOR_WIND
             () -> new HXD3DPanelBlocks(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(), 2),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
+
     public static final RegistryObject<HXD3DPanelBlocks> CARPORT_BSP25T_CENTRE = register("carport_bsp25t_centre",
             () -> new HXD3DPanelBlocks(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(), 2),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
-//carport_25bgzkt_water_tank
-public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK = register("carport_25bgzkt_water_tank",
+    //carport_25bgzkt_water_tank
+    public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK = register("carport_25bgzkt_water_tank",
         () -> new HXD3DPanelBlocks(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                 .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(), 2),
         object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
@@ -766,7 +765,7 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_MAIN)));
     //clay_stairs
     public static final RegistryObject<StairBlock> CLAY_STAIRS = register("clay_stairs",
-            () -> new StairBlock(Blocks.CLAY::defaultBlockState, BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NONE).strength(3.0f)
+            () -> new StairBlock(Blocks.CLAY.defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_MAIN)));
     public static final RegistryObject<GreenInsulationFenceBlock> GREEN_FENCE = register("green_fence",
@@ -1166,7 +1165,7 @@ public static final RegistryObject<DF11GCowcatcherBlock> DF11G_COWCATCHER = regi
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_LOCOS)));
 //df11g_panel_cr
-public static final RegistryObject<DF11GPanel3Wide> DF11G_PANEL_CR = register("df11g_panel_cr",
+    public static final RegistryObject<DF11GPanel3Wide> DF11G_PANEL_CR = register("df11g_panel_cr",
         () -> new DF11GPanel3Wide(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.NONE).strength(3.0f)
                 .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion(),3),
         object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_LOCOS)));
@@ -1220,7 +1219,6 @@ public static final RegistryObject<DF11GPanel3Wide> DF11G_PANEL_CR = register("d
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops().noOcclusion()),
             object -> () -> new BlockItem(object.get(), new Item.Properties().tab(Main.KUAYUE_LOCOS)));
 
-
     public static final RegistryObject<PanelBlockHalf> BOILING_WATER_PLACE = register("boiling_water_place",
             () -> new PanelBlockHalf(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NONE).strength(3.0f)
                     .sound(SoundType.STONE).requiresCorrectToolForDrops()),
@@ -1233,7 +1231,6 @@ public static final RegistryObject<DF11GPanel3Wide> DF11G_PANEL_CR = register("d
 
     }
 
-
     private static <T extends Block> RegistryObject<T> register(final String name, final Supplier<? extends T> block,
                                                                 Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> obj = registerBlock(name, block);
@@ -1241,6 +1238,7 @@ public static final RegistryObject<DF11GPanel3Wide> DF11G_PANEL_CR = register("d
         //LOGGER.info("rigister block:"+name);
         return obj;
     }
+
     private static <T extends Block> RegistryObject<T> register2(final String name, final Supplier<? extends T> block,
                                                                 Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> obj = registerBlock(name, block);
@@ -1248,9 +1246,9 @@ public static final RegistryObject<DF11GPanel3Wide> DF11G_PANEL_CR = register("d
         //LOGGER.info("rigister block:"+name);
         return obj;
     }
+
+    @SuppressWarnings("unused")
     private static <T extends Block> RegistryObject<T> registerBlockWithoutBlockItem(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
     }
-
 }
-

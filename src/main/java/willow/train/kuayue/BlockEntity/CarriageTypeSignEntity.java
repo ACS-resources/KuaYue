@@ -3,6 +3,7 @@ package willow.train.kuayue.BlockEntity;
 import willow.train.kuayue.Blocks.Signs.TrainPanelBlock;
 import willow.train.kuayue.Network.CarriageTypeSignUpdatePacket;
 import willow.train.kuayue.Network.KuayueNetworkHandler;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -24,7 +25,7 @@ import willow.train.kuayue.init.BlockEntitiesInit;
 
 import java.util.function.Function;
 
-public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider {
+public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider, ExtendedScreenHandlerFactory {
     CarriageTypeSignEditMenu ctsem;
     private FormattedCharSequence[] renderMessages;
     public static final int YELLOW = 14725893, YELLOW2 = 16776960, RED = 15216648, BLUE = 22220, BLUE2 = 45263,BLUE3 = 468326, BLACK = 789516;
@@ -101,7 +102,6 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
      */
     @Override
     protected void saveAdditional(CompoundTag pTag) {
-
         for(int i = 0; i < 5; i++) {
             pTag.putString(name[i], this.messages[i].getString());
         }
@@ -210,5 +210,10 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
             case BLACK -> {return YELLOW;}
             default -> {return YELLOW;}
         }
+    }
+
+    @Override
+    public void writeScreenOpeningData(ServerPlayer serverPlayer) {
+        
     }
 }

@@ -6,9 +6,9 @@ import org.jetbrains.annotations.NotNull;
 import willow.train.kuayue.init.BlockInit;
 import willow.train.kuayue.init.ItemInit;
 
-public class DietTab extends CreativeModeTab {
+public class DietTab extends TabBuilder {
     public DietTab(String modId) {
-        super("item_group_diet");
+        super(modId, "item_group_diet");
     }
 
     @Override

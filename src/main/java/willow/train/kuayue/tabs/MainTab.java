@@ -5,9 +5,9 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import willow.train.kuayue.init.BlockInit;
 
-public class MainTab extends CreativeModeTab {
+public class MainTab extends TabBuilder {
     public MainTab(String modId) {
-        super("item_group_main");
+        super(modId, "item_group_main");
     }
 
     @Override

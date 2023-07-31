@@ -1,19 +1,14 @@
 package willow.train.kuayue.Blocks.TrainCarriage;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.MinecartItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,23 +16,13 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.items.ItemHandlerHelper;
-import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
-import willow.train.kuayue.BlockEntity.CarriageNoSignEntity;
-import willow.train.kuayue.BlockEntity.CarriageTypeSignEntity;
-import willow.train.kuayue.Blocks.Signs.TrainNoBlock;
-import willow.train.kuayue.Blocks.Signs.TrainPanelBlock;
-import willow.train.kuayue.Util.PanelTypes;
 import willow.train.kuayue.Util.SideMirrorBlock;
 import willow.train.kuayue.Util.UpperPanelTypes;
 import willow.train.kuayue.init.BlockInit;
-import willow.train.kuayue.init.ItemInit;
-import willow.train.kuayue.init.MenuInit;
 
 public class OrdinaryTrainUpperPanelBlock extends SideMirrorBlock {
-
+    @SuppressWarnings("unused")
     private static VoxelShape shape;
     protected static final float AABB_OFFSET = 3.0F;
     protected static final VoxelShape SOUTH_AABB = Block.box(0.0D, 0.0D, 15, 16, 16, 16);
@@ -69,11 +54,11 @@ public class OrdinaryTrainUpperPanelBlock extends SideMirrorBlock {
         if(pLevel.isClientSide) return InteractionResult.SUCCESS;
         if(pPlayer.getItemInHand(pHand).is(Items.PAPER.asItem())) {
             onPaper(pLevel, pPlayer, pHand, pHit, pState);
-            if(pLevel.getBlockState(pPos).getBlock().equals(BlockInit.TRAIN_NO_BLOCK)){
+            // if(pLevel.getBlockState(pPos).getBlock().equals(BlockInit.TRAIN_NO_BLOCK)){
                 //NetworkHooks.openGui((ServerPlayer) pPlayer,(CarriageNoSignEntity) pLevel.getBlockEntity(pPos), pPos);
                 //((TrainPanelBlock)pLevel.getBlockState(pPos).getBlock()).use(pLevel.getBlockState(pPos), pLevel, pPos, pPlayer, pHand, pHit);
                 //((CarriageNoSignEntity)pLevel.getBlockEntity(pPos)).markUpdated();
-            }
+            // }
         }
         return InteractionResult.SUCCESS;
     }

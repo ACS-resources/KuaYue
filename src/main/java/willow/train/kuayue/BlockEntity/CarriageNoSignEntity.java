@@ -21,7 +21,6 @@ import willow.train.kuayue.init.BlockEntitiesInit;
 
 import java.util.function.Function;
 
-
 /**
  * Entity 和 Block 的连接在 init/BlockEntitiesInit 里 (注册的时候就写明)
  * Entity 和 Renderer 的连接在 Main 下
@@ -30,7 +29,6 @@ import java.util.function.Function;
  * 这个 Entity 对应的 Block 是 TrainNoBlock ，在 Blocks/Signs 包内
  */
 public class CarriageNoSignEntity extends BlockEntity implements MenuProvider {
-
     private int color = CarriageTypeSignEntity.RED;
 
     private boolean isLeftSide = true;
@@ -126,6 +124,4 @@ public class CarriageNoSignEntity extends BlockEntity implements MenuProvider {
         cnses.setCtse(this);
         return cnses;
     }
-
-
 }

@@ -1,18 +1,17 @@
 package willow.train.kuayue.init;
 
+import io.github.fabricators_of_create.porting_lib.util.LazyRegistrar;
+import io.github.fabricators_of_create.porting_lib.util.RegistryObject;
+import net.minecraft.core.Registry;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import willow.train.kuayue.BlockEntity.CarriageNoSignEntity;
 import willow.train.kuayue.Blocks.Entities.MegaphoneBlockEntity;
 import willow.train.kuayue.BlockEntity.CarriageTypeSignEntity;
 import willow.train.kuayue.Main;
 
 public class BlockEntitiesInit {
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
-            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, Main.MOD_ID);
+    public static final LazyRegistrar<BlockEntityType<?>> BLOCK_ENTITIES =
+            LazyRegistrar.create(Registry.BLOCK_ENTITY_TYPE, Main.MOD_ID);
 
 //    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES,
 //            Main.MOD_ID);
@@ -41,7 +40,7 @@ public class BlockEntitiesInit {
 //    public static final RegistryObject<BlockEntityType<MegaphoneBlockEntity>> MegaphoneBlockEntity =
 //            BLOCK_ENTITIES.register("megaphone_block_entity", () ->
 //            BlockEntityType.Builder.of(MegaphoneBlockEntity::new, BlockInit.MEGAPHONE.get()).build());
-    public static void register(IEventBus eventBus){
-        BLOCK_ENTITIES.register(eventBus);
+    public static void register(){
+        BLOCK_ENTITIES.register();
     }
 }

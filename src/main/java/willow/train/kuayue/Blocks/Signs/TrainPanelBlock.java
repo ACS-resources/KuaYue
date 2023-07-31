@@ -27,7 +27,6 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.network.NetworkHooks;
 import willow.train.kuayue.Blocks.Signs.KuayueSignBlock;
 import willow.train.kuayue.BlockEntity.CarriageTypeSignEntity;
 import willow.train.kuayue.Util.PanelTypes;
@@ -35,7 +34,6 @@ import willow.train.kuayue.init.BlockInit;
 import willow.train.kuayue.init.ItemInit;
 
 public class TrainPanelBlock extends KuayueSignBlock {
-
     public static Integer UUID;
     public static final EnumProperty<DoorHingeSide> HINGE = BlockStateProperties.DOOR_HINGE;
 
@@ -149,12 +147,12 @@ public class TrainPanelBlock extends KuayueSignBlock {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-            if(pPlayer.getItemInHand(pHand).is(ItemInit.Brush.get())){
-                if(!pLevel.isClientSide){
-                    NetworkHooks.openGui((ServerPlayer) pPlayer, (CarriageTypeSignEntity) pLevel.getBlockEntity(pPos), pPos);
-                    ((CarriageTypeSignEntity) pLevel.getBlockEntity(pPos)).markUpdated();
-                    return InteractionResult.PASS;
-                }
+        if (pPlayer.getItemInHand(pHand).is(ItemInit.Brush.get())) {
+            if (!pLevel.isClientSide) {
+                pPlayer.openMenu(pState.getMenuProvider(pLevel, pPos));
+                ((CarriageTypeSignEntity) pLevel.getBlockEntity(pPos)).markUpdated();
+                return InteractionResult.PASS;
+            }
             return InteractionResult.PASS;
         }
         if(pPlayer.getItemInHand(pHand).is(ItemInit.ColoredBrush.get())) {
@@ -198,9 +196,9 @@ public class TrainPanelBlock extends KuayueSignBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
         PanelTypes types = state.getValue(TYPE);
-        switch (types){
+        switch (types) {
             case P25B -> {return BlockInit.PANEL_25B_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
             case P25G -> {return BlockInit.PANEL_25G_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
             case P25Z -> {return BlockInit.PANEL_25Z_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}

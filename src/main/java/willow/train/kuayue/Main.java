@@ -1,23 +1,20 @@
 package willow.train.kuayue;
 
 import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageNoSignRenderer;
-import willow.train.kuayue.Network.KuayueNetworkHandler;
 import com.simibubi.create.foundation.data.CreateRegistrate;
+
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,84 +27,74 @@ import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageTypeSignRende
 import willow.train.kuayue.sounds.ModSounds;
 import willow.train.kuayue.tabs.*;
 
-
-//import static willow.train.kuayue.init.BlockEntitiesInit.CARRIAGE_TYPE_SIGN;
-
-@Mod("kuayue")
-public class Main {
+public class Main implements ModInitializer, ClientModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("KuaYue");
     public static final String MOD_ID = "kuayue";
 
     private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
     public static CatenaryConnectionHandler CATENARYCONNECTIONHANDLER = new CatenaryConnectionHandler();
-    public static final MainTab KUAYUE_MAIN = new MainTab(MOD_ID) {
+    public static final CreativeModeTab KUAYUE_MAIN = new MainTab(MOD_ID) {
         @Override
-        @OnlyIn(Dist.CLIENT)
+        @Environment(EnvType.CLIENT)
         public @NotNull ItemStack makeIcon() {
             return new ItemStack(BlockInit.CR_LOGO.get());
         }
-    };
-    public static final LocosTab KUAYUE_LOCOS = new LocosTab(MOD_ID) {
+    }
+    .into();
+    
+    public static final CreativeModeTab KUAYUE_LOCOS = new LocosTab(MOD_ID) {
         @Override
-        @OnlyIn(Dist.CLIENT)
+        @Environment(EnvType.CLIENT)
         public @NotNull ItemStack makeIcon() { return new ItemStack(ItemInit.LOCO_LOGOS.get());}
-    };
-    public static final NormalSpeedPassageCarriageTab KUAYUE_NormalSpeedPassageCarriageTab = new NormalSpeedPassageCarriageTab(MOD_ID) {
+    }
+    .into();
+    
+    public static final CreativeModeTab KUAYUE_NormalSpeedPassageCarriageTab = new NormalSpeedPassageCarriageTab(MOD_ID) {
         @Override
-        @OnlyIn(Dist.CLIENT)
+        @Environment(EnvType.CLIENT)
         public @NotNull ItemStack makeIcon() { return new ItemStack(ItemInit.SERIES_25_LOGOS.get());}
-    };
-    public static final DietTab KUAYUE_DIET = new DietTab(MOD_ID) {
+    }
+    .into();
+
+    public static final CreativeModeTab KUAYUE_DIET = new DietTab(MOD_ID) {
         @Override
-        @OnlyIn(Dist.CLIENT)
+        @Environment(EnvType.CLIENT)
         public @NotNull ItemStack makeIcon() {
             return new ItemStack(ItemInit.CA_25T.get());
         }
-    };
-    public static final CatenaryTab KUAYUE_CATENARY = new CatenaryTab(MOD_ID) {
+    }
+    .into();
+
+    public static final CreativeModeTab KUAYUE_CATENARY = new CatenaryTab(MOD_ID) {
         @Override
-        @OnlyIn(Dist.CLIENT)
+        @Environment(EnvType.CLIENT)
         public @NotNull ItemStack makeIcon() { return new ItemStack(BlockInit.Catenary_Grid_C1.get());}
-    };
+    }
+    .into();
 
-//    public static final GroundTab KUAYUE_GROUND = new GroundTab(MOD_ID) {
-//        @Override
-//        @OnlyIn(Dist.CLIENT)
-//        public @NotNull ItemStack makeIcon() { return new ItemStack(BlockInit.Station_Entrance_Signal.get());}
-//    };
-
-
-    public Main() {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        //添加物品，方块的初始化信息
-        ItemInit.ITEMS.register(bus);
-
-        BlockInit.BLOCKS.register(bus);
-
-        BlockEntitiesInit.BLOCK_ENTITIES.register(bus);
-
-        EntityInit.ENTITY_TYPES.register(bus);
-
-        ModSounds.register(bus);
-
-        EffectInit.rigister(bus);
-
-        MenuInit.register(bus);
+    public void onInitialize() {
+        BlockInit.BLOCKS.register();
+        ItemInit.ITEMS.register();
+        BlockEntitiesInit.BLOCK_ENTITIES.register();
+        EntityInit.ENTITY_TYPES.register();
+        ModSounds.register();
+        EffectInit.register();
+        MenuInit.register();
 
         KYCreateBlock.register();
         KYCreateEntities.register();
         AllModulePartials.init();
-        REGISTRATE.registerEventListeners(bus);
-
-        bus.addListener(this::setup);
-
-        bus.addListener(this::clientSetup);
-
-        MinecraftForge.EVENT_BUS.register(this);
-
+        
+        REGISTRATE.register();
     }
-    protected void clientSetup(final FMLClientSetupEvent fmlClientSetupEvent) {
 
+    public static final class ItemBlockRenderTypes {
+        public static void setRenderLayer(Block block, RenderType renderLayer) {
+            BlockRenderLayerMap.INSTANCE.putBlock(block, renderLayer);
+        }
+    }
+
+    public void onInitializeClient() {
         // DF11G
         ItemBlockRenderTypes.setRenderLayer(BlockInit.DF11G_PANEL_MID_FRONT_2.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.DF11G_PANEL_MID_WINDOW.get(), RenderType.translucent());
@@ -144,36 +131,28 @@ public class Main {
         ItemBlockRenderTypes.setRenderLayer(BlockInit.TactilePavingPin.get(),RenderType.translucent());
 
         // 运作
-        registerRenderers(fmlClientSetupEvent);
-        registerMenus(fmlClientSetupEvent);
-        registerWoodTypes(fmlClientSetupEvent);
+        registerRenderers();
+        registerMenus();
+        Sheets.SIGN_MATERIALS.put(WoodTypeInit.TrainPanel, Sheets.getSignMaterial(WoodTypeInit.TrainPanel));
 
         // 车厢板
-        register25BPanels(fmlClientSetupEvent);
-        register25GPanels(fmlClientSetupEvent);
-        register25TPanels(fmlClientSetupEvent);
-        registerBSP25TPanels(fmlClientSetupEvent);
-        register25KPanels(fmlClientSetupEvent);
-        registerUniversal25Panels(fmlClientSetupEvent);
-        registerMarshalledPanels(fmlClientSetupEvent);
+        register25BPanels();
+        register25GPanels();
+        register25TPanels();
+        registerBSP25TPanels();
+        register25KPanels();
+        registerUniversal25Panels();
+        registerMarshalledPanels();
 
         // 接触网相关
-        registerPantograph(fmlClientSetupEvent);
-        registerHangPoints(fmlClientSetupEvent);
-        registerGrids(fmlClientSetupEvent);
+        registerPantograph();
+        registerHangPoints();
+        registerGrids();
 
         // 信号
-        registerSignals(fmlClientSetupEvent);
-
+        registerSignals();
     }
 
-    protected void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-        Sheets.addWoodType(WoodTypeInit.TrainPanel);
-            KuayueNetworkHandler.registerPackets();
-
-        });
-    }
     public static CreateRegistrate registrate() {
         return REGISTRATE;
     }
@@ -182,7 +161,7 @@ public class Main {
      * 注册 GUI Menu 的方法，请把 Menu 统统堆这里
      * @param fmlClientSetupEvent -
      */
-    protected void registerMenus(final FMLClientSetupEvent fmlClientSetupEvent){
+    protected void registerMenus() {
         MenuScreens.register(MenuInit.CARRIAGE_TYPE_SIGN_EDIT_MENU.get(), CarriageTypeSignEditScreen::new);
         MenuScreens.register(MenuInit.CARRIAGE_NO_SIGN_EDIT_MENU.get(), CarriageNoSignEditScreen::new);
     }
@@ -195,25 +174,16 @@ public class Main {
      * CarriageTypeSignRenderer::new 调用 Renderer 类的构造体
      * @param fmlClientSetupEvent -
      */
-
-    protected void registerRenderers(final FMLClientSetupEvent fmlClientSetupEvent){
-        BlockEntityRenderers.register(BlockEntitiesInit.CARRIAGE_TYPE_SIGN.get(), CarriageTypeSignRenderer::new);
-        BlockEntityRenderers.register(BlockEntitiesInit.CARRIAGE_NO_SIGN.get(), CarriageNoSignRenderer::new);
-    }
-
-    /**
-     * WoodTypes 等杂项的注册
-     * @param fmlClientSetupEvent -
-     */
-    protected void registerWoodTypes(final FMLClientSetupEvent fmlClientSetupEvent){
-        WoodType.register(WoodTypeInit.TrainPanel);
+    protected void registerRenderers() {
+        BlockEntityRendererRegistry.register(BlockEntitiesInit.CARRIAGE_TYPE_SIGN.get(), CarriageTypeSignRenderer::new);
+        BlockEntityRendererRegistry.register(BlockEntitiesInit.CARRIAGE_NO_SIGN.get(), CarriageNoSignRenderer::new);
     }
 
     /**
      * 原色 25B 车厢部件注册
      * @param fmlClientSetupEvent -
      */
-    protected void register25BPanels(final FMLClientSetupEvent fmlClientSetupEvent){
+    protected void register25BPanels() {
         // 车窗
         ItemBlockRenderTypes.setRenderLayer(BlockInit.PANEL_25B_ORIGINAL_WINDOW.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25B.get(), RenderType.translucent());
@@ -232,7 +202,7 @@ public class Main {
      * 原色 25G 车厢部件注册
      * @param fmlClientSetupEvent -
      */
-    protected void register25GPanels(final FMLClientSetupEvent fmlClientSetupEvent){
+    protected void register25GPanels() {
         // 车窗
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25G_SMALL_2.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25G_SEALED_SMALL.get(), RenderType.translucent());
@@ -253,8 +223,7 @@ public class Main {
      * 原色 25T 车厢部件注册
      * @param fmlClientSetupEvent -
      */
-    protected void register25TPanels(final FMLClientSetupEvent fmlClientSetupEvent){
-
+    protected void register25TPanels() {
         // 车窗
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25T_WIDE_SEALED.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25T_WIDE_SEALED_BLUE.get(), RenderType.translucent());
@@ -282,14 +251,13 @@ public class Main {
 
         //地板
         ItemBlockRenderTypes.setRenderLayer(BlockInit.CARPORT_25T.get(), RenderType.translucent());
-
     }
 
     /**
      * BSP25T 车厢部件注册
      * @param fmlClientSetupEvent -
      */
-    protected void registerBSP25TPanels(final FMLClientSetupEvent fmlClientSetupEvent){
+    protected void registerBSP25TPanels() {
         // 车窗
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_BSP25T_WIDE_SEALED_BLUE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_BSP25T_WIDE_BLUE.get(), RenderType.translucent());
@@ -305,7 +273,7 @@ public class Main {
      * 25K 车厢部件注册
      * @param fmlClientSetupEvent -
      */
-    protected void register25KPanels(final FMLClientSetupEvent fmlClientSetupEvent){
+    protected void register25KPanels() {
         // 车窗
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25K_SEALED_SMALL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25K_WIDE.get(), RenderType.translucent());
@@ -323,7 +291,7 @@ public class Main {
      * 统型车厢部件注册
      * @param fmlClientSetupEvent -
      */
-    protected void registerMarshalledPanels(final FMLClientSetupEvent fmlClientSetupEvent){
+    protected void registerMarshalledPanels() {
         // 车门
         ItemBlockRenderTypes.setRenderLayer(BlockInit.PANEL_25_MARSHALLED_DOOR.get(), RenderType.translucent());
 
@@ -343,7 +311,7 @@ public class Main {
      * 通用25系列车厢板注册
      * @param fmlClientSetupEvent -
      */
-    protected void registerUniversal25Panels(final FMLClientSetupEvent fmlClientSetupEvent){
+    protected void registerUniversal25Panels() {
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.CARPORT_25BGZK.get(), RenderType.translucent());
     }
@@ -352,7 +320,7 @@ public class Main {
      * 受电弓注册
      * @param fmlClientSetupEvent -
      */
-    protected void registerPantograph(final FMLClientSetupEvent fmlClientSetupEvent){
+    protected void registerPantograph() {
         ItemBlockRenderTypes.setRenderLayer(BlockInit.PANTOGRAPH.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.SS8_PANTOGRAPH.get(), RenderType.translucent());
     }
@@ -361,7 +329,7 @@ public class Main {
      * 信号机注册
      * @param fmlClientSetupEvent -
      */
-    protected void registerSignals(final FMLClientSetupEvent fmlClientSetupEvent){
+    protected void registerSignals() {
         // 信号机
         ItemBlockRenderTypes.setRenderLayer(BlockInit.Station_Entrance_Signal.get(),RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.Shunting_Signal.get(),RenderType.translucent());
@@ -375,7 +343,7 @@ public class Main {
      * 接触网挂点注册
      * @param fmlClientSetupEvent -
      */
-    protected void registerHangPoints(final FMLClientSetupEvent fmlClientSetupEvent){
+    protected void registerHangPoints() {
         // 挂点
         ItemBlockRenderTypes.setRenderLayer(BlockInit.Cable_Hang_Point.get(),RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.Cable_Hang_Point_2.get(),RenderType.translucent());
@@ -391,7 +359,7 @@ public class Main {
      * 接触网架注册
      * @param fmlClientSetupEvent -
      */
-    protected void registerGrids(final FMLClientSetupEvent fmlClientSetupEvent){
+    protected void registerGrids() {
         // A
         ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_Grid_A1.get(),RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.Catenary_Grid_A2.get(),RenderType.translucent());

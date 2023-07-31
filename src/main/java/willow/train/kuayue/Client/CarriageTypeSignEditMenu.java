@@ -10,19 +10,10 @@ import willow.train.kuayue.BlockEntity.CarriageTypeSignEntity;
 import willow.train.kuayue.init.MenuInit;
 
 public class CarriageTypeSignEditMenu extends AbstractContainerMenu {
-
     CarriageTypeSignEntity ctse;
 
     public CarriageTypeSignEditMenu(@Nullable MenuType<?> pMenuType, int pContainerId) {
         super(pMenuType, pContainerId);
-
-        this.addDataSlot(new DataSlot() {
-            @Override
-            public int get() {return 0;}
-
-            @Override
-            public void set(int pValue) {}
-        });
     }
 
     public CarriageTypeSignEditMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData){

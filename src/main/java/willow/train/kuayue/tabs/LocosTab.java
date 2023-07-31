@@ -5,9 +5,9 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import willow.train.kuayue.init.ItemInit;
 
-public class LocosTab extends CreativeModeTab {
+public class LocosTab extends TabBuilder {
     public LocosTab(String modId) {
-        super("item_locos");
+        super(modId, "item_locos");
     }
 
     @Override

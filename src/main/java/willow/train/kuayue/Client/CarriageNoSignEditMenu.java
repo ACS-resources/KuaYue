@@ -7,7 +7,6 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.Nullable;
 import willow.train.kuayue.BlockEntity.CarriageNoSignEntity;
-import willow.train.kuayue.BlockEntity.CarriageTypeSignEntity;
 import willow.train.kuayue.init.MenuInit;
 
 public class CarriageNoSignEditMenu extends AbstractContainerMenu {
@@ -15,14 +14,6 @@ public class CarriageNoSignEditMenu extends AbstractContainerMenu {
 
     public CarriageNoSignEditMenu(@Nullable MenuType<?> pMenuType, int pContainerId) {
         super(pMenuType, pContainerId);
-
-        this.addDataSlot(new DataSlot() {
-            @Override
-            public int get() {return 0;}
-
-            @Override
-            public void set(int pValue) {}
-        });
     }
 
     public CarriageNoSignEditMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData){
@@ -42,7 +33,6 @@ public class CarriageNoSignEditMenu extends AbstractContainerMenu {
     public void setCtse(CarriageNoSignEntity ctse){
         this.ctse = ctse;
     }
-
 
     /**
      * 这个方法将负责将方块实体向Screen传递
