@@ -8,11 +8,7 @@ import com.simibubi.create.content.trains.bogey.BogeyRenderer;
 import com.simibubi.create.content.trains.bogey.BogeySizes;
 import com.simibubi.create.foundation.utility.Iterate;
 import net.minecraft.nbt.CompoundTag;
-import willow.train.kuayue.Blocks.Bogeys.common_renderers.KYCommonBogeyRenderer;
-import willow.train.kuayue.base.data.BogeyPaintColour;
-import willow.train.kuayue.init.KYBlockPartials;
 
-import static com.simibubi.create.content.trains.entity.CarriageBogey.UPSIDE_DOWN_KEY;
 import static willow.train.kuayue.init.KYBlockPartials.KYSTANDARDBOGEY_FRAME;
 import static willow.train.kuayue.init.KYBlockPartials.KYSTANDARDBOGEY_WHEEL;
 
@@ -44,7 +40,7 @@ public class KYStandardBogeyRenderer {
                 if (!inInstancedContraption)
                     ms.pushPose();
                 Transform<?> wheel = wheels[(side + 1)/2];
-                wheel.translate(0, 0.805, side)
+                wheel.translate(0, 0.805, ((double)side) *1.2d)
                         .rotateX(wheelAngle);
                 finalize(wheel, ms, light, vb);
                 if (!inInstancedContraption)

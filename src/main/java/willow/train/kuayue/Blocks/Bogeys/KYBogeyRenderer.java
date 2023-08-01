@@ -121,7 +121,7 @@ public class KYBogeyRenderer {
                 if (!inInstancedContraption)
                     ms.pushPose();
                 Transform<?> wheel = wheels[(side + 1) / 2];
-                wheel.translate(0, 12 / 16f, side)
+                wheel.translate(0, 12 / 16f, ((double)side) *1.5d)
                         .rotateX(wheelAngle)
                         .translate(0, -7 / 16f, 0);
                 finalize(wheel, ms, light, vb);
@@ -155,7 +155,7 @@ public class KYBogeyRenderer {
                 if (!inInstancedContraption)
                     ms.pushPose();
                 Transform<?> wheel = wheels[(side + 1) / 2];
-                wheel.translate(0, 12 / 16f, side)
+                wheel.translate(0, 12 / 16f, ((double)side) *1.5d)
                         .rotateX(wheelAngle)
                         .translate(0, -7 / 16f, 0);
                 finalize(wheel, ms, light, vb);
@@ -189,7 +189,7 @@ public class KYBogeyRenderer {
                 if (!inInstancedContraption)
                     ms.pushPose();
                 Transform<?> wheel = wheels[(side + 1) / 2];
-                wheel.translate(0, 12 / 16f, side)
+                wheel.translate(0, 12 / 16f, ((double)side) *1.5d)
                         .rotateX(wheelAngle)
                         .translate(0, -7 / 16f, 0);
                 finalize(wheel, ms, light, vb);
@@ -225,7 +225,7 @@ public class KYBogeyRenderer {
                 if (!inInstancedContraption)
                     ms.pushPose();
                 Transform<?> wheel = wheels[(side + 1) / 2];
-                wheel.translate(0, 12 / 16f, side)
+                wheel.translate(0, 12 / 16f, ((double)side) *1.5d)
                         .rotateX(wheelAngle)
                         .translate(0, -7 / 16f, 0);
                 finalize(wheel, ms, light, vb);
@@ -259,7 +259,7 @@ public class KYBogeyRenderer {
                 if (!inInstancedContraption)
                     ms.pushPose();
                 Transform<?> wheel = wheels[(side + 1) / 2];
-                wheel.translate(0, 12 / 16f, side)
+                wheel.translate(0, 12 / 16f, ((double)side) *1.5d)
                         .rotateX(wheelAngle)
                         .translate(0, -7 / 16f, 0);
                 finalize(wheel, ms, light, vb);
@@ -293,7 +293,7 @@ public class KYBogeyRenderer {
                 if (!inInstancedContraption)
                     ms.pushPose();
                 Transform<?> wheel = wheels[(side + 1) / 2];
-                wheel.translate(0, 12 / 16f, side)
+                wheel.translate(0, 12 / 16f, ((double)side) *1.5d)
                         .rotateX(wheelAngle)
                         .translate(0, -7 / 16f, 0);
                 finalize(wheel, ms, light, vb);
@@ -329,7 +329,7 @@ public class KYBogeyRenderer {
                 if (!inInstancedContraption)
                     ms.pushPose();
                 Transform<?> wheel = wheels[side + 1];
-                wheel.translate(0, 12 / 16f, side*1.5)
+                wheel.translate(0, 12 / 16f, ((double)side) *1.5d)
                         .rotateX(wheelAngle)
                         .translate(0, -7 / 16f, 0);
                 finalize(wheel, ms, light, vb);
@@ -363,7 +363,7 @@ public class KYBogeyRenderer {
                 if (!inInstancedContraption)
                     ms.pushPose();
                 Transform<?> wheel = wheels[side + 1];
-                wheel.translate(0, 12 / 16f, side*1.5)
+                wheel.translate(0, 12 / 16f, ((double)side) *1.5d)
                         .rotateX(wheelAngle)
                         .translate(0, -7 / 16f, 0);
                 finalize(wheel, ms, light, vb);

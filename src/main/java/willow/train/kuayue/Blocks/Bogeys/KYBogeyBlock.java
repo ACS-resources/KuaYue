@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import willow.train.kuayue.init.KYCreateBlock;
 import willow.train.kuayue.init.KYCreateEntities;
 
 public class KYBogeyBlock extends AbstractBogeyBlock<KYBogeyBlockEntity>
@@ -36,12 +35,12 @@ public class KYBogeyBlock extends AbstractBogeyBlock<KYBogeyBlockEntity>
 
     @Override
     public double getWheelPointSpacing() {
-        return 2;
+        return 2.4d;
     }
 
     @Override
     public double getWheelRadius() {
-        return 6.5 / 16d;
+        return 0.915d;//6.5 / 16d;
     }
 
     @Override
