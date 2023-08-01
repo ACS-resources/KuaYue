@@ -58,7 +58,7 @@ public class KYStandardBogeyBlock extends AbstractBogeyBlock<KYStandardBogeyBloc
 
     @Override
     public double getWheelRadius() {
-        return 6 / 16d;
+        return 0.915;
     }
 
     @Override

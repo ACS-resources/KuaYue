@@ -223,11 +223,6 @@ public class KYBlockPartials {
                     ;
 
     public static final PartialModel
-            /*MONORAIL_SEGMENT_TOP = block("monorail/monorail/segment_top"),
-            MONORAIL_SEGMENT_BOTTOM = block("monorail/monorail/segment_bottom"),
-            MONORAIL_SEGMENT_MIDDLE = block("monorail/monorail/segment_middle"),
-            MONORAIL_TRACK_ASSEMBLING_OVERLAY = block("monorail/monorail/assembling_overlay"),*/
-
             KY_TRACK_SEGMENT_LEFT = block("track/standard/segment_left"),
             KY_TRACK_SEGMENT_RIGHT = block("track/standard/segment_right"),
             KY_TRACK_TIE = block("track/standard/tie"),

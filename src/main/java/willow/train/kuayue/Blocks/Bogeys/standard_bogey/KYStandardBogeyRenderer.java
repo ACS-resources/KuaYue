@@ -8,6 +8,9 @@ import com.simibubi.create.content.trains.bogey.BogeyRenderer;
 import com.simibubi.create.content.trains.bogey.BogeySizes;
 import com.simibubi.create.foundation.utility.Iterate;
 import net.minecraft.nbt.CompoundTag;
+import willow.train.kuayue.Blocks.Bogeys.common_renderers.KYCommonBogeyRenderer;
+import willow.train.kuayue.base.data.BogeyPaintColour;
+import willow.train.kuayue.init.KYBlockPartials;
 
 import static com.simibubi.create.content.trains.entity.CarriageBogey.UPSIDE_DOWN_KEY;
 import static willow.train.kuayue.init.KYBlockPartials.KYSTANDARDBOGEY_FRAME;
@@ -19,8 +22,8 @@ public class KYStandardBogeyRenderer {
 
         @Override
         public void initialiseContraptionModelData(MaterialManager materialManager) {
-            createModelInstances(materialManager, KYSTANDARDBOGEY_WHEEL, 1);
-            createModelInstances(materialManager, KYSTANDARDBOGEY_FRAME);
+            this.createModelInstances(materialManager, KYSTANDARDBOGEY_FRAME);
+            this.createModelInstances(materialManager, KYSTANDARDBOGEY_WHEEL, 2);
         }
 
         @Override
@@ -35,27 +38,13 @@ public class KYStandardBogeyRenderer {
             Transform<?> transform = getTransformFromPartial(KYSTANDARDBOGEY_FRAME, ms, inInstancedContraption);
             finalize(transform, ms, light, vb);
 
-            Transform<?>[] wheels = getTransformsFromPartial(KYSTANDARDBOGEY_WHEEL, ms, inInstancedContraption, 4);
-            /*for (boolean left : Iterate.trueAndFalse) {
-                for (int front : Iterate.positiveAndNegative) {
-                    if (!inInstancedContraption)
-                        ms.pushPose();
-                    Transform<?> wheel = wheels[(left ? 1 : 0) + (front + 1)];
-                    wheel.translate(left ? -12 / 16f : 12 / 16f, specialUpsideDown ? 35 /16f : 3 / 16f, front * 15 / 16f) //base position
-                            .rotateY(left ? wheelAngle : -wheelAngle)
-                            .translate(15/16f, 0, 0/16f);
-                    finalize(wheel, ms, light, vb);
-//                        .light(light)
-                    //                      .renderInto(ms, vb);
-                    if (!inInstancedContraption)
-                        ms.popPose();
-                }
-            }*/
+            Transform<?>[] wheels = getTransformsFromPartial(KYSTANDARDBOGEY_WHEEL, ms, inInstancedContraption, 2);
+
             for (int side : Iterate.positiveAndNegative) {
                 if (!inInstancedContraption)
                     ms.pushPose();
                 Transform<?> wheel = wheels[(side + 1)/2];
-                wheel.translate(0, 12 / 16f, side)
+                wheel.translate(0, 0.805, side)
                         .rotateX(wheelAngle);
                 finalize(wheel, ms, light, vb);
                 if (!inInstancedContraption)

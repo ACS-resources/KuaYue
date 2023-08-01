@@ -100,6 +100,7 @@ public class Main {
         KYItems.register();
         KYTags.register();
         KYEdgePointTypes.register();
+        KYBogeySizes.register();
 
         AllModulePartials.init();
         REGISTRATE.registerEventListeners(bus);

@@ -17,7 +17,7 @@ import static willow.train.kuayue.Blocks.Bogeys.selection_menu.BogeyCategoryHand
 
 public class KYBogeyStyles {
 
-    public static final BogeyStyle KYSTANDARDBOGEY = create("kystandardbogey", "kystandardbogey")
+    public static final BogeyStyle KYSTANDARDBOGEY = create("kystandardbogey", Create.asResource(STANDARD_CYCLE_GROUP))
             .displayName(Components.translatable("kuayue.bogeys.styles.kystandardbogey"))
             .size(BogeySizes.SMALL, () -> KYStandardBogeyRenderer.SmallKYStandardBogeyRenderer::new, KYCreateBlock.KY_STANDARD_BOGEY)
             .build();
