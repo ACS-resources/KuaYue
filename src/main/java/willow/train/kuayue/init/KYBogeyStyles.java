@@ -17,6 +17,13 @@ import static willow.train.kuayue.Blocks.Bogeys.selection_menu.BogeyCategoryHand
 
 public class KYBogeyStyles {
 
+    public static final String KY_STANDARD_BOGEY_CYCLE_GROUP = "kystandardbogey";
+
+    /*public static final BogeyStyle KYSTANDARDBOGEY = create("kystandardbogey", KY_STANDARD_BOGEY_CYCLE_GROUP)
+            .displayName(Components.translatable("kuayue.bogeys.styles.kystandardbogey"))
+            .size(BogeySizes.SMALL, () -> KYStandardBogeyRenderer.SmallKYStandardBogeyRenderer::new, KYCreateBlock.KY_STANDARD_BOGEY)
+            .build();*/
+
     public static final BogeyStyle KYSTANDARDBOGEY = create("kystandardbogey", Create.asResource(STANDARD_CYCLE_GROUP))
             .displayName(Components.translatable("kuayue.bogeys.styles.kystandardbogey"))
             .size(BogeySizes.SMALL, () -> KYStandardBogeyRenderer.SmallKYStandardBogeyRenderer::new, KYCreateBlock.KY_STANDARD_BOGEY)
@@ -101,5 +108,6 @@ public class KYBogeyStyles {
         registerStyleCategory(SINGLEAXLE_CYCLE_GROUP, CategoryIcon.standardSupplier("singleaxle_icon"));
         registerStyleCategory(DOUBLEAXLE_CYCLE_GROUP, CategoryIcon.standardSupplier("freight_icon"));
         registerStyleCategory(TRIPLEAXLE_CYCLE_GROUP, CategoryIcon.standardSupplier("radial_icon"));
+        registerStyleCategory(KY_STANDARD_BOGEY_CYCLE_GROUP,CategoryIcon.standardSupplier("ky_standard_bogey_icon"));
     }
 }

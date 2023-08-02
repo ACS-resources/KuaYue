@@ -140,7 +140,7 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
             ms.translate(0.5, -0.5, 0);
             if (!scrollMode && hoveredSlot == MANAGE_FAVORITES) {
                 AllGuiTextures.TOOLBELT_SLOT_HIGHLIGHT.render(ms, -13, -13, this);
-                tip = Components.translatable(favoriteSlot == null ? "railways.style_select.manage_favorites" : "railways.style_select.managing_favorites")
+                tip = Components.translatable(favoriteSlot == null ? "kuayue.style_select.manage_favorites" : "kuayue.style_select.managing_favorites")
                         .withStyle(ChatFormatting.GOLD);
             }
             ms.popPose();
@@ -148,15 +148,15 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
 
 
         if (favoriteSlot != null) {
-            title = Components.translatable("railways.style_select.title.favorites.pick_style")
+            title = Components.translatable("kuayue.style_select.title.favorites.pick_style")
                     .withStyle(ChatFormatting.LIGHT_PURPLE);
         } else if (selectedCategory == MANAGE_FAVORITES_CATEGORY) {
-            title = Components.translatable("railways.style_select.title.favorites.pick_slot")
+            title = Components.translatable("kuayue.style_select.title.favorites.pick_slot")
                     .withStyle(ChatFormatting.LIGHT_PURPLE);
         } else if (selectedCategory != null) {
-            title = Components.translatable("railways.style_select.category")
+            title = Components.translatable("kuayue.style_select.category")
                     .append(Components.translatable(
-                            "railways.style_select.category." + selectedCategory.getNamespace() + "." + selectedCategory.getPath()
+                            "kuayue.style_select.category." + selectedCategory.getNamespace() + "." + selectedCategory.getPath()
                     )).withStyle(ChatFormatting.GOLD);
         }
 
@@ -192,7 +192,7 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
 
                         if (selected) {
                             AllGuiTextures.TOOLBELT_SLOT_HIGHLIGHT.render(ms, -1, -1, this);
-                            tip = Components.translatable("railways.style_select.category." + id.getNamespace() + "." + id.getPath())
+                            tip = Components.translatable("kuayue.style_select.category." + id.getNamespace() + "." + id.getPath())
                                     .withStyle(ChatFormatting.GOLD);
                         }
                     }
@@ -261,7 +261,7 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
             AllIcons.I_CONFIG_BACK.render(ms, -9, -9, this);
             if (!scrollMode && CENTER == hoveredSlot) {
                 AllGuiTextures.TOOLBELT_SLOT_HIGHLIGHT.render(ms, -13, -13, this);
-                tip = Components.translatable("railways.style_select.back_to_groups")
+                tip = Components.translatable("kuayue.style_select.back_to_groups")
                         .withStyle(ChatFormatting.GOLD);
             }
             ms.popPose();

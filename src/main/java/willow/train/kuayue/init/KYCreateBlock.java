@@ -104,9 +104,9 @@ public class KYCreateBlock {
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BuilderTransformers.kystandardbogey())
                     .lang("KY Standard Bogey")
-                    //.item(KYStandardBogeyItem::new)
-                    //.model((c, p) -> p.generated(c, Main.asResource("item/track/" + c.getName())))
-                    //.build()
+                    .item(KYStandardBogeyItem::new)
+                    .model((c, p) -> p.generated(c, Main.asResource("item/track/" + c.getName())))
+                    .build()
                     .register();
 
     private static final CreateRegistrate bogeyREGISTRATE = Main.registrate();
