@@ -66,7 +66,7 @@ public abstract class KYCommonBogeyRenderer extends BogeyRenderer {
 
     @Override
     public final void initialiseContraptionModelData(MaterialManager materialManager) {
-        /* Due to a mild fuck up bogey data isn't passed here, this method is empty and is replaced by another until the PR to fix this problem is merged */
+
     }
 
     public abstract void initialiseContraptionModelData(MaterialManager materialManager, BogeyPaintColour colour);

@@ -27,8 +27,5 @@ public class KYDataFixers {
     private static void addFixers(DataFixerBuilder builder) {
         builder.addSchema(0, BASE_SCHEMA);
 
-        // Register a schema, and then the fixes to get *to* that schema
-
-        //Schema schemaV1 = builder.addSchema(1, SAME_NAMESPACED);
     }
 }

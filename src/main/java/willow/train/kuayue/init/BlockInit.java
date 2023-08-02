@@ -7,6 +7,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
@@ -470,10 +471,10 @@ public static final RegistryObject<HXD3DPanelBlocks> CARPORT_25BGZKT_WATER_TANK 
 //            () -> new TrainPanelSignBlock2(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN),WoodTypeInit.TrainPanel));
 
     public static final RegistryObject<Block> TRAIN_PANEL_SIGN_BLOCK = registerBlockWithoutBlockItem("train_panel_sign_block",
-            () -> new TrainPanelSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), WoodTypeInit.TrainPanel));
+            () -> new TrainPanelSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), WoodType.OAK));
 
     public static final RegistryObject<Block> TRAIN_PANEL_SIGN_BLOCK1 = registerBlockWithoutBlockItem("train_panel_sign_block1",
-            () -> new TrainPanelSignBlock2(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), WoodTypeInit.TrainPanel));
+            () -> new TrainPanelSignBlock2(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), WoodType.OAK));
     //panel_25t_original_window
     public static final RegistryObject<TrainGlassPanelBlock> PANEL_25T_ORIGINAL_WINDOW = register("panel_25t_original_window",
             () -> new TrainGlassPanelBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE).strength(3.0f)

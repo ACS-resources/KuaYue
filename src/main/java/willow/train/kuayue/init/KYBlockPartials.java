@@ -52,19 +52,6 @@ public class KYBlockPartials {
         CUSTOM_CONDUCTOR_SKINS_FOR_NAME.put(conductorName, Main.asResource("textures/entity/custom_conductors/"+textureLoc));
     }
 
-/*    public static final PartialModel
-            SEMAPHORE_ARM_RED = block("semaphore/red_arm"),
-            SEMAPHORE_ARM_YELLOW = block("semaphore/yellow_arm"),
-            SEMAPHORE_ARM_RED_FLIPPED = block("semaphore/red_arm_flipped"),
-            SEMAPHORE_ARM_YELLOW_FLIPPED = block("semaphore/yellow_arm_flipped"),
-            SEMAPHORE_ARM_RED_UPSIDE_DOWN = block("semaphore/red_arm_down"),
-            SEMAPHORE_ARM_YELLOW_UPSIDE_DOWN = block("semaphore/yellow_arm_down"),
-            SEMAPHORE_ARM_RED_FLIPPED_UPSIDE_DOWN = block("semaphore/red_arm_flipped_down"),
-            SEMAPHORE_ARM_YELLOW_FLIPPED_UPSIDE_DOWN = block("semaphore/yellow_arm_flipped_down"),
-            SEMAPHORE_LAMP_RED = block("semaphore/red_lamp"),
-            SEMAPHORE_LAMP_YELLOW = block("semaphore/yellow_lamp"),
-            SEMAPHORE_LAMP_WHITE = block("semaphore/white_lamp");*/
-
     public record ModelTransform(double x, double y, double z, float rx, float ry, float rz) {
         public static final ModelTransform ZERO = new ModelTransform(0, 0, 0, 0, 0, 0);
 
@@ -199,12 +186,6 @@ public class KYBlockPartials {
         TRACK_CASINGS.put(TrackShape.AE, new TrackCasingSpec(block("track_casing/ae"), ModelTransform.ZERO, 5).overlayShift(-3 / 16f, 0));
         TRACK_CASINGS.put(TrackShape.AW, new TrackCasingSpec(block("track_casing/aw"), ModelTransform.ZERO, 5).overlayShift(3 / 16f, 0));
     }
-
-    /*public static final PartialModel
-            COUPLER_COUPLE = block("track_overlay/coupler_couple"),
-            COUPLER_DECOUPLE = block("track_overlay/coupler_decouple"),
-            COUPLER_BOTH = block("track_overlay/coupler_both"),
-            COUPLER_NONE = block("track_overlay/coupler_none");*/
 
     public static final PartialModel
             ANDESITE_SWITCH_FLAG = block("track_switch_andesite/flag"),

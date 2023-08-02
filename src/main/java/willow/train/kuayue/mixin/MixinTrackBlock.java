@@ -41,16 +41,6 @@ public abstract class MixinTrackBlock extends Block {
         super(pProperties);
     }
 
-    /*@Inject(method = "use", at = @At("HEAD"), cancellable = true, remap = true)
-    private void extendedUse(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> cir) {
-        if (!(((Object) this) instanceof StandardTrackBlock)) {
-            InteractionResult result = CustomTrackBlock.casingUse(state, world, pos, player, hand, hit);
-            if (result != null) {
-                cir.setReturnValue(result);
-            }
-        }
-    }*/
-
     @Inject(method = "getBogeyAnchor", at = @At("HEAD"), cancellable = true)
     private void placeCustomStyle(BlockGetter world, BlockPos pos, BlockState state, CallbackInfoReturnable<BlockState> cir) {
         if (BogeyCategoryHandlerServer.currentPlayer == null)
@@ -76,11 +66,4 @@ public abstract class MixinTrackBlock extends Block {
                                 state.getValue(TrackBlock.SHAPE) == TrackShape.XO ? Direction.Axis.X : Direction.Axis.Z)
         );
     }
-
-    /*@Redirect(method = "onPlace", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;scheduleTick(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;I)V", remap = true), remap = true)
-    private void maybeMakeTickInstant(Level instance, BlockPos blockPos, Block block, int i) {
-        if (TrackReplacePaver.tickInstantly)
-            i = 0;
-        instance.scheduleTick(blockPos, block, i);
-    }*/
 }

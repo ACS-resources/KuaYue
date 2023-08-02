@@ -111,13 +111,6 @@ public class KYCreateBlock {
 
     private static final CreateRegistrate bogeyREGISTRATE = Main.registrate();
 
-    /*public static final BlockEntry<KYStandardBogeyBlock> KY_STANDARD_BOGEY =
-            bogeyREGISTRATE.block("ky_standard_bogey", KYStandardBogeyBlock::new)
-                    .properties(p -> p.color(MaterialColor.PODZOL))
-                    .transform(BuilderTransformers.kystandardbogey())
-                    .lang("KY Standard Bogey")
-                    .register();*/
-
     public static final BlockEntry<SingleAxleBogeyBlock> SINGLEAXLE_BOGEY =
             bogeyREGISTRATE.block("singleaxle_bogey", SingleAxleBogeyBlock::new)
                     .properties(p -> p.color(MaterialColor.PODZOL))

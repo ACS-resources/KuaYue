@@ -103,25 +103,6 @@ public abstract class MixinAbstractBogeyBlock extends Block {
         AbstractBogeyBlockEntity be = (AbstractBogeyBlockEntity) level.getBlockEntity(pos);
         if (be == null) return InteractionResult.PASS;
 
-        /*if (!level.isClientSide && !player.getCooldowns().isOnCooldown(heldItem.getItem()) && heldItem.is(Items.AIR)
-                && player.isShiftKeyDown()) {
-            player.getCooldowns().addCooldown(heldItem.getItem(), 20);
-            CompoundTag bogeyData = be.getBogeyData();
-            if (!(state.getBlock() instanceof StandardBogeyBlock unlinkedBogeyBlock))
-                return InteractionResult.PASS;
-            ExtendedBogeysBogeySize supported = ExtendedBogeysBogeySize.of(unlinkedBogeyBlock.size);
-            if (supported == null)
-                return InteractionResult.PASS;
-            BlockState newState = ExtendedBogeysBlocks.UNLINKED_BOGEYS.get(supported).getDefaultState();
-            level.setBlock(pos, copyProperties(state, newState), 3);
-            AbstractBogeyBlockEntity newBlockEntity = (AbstractBogeyBlockEntity) level.getBlockEntity(pos);
-            if (newBlockEntity == null) return InteractionResult.FAIL;
-            bogeyData.putBoolean(Constants.BOGEY_LINK_KEY, false);
-            newBlockEntity.setBogeyData(bogeyData);
-            player.displayClientMessage(Components.translatable("extendedbogeys.tooltips.unlink")
-                    .withStyle(ChatFormatting.GREEN), true);
-            return InteractionResult.CONSUME;
-        }*/
         return InteractionResult.PASS;
     }
 

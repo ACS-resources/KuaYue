@@ -91,22 +91,6 @@ public abstract class MixinTrackBlockEntity extends SmartBlockEntity implements 
         }
     }
 
-    /*@Inject(
-            method = "removeInboundConnections",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lcom/simibubi/create/foundation/blockEntity/RemoveBlockEntityPacket;<init>(Lnet/minecraft/core/BlockPos;)V",
-                    remap = true
-            ),
-            cancellable = true
-    )
-    private void preventTileRemoval2(CallbackInfo ci) {
-        if (getTrackCasing() != null) {
-            notifyUpdate();
-            ci.cancel();
-        }
-    }*/
-
     @Inject(method = "write", at = @At("RETURN"))
     private void writeCasing(CompoundTag tag, boolean clientPacket, CallbackInfo ci) {
         if (this.getTrackCasing() != null) {

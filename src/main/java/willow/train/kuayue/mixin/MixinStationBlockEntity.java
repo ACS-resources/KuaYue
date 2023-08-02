@@ -91,15 +91,6 @@ public abstract class MixinStationBlockEntity extends SmartBlockEntity {
         ItemStack heldItem = player.getItemInHand(hand);
         BogeyPaintColour paintColour = BogeyPaintColour.UNPAINTED;
 
-        /*if (heldItem.getItem() instanceof BlockItem blockItem &&
-                blockItem.getBlock() instanceof CasingBlock casingBlock) {
-            System.out.println("Found casing block " + casingBlock);
-            paintColour = BogeyPaintColour
-                    .of(ExtendedBogeysBlocks.PAINTED_RAILWAY_CASING
-                            .enumValueOfBlock(casingBlock));
-            System.out.println("Found paint colour: " + paintColour);
-        }*/
-
         CompoundTag bogeyData = bogeyBlockEntity.getBogeyData();
 
         NBTHelper.writeEnum(bogeyData, BOGEY_PAINT_KEY, paintColour);
@@ -117,6 +108,5 @@ public abstract class MixinStationBlockEntity extends SmartBlockEntity {
     )
     public boolean modifyAssemblyConditions(BlockEntry<?> instance, ItemStack stack) {
         return stack.is(AllBlocks.RAILWAY_CASING.get().asItem());
-                //|| ExtendedBogeysBlocks.PAINTED_RAILWAY_CASING.contains(stack.getItem());
     }
 }

@@ -378,25 +378,6 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
                 AccessorToolboxHandlerClient.setCOOLDOWN(2);
                 return true;
             }
-            /*if (selected == DEPOSIT) {
-                onClose();
-                ToolboxHandlerClient.COOLDOWN = 2;
-                return true;
-            }
-
-            if (state == RadialToolboxMenu.State.SELECT_BOX && selected >= 0 && selected < toolboxes.size()) {
-                state = RadialToolboxMenu.State.SELECT_ITEM;
-                selectedBox = toolboxes.get(selected);
-                return true;
-            }
-
-            if (state == RadialToolboxMenu.State.DETACH || state == RadialToolboxMenu.State.SELECT_ITEM || state == RadialToolboxMenu.State.SELECT_ITEM_UNEQUIP) {
-                if (selected == UNEQUIP || selected >= 0) {
-                    onClose();
-                    ToolboxHandlerClient.COOLDOWN = 2;
-                    return true;
-                }
-            }*/
         }
 
         if (button == 1) { // right click to go back

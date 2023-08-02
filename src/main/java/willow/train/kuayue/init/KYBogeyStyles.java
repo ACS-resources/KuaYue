@@ -24,17 +24,6 @@ public class KYBogeyStyles {
             .size(BogeySizes.SMALL, () -> KYStandardBogeyRenderer.SmallKYStandardBogeyRenderer::new, KYCreateBlock.KY_STANDARD_BOGEY)
             .build();
 
-    /*public static final BogeyStyle KYSTANDARDBOGEY = create("kystandardbogey", Create.asResource(STANDARD_CYCLE_GROUP))
-            .displayName(Components.translatable("kuayue.bogeys.styles.kystandardbogey"))
-            .size(BogeySizes.SMALL, () -> KYStandardBogeyRenderer.SmallKYStandardBogeyRenderer::new, KYCreateBlock.KY_STANDARD_BOGEY)
-            .build();*/
-
-    /*public static final BogeyStyle INVISIBLE = create("invisible", Create.asResource(STANDARD_CYCLE_GROUP))
-            .displayName(Components.translatable("railways.bogeys.styles.invisible"))
-            .size(BogeySizes.SMALL, () -> InvisibleBogeyRenderer::new, CRBlocks.INVISIBLE_BOGEY)
-            .contactParticle(new CubeParticleData())
-            .build();*/
-
     public static final String SINGLEAXLE_CYCLE_GROUP = "singleaxles";
     public static final String DOUBLEAXLE_CYCLE_GROUP = "doubleaxles";
     public static final String TRIPLEAXLE_CYCLE_GROUP = "tripleaxles";
@@ -102,7 +91,6 @@ public class KYBogeyStyles {
         Main.LOGGER.info("Registered bogey styles from " + Main.MOD_ID);
     }
 
-    //@Environment(EnvType.CLIENT)
     public static void registerClient() {
         registerStyleCategory(Create.asResource(STANDARD_CYCLE_GROUP), CategoryIcon.standardSupplier("default_icon"));
         registerStyleCategory(SINGLEAXLE_CYCLE_GROUP, CategoryIcon.standardSupplier("singleaxle_icon"));

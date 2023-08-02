@@ -105,7 +105,7 @@ public class Main {
         AllModulePartials.init();
         REGISTRATE.registerEventListeners(bus);
 
-        bus.addListener(this::setup);
+        //bus.addListener(this::setup);
 
         bus.addListener(this::clientSetup);
 
@@ -245,21 +245,23 @@ public class Main {
         ItemBlockRenderTypes.setRenderLayer(BlockInit.TactilePavingPin.get(),RenderType.translucent());
         //ItemBlockRenderTypes.setRenderLayer(BlockInit.STANDARD_TRACK.get(),RenderType.translucent());
 
-        WoodType.register(WoodTypeInit.TrainPanel);
+        //WoodType.register(WoodTypeInit.TrainPanel);
         BlockEntityRenderers.register(BlockEntitiesInit.TRAIN_BLOCK_ENTITES_BLOCK.get(), TrainPanelSignRenderer::new);
         BlockEntityRenderers.register(CARRIAGE_TYPE_SIGN.get(), CarriageTypeSignRenderer::new);
+
+        /*fmlClientSetupEvent.enqueueWork(() -> {
+            Sheets.addWoodType(WoodTypeInit.TrainPanel);
+
+        });*/
 
         MenuScreens.register(MenuInit.CARRIAGE_TYPE_SIGN_EDIT_MENU.get(), CarriageTypeSignEditScreen::new);
         //test text
     }
 
-    @OnlyIn(Dist.CLIENT)
+    /*@OnlyIn(Dist.CLIENT)
     protected void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-        Sheets.addWoodType(WoodTypeInit.TrainPanel);
 
-    });
-    }
+    }*/
     public static CreateRegistrate registrate() {
         return REGISTRATE;
     }

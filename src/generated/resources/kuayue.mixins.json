@@ -7,11 +7,12 @@
     "AccessorBlockEntityType",
     "AccessorCarriageBogey",
     "AccessorTrackMaterialFactory",
+
     "MixinAbstractBogeyBlock",
-    "MixinCarriageBogey",
     "MixinStationBlockEntity",
     "MixinTrackBlock",
     "MixinTrackPlacement",
+
     "client.AccessorInstance",
     "client.MixinBezierConnectionClient",
     "client.MixinBogeyInstance",

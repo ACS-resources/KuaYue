@@ -66,19 +66,6 @@ public class KYTrackMaterials {
         return trackMaterial;
     }
 
-    /*@OnlyIn(Dist.CLIENT)
-    protected KYTrackMaterials.TrackModelHolder modelHolder;
-
-    @OnlyIn(Dist.CLIENT)
-    public KYTrackMaterials.TrackModelHolder getModelHolder() {
-        return modelHolder;
-    }*/
-
-    /*@OnlyIn(Dist.CLIENT)
-    public record TrackModelHolder(PartialModel tie, PartialModel segment_left, PartialModel segment_right) {
-
-    }*/
-
     public static final TrackMaterial.TrackModelHolder KY_DEFAULT = new TrackMaterial.TrackModelHolder(KYBlockPartials.KY_TRACK_TIE,
             KYBlockPartials.KY_TRACK_SEGMENT_LEFT, KYBlockPartials.KY_TRACK_SEGMENT_RIGHT);
 
