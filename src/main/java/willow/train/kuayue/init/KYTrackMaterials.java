@@ -25,9 +25,10 @@ public class KYTrackMaterials {
 
     public static final TrackMaterial
         STANDARD = make(Main.asResource("standard"))
-            .lang("Standard")
+            .lang("KY_Standard")
             .block(() -> KYCreateBlock.STANDARD_TRACK)
             .particle(Create.asResource("block/palettes/stone_types/polished/andesite_cut_polished"))
+            .trackType(KYTrackType.STANDARD)
             .sleeper(Blocks.ANDESITE_SLAB)
             .defaultModels()
             .build(),
