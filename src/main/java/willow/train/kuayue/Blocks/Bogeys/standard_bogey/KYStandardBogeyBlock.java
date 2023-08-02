@@ -2,12 +2,10 @@ package willow.train.kuayue.Blocks.Bogeys.standard_bogey;
 
 import com.google.common.collect.ImmutableList;
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllBogeyStyles;
 import com.simibubi.create.content.schematics.requirement.ISpecialBlockItemRequirement;
 import com.simibubi.create.content.trains.bogey.AbstractBogeyBlock;
 import com.simibubi.create.content.trains.bogey.BogeySizes;
 import com.simibubi.create.content.trains.bogey.BogeyStyle;
-import com.simibubi.create.content.trains.bogey.StandardBogeyBlockEntity;
 import com.simibubi.create.content.trains.track.TrackMaterial;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.block.ProperWaterloggedBlock;
@@ -53,7 +51,7 @@ public class KYStandardBogeyBlock extends AbstractBogeyBlock<KYStandardBogeyBloc
 
     @Override
     public double getWheelPointSpacing() {
-        return 2;
+        return 2.5d;
     }
 
     @Override
