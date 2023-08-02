@@ -1,0 +1,9 @@
+{
+	"parent": "block/block",
+	"loader": "forge:obj",
+	"flip-v": true,
+    	"model": "kuayue:models/block/bogey/blomberg/blomberg_frame.obj",
+    	"textures": {
+    		"0": "kuayue:block/bogey/blomberg_frame"
+    }
+}

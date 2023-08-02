@@ -1,0 +1,6 @@
+{
+	"parent": "kuayue:block/track/standard/obj_track",
+	"loader": "forge:obj",
+	"flip-v": true,
+	"model": "kuayue:models/block/track/standard/cross_d1_zo.obj"
+}
