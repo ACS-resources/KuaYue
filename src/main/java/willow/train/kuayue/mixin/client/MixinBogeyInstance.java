@@ -14,14 +14,15 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import willow.train.kuayue.Blocks.Bogeys.common_renderers.KYCommonBogeyRenderer;
 import willow.train.kuayue.base.Constants;
 import willow.train.kuayue.base.data.BogeyPaintColour;
-import willow.train.kuayue.Blocks.Bogeys.common_renderers.KYCommonBogeyRenderer;
 
 @Mixin(BogeyInstance.class)
 public class MixinBogeyInstance {
 
     @Shadow
+
     @Final
     public BogeyRenderer renderer;
 

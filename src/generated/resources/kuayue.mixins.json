@@ -11,7 +11,7 @@
     "MixinAbstractBogeyBlock",
     "MixinStationBlockEntity",
     "MixinTrackBlock",
-    "MixinTrackPlacement",
+
 
     "client.AccessorInstance",
     "client.MixinBezierConnectionClient",
