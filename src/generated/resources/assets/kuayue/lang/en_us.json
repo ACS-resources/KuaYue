@@ -11,6 +11,7 @@
   "block.kuayue.green_fence_45": "Green Fence 45°",
   "block.kuayue.original_color_window_25": "25 Series Carriage Window",
   "block.kuayue.original_color_window_25_sealed": "25 Series Carriage Sealed Window",
+  "block.kuayue.standard_track": "Standard Track",
 
   "block.kuayue.panel_25b_original_bottom": "Original Color 25B Carriage Bottom Panel",
   "block.kuayue.panel_25b_original_mid": "Original Color 25B Carriage Middle Panel",
@@ -107,6 +108,13 @@
   "block.kuayue.end_face_25t_original_rubber": "Original Color 25k Carriage End Face 2",
   "block.kuayue.end_face_25t_original_rubber_upper": "Original Color 25K Carriage End Face Upper 3",
   "block.kuayue.end_face_25t_original_rubber_upper_2": "Original Color 25K Carriage End Face Upper 4",
+
+  "block.kuayue.ladder_25z_original": "Original Color 25Z Carriage ladder",
+  "block.kuayue.slab_25z_original_top": "Original Color 25Z Carriage floor",
+  "block.kuayue.end_face_25z_original": "Original Color 25Z Carriage end face",
+  "block.kuayue.panel_25z_original_bottom": "Original Color 25Z Carriage Bottom Panel",
+  "block.kuayue.panel_25z_original_mid": "Original Color 25Z Carriage Middle Panel",
+  "block.kuayue.panel_25z_original_top": "Original Color 25Z Carriage Upper Panel",
 
   "block.kuayue.direct_drainage_toilet_original_25t": "Original Color 25T Carriage Direct Drainage Toilet",
 
@@ -244,6 +252,7 @@
   "block.kuayue.hxd3d_cab_door": "HXD3D Cab Door",
 
   "block.kuayue.boiling_water_place": "Tea Stove",
+  "block.kuayue.train_bottom_panel_block": "universal train bottom panel",
   "tips.item": "--------------------------------all items above here-------------------------------------------",
   "item.kuayue.train_diet_1": "Train Meal A",
   "item.kuayue.ca_25t": "Dining Car CA25T",
@@ -251,6 +260,11 @@
   "item.kuayue.general_straight": "Straight Line Coil",
   "item.kuayue.general_hyperbolic": "Hyperbolic Line Coil",
   "item.kuayue.catenary_scissors": "Catenary Scissors",
+  "item.kuayue.weathering_resistant_steel": "Weathering Resistant Steel",
+  "item.kuayue.mineral_mixture": "Mineral Mixture",
+  "item.kuayue.weathering_resistant_steel_board": "Weathering Resistant Steel Board",
+  "item.kuayue.brush": "brush",
+  "item.kuayue.colored_brush": "colored brush",
   "tips.tips": "--------------------------------all tips above here-------------------------------------------",
   "item.kuayue.train_diet_1.tooltip": "Guess who loves to eat it?",
   "block.kuayue.df11g_front2.tooltip": "§7I’am not A PIG!",
@@ -275,7 +289,13 @@
   "block.kuayue.panel_cr200j_marshalled_top.tooltip": "Gonna throw Up",
   "block.kuayue.panel_cr200j_marshalled_bottom.tooltip": "Gonna throw Up",
   "block.kuayue.slab_cr200j_marshalled_top.tooltip": "Gonna throw Up",
+
+  "item.kuayue.train_panel_item.tooltip": "Press \" Shift \" and right click at the same time to change cart panel type",
+  "item.kuayue.brush.tooltip": "create letters on the panel",
+  "item.kuayue.colored_brush.tooltip": "change the letter's color",
+
   "tips.group": "--------------------------------all groups above here-------------------------------------------",
+
   "itemGroup.item_group_main": "Kuayue | Structures",
   "itemGroup.item_group_diet": "Kuayue | Foods",
   "itemGroup.item_group_catenary": "Kuayue | Catenary",
@@ -309,5 +329,21 @@
   "msg.kuayue.second_block_chosen": "End Point At ",
   "msg.kuayue.cancelled": "Operation Cancelled",
   "msg.kuayue.same_block": "Cannot Link The Same Block",
-  "msg.kuayue.uncovergence": "error : Catenary Fitting Does Not Converge Within The Specified Number Of Steps"
+  "msg.kuayue.uncovergence": "error : Catenary Fitting Does Not Converge Within The Specified Number Of Steps",
+
+  "tips.container": "--------------------------------containers--------------------------------",
+  "container.kuayue.carriage_type_sign_edit_menu.type_chs": "type",
+  "container.kuayue.carriage_type_sign_edit_menu.type_chs_py": "type in pinyin",
+  "container.kuayue.carriage_type_sign_edit_menu.type_abbr": "pinyin reduction of cart type",
+  "container.kuayue.carriage_type_sign_edit_menu.sub_type": "type(series no.)",
+  "container.kuayue.carriage_type_sign_edit_menu.no": "cart NO",
+  "container.kuayue.carriage_type_sign_edit_menu.confirm": "confirm",
+  "container.kuayue.carriage_type_sign_edit_menu.cancel": "cancel",
+
+  "container.kuayue.carriage_no_sign_edit_menu.content": "content",
+  "container.kuayue.carriage_no_sign_edit_menu.hinge": "mirror",
+
+  "tips.patchouli": "--------------------------------all entity above here-------------------------------------------",
+  "patchouli.kuayue.name":"跨越铁路车辆图鉴",
+  "patchouli.kuayue.landing_text": "放眼未来，走向世界"
 }

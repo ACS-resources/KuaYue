@@ -1,7 +1,7 @@
 {
 	"parent": "create:block/block",
 	"loader": "forge:obj",
-	"flip-v": true,
+	"flip_v": true,
 	"model": "kuayue:models/block/hxd3d/head/hxd3dhead.obj",
 	"textures": {
 		"0": "kuayue:block/df11g/df11g_front"

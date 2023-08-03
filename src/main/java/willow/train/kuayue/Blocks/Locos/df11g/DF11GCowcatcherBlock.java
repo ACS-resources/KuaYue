@@ -6,9 +6,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import willow.train.kuayue.Blocks.TrainCarriage.TrainPanelBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.OrdinaryTrainPanelBlock;
 
-public class DF11GCowcatcherBlock extends TrainPanelBlock {
+public class DF11GCowcatcherBlock extends OrdinaryTrainPanelBlock {
     protected static final float AABB_OFFSET = 3.0F;
     protected static final VoxelShape NORTH_AABB = Block.box(-16, 9, -3, 32, 16, 32);
     protected static final VoxelShape WEST_AABB = Block.box(-3, 9, -16, 32, 16, 32);

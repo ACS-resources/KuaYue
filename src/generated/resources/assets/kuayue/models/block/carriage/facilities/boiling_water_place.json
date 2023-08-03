@@ -1,5 +1,6 @@
 {
 	"credit": "Made by shazimingjiang",
+	"render_type": "translucent",
 	"texture_size": [32, 32],
 	"textures": {
 		"0": "minecraft:block/red_concrete",

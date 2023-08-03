@@ -1,5 +1,5 @@
 {
   "loader": "forge:obj",
   "model": "kuayue:models/block/catenary/steel_pole_45.obj",
-  "flip-v": true
+  "flip_v": true
 }

@@ -1,6 +1,7 @@
 package willow.train.kuayue;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
@@ -18,7 +19,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageNoSignRenderer;
+import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageTypeSignRenderer;
 import willow.train.kuayue.Client.CatenaryConnectionHandler;
+import willow.train.kuayue.Network.KuayueNetworkHandler;
+import willow.train.kuayue.Screen.CarriageNoSignEditScreen;
+import willow.train.kuayue.Screen.CarriageTypeSignEditScreen;
 import willow.train.kuayue.effect.EffectInit;
 import willow.train.kuayue.init.*;
 import willow.train.kuayue.renderer.TrainPanelSignRenderer;
@@ -85,6 +91,8 @@ public class Main {
 
         EffectInit.rigister(bus);
 
+        MenuInit.register(bus);
+
         KYCreateBlock.register();
         KYCreateEntities.register();
         AllModulePartials.init();
@@ -98,7 +106,19 @@ public class Main {
 
     }
     protected void clientSetup(final FMLClientSetupEvent fmlClientSetupEvent) {
-        ItemBlockRenderTypes.setRenderLayer(BlockInit.PANEL_25B_ORIGINAL_WINDOW.get(), RenderType.translucent());
+
+        registerRenderers(fmlClientSetupEvent);
+        registerMenus(fmlClientSetupEvent);
+
+        /**
+         * 1.19 开始Render_Layer写在模型里面
+         *
+         * 在 "credit": "xxx" 后面补上一句 "render_type": "translucent" 即可
+         *
+         * obj 模型里的 "flip-v" 改为 "flip_v", 在 1.20 上必须这样
+         */
+
+        /*
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25B.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.ORIGINAL_COLOR_WINDOW_25T_BLUE.get(), RenderType.translucent());
@@ -227,18 +247,31 @@ public class Main {
         ItemBlockRenderTypes.setRenderLayer(BlockInit.TactilePavingStraight.get(),RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.TactilePavingPin.get(),RenderType.translucent());
 
+         */
+
         WoodType.register(WoodTypeInit.TrainPanel);
-        BlockEntityRenderers.register(BlockEntitiesInit.TRAIN_BLOCK_ENTITES_BLOCK.get(), TrainPanelSignRenderer::new);
+
         //test text
     }
 
     protected void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
         Sheets.addWoodType(WoodTypeInit.TrainPanel);
+            KuayueNetworkHandler.registerPackets();
 
     });
     }
     public static CreateRegistrate registrate() {
         return REGISTRATE;
+    }
+
+    protected void registerRenderers(final FMLClientSetupEvent fmlClientSetupEvent){
+        BlockEntityRenderers.register(BlockEntitiesInit.CARRIAGE_TYPE_SIGN.get(), CarriageTypeSignRenderer::new);
+        BlockEntityRenderers.register(BlockEntitiesInit.CARRIAGE_NO_SIGN.get(), CarriageNoSignRenderer::new);
+    }
+
+    protected void registerMenus(final FMLClientSetupEvent fmlClientSetupEvent){
+        MenuScreens.register(MenuInit.CARRIAGE_TYPE_SIGN_EDIT_MENU.get(), CarriageTypeSignEditScreen::new);
+        MenuScreens.register(MenuInit.CARRIAGE_NO_SIGN_EDIT_MENU.get(), CarriageNoSignEditScreen::new);
     }
 }

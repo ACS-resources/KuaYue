@@ -309,5 +309,15 @@
   "msg.kuayue.second_block_chosen": "接触网终点 ",
   "msg.kuayue.cancelled": "操作取消",
   "msg.kuayue.same_block": "不能链接相同方块",
-  "msg.kuayue.uncovergence": "错误 : 悬链线拟合未在规定步数内收敛"
+  "msg.kuayue.uncovergence": "错误 : 悬链线拟合未在规定步数内收敛",
+
+  "tips.container": "--------------------------------容器--------------------------------",
+  "container.kuayue.carriage_type_sign_edit_menu.type_chs": "车厢类型",
+  "container.kuayue.carriage_type_sign_edit_menu.type_chs_py": "车厢类型拼音",
+  "container.kuayue.carriage_type_sign_edit_menu.type_abbr": "车厢类型拼音缩写",
+  "container.kuayue.carriage_type_sign_edit_menu.sub_type": "子类型",
+  "container.kuayue.carriage_type_sign_edit_menu.no": "车厢编号",
+
+  "tips.patchouli": "--------------------------------帕秋莉辞典内容--------------------------------"
+
 }

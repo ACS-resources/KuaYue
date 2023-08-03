@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"render_type": "translucent",
 	"textures": {
 		"0": "kuayue:block/panel_25t_marshalled_skirt",
 		"particle": "kuayue:block/panel_25t_marshalled_skirt"

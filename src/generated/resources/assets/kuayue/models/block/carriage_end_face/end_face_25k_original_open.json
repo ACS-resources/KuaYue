@@ -1,5 +1,6 @@
 {
 	"credit": "Made by WillowKoishi",
+	"render_type": "translucent",
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "kuayue:block/carriage_end_face/end_face_25k_original",
