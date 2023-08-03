@@ -31,17 +31,6 @@ public class TrackSwitchRenderer extends SmartBlockEntityRenderer<TrackSwitchTil
         super(ctx);
     }
 
-    @Override
-    protected void renderSafe(TrackSwitchTileEntity te, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
-        super.renderSafe(te, partialTicks, ms, buffer, light, overlay);
-        renderFlagState(te, partialTicks, ms, buffer, light);
-        renderTrackOverlay(te, ms, buffer, light, overlay, te.edgePoint);
-
-        if (te.ponderData != null && te.getLevel() instanceof PonderWorld ponderWorld) {
-            renderPonderData(ponderWorld, te.getState(), te.ponderData, partialTicks, ms, buffer, light, overlay);
-        }
-    }
-
     private void renderPonderData(PonderWorld ponderWorld, TrackSwitchBlock.SwitchState state, TrackSwitchTileEntity.PonderData ponderData, float partialTicks, PoseStack ms,
                                   MultiBufferSource buffer, int light, int overlay) {
         ms.pushPose();
@@ -57,91 +46,6 @@ public class TrackSwitchRenderer extends SmartBlockEntityRenderer<TrackSwitchTil
                     .colored(active ? new Color(0, 203, 150) : new Color(255, 50, 150))
                     .lineWidth(width);
         }
-        ms.popPose();
-    }
-
-    private void renderFlagState(TrackSwitchTileEntity te, float partialTicks, PoseStack ms, MultiBufferSource buffer,
-                                 int light) {
-        BlockState state = te.getBlockState();
-        ms.pushPose();
-
-        float yRot = AngleHelper.horizontalAngle(state.getValue(TrackSwitchBlock.FACING));
-
-        TransformStack msr = TransformStack.cast(ms);
-        msr.centre()
-                .rotateY(yRot)
-                .unCentre();
-
-        SuperByteBuffer buf;
-        if (te.isAutomatic()) {
-            ms.pushPose();
-            ms.translate(0, -2.0 / 16, 0);
-
-            buf = CachedBufferer.partial(KYBlockPartials.BRASS_SWITCH_FLAG, state)
-                    .light(light)
-                    .rotateCentered(Direction.UP, 1.5708f)
-                    .translate(0.5, 8.5 / 16, 0.5);
-
-            // Rotate just enough to touch the front or back edge
-            if (te.isReverseLeft() || (te.isNormal() && te.exitCount == 2 && te.hasExit(TrackSwitchBlock.SwitchState.REVERSE_RIGHT))) {
-//        buf = buf.rotate(Direction.NORTH, -1.1f);
-                te.lerpedAngle.updateChaseTarget(-1.1f);
-            } else if (te.isReverseRight() || (te.isNormal() && te.exitCount == 2 && te.hasExit(TrackSwitchBlock.SwitchState.REVERSE_LEFT))) {
-//        buf = buf.rotate(Direction.NORTH, 1.1f);
-                te.lerpedAngle.updateChaseTarget(1.1f);
-            } else {
-                te.lerpedAngle.updateChaseTarget(0.0f);
-            }
-            buf = buf.rotate(Direction.NORTH, te.lerpedAngle.getValue(partialTicks));
-
-            buf
-                    .translate(-0.5, -7.5 / 16, -0.5)
-                    .renderInto(ms, buffer.getBuffer(RenderType.solid()));
-
-            ms.popPose();
-        } else {
-            buf = CachedBufferer.partial(KYBlockPartials.ANDESITE_SWITCH_FLAG, state)
-                    .light(light);
-
-            if (te.isReverseLeft()) {
-//        buf = buf.rotateCentered(Direction.UP, 1.5708f);
-                te.lerpedAngle.updateChaseTarget(1.5708f);
-            } else if (te.isReverseRight()) {
-//        buf = buf.rotateCentered(Direction.UP, -1.5708f);  // 90°
-                te.lerpedAngle.updateChaseTarget(-1.5708f);
-            } else {
-                te.lerpedAngle.updateChaseTarget(0.0f);
-            }
-            buf = buf.rotateCentered(Direction.UP, te.lerpedAngle.getValue(partialTicks));
-            buf.renderInto(ms, buffer.getBuffer(RenderType.solid()));
-
-            CachedBufferer.partial(KYBlockPartials.ANDESITE_SWITCH_HANDLE, state)
-                    .light(light)
-                    .rotateCentered(Direction.UP, -1.5708f)  // 90°
-                    .renderInto(ms, buffer.getBuffer(RenderType.solid()));
-        }
-
-        ms.popPose();
-    }
-
-    private void renderTrackOverlay(TrackSwitchTileEntity te, PoseStack ms, MultiBufferSource buffer,
-                                    int light, int overlay, TrackTargetingBehaviour<TrackSwitch> target) {
-        BlockPos pos = te.getBlockPos();
-        boolean offsetToSide = CustomTrackOverlayRendering.overlayWillOverlap(target);
-
-        BlockPos targetPosition = target.getGlobalPosition();
-        Level level = te.getLevel();
-        BlockState trackState = level.getBlockState(targetPosition);
-        Block block = trackState.getBlock();
-
-        if (!(block instanceof ITrackBlock))
-            return;
-
-        ms.pushPose();
-        TransformStack.cast(ms)
-                .translate(targetPosition.subtract(pos));
-        CustomTrackOverlayRendering.renderOverlay(level, targetPosition, target.getTargetDirection(), target.getTargetBezier(), ms,
-                buffer, light, overlay, te.getOverlayModel(), 1, offsetToSide);
         ms.popPose();
     }
 }

@@ -66,9 +66,6 @@ public class KYTrackMaterials {
         return trackMaterial;
     }
 
-    public static final TrackMaterial.TrackModelHolder KY_DEFAULT = new TrackMaterial.TrackModelHolder(KYBlockPartials.KY_TRACK_TIE,
-            KYBlockPartials.KY_TRACK_SEGMENT_LEFT, KYBlockPartials.KY_TRACK_SEGMENT_RIGHT);
-
     public static void register(){}
 
     public static void addToBlockEntityType(TrackBlock block) {

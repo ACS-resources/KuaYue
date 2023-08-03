@@ -179,13 +179,6 @@ public class TrackSwitchTileEntity extends SmartBlockEntity implements ITransfor
 //        return getBlockState().getValue(STATE);
     }
 
-    /*public void setState(SwitchState state) {
-        updateSwitchState(trackSwitch -> {
-            trackSwitch.setSwitchState(state);
-            onStateChange();
-        });
-    }*/
-
     public boolean isNormal() {
         return getState() == TrackSwitchBlock.SwitchState.NORMAL;
     }
@@ -207,34 +200,6 @@ public class TrackSwitchTileEntity extends SmartBlockEntity implements ITransfor
             case REVERSE_RIGHT -> sw.hasRightExit();
             case REVERSE_LEFT -> sw.hasLeftExit();
         };
-    }
-
-    public PartialModel getOverlayModel() {
-        TrackSwitch sw = edgePoint.getEdgePoint();
-        if (sw == null) {
-            return null;
-        }
-
-        if (sw.hasStraightExit() && sw.hasLeftExit() && sw.hasRightExit()) {
-            if (isNormal()) {
-                return KYBlockPartials.SWITCH_3WAY_STRAIGHT;
-            } else if (isReverseLeft()) {
-                return KYBlockPartials.SWITCH_3WAY_LEFT;
-            } else if (isReverseRight()) {
-                return KYBlockPartials.SWITCH_3WAY_RIGHT;
-            }
-        } else if (sw.hasStraightExit() && sw.hasLeftExit()) {
-            return isNormal() ? KYBlockPartials.SWITCH_LEFT_STRAIGHT
-                    : KYBlockPartials.SWITCH_LEFT_TURN;
-        } else if (sw.hasStraightExit() && sw.hasRightExit()) {
-            return isNormal() ? KYBlockPartials.SWITCH_RIGHT_STRAIGHT
-                    : KYBlockPartials.SWITCH_RIGHT_TURN;
-        } else if (sw.hasLeftExit() && sw.hasRightExit()) {
-            return isReverseLeft() ? KYBlockPartials.SWITCH_2WAY_LEFT
-                    : KYBlockPartials.SWITCH_2WAY_RIGHT;
-        }
-
-        return KYBlockPartials.SWITCH_NONE;
     }
 
     void calculateExits(TrackSwitch sw) {
@@ -323,27 +288,6 @@ public class TrackSwitchTileEntity extends SmartBlockEntity implements ITransfor
         //checkRedstoneInputs();
     }
 
-    // Borrowed from Create's StationBlockEntity
-    /*private boolean updateSwitchState(Consumer<TrackSwitch> updateState) {
-        TrackSwitch trackSwitch = getSwitch();
-        TrackGraphLocation graphLocation = edgePoint.determineGraphLocation();
-        if (trackSwitch == null || graphLocation == null)
-            return false;
-
-        updateState.accept(trackSwitch);
-//        Create.RAILWAYS.sync.pointAdded(graphLocation.graph, trackSwitch);
-//        Create.RAILWAYS.markTracksDirty();
-        return true;
-    }*/
-
-    /*protected void onStateChange() {
-        if (level != null) {
-            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 0);
-            if (level.isClientSide)
-                clientLazyTick();
-        }
-    }*/
-
     boolean cycleState() {
         return cycleState(TrackSwitchBlock.SwitchConstraint.NONE);
     }
@@ -430,12 +374,6 @@ public class TrackSwitchTileEntity extends SmartBlockEntity implements ITransfor
                 getSwitch().updateEdges(edgePoint.determineGraphLocation().graph);
         } catch (ClassCastException ignored) {} // if we are targeting air, catch the crash
     }
-
-    /*protected void followAutomaticSwitching() {
-        if (isAutomatic() && edgePoint.getEdgePoint() != null && edgePoint.determineGraphLocation() != null) {
-            edgePoint.getEdgePoint().switchForEdges(edgePoint.determineGraphLocation().graph);
-        }
-    }*/
 
     protected void restoreEdges() {
         try {

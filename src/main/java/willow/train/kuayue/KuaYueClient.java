@@ -8,16 +8,9 @@ public class KuaYueClient {
 
     public static void init(){
 
-        CustomTrackOverlayRendering.register(KYEdgePointTypes.SWITCH, KYBlockPartials.SWITCH_RIGHT_TURN);
-
         KYBogeyStyles.registerClient();
         KYBlockPartials.init();
         KYPackets.PACKETS.registerS2CListener();
 
-        /*fmlClientSetupEvent.enqueueWork(() -> {
-            Sheets.addWoodType(WoodTypeInit.TrainPanel);
-        });*/
-
-        //Sheets.addWoodType(WoodTypeInit.TrainPanel);
     }
 }

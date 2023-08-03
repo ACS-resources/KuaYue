@@ -1,12 +1,15 @@
 package willow.train.kuayue.Client;
 
+import com.simibubi.create.content.trains.track.TrackMaterial;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import willow.train.kuayue.Main;
 import willow.train.kuayue.init.EntityInit;
+import willow.train.kuayue.init.KYBlockPartials;
 import willow.train.kuayue.renderer.CatenaryBaseRenderer;
 import willow.train.kuayue.renderer.SmallCatenaryBaseRenderer;
 
@@ -16,5 +19,12 @@ public class KuayueClientSetupEvent {
     public static void doSetup(FMLClientSetupEvent event){
         EntityRenderers.register(EntityInit.CATENARY_BASE.get() , CatenaryBaseRenderer::new);
         EntityRenderers.register(EntityInit.SMALL_CATENARY_BASE.get() , SmallCatenaryBaseRenderer::new);
+
+    }
+
+    @SubscribeEvent
+    public static void initBogeyModel(ModelRegistryEvent event){
+        final TrackMaterial.TrackModelHolder KY_DEFAULT = new TrackMaterial.TrackModelHolder(KYBlockPartials.KY_TRACK_TIE,
+                KYBlockPartials.KY_TRACK_SEGMENT_LEFT, KYBlockPartials.KY_TRACK_SEGMENT_RIGHT);
     }
 }

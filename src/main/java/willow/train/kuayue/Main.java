@@ -87,14 +87,14 @@ public class Main {
 
         EntityInit.ENTITY_TYPES.register(bus);
 
+        ModSetup.register();
+
         ModSounds.register(bus);
 
         EffectInit.rigister(bus);
 
         MenuInit.register(bus);
-        KYBogeySizes.register();
-        KYCreateBlock.register();
-        KYCreateEntities.register();
+
         AllModulePartials.init();
         REGISTRATE.registerEventListeners(bus);
 
