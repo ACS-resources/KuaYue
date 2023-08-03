@@ -1,9 +1,0 @@
-{
-	"parent": "block/block",
-	"loader": "forge:obj",
-	"flip-v": true,
-    	"model": "kuayue:models/block/bogey/wheels/cr_bogey_wheels.obj",
-    	"textures": {
-    		"0": "kuayue:block/bogey/cr_bogey_wheels"
-    }
-}
