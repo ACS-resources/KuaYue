@@ -14,6 +14,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import willow.train.kuayue.Main;
@@ -27,7 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//@Environment(EnvType.CLIENT)
+@OnlyIn(Dist.CLIENT)
 public class BogeyCategoryHandlerClient {
 
     static final ResourceLocation FAVORITES_CATEGORY = Main.asResource("favorites_category");

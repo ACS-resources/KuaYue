@@ -22,9 +22,9 @@ public class KuayueClientSetupEvent {
 
     }
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public static void initBogeyModel(ModelRegistryEvent event){
         final TrackMaterial.TrackModelHolder KY_DEFAULT = new TrackMaterial.TrackModelHolder(KYBlockPartials.KY_TRACK_TIE,
                 KYBlockPartials.KY_TRACK_SEGMENT_LEFT, KYBlockPartials.KY_TRACK_SEGMENT_RIGHT);
-    }
+    }*/
 }

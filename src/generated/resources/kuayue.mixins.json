@@ -10,7 +10,10 @@
 
     "MixinAbstractBogeyBlock",
     "MixinStationBlockEntity",
-    "MixinTrackBlock"
+    "MixinTrackBlock",
+    "MixinTrackBlockEntity",
+
+    "ServerGamePacketListenerMixin"
   ],
   "client": [
     "client.AccessorInstance",
@@ -18,7 +21,9 @@
     "client.MixinBogeyInstance",
     "client.MixinTrackInstance_BezierTrackInstance",
     "client.MixinTrackRenderer",
-    "client.MixinTrackTargetingClient"
+    "client.MixinTrackTargetingClient",
+
+    "client.ClientPacketListenerMixin"
   ],
   "minVersion": "0.8"
 }

@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageNoSignRenderer;
 import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageTypeSignRenderer;
 import willow.train.kuayue.Client.CatenaryConnectionHandler;
+import willow.train.kuayue.MultiLoader.Env;
 import willow.train.kuayue.Network.KuayueNetworkHandler;
 import willow.train.kuayue.Screen.CarriageNoSignEditScreen;
 import willow.train.kuayue.Screen.CarriageTypeSignEditScreen;
@@ -36,6 +37,8 @@ import willow.train.kuayue.tabs.*;
 public class Main {
     public static final Logger LOGGER = LoggerFactory.getLogger("KuaYue");
     public static final String MOD_ID = "kuayue";
+
+    static IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
     private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
     public static CatenaryConnectionHandler CATENARYCONNECTIONHANDLER = new CatenaryConnectionHandler();
@@ -103,6 +106,10 @@ public class Main {
         bus.addListener(this::clientSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+
+        KYPackets.PACKETS.registerC2SListener();
+
+        Env.CLIENT.runIfCurrent(() -> KuaYueClient::init);
 
     }
     protected void clientSetup(final FMLClientSetupEvent fmlClientSetupEvent) {

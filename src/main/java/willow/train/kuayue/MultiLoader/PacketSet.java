@@ -1,24 +1,39 @@
 package willow.train.kuayue.MultiLoader;
 
+import com.simibubi.create.AllPackets;
 import com.simibubi.create.foundation.networking.SimplePacketBase;
 import com.simibubi.create.foundation.utility.Components;
 import io.netty.buffer.Unpooled;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ServerboundCustomPayloadPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.ApiStatus;
 import willow.train.kuayue.Main;
 import willow.train.kuayue.init.KYPackets;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
-public abstract class PacketSet {
+/**
+ * Manages sending and receiving registered packets.
+ * <pre>
+ *     C2S -> Client-to-Server
+ *     S2C -> Server-to-Client
+ * </pre>
+ */
+public class PacketSet {
 
     public final String id;
     public final int version;
@@ -30,6 +45,8 @@ public abstract class PacketSet {
     private final Object2IntMap<Class<? extends S2CPacket>> s2cTypes;
     private final List<Function<FriendlyByteBuf, C2SPacket>> c2sPackets;
     private final Object2IntMap<Class<? extends C2SPacket>> c2sTypes;
+
+    public static final Map<ResourceLocation, PacketSet> HANDLERS = new HashMap<>();
 
     protected PacketSet(String id, int version,
                         List<Function<FriendlyByteBuf, S2CPacket>> s2cPackets,
@@ -52,6 +69,7 @@ public abstract class PacketSet {
     /**
      * Send the given C2S packet to the server.
      */
+    @OnlyIn(Dist.CLIENT)
     public void send(C2SPacket packet) {
         int i = idOfC2S(packet);
         if (i != -1) {
@@ -67,7 +85,10 @@ public abstract class PacketSet {
     /**
      * Send one of Create's packets to the server.
      */
-    public abstract void send(SimplePacketBase packet);
+    @OnlyIn(Dist.CLIENT)
+    public void send(SimplePacketBase packet) {
+        AllPackets.getChannel().sendToServer(packet);
+    }
 
     /**
      * Send the given S2C packet to the given player.
@@ -79,7 +100,9 @@ public abstract class PacketSet {
     /**
      * Send the given Create packet to the given player.
      */
-    public abstract void sendTo(ServerPlayer player, SimplePacketBase packet);
+    public void sendTo(ServerPlayer player, SimplePacketBase packet) {
+        AllPackets.getChannel().send(PacketDistributor.PLAYER.with(() -> player), packet);
+    }
 
     /**
      * Send the given S2C packet to the given players.
@@ -99,12 +122,28 @@ public abstract class PacketSet {
     /**
      * Send the given Create packet to the given players.
      */
-    public abstract void sendTo(PlayerSelection selection, SimplePacketBase packet);
+    public void sendTo(PlayerSelection selection, SimplePacketBase packet) {
+        AllPackets.getChannel().send(((PlayerSelection) selection).target, packet);
+    }
 
-    public abstract void registerS2CListener();
-    public abstract void registerC2SListener();
+    @OnlyIn(Dist.CLIENT)
+    public void registerS2CListener() {
+        HANDLERS.put(s2cPacket, this);
+    }
 
-    protected abstract void doSendC2S(FriendlyByteBuf buf);
+    public void registerC2SListener() {
+        HANDLERS.put(c2sPacket, this);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    protected void doSendC2S(FriendlyByteBuf buf) {
+        ClientPacketListener connection = Minecraft.getInstance().getConnection();
+        if (connection != null) {
+            connection.send(new ServerboundCustomPayloadPacket(c2sPacket, buf));
+        } else {
+            Main.LOGGER.error("Cannot send a C2S packet before the client connection exists, skipping!");
+        }
+    }
 
     protected int idOfC2S(C2SPacket packet) {
         return c2sTypes.getOrDefault(packet.getClass(), -1);
@@ -114,6 +153,7 @@ public abstract class PacketSet {
         return s2cTypes.getOrDefault(packet.getClass(), -1);
     }
 
+    @OnlyIn(Dist.CLIENT)
     @ApiStatus.Internal
     public void handleS2CPacket(Minecraft mc, FriendlyByteBuf buf) {
         int i = buf.readVarInt();
@@ -144,7 +184,7 @@ public abstract class PacketSet {
                                    Object2IntMap<Class<? extends S2CPacket>> s2cTypes,
                                    List<Function<FriendlyByteBuf, C2SPacket>> c2sPackets,
                                    Object2IntMap<Class<? extends C2SPacket>> c2sTypes) {
-        throw new AssertionError();
+        return new PacketSet(id, version, s2cPackets, s2cTypes, c2sPackets, c2sTypes);
     }
 
     /**
@@ -208,7 +248,7 @@ public abstract class PacketSet {
         }
 
         public PacketSet build() {
-            return create(id, version, s2cPackets, s2cTypes, c2sPackets, c2sTypes);
+            return PacketSet.create(id, version, s2cPackets, s2cTypes, c2sPackets, c2sTypes);
         }
     }
 }

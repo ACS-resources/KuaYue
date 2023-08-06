@@ -33,90 +33,32 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-@Mixin(AbstractBogeyBlock.class)
-public abstract class MixinAbstractBogeyBlock extends Block {
-
-    public MixinAbstractBogeyBlock(BlockBehaviour.Properties properties) {
-        super(properties);
-    }
+@Mixin(value = AbstractBogeyBlock.class, remap = false)
+public abstract class MixinAbstractBogeyBlock {
 
     @Shadow protected abstract BlockState copyProperties(BlockState source, BlockState target);
 
-    @Shadow public abstract BogeySizes.BogeySize getSize();
+    @Inject(method = "use",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;displayClientMessage(Lnet/minecraft/network/chat/Component;Z)V", remap = true, ordinal = 0),
+            locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true, remap = true)
+    private void placeCorrectedBlock(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand,
+                                     BlockHitResult hit, CallbackInfoReturnable<InteractionResult> cir, ItemStack stack,
+                                     BlockEntity be, AbstractBogeyBlockEntity sbte, BogeyStyle currentStyle,
+                                     BogeySizes.BogeySize size, BogeyStyle style) {
+        if (state.getBlock() != style.getBlockOfSize(size)) {
+            // need to place block
+            CompoundTag oldData = sbte.getBogeyData();
 
-    @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand,
-                                 BlockHitResult hit) {
-        if (level.isClientSide)
-            return InteractionResult.PASS;
-        ItemStack stack = player.getItemInHand(hand);
+            BlockState targetState = style.getBlockOfSize(size).defaultBlockState();
+            targetState = copyProperties(state, targetState);
+            level.setBlock(pos, targetState, 3);
 
-        if (!player.isShiftKeyDown() && stack.is(AllItems.WRENCH.get()) && !player.getCooldowns().isOnCooldown(stack.getItem())
-                && AllBogeyStyles.BOGEY_STYLES.size() > 1) {
-
-            BlockEntity be = level.getBlockEntity(pos);
-
-            if (!(be instanceof AbstractBogeyBlockEntity sbbe))
-                return InteractionResult.FAIL;
-
-            player.getCooldowns().addCooldown(stack.getItem(), 20);
-            BogeyStyle currentStyle = sbbe.getStyle();
-
-            BogeySizes.BogeySize size = getSize();
-
-            BogeyStyle style = this.getNextStyle(currentStyle);
-            if (style == currentStyle)
-                return InteractionResult.PASS;
-
-            Set<BogeySizes.BogeySize> validSizes = style.validSizes();
-
-            for (int i = 0; i < BogeySizes.count(); i++) {
-                if (validSizes.contains(size)) break;
-                size = size.increment();
+            BlockEntity newBlockEntity = level.getBlockEntity(pos);
+            if (!(newBlockEntity instanceof AbstractBogeyBlockEntity newTileEntity)) {
+                cir.setReturnValue(InteractionResult.FAIL);
+                return;
             }
-
-            sbbe.setBogeyStyle(style);
-
-            CompoundTag defaultData = style.defaultData;
-            sbbe.setBogeyData(sbbe.getBogeyData().merge(defaultData));
-
-            if (size == getSize()) {
-                player.displayClientMessage(Lang.translateDirect("bogey.style.updated_style")
-                        .append(": ").append(style.displayName), true);
-            } else {
-                CompoundTag oldData = sbbe.getBogeyData();
-                level.setBlock(pos, getStateOfSize(sbbe, size), 3);
-                BlockEntity newBlockEntity = level.getBlockEntity(pos);
-                if (!(newBlockEntity instanceof AbstractBogeyBlockEntity newBlockEntity1))
-                    return InteractionResult.FAIL;
-                newBlockEntity1.setBogeyData(oldData);
-                player.displayClientMessage(Lang.translateDirect("bogey.style.updated_style_and_size")
-                        .append(": ").append(style.displayName), true);
-            }
-
-            return InteractionResult.CONSUME;
+            newTileEntity.setBogeyData(oldData);
         }
-
-        CommonBogeyFunctionality.onInteractWithBogey(state, level, pos, player, hand, hit);
-        ItemStack heldItem = player.getItemInHand(hand);
-
-        AbstractBogeyBlockEntity be = (AbstractBogeyBlockEntity) level.getBlockEntity(pos);
-        if (be == null) return InteractionResult.PASS;
-
-        return InteractionResult.PASS;
-    }
-
-    public BlockState getStateOfSize(AbstractBogeyBlockEntity sbte, BogeySizes.BogeySize size) {
-        BogeyStyle style = sbte.getStyle();
-        BlockState state = style.getBlockOfSize(size).defaultBlockState();
-        return copyProperties(sbte.getBlockState(), state);
-    }
-
-    public BogeyStyle getNextStyle(BogeyStyle style) {
-        Collection<BogeyStyle> allStyles = style.getCycleGroup().values();
-        if (allStyles.size() <= 1)
-            return style;
-        List<BogeyStyle> list = new ArrayList<>(allStyles);
-        return Iterate.cycleValue(list, style);
     }
 }
