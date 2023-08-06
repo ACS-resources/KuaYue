@@ -1,10 +1,20 @@
 package willow.train.kuayue.Util;
 
 import com.mojang.blaze3d.platform.InputConstants;
+import com.simibubi.create.AllPackets;
+import com.simibubi.create.content.trains.HonkPacket;
 import com.simibubi.create.content.trains.entity.Train;
 import com.simibubi.create.foundation.networking.SimplePacketBase;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.ChunkEvent;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.fml.loading.FMLPaths;
+import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
 import willow.train.kuayue.Main;
@@ -14,20 +24,17 @@ import java.util.Locale;
 
 public class Utils {
 
-    //@ExpectPlatform
     public static boolean isModLoaded(String id, @Nullable String fabricId) {
-        throw new AssertionError();
+        return ModList.get().isLoaded(id);
     }
 
-    //@ExpectPlatform
     public static Path configDir() {
-        throw new AssertionError();
+        return FMLPaths.CONFIGDIR.get();
     }
 
-    //@ExpectPlatform
     @Contract // shut
     public static boolean isDevEnv() {
-        throw new AssertionError();
+        return !FMLLoader.isProduction();
     }
 
     public static boolean isEnvVarTrue(String name) {
@@ -40,24 +47,24 @@ public class Utils {
         }
     }
 
-    //@ExpectPlatform
-    //@Environment(EnvType.CLIENT)
+    @OnlyIn(Dist.CLIENT)
     public static boolean isActiveAndMatches(KeyMapping mapping, InputConstants.Key keyCode) {
-        throw new AssertionError();
+        return mapping.isActiveAndMatches(keyCode);
     }
 
-    //@ExpectPlatform
     public static void sendCreatePacketToServer(SimplePacketBase packet) {
-        throw new AssertionError();
+        AllPackets.getChannel().sendToServer(packet);
     }
 
-    //@ExpectPlatform
     public static void sendHonkPacket(Train train, boolean isHonk) {
-        throw new AssertionError();
+        AllPackets.getChannel().send(PacketDistributor.ALL.noArg(), new HonkPacket(train, isHonk));
     }
 
-    //@ExpectPlatform
     public static void postChunkEventClient(LevelChunk chunk, boolean load) {
-        throw new AssertionError();
+        if (load) {
+            MinecraftForge.EVENT_BUS.post(new ChunkEvent.Load(chunk));
+        } else {
+            MinecraftForge.EVENT_BUS.post(new ChunkEvent.Unload(chunk));
+        }
     }
 }
