@@ -46,7 +46,7 @@ public abstract class MixinAbstractBogeyBlock {
                                      BlockEntity be, AbstractBogeyBlockEntity sbte, BogeyStyle currentStyle,
                                      BogeySizes.BogeySize size, BogeyStyle style) {
         if (state.getBlock() != style.getBlockOfSize(size)) {
-            // need to place block
+
             CompoundTag oldData = sbte.getBogeyData();
 
             BlockState targetState = style.getBlockOfSize(size).defaultBlockState();

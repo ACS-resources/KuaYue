@@ -19,7 +19,6 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import willow.train.kuayue.Blocks.Bogeys.standard_bogey.KYStandardBogeyBlock;
 import willow.train.kuayue.Blocks.Locos.df11g.DF11GFrontBlock;
-import willow.train.kuayue.Blocks.Tracks.CustomTrackBlockStateGenerator;
 import willow.train.kuayue.Blocks.Tracks.standard_track.StandardTrackBlockStateGenerator;
 import willow.train.kuayue.Items.ToolTipsItemHelper;
 import willow.train.kuayue.Main;
@@ -68,7 +67,7 @@ public class KYCreateBlock {
     }
 
     private static BlockEntry<TrackBlock> makeTrack(TrackMaterial material) {
-        return makeTrack(material, new CustomTrackBlockStateGenerator()::generate);
+        return makeTrack(material, new StandardTrackBlockStateGenerator()::generate);
     }
 
     private static BlockEntry<TrackBlock> makeTrack(TrackMaterial material, NonNullBiConsumer<DataGenContext<Block, TrackBlock>, RegistrateBlockstateProvider> blockstateGen) {

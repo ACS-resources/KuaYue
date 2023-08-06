@@ -88,7 +88,6 @@ public abstract class MixinStationBlockEntity extends SmartBlockEntity {
         if (style == AllBogeyStyles.STANDARD)
             return;
 
-        //noinspection DataFlowIssue - we know that level isn't null
         if (level.getBlockEntity(targetPos) instanceof AbstractBogeyBlockEntity bogeyBE) {
             bogeyBE.setBogeyStyle(style);
         }

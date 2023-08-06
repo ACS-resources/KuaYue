@@ -43,17 +43,13 @@ public class KuaYueClient {
         clientCommandConsumers.add(consumer);
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"}) // jank!
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @SubscribeEvent
     public static void onClientCommandRegistration(RegisterClientCommandsEvent event) {
         CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
         CommandDispatcher<SharedSuggestionProvider> casted = (CommandDispatcher) dispatcher;
         clientCommandConsumers.forEach(consumer -> consumer.accept(casted));
     }
-
-    // endregion
-
-    // region --- Model Layers ---
 
     private static final Map<ModelLayerLocation, Supplier<LayerDefinition>> modelLayers = new HashMap<>();
 
@@ -66,10 +62,6 @@ public class KuaYueClient {
         modelLayers.clear();
     }
 
-    // endregion
-
-    // region --- Built-in Packs ---
-
     private record PackInfo(String id, String name) {}
     private static final List<PackInfo> packs = new ArrayList<>();
 
@@ -77,7 +69,6 @@ public class KuaYueClient {
         packs.add(new PackInfo(id, name));
     }
 
-    // based on Create's impl
     public static void onBuiltinPackRegistration(AddPackFindersEvent event) {
         if (event.getPackType() != PackType.CLIENT_RESOURCES)
             return;

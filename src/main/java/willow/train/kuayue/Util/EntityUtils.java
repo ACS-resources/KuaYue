@@ -9,37 +9,38 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.items.ItemHandlerHelper;
 import org.jetbrains.annotations.Contract;
 
 import java.util.function.Function;
 
 public class EntityUtils {
     public static CompoundTag getPersistentData(Entity entity) {
-        throw new AssertionError();
+        return entity.getPersistentData();
     }
 
     /**
      * Gives a player an item. Plays the pickup sound, and drops whatever can't be picked up.
      */
     public static void givePlayerItem(Player player, ItemStack stack) {
-        throw new AssertionError();
-    }
-
-    public static ServerPlayer createConductorFakePlayer(ServerLevel level) {
-        throw new AssertionError();
+        ItemHandlerHelper.giveItemToPlayer(player, stack);
     }
 
     public static double getReachDistance(Player player) {
-        throw new AssertionError();
+        return player.getReachDistance();
     }
 
     /**
      * Fire a use event.
      * @return true if the use is allowed, false otherwise
      */
-    @Contract // shut
+    @Contract
     public static boolean handleUseEvent(Player player, InteractionHand hand, BlockHitResult hit) {
-        throw new AssertionError();
+        PlayerInteractEvent.RightClickBlock event = ForgeHooks.onRightClickBlock(player, InteractionHand.MAIN_HAND, hit.getBlockPos(), hit);
+        return event.getResult() != Event.Result.DENY;
     }
 
     public static boolean isHolding(Player player, Function<ItemStack, Boolean> test) {

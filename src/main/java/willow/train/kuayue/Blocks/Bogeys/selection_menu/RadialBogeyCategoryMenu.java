@@ -55,7 +55,7 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
     private ResourceLocation selectedCategory;
 
     @Nullable
-    private Integer favoriteSlot; // should be index to store in
+    private Integer favoriteSlot;
 
     private static final int CENTER = -5;
 
@@ -113,7 +113,7 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
             hoveredSlot =
                     (Mth.floor((AngleHelper.deg(Mth.atan2(hoveredY, hoveredX)) + 360 + 180 - 22.5f)) % 360)
                             / 45;
-        boolean renderCenterSlot = false;//state == State.PICK_STYLE;
+        boolean renderCenterSlot = false;
         if (scrollMode && distance > 150)
             scrollMode = false;
         if (renderCenterSlot && distance <= 150)
@@ -201,13 +201,12 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
                 }
             } else if (state == State.PICK_STYLE) {
                 if (slot < BogeyCategoryHandlerClient.styleCount(selectedCategory)) {
-                    /* render bogey */
+
                     ResourceLocation id = BogeyCategoryHandlerClient.getStyleId(selectedCategory, slot);
                     BogeyStyle style = BogeyCategoryHandlerClient.getStyle(selectedCategory, id);
                     int sizeIdx = ticksOpen / 40;
                     BogeySize size = style.validSizes().toArray(BogeySize[]::new)[sizeIdx % style.validSizes().size()];
 
-                    //BogeyRenderer renderer = style.getInWorldRenderInstance(size);
                     Block block = style.getBlockOfSize(size);
                     if (block instanceof AbstractBogeyBlock<?> bogeyBlock && minecraft != null) {
 
@@ -245,9 +244,7 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
 
                     }
 
-                    /* end render bogey */
-                    //*
-                } else { // */
+                } else {
                     AllGuiTextures.TOOLBELT_EMPTY_SLOT.render(ms, 0, 0, this);
                 }
             }
@@ -266,9 +263,7 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
             }
             ms.popPose();
         }
-        /*
-        end core rendering
-         */
+
 
         if (title != null) {
             int i1 = (int) (fade * 255.0F);
@@ -380,7 +375,7 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
             }
         }
 
-        if (button == 1) { // right click to go back
+        if (button == 1) {
             if (state == State.PICK_STYLE && selectedCategory != MANAGE_FAVORITES_CATEGORY) {
                 state = State.PICK_CATEGORY;
                 return true;

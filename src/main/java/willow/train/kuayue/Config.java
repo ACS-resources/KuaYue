@@ -9,12 +9,9 @@ import java.nio.file.Path;
 public class Config {
 
     public static final String CATEGORY_GENERAL = "general";
-    public static final String CATEGORY_SEMAPHORE = "semaphore";
 
     public static final ForgeConfigSpec SERVER_CONFIG;
     public static final ForgeConfigSpec CLIENT_CONFIG;
-
-    //    public static ForgeConfigSpec.BooleanValue HIBYE;
     public static ForgeConfigSpec.IntValue FAR_TRAIN_SYNC_TICKS;
     public static ForgeConfigSpec.IntValue NEAR_TRAIN_SYNC_TICKS;
     public static ForgeConfigSpec.IntValue JOURNEYMAP_UPDATE_TICKS;
@@ -48,7 +45,6 @@ public class Config {
 
         SERVER_BUILDER.comment("General settings").push(CATEGORY_GENERAL);
         setupGeneralCategory(SERVER_BUILDER);
-        SERVER_BUILDER.pop().comment("Semaphore settings").push(CATEGORY_SEMAPHORE);
         setupSemaphoreCategory(SERVER_BUILDER);
         SERVER_BUILDER.pop();
 

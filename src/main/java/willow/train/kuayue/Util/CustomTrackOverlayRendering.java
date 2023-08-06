@@ -50,7 +50,6 @@ public class CustomTrackOverlayRendering {
         renderOverlay(level, pos, direction, bezier, ms, buffer, light, overlay, model, scale, false);
     }
 
-    //Copied from TrackTargetingBehaviour
     public static void renderOverlay(LevelAccessor level, BlockPos pos, Direction.AxisDirection direction,
                                      BezierTrackPointLocation bezier, PoseStack ms, MultiBufferSource buffer, int light, int overlay,
                                      PartialModel model, float scale, boolean offsetToSide) {
@@ -76,7 +75,6 @@ public class CustomTrackOverlayRendering {
         ms.popPose();
     }
 
-    //Copied from TrackBlock
     public static PartialModel prepareTrackOverlay(BlockGetter world, BlockPos pos, BlockState state,
                                                    BezierTrackPointLocation bezierPoint, Direction.AxisDirection direction,
                                                    PoseStack ms, PartialModel model) {
@@ -104,12 +102,11 @@ public class CustomTrackOverlayRendering {
 
                 msr.translate(offset.subtract(Vec3.atBottomCenterOf(pos)));
                 msr.translate(0, -4 / 16f, 0);
-                // Translate more for slabs or monorails
                 IHasTrackCasing casingBc = (IHasTrackCasing) bc;
                 if (bc.getMaterial().trackType == KYTrackMaterials.KYTrackType.STANDARD) {
                     msr.translate(0, 14/16f, 0);
                 } else if (casingBc.getTrackCasing() != null) {
-                    // Don't shift up if the curve is a slope and the casing is under the track, rather than in it
+
                     if (bc.tePositions.getFirst().getY() == bc.tePositions.getSecond().getY()) {
                         msr.translate(0, 1 / 16f, 0);
                     } else if (!casingBc.isAlternate()) {
@@ -129,7 +126,6 @@ public class CustomTrackOverlayRendering {
             normal = ((ITrackBlock) state.getBlock()).getUpNormal(world, pos, state);
         }
 
-        //Shift for casings and monorails
         if (bezierPoint == null && state.getBlock() instanceof TrackBlock trackBlock && trackBlock.getMaterial().trackType == KYTrackMaterials.KYTrackType.STANDARD ) {
             msr.translate(0, 14/16f, 0);
         } else if (bezierPoint == null && world.getBlockEntity(pos) instanceof TrackBlockEntity trackTE) {

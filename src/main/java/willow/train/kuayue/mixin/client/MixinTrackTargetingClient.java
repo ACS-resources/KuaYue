@@ -18,7 +18,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import willow.train.kuayue.Blocks.Switches.TrackSwitchDebugVisualizer;
 import willow.train.kuayue.Util.CustomTrackOverlayRendering;
 
 @Mixin(value = TrackTargetingClient.class, remap = false)
@@ -57,10 +56,5 @@ public class MixinTrackTargetingClient {
             ms.popPose();
             ci.cancel();
         }
-    }
-
-    @Inject(method = "render", at = @At("HEAD"))
-    private static void renderSwitchHints(PoseStack ms, SuperRenderTypeBuffer buffer, Vec3 camera, CallbackInfo ci) {
-        TrackSwitchDebugVisualizer.visualizePotentialLocations();
     }
 }

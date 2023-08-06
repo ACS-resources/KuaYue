@@ -32,7 +32,7 @@ public class Utils {
         return FMLPaths.CONFIGDIR.get();
     }
 
-    @Contract // shut
+    @Contract
     public static boolean isDevEnv() {
         return !FMLLoader.isProduction();
     }

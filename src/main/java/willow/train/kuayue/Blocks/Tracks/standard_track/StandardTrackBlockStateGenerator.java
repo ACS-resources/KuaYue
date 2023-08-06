@@ -1,33 +1,30 @@
 package willow.train.kuayue.Blocks.Tracks.standard_track;
 
-import com.simibubi.create.Create;
 import com.simibubi.create.content.trains.track.TrackBlock;
-import com.simibubi.create.content.trains.track.TrackBlockStateGenerator;
 import com.simibubi.create.content.trains.track.TrackMaterial;
 import com.simibubi.create.content.trains.track.TrackShape;
+import com.simibubi.create.foundation.data.SpecialBlockStateGen;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
-import willow.train.kuayue.Blocks.Tracks.CustomTrackBlockStateGenerator;
 import willow.train.kuayue.Main;
 import willow.train.kuayue.init.KYTrackMaterials;
 
-public class StandardTrackBlockStateGenerator extends CustomTrackBlockStateGenerator {
+public class StandardTrackBlockStateGenerator extends SpecialBlockStateGen {
 
-    /*@Override
+    @Override
     protected int getXRotation(BlockState state) {
         return 0;
     }
 
     @Override
     protected int getYRotation(BlockState state) {
-        return state.getValue(StandardTrackBlock.SHAPE)
+        return state.getValue(TrackBlock.SHAPE)
                 .getModelRotation();
-    }*/
+    }
 
     @Override
     public <T extends Block> ModelFile getModel(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,

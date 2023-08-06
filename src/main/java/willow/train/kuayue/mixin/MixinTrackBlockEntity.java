@@ -74,7 +74,6 @@ public abstract class MixinTrackBlockEntity extends SmartBlockEntity implements 
         notifyUpdate();
     }
 
-    // Track casings require a TE to function, so prevent it from being removed.
     @Inject(
             method = "removeConnection",
             at = @At(
