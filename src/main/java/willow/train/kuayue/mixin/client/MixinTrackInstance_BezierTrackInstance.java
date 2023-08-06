@@ -20,11 +20,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import willow.train.kuayue.init.KYBlockPartials;
-import willow.train.kuayue.init.KYTrackMaterials;
 import willow.train.kuayue.mixin_interfaces.IStandardBezier;
 
 @Mixin(targets = "com.simibubi.create.content.trains.track.TrackInstance$BezierTrackInstance", remap = false)
 public abstract class MixinTrackInstance_BezierTrackInstance {
+
 
     @Final
     @Shadow(remap = false)

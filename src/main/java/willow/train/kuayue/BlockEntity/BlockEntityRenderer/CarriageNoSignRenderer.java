@@ -2,6 +2,7 @@ package willow.train.kuayue.BlockEntity.BlockEntityRenderer;
 
 import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -15,6 +16,7 @@ import willow.train.kuayue.BlockEntity.CarriageNoSignEntity;
 import willow.train.kuayue.Blocks.Signs.TrainNoBlock;
 import willow.train.kuayue.EntityModels.CarriageNoSignModel;
 
+import java.awt.*;
 import java.util.List;
 // 渲染器类
 

@@ -28,7 +28,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
-import willow.train.kuayue.Blocks.Signs.KuayueSignBlock;
 import willow.train.kuayue.BlockEntity.CarriageTypeSignEntity;
 import willow.train.kuayue.Util.PanelTypes;
 import willow.train.kuayue.init.BlockInit;
@@ -182,15 +181,6 @@ public class TrainPanelBlock extends KuayueSignBlock {
     public boolean isPossibleToRespawnInThis() {
         return true;
     }
-
-    /*
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        this.ctse = new CarriageTypeSignEntity(pPos, pState);
-        ctse.setColor(CarriageTypeSignEntity.YELLOW);
-        return ctse;
-    }
-     */
 
     public void changeToOrdinaryPanel(Level pLevel, Player pPlayer, InteractionHand pHand, BlockHitResult pHit){
         //放置方块的方法

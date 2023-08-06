@@ -8,7 +8,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import willow.train.kuayue.Blocks.Signs.TrainPanelBlock;
 
-public class BSP25TAirConditionBlock extends TrainPanelBlock {
+public class BSP25TAirConditionBlock extends OrdinaryTrainPanelBlock {
     protected static final float AABB_OFFSET = 3.0F;
     protected static final VoxelShape NORTH_AABB = Block.box(-16, 0, -3, 32, 8, 32);
     protected static final VoxelShape WEST_AABB = Block.box(-3, 0, -16, 32, 8, 32);

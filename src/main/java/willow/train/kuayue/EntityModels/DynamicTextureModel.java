@@ -3,17 +3,17 @@ package willow.train.kuayue.EntityModels;// Made with Blockbench 4.7.4
 // Paste this class into your mod and generate all required imports
 
 
+import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.entity.Entity;
 import willow.train.kuayue.Main;
 
@@ -23,12 +23,18 @@ import willow.train.kuayue.Main;
  * 没有其他事的话其他不用改动
  * @param <T> -
  */
-public class CarriageNoSignModel<T extends Entity> extends EntityModel<T> {
+public class DynamicTextureModel<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation CARRIAGE_NO_SIGN_MODEL_LAYER = new ModelLayerLocation(new ResourceLocation(Main.MOD_ID, "textures/entity/carriage_no_sign_texture.png"), "main");
+
+	// 动态贴图需要用到的类
+	DynamicTexture texture;
+	NativeImage image;
+	private boolean couldBeRender = false;
+	public final ModelLayerLocation LAYER;
 	private final ModelPart bb_main;
 
-	public CarriageNoSignModel(ModelPart root) {
+	public DynamicTextureModel(ModelPart root, String filePath) {
+		LAYER = new ModelLayerLocation(new ResourceLocation("test_texture", "textures/entity/carriage_no_sign_texture.png"), "main");
 		this.bb_main = root.getChild("bb_main");
 	}
 

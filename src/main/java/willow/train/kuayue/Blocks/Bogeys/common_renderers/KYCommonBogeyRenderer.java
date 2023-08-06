@@ -64,10 +64,5 @@ public abstract class KYCommonBogeyRenderer extends BogeyRenderer {
         return switch (direction) { case NORTH, WEST, UP -> true; case SOUTH, DOWN, EAST -> false; };
     }
 
-    @Override
-    public final void initialiseContraptionModelData(MaterialManager materialManager) {
-
-    }
-
     public abstract void initialiseContraptionModelData(MaterialManager materialManager, BogeyPaintColour colour);
 }

@@ -45,7 +45,6 @@ public class CarriageNoSignEntity extends BlockEntity implements MenuProvider {
 
     public void setLeftSide(boolean leftSide) {
         isLeftSide = leftSide;
-        //KuayueNetworkHandler.sendToServer(new CarriageNoSignUpdatePacket(this.getBlockPos(), message, color, leftSide));
     }
 
     public boolean isLeftSide() {
@@ -54,7 +53,6 @@ public class CarriageNoSignEntity extends BlockEntity implements MenuProvider {
 
     public void mirror(){
         this.isLeftSide = !this.isLeftSide;
-        //this.markUpdated();
     }
 
     public int getColor(){return this.color;}

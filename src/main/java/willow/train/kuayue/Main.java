@@ -80,6 +80,7 @@ public class Main {
 
 
     public Main() {
+
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         //添加物品，方块的初始化信息
         ItemInit.ITEMS.register(bus);

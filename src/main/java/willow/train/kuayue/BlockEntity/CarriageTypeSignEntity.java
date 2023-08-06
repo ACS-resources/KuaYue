@@ -129,8 +129,6 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
                 messages[i] = new TextComponent(s);
             }
         }
-
-        //System.out.println("loading datas " + pTag.toString());
     }
 
 

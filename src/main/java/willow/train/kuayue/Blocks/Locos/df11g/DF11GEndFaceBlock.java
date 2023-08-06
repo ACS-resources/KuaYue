@@ -8,8 +8,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import willow.train.kuayue.Blocks.Signs.TrainPanelBlock;
+import willow.train.kuayue.Blocks.TrainCarriage.OrdinaryTrainPanelBlock;
 
-public class DF11GEndFaceBlock extends TrainPanelBlock {
+public class DF11GEndFaceBlock extends OrdinaryTrainPanelBlock {
     protected static final VoxelShape SOUTH_AABB = Shapes.or(Block.box(-1, -16, 15, 17, -15, 24),
             Block.box(14, -16, 15, 32, 21, 24),
             Block.box(-16, -16, 15, 2, 21, 24),
