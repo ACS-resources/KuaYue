@@ -21,10 +21,4 @@ public class KuayueClientSetupEvent {
         EntityRenderers.register(EntityInit.SMALL_CATENARY_BASE.get() , SmallCatenaryBaseRenderer::new);
 
     }
-
-    /*@SubscribeEvent
-    public static void initBogeyModel(ModelRegistryEvent event){
-        final TrackMaterial.TrackModelHolder KY_DEFAULT = new TrackMaterial.TrackModelHolder(KYBlockPartials.KY_TRACK_TIE,
-                KYBlockPartials.KY_TRACK_SEGMENT_LEFT, KYBlockPartials.KY_TRACK_SEGMENT_RIGHT);
-    }*/
 }

@@ -1,9 +1,0 @@
-{
-  "parent": "create:block/track/cross_ortho",
-  "textures": {
-    "particle": "minecraft:block/birch_planks",
-    "1": "kuayue:block/track/birch/standard_track_birch",
-    "2": "kuayue:block/track/birch/standard_track_mip_birch",
-    "3": "kuayue:block/track/birch/standard_track_crossing_birch"
-  }
-}

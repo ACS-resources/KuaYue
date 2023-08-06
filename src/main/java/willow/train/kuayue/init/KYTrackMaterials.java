@@ -31,23 +31,7 @@ public class KYTrackMaterials {
             .trackType(KYTrackType.STANDARD)
             .sleeper(Blocks.ANDESITE_SLAB)
             .defaultModels()
-            .build(),
-
-        ACACIA = make(Main.asResource("acacia"))
-                .lang("Acacia")
-                .block(() -> KYCreateBlock.ACACIA_BLOCK)
-                .particle(new ResourceLocation("block/acacia_planks"))
-                .sleeper(Blocks.ACACIA_SLAB)
-                .standardModels()
-                .build(),
-
-        BIRCH = make(Main.asResource("birch"))
-                .lang("Birch")
-                .block(() -> KYCreateBlock.BIRCH_TRACK)
-                .particle(new ResourceLocation("block/birch_planks"))
-                .sleeper(Blocks.BIRCH_SLAB)
-                .standardModels()
-                .build()
+            .build()
         ;
 
     public static class KYTrackType extends TrackMaterial.TrackType{

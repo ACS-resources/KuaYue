@@ -12,46 +12,6 @@ import java.util.*;
 
 public class KYBlockPartials {
 
-    public static final Map<DyeColor, PartialModel> TOOLBOX_BODIES = new EnumMap<>(DyeColor.class);
-    public static final Map<DyeColor, PartialModel> CONDUCTOR_WHISTLE_FLAGS = new EnumMap<>(DyeColor.class);
-    public static final Map<String, PartialModel> CUSTOM_CONDUCTOR_CAPS = new HashMap<>();
-    public static final Map<String, PartialModel> CUSTOM_CONDUCTOR_ONLY_CAPS = new HashMap<>();
-    public static final Map<String, ResourceLocation> CUSTOM_CONDUCTOR_SKINS = new HashMap<>();
-    public static final Set<String> NO_TILT_CAPS = new HashSet<>();
-    public static final Map<String, ResourceLocation> CUSTOM_CONDUCTOR_SKINS_FOR_NAME = new HashMap<>(); // for if a conductor is renamed, rather than the cap
-
-    public static void registerCustomCap(String itemName, String modelLoc) {
-        CUSTOM_CONDUCTOR_CAPS.put(itemName, new PartialModel(Main.asResource("item/dev_caps/"+modelLoc)));
-    }
-
-    public static void registerCustomCap(String itemName, String modelLoc, boolean preventTilting) {
-        CUSTOM_CONDUCTOR_CAPS.put(itemName, new PartialModel(Main.asResource("item/dev_caps/"+modelLoc)));
-        if (preventTilting)
-            NO_TILT_CAPS.add(itemName);
-    }
-
-    public static void registerCustomConductorOnlyCap(String itemName, String modelLoc) {
-        CUSTOM_CONDUCTOR_ONLY_CAPS.put(itemName, new PartialModel(Main.asResource("item/dev_caps/"+modelLoc)));
-    }
-
-    public static void registerCustomConductorOnlyCap(String itemName, String modelLoc, boolean preventTilting) {
-        CUSTOM_CONDUCTOR_ONLY_CAPS.put(itemName, new PartialModel(Main.asResource("item/dev_caps/"+modelLoc)));
-        if (preventTilting)
-            NO_TILT_CAPS.add(itemName);
-    }
-
-    public static boolean shouldPreventTiltingCap(String name) {
-        return NO_TILT_CAPS.contains(name);
-    }
-
-    public static void registerCustomSkin(String itemName, String textureLoc) {
-        CUSTOM_CONDUCTOR_SKINS.put(itemName, Main.asResource("textures/entity/custom_conductors/"+textureLoc));
-    }
-
-    public static void registerCustomConductorNameBasedSkin(String conductorName, String textureLoc) {
-        CUSTOM_CONDUCTOR_SKINS_FOR_NAME.put(conductorName, Main.asResource("textures/entity/custom_conductors/"+textureLoc));
-    }
-
     public record ModelTransform(double x, double y, double z, float rx, float ry, float rz) {
         public static final ModelTransform ZERO = new ModelTransform(0, 0, 0, 0, 0, 0);
 
@@ -132,36 +92,12 @@ public class KYBlockPartials {
             KYSTANDARDBOGEY_FRAME = block("bogey/ky_standard/bogey_cw2_temple"),
             KYSTANDARDBOGEY_WHEEL = block("bogey/ky_standard/cw2_wheel");
 
-    public static final PartialModel
-            SINGLEAXLE_FRAME = block("bogey/singleaxle/singleaxle_frame"),
-            LEAFSPRING_FRAME = block("bogey/leafspring/leafspring_frame"),
-            COILSPRING_FRAME = block("bogey/coilspring/coilspring_frame"),
-            FREIGHT_FRAME = block("bogey/freight/freight_frame"),
-            ARCHBAR_FRAME = block("bogey/archbar/archbar_frame"),
-            PASSENGER_FRAME = block("bogey/passenger/passenger_frame"),
-            MODERN_FRAME = block("bogey/modern/modern_frame"),
-            BLOMBERG_FRAME = block("bogey/blomberg/blomberg_frame"),
-            Y25_FRAME = block("bogey/y25/y25_frame"),
-            HEAVYWEIGHT_FRAME = block("bogey/heavyweight/heavyweight_frame"),
-            RADIAL_FRAME = block("bogey/radial/radial_frame"),
-            KY_BOGEY_WHEELS = block("bogey/wheels/cr_bogey_wheels");
-
-    public static final PartialModel DIESEL_STACK_FAN = block("smokestack/block_diesel_fan");
-    public static final PartialModel CONDUCTOR_ANTENNA = block("conductor_antenna");
-
     private static PartialModel createBlock(String path) {
         return new PartialModel(Main.asResource("block/" + path));
     }
 
     private static PartialModel block(String path) {
         return new PartialModel(Main.asResource("block/" + path));
-    }
-
-    static {
-        for (DyeColor color : DyeColor.values()) {
-            TOOLBOX_BODIES.put(color, createBlock(Lang.asId(color.name()) + "_toolbox"));
-            CONDUCTOR_WHISTLE_FLAGS.put(color, block("conductor_whistle/flag_"+Lang.asId(color.name())));
-        }
     }
 
     @SuppressWarnings("EmptyMethod")
