@@ -39,9 +39,8 @@ public class KYCreateBlock {
     private static BlockEntry<TrackBlock> makeTrack(TrackMaterial material, NonNullBiConsumer<DataGenContext<Block, TrackBlock>, RegistrateBlockstateProvider> blockstateGen, NonNullConsumer<? super TrackBlock> onRegister, Function<BlockBehaviour.Properties, BlockBehaviour.Properties> collectProperties) {
         List<TagKey<Block>> trackTags = new ArrayList<>();
         trackTags.add(AllTags.AllBlockTags.TRACKS.tag);
-        //if (material.trackType != KYTrackMaterials.CRTrackType.MONORAIL)
         trackTags.add(AllTags.AllBlockTags.GIRDABLE_TRACKS.tag);
-        //noinspection unchecked
+
         return REGISTRATE.block(material.resourceName() + "_track", material::createBlock)
                 .initialProperties(Material.STONE)
                 .properties(p -> collectProperties.apply(p)
@@ -52,11 +51,9 @@ public class KYCreateBlock {
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(pickaxeOnly())
                 .blockstate(blockstateGen)
-                //.tag(CommonTags.RELOCATION_NOT_SUPPORTED.forge, CommonTags.RELOCATION_NOT_SUPPORTED.fabric)
                 .tag(AllTags.AllBlockTags.TRACKS.tag)
                 .tag(AllTags.AllBlockTags.GIRDABLE_TRACKS.tag)
                 .tag(AllTags.AllBlockTags.RELOCATION_NOT_SUPPORTED.tag)
-                //.tag((TagKey<Block>[]) trackTags.toArray(new TagKey[0])) // keep the cast, or stuff breaks
                 .lang(material.langName + " Train Track")
                 .onRegister(onRegister)
                 .onRegister(CreateRegistrate.blockModel(() -> TrackModel::new))
