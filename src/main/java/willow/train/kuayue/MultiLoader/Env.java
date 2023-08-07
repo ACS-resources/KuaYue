@@ -1,4 +1,4 @@
-package willow.train.kuayue.Multiloader;
+package willow.train.kuayue.MultiLoader;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.loading.FMLEnvironment;

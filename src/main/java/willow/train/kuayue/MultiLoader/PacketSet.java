@@ -1,4 +1,4 @@
-package willow.train.kuayue.Multiloader;
+package willow.train.kuayue.MultiLoader;
 
 import com.simibubi.create.AllPackets;
 import com.simibubi.create.foundation.networking.SimplePacketBase;
@@ -18,9 +18,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.ApiStatus;
 import willow.train.kuayue.Main;
-import willow.train.kuayue.MultiLoader.C2SPacket;
-import willow.train.kuayue.MultiLoader.PlayerSelection;
-import willow.train.kuayue.MultiLoader.S2CPacket;
 import willow.train.kuayue.init.KYPackets;
 
 import java.util.ArrayList;

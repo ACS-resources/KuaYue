@@ -1,4 +1,4 @@
-package willow.train.kuayue.Blocks.Bogeyss.selection_menu;
+package willow.train.kuayue.Blocks.Bogeys.selection_menu;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllBogeyStyles;
@@ -18,7 +18,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import willow.train.kuayue.Blocks.Bogeys.selection_menu.RadialBogeyCategoryMenu;
 import willow.train.kuayue.Main;
 import willow.train.kuayue.Util.EntityUtils;
 import willow.train.kuayue.Util.packet.BogeyStyleSelectionPacket;

@@ -1,4 +1,4 @@
-package willow.train.kuayue.Blocks.Bogeyss.standard_bogey;
+package willow.train.kuayue.Blocks.Bogeys.standard_bogey;
 
 import com.google.common.collect.ImmutableList;
 import com.simibubi.create.AllBlocks;

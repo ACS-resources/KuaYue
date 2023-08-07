@@ -1,4 +1,4 @@
-package willow.train.kuayue.Blocks.Bogeyss.common_renderers;
+package willow.train.kuayue.Blocks.Bogeys.common_renderers;
 
 import com.jozufozu.flywheel.api.MaterialManager;
 import com.jozufozu.flywheel.util.transform.Transform;

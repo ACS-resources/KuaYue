@@ -1,4 +1,4 @@
-package willow.train.kuayue.Blocks.Bogeyss.selection_menu;
+package willow.train.kuayue.Blocks.Bogeys.selection_menu;
 
 import com.simibubi.create.AllBogeyStyles;
 import com.simibubi.create.content.trains.bogey.BogeySizes;

@@ -1,4 +1,4 @@
-package willow.train.kuayue.Multiloader;
+package willow.train.kuayue.MultiLoader;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;

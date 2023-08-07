@@ -1,4 +1,4 @@
-package willow.train.kuayue.Blocks.Bogeyss.standard_bogey;
+package willow.train.kuayue.Blocks.Bogeys.standard_bogey;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;

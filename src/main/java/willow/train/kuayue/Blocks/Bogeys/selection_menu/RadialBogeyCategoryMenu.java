@@ -1,4 +1,4 @@
-package willow.train.kuayue.Blocks.Bogeyss.selection_menu;
+package willow.train.kuayue.Blocks.Bogeys.selection_menu;
 
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.platform.InputConstants;
@@ -34,7 +34,6 @@ import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import willow.train.kuayue.Blocks.Bogeys.CategoryIcon;
-import willow.train.kuayue.Blocks.Bogeys.selection_menu.BogeyCategoryHandlerClient;
 import willow.train.kuayue.Util.Utils;
 import willow.train.kuayue.init.KYIcons;
 import willow.train.kuayue.mixin.client.AccessorToolboxHandlerClient;

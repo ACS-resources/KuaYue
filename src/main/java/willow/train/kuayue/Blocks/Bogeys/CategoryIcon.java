@@ -1,4 +1,4 @@
-package willow.train.kuayue.Blocks.Bogeyss;
+package willow.train.kuayue.Blocks.Bogeys;
 
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.resources.ResourceLocation;

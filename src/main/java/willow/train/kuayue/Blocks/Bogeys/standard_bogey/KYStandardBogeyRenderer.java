@@ -1,4 +1,4 @@
-package willow.train.kuayue.Blocks.Bogeyss.standard_bogey;
+package willow.train.kuayue.Blocks.Bogeys.standard_bogey;
 
 import com.jozufozu.flywheel.api.MaterialManager;
 import com.mojang.blaze3d.vertex.PoseStack;

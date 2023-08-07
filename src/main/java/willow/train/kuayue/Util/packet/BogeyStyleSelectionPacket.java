@@ -1,4 +1,4 @@
-package willow.train.kuayue.Util.packets;
+package willow.train.kuayue.Util.packet;
 
 import com.simibubi.create.AllBogeyStyles;
 import com.simibubi.create.content.trains.bogey.BogeySizes;

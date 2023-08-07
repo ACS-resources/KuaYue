@@ -102,3 +102,4 @@ public class KYBlockPartials {
     @SuppressWarnings("EmptyMethod")
     public static void init() {
     }
+}

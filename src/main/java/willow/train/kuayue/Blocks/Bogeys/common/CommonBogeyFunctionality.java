@@ -1,4 +1,4 @@
-package willow.train.kuayue.Blocks.Bogeyss.common;
+package willow.train.kuayue.Blocks.Bogeys.common;
 
 import com.simibubi.create.content.trains.bogey.AbstractBogeyBlockEntity;
 import com.simibubi.create.foundation.utility.Components;
