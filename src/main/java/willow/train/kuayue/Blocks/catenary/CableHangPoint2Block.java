@@ -25,6 +25,7 @@ import willow.train.kuayue.Catenary.CatenaryBlockInterface;
 import willow.train.kuayue.Entity.CatenaryBaseEntity;
 import willow.train.kuayue.Entity.SmallCatenaryBaseEntity;
 import willow.train.kuayue.Main;
+import willow.train.kuayue.Util.DirectionalBlockBase;
 import willow.train.kuayue.Util.HorizontalBlockBase;
 import willow.train.kuayue.init.ItemInit;
 
