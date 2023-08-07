@@ -1,0 +1,17 @@
+package willow.train.kuayue.mixin_interfacess;
+
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.simibubi.create.foundation.utility.Couple;
+import net.minecraft.core.BlockPos;
+
+public interface IStandardBezier {
+
+    willow.train.kuayue.mixin_interfaces.IStandardBezier.StandardAngles[] getBakedStandards();
+
+
+    class StandardAngles {
+        public PoseStack.Pose tieTransform;
+        public Couple<PoseStack.Pose> railTransforms;
+        public BlockPos lightPosition;
+    }
+}
