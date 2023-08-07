@@ -27,6 +27,8 @@ import willow.train.kuayue.Main;
 import willow.train.kuayue.Util.HorizontalBlockBase;
 import willow.train.kuayue.init.ItemInit;
 
+import java.util.Collection;
+
 import static willow.train.kuayue.Catenary.Connections.DISCARDAREAWIDTH;
 import static willow.train.kuayue.Main.CATENARYCONNECTIONHANDLER;
 
@@ -73,7 +75,7 @@ public class CatenaryGridBBlock extends HorizontalBlockBase implements CatenaryB
     @Override
     public Vec3[] getCatenaryPorts() {
         return new Vec3[0];
-    }//
+    }
 
     @Override
     public void discardCatenary(Level level, BlockPos pos , double areaWidth) {

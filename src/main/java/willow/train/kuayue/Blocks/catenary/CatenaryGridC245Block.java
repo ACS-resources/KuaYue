@@ -32,7 +32,7 @@ import static willow.train.kuayue.Main.CATENARYCONNECTIONHANDLER;
 
 public class CatenaryGridC245Block extends HorizontalBlockBase implements CatenaryBlockInterface {
 
-    Vec3[] CATENARYPORTS = new Vec3[]{};//
+    Vec3[] CATENARYPORTS = new Vec3[]{};
 
     public CatenaryGridC245Block(Properties p_49795_) {
         super(p_49795_);
