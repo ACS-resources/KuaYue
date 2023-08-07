@@ -1,14 +1,34 @@
 package willow.train.kuayue.Blocks.catenary;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
+import willow.train.kuayue.Catenary.CatenaryBlockInterface;
+import willow.train.kuayue.Entity.CatenaryBaseEntity;
+import willow.train.kuayue.Entity.SmallCatenaryBaseEntity;
+import willow.train.kuayue.Main;
 import willow.train.kuayue.Util.HorizontalBlockBase;
+import willow.train.kuayue.init.ItemInit;
+
+import static willow.train.kuayue.Catenary.Connections.DISCARDAREAWIDTH;
+import static willow.train.kuayue.Main.CATENARYCONNECTIONHANDLER;
 
 public class CatenaryGridConnectorA45Block extends HorizontalBlockBase{
 

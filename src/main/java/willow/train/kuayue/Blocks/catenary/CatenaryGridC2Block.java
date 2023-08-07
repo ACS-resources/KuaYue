@@ -3,7 +3,7 @@ package willow.train.kuayue.Blocks.catenary;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -69,7 +69,7 @@ public class CatenaryGridC2Block extends HorizontalBlockBase implements Catenary
                 if (CATENARYCONNECTIONHANDLER.canConnect(pPlayer)) CATENARYCONNECTIONHANDLER.connect(pPlayer);
             }else if(pPlayer.getMainHandItem().is(ItemInit.CatenaryScissors.get())) {
                 discardCatenary(pLevel , pPos , DISCARDAREAWIDTH);
-                pPlayer.displayClientMessage(Component.translatable("msg." + Main.MOD_ID + ".catenary_removed") , true);
+                pPlayer.displayClientMessage(new TranslatableComponent("msg." + Main.MOD_ID + ".catenary_removed") , true);
             }
             return InteractionResult.CONSUME;
         }
