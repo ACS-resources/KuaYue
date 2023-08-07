@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "kuayue:standard_track",
-    "kuayue:acacia_track",
-    "kuayue:birch_track"
+    "kuayue:standard_track"
   ]
 }
