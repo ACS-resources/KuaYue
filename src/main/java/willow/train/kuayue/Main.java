@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -22,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageNoSignRenderer;
 import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageTypeSignRenderer;
 import willow.train.kuayue.Client.CatenaryConnectionHandler;
+import willow.train.kuayue.MultiLoader.Env;
 import willow.train.kuayue.Network.KuayueNetworkHandler;
 import willow.train.kuayue.Screen.CarriageNoSignEditScreen;
 import willow.train.kuayue.Screen.CarriageTypeSignEditScreen;
@@ -31,11 +33,14 @@ import willow.train.kuayue.renderer.TrainPanelSignRenderer;
 import willow.train.kuayue.sounds.ModSounds;
 import willow.train.kuayue.tabs.*;
 
+import static willow.train.kuayue.init.KYTrackMaterials.STANDARD;
+
 @Mod("kuayue")
 public class Main {
-
     public static final Logger LOGGER = LoggerFactory.getLogger("KuaYue");
     public static final String MOD_ID = "kuayue";
+
+    static IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
     private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
     public static CatenaryConnectionHandler CATENARYCONNECTIONHANDLER = new CatenaryConnectionHandler();
@@ -77,7 +82,7 @@ public class Main {
 
 
     public Main() {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
         //添加物品，方块的初始化信息
         ItemInit.ITEMS.register(bus);
 
@@ -87,14 +92,14 @@ public class Main {
 
         EntityInit.ENTITY_TYPES.register(bus);
 
+        ModSetup.register();
+
         ModSounds.register(bus);
 
         EffectInit.rigister(bus);
 
         MenuInit.register(bus);
 
-        KYCreateBlock.register();
-        KYCreateEntities.register();
         AllModulePartials.init();
         REGISTRATE.registerEventListeners(bus);
 
@@ -103,6 +108,10 @@ public class Main {
         bus.addListener(this::clientSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+
+        KYPackets.PACKETS.registerC2SListener();
+
+        Env.CLIENT.runIfCurrent(() -> KuaYueClient::init);
 
     }
     protected void clientSetup(final FMLClientSetupEvent fmlClientSetupEvent) {
@@ -249,14 +258,14 @@ public class Main {
 
          */
 
-        WoodType.register(WoodTypeInit.TrainPanel);
+        //WoodType.register(WoodTypeInit.TrainPanel);
 
         //test text
     }
 
     protected void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-        Sheets.addWoodType(WoodTypeInit.TrainPanel);
+        //Sheets.addWoodType(WoodTypeInit.TrainPanel);
             KuayueNetworkHandler.registerPackets();
 
     });
@@ -273,5 +282,9 @@ public class Main {
     protected void registerMenus(final FMLClientSetupEvent fmlClientSetupEvent){
         MenuScreens.register(MenuInit.CARRIAGE_TYPE_SIGN_EDIT_MENU.get(), CarriageTypeSignEditScreen::new);
         MenuScreens.register(MenuInit.CARRIAGE_NO_SIGN_EDIT_MENU.get(), CarriageNoSignEditScreen::new);
+    }
+
+    public static ResourceLocation asResource(String name) {
+        return new ResourceLocation(MOD_ID, name);
     }
 }

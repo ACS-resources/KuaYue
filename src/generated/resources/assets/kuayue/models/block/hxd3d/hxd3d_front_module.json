@@ -1,6 +1,7 @@
 {
 	"parent": "create:block/block",
 	"loader": "forge:obj",
+	"render_type": "cutout_mipped",
 	"flip_v": true,
 	"model": "kuayue:models/block/hxd3d/head/hxd3dhead.obj",
 	"textures": {

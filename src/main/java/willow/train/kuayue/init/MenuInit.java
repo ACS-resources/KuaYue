@@ -1,14 +1,9 @@
 package willow.train.kuayue.init;
 
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.network.IContainerFactory;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -16,8 +11,6 @@ import net.minecraftforge.registries.RegistryObject;
 import willow.train.kuayue.Client.CarriageNoSignEditMenu;
 import willow.train.kuayue.Client.CarriageTypeSignEditMenu;
 import willow.train.kuayue.Main;
-import willow.train.kuayue.Screen.CarriageNoSignEditScreen;
-import willow.train.kuayue.Screen.CarriageTypeSignEditScreen;
 
 public class MenuInit {
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.MENU_TYPES, Main.MOD_ID);
