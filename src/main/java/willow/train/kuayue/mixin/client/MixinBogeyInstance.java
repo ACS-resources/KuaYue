@@ -22,7 +22,6 @@ import willow.train.kuayue.base.data.BogeyPaintColour;
 public class MixinBogeyInstance {
 
     @Shadow
-
     @Final
     public BogeyRenderer renderer;
 
