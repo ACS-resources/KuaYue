@@ -1,5 +1,6 @@
 {
 	"credit": "Made by WillowKoishi",
+	"render_type": "translucent",
 	"texture_size": [64, 64],
 	"textures": {
 		"2": "kuayue:block/df11g/df11g_panel_mid_front_2"
