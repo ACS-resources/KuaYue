@@ -12,6 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -34,14 +35,15 @@ public class MixinTrackRenderer {
         String trackMaterialId = String.valueOf(bc.getMaterial().id);
 
         if (trackMaterialId.equals("kuayue:standard")) {
-            renderActualStandard(level, bc, ms, vb, bc.tePositions.getFirst());
+            kuaYue$renderActualStandard(level, bc, ms, vb, bc.tePositions.getFirst());
             ms.popPose(); // clean up pose, since cancelled
             ci.cancel(); // Don't do normal rendering
         }
     }
 
 
-    private static void renderActualStandard(Level level, BezierConnection bc, PoseStack ms, VertexConsumer vb,
+    @Unique
+    private static void kuaYue$renderActualStandard(Level level, BezierConnection bc, PoseStack ms, VertexConsumer vb,
                                              BlockPos tePosition) {
 
         BlockState air = Blocks.AIR.defaultBlockState();

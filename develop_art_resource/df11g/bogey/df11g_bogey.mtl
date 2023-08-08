@@ -1,0 +1,14 @@
+# Made in Blockbench 4.8.1
+newmtl m_fa5689b1-e52d-246a-613b-8e5d0d130266
+map_Kd df11g_main_structure.png 
+newmtl m_485f6a84-56f0-2873-3353-6cd361b4f9d2
+map_Kd df11g_side_spring.png 
+newmtl m_d2d18a57-052d-427e-3e66-c6ad9cff6c99
+map_Kd df11g_primary_hang.png 
+newmtl m_33436ca9-72fe-94fa-e024-ccee6ddbabd0
+map_Kd df11g_moto.png 
+newmtl m_dbc9e2b2-2025-2b46-488f-fc5abf3e2d95
+map_Kd df11g_breaking.png 
+newmtl m_44b88da3-9f7a-76b8-de59-5489081d2b33
+map_Kd df11g_sanding.png 
+newmtl none
