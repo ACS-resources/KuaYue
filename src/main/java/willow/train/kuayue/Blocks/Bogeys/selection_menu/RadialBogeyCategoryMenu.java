@@ -1,3 +1,4 @@
+/*
 package willow.train.kuayue.Blocks.Bogeys.selection_menu;
 
 import com.jozufozu.flywheel.util.transform.TransformStack;
@@ -124,9 +125,11 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
         Component tip = null;
         Component title = null;
 
-        /*
+        */
+/*
         core rendering
-         */
+         *//*
+
 
         if (favoriteSlot == null && selectedCategory != MANAGE_FAVORITES_CATEGORY) {
             if (hoveredX > 60 && hoveredX < 100 && hoveredY > -20 && hoveredY < 20)
@@ -429,3 +432,4 @@ public class RadialBogeyCategoryMenu extends AbstractSimiScreen {
         PICK_CATEGORY, PICK_STYLE
     }
 }
+*/

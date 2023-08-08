@@ -15,6 +15,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SoundType;
 import willow.train.kuayue.Blocks.Bogeys.CategoryIcon;
+import willow.train.kuayue.Blocks.Bogeys.df11g_bogey.DF11GBogeyBlock;
+import willow.train.kuayue.Blocks.Bogeys.df11g_bogey.DF11GBogeyRenderer;
 import willow.train.kuayue.Blocks.Bogeys.standard_bogey.KYStandardBogeyRenderer;
 import willow.train.kuayue.Main;
 
@@ -22,7 +24,7 @@ import java.util.Optional;
 import java.util.function.Supplier;
 
 import static com.simibubi.create.AllBogeyStyles.STANDARD_CYCLE_GROUP;
-import static willow.train.kuayue.Blocks.Bogeys.selection_menu.BogeyCategoryHandlerClient.registerStyleCategory;
+
 
 public class KYBogeyStyles {
 
@@ -32,6 +34,11 @@ public class KYBogeyStyles {
             .displayName(Components.translatable("kuayue.bogeys.styles.kystandardbogey"))
             .size(BogeySizes.SMALL, () -> KYStandardBogeyRenderer.SmallKYStandardBogeyRenderer::new, KYCreateBlock.KY_STANDARD_BOGEY)
             .contactParticle(ParticleTypes.CRIT).smokeParticle(null).soundType(AllSoundEvents.TRAIN.getId())
+            .build();
+
+    public static final BogeyStyle DF11GBOGEY = create("df11gbogey", Create.asResource(STANDARD_CYCLE_GROUP))
+            .displayName(Components.translatable("kuayue.bogeys.styles.df11gbogey"))
+            .size(BogeySizes.SMALL, () -> DF11GBogeyRenderer.SmallDF11GBogeyRenderer::new, KYCreateBlock.DF11G_BOGEY)
             .build();
 
     public static AllBogeyStyles.BogeyStyleBuilder create(String name, String cycleGroup) {
@@ -52,6 +59,6 @@ public class KYBogeyStyles {
     }
 
     public static void registerClient() {
-        registerStyleCategory(Create.asResource(STANDARD_CYCLE_GROUP), CategoryIcon.standardSupplier("default_icon"));
+        //registerStyleCategory(Create.asResource(STANDARD_CYCLE_GROUP), CategoryIcon.standardSupplier("default_icon"));
     }
 }

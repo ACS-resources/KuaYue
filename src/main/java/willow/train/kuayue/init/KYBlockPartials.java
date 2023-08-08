@@ -14,7 +14,6 @@ public class KYBlockPartials {
     public record ModelTransform(double x, double y, double z, float rx, float ry, float rz) {
         public static final willow.train.kuayue.init.KYBlockPartials.ModelTransform ZERO = new willow.train.kuayue.init.KYBlockPartials.ModelTransform(0, 0, 0, 0, 0, 0);
 
-        //                                                            pitch?    YAW       roll?
         public static willow.train.kuayue.init.KYBlockPartials.ModelTransform of(double x, double y, double z, float rx, float ry, float rz) {
             return new willow.train.kuayue.init.KYBlockPartials.ModelTransform(x, y, z, rx, ry, rz);
         }
@@ -89,7 +88,9 @@ public class KYBlockPartials {
             KY_TRACK_SEGMENT_RIGHT = block("track/standard/segment_right"),
             KY_TRACK_TIE = block("track/standard/tie"),
             KYSTANDARDBOGEY_FRAME = block("bogey/ky_standard/bogey_cw2_temple"),
-            KYSTANDARDBOGEY_WHEEL = block("bogey/ky_standard/cw2_wheel");
+            KYSTANDARDBOGEY_WHEEL = block("bogey/ky_standard/cw2_wheel"),
+            DF11G_FRAME = block("bogey/df11g/df11g_bogey_temple"),
+            DF11G_WHEEL = block("bogey/df11g/df11g_wheel");
 
     private static PartialModel createBlock(String path) {
         return new PartialModel(Main.asResource("block/" + path));

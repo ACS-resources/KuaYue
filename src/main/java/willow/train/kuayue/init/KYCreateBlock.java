@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import willow.train.kuayue.Blocks.Bogeys.df11g_bogey.DF11GBogeyBlock;
 import willow.train.kuayue.Blocks.Bogeys.standard_bogey.KYStandardBogeyBlock;
 import willow.train.kuayue.Blocks.Locos.df11g.DF11GFrontBlock;
 import willow.train.kuayue.Blocks.Tracks.standard_track.StandardTrackBlockStateGenerator;
@@ -41,9 +42,8 @@ public class KYCreateBlock {
     private static BlockEntry<TrackBlock> makeTrack(TrackMaterial material, NonNullBiConsumer<DataGenContext<Block, TrackBlock>, RegistrateBlockstateProvider> blockstateGen, NonNullConsumer<? super TrackBlock> onRegister, Function<BlockBehaviour.Properties, BlockBehaviour.Properties> collectProperties) {
         List<TagKey<Block>> trackTags = new ArrayList<>();
         trackTags.add(AllTags.AllBlockTags.TRACKS.tag);
-        //if (material.trackType != KYTrackMaterials.CRTrackType.MONORAIL)
         trackTags.add(AllTags.AllBlockTags.GIRDABLE_TRACKS.tag);
-        //noinspection unchecked
+
         System.out.println("material name: " + material.resourceName() + "_track");
         return REGISTRATE.block(material.resourceName() + "_track", material::createBlock)
                 .initialProperties(Material.STONE)
@@ -54,11 +54,11 @@ public class KYCreateBlock {
                         .noOcclusion())
                 .transform(pickaxeOnly())
                 .blockstate(blockstateGen)
-                //.tag(CommonTags.RELOCATION_NOT_SUPPORTED.forge, CommonTags.RELOCATION_NOT_SUPPORTED.fabric)
+
                 .tag(AllTags.AllBlockTags.TRACKS.tag)
                 .tag(AllTags.AllBlockTags.GIRDABLE_TRACKS.tag)
                 .tag(AllTags.AllBlockTags.RELOCATION_NOT_SUPPORTED.tag)
-                //.tag((TagKey<Block>[]) trackTags.toArray(new TagKey[0])) // keep the cast, or stuff breaks
+
                 .lang(material.langName + " Train Track")
                 .onRegister(onRegister)
                 .onRegister(CreateRegistrate.blockModel(() -> TrackModel::new))
@@ -97,6 +97,13 @@ public class KYCreateBlock {
                     //.item(KYStandardBogeyItem::new)
                     //.model((c, p) -> p.generated(c, Main.asResource("item/track/" + c.getName())))
                     //.build()
+                    .register();
+
+    public static final BlockEntry<DF11GBogeyBlock> DF11G_BOGEY =
+            REGISTRATE.block("df11g_bogey", DF11GBogeyBlock::new)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .transform(BuilderTransformers.df11gbogey())
+                    .lang("DF11G Bogey")
                     .register();
 
     private static final CreateRegistrate bogeyREGISTRATE = Main.registrate();

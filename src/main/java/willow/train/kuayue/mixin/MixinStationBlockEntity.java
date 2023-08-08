@@ -25,7 +25,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-import willow.train.kuayue.Blocks.Bogeys.selection_menu.BogeyCategoryHandlerServer;
 import willow.train.kuayue.init.KYTrackMaterials;
 
 import javax.annotation.Nullable;
@@ -41,7 +40,7 @@ public abstract class MixinStationBlockEntity extends SmartBlockEntity {
         super(type, pos, state);
     }
 
-    @Inject(method = "trackClicked", at = @At("HEAD"))
+    /*@Inject(method = "trackClicked", at = @At("HEAD"))
     private void storePlayer(Player player, InteractionHand hand, ITrackBlock track, BlockState state, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
         BogeyCategoryHandlerServer.currentPlayer = player.getUUID();
     }
@@ -49,7 +48,7 @@ public abstract class MixinStationBlockEntity extends SmartBlockEntity {
     @Inject(method = "trackClicked", at = @At("RETURN"))
     private void clearPlayer(Player player, InteractionHand hand, ITrackBlock track, BlockState state, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
         BogeyCategoryHandlerServer.currentPlayer = null;
-    }
+    }*/
 
     @Redirect(
             method = "trackClicked",
@@ -62,7 +61,7 @@ public abstract class MixinStationBlockEntity extends SmartBlockEntity {
         return stack.is(AllBlocks.RAILWAY_CASING.get().asItem());
     }
 
-    @SuppressWarnings("InvalidInjectorMethodSignature")
+    /*@SuppressWarnings("InvalidInjectorMethodSignature")
     @Inject(method = "trackClicked",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V", remap = true),
             locals = LocalCapture.CAPTURE_FAILSOFT, remap = true, require = 0
@@ -80,6 +79,6 @@ public abstract class MixinStationBlockEntity extends SmartBlockEntity {
         if (level.getBlockEntity(targetPos) instanceof AbstractBogeyBlockEntity bogeyBE) {
             bogeyBE.setBogeyStyle(style);
         }
-    }
+    }*/
 }
 

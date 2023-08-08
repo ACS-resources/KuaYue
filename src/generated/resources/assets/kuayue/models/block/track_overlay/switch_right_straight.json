@@ -1,7 +1,0 @@
-{
-	"credit": "Made with Blockbench",
-	"parent": "create:block/track_overlay/station",
-	"textures": {
-		"1": "kuayue:block/track_switch_indicator_right_straight"
-	}
-}
