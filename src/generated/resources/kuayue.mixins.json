@@ -23,7 +23,7 @@
     "client.MixinTrackInstance_BezierTrackInstance",
     "client.MixinTrackRenderer",
     "client.MixinTrackTargetingClient",
-    "client.MixinCarriageContraptionEntity",
+    "client.MixinCarriageParticles",
     "client.ClientPacketListenerMixin"
   ],
   "minVersion": "0.8"
