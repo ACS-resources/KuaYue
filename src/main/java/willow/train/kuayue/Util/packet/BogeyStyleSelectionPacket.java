@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import willow.train.kuayue.Blocks.Bogeys.selection_menu.BogeyCategoryHandlerServer;
 import willow.train.kuayue.MultiLoader.C2SPacket;
 
 public class BogeyStyleSelectionPacket implements C2SPacket {
@@ -50,6 +49,6 @@ public class BogeyStyleSelectionPacket implements C2SPacket {
 
     @Override
     public void handle(ServerPlayer sender) {
-        BogeyCategoryHandlerServer.selectedStyles.put(sender.getUUID(), Pair.of(style, size));
+        //BogeyCategoryHandlerServer.selectedStyles.put(sender.getUUID(), Pair.of(style, size));
     }
 }

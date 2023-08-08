@@ -1,3 +1,4 @@
+/*
 package willow.train.kuayue.Blocks.Bogeys.selection_menu;
 
 import com.simibubi.create.AllBogeyStyles;
@@ -22,3 +23,4 @@ public class BogeyCategoryHandlerServer {
     @Nullable
     public static UUID currentPlayer = null;
 }
+*/

@@ -19,7 +19,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import willow.train.kuayue.Blocks.Bogeys.selection_menu.BogeyCategoryHandlerServer;
 
 @Mixin(value = TrackBlock.class, remap = false)
 public abstract class MixinTrackBlock extends Block {
@@ -31,7 +30,7 @@ public abstract class MixinTrackBlock extends Block {
         super(pProperties);
     }
 
-    @Inject(method = "getBogeyAnchor", at = @At("HEAD"), cancellable = true)
+/*    @Inject(method = "getBogeyAnchor", at = @At("HEAD"), cancellable = true)
     private void placeCustomStyle(BlockGetter world, BlockPos pos, BlockState state, CallbackInfoReturnable<BlockState> cir) {
 
         if (BogeyCategoryHandlerServer.currentPlayer == null)
@@ -56,5 +55,5 @@ public abstract class MixinTrackBlock extends Block {
                         .setValue(BlockStateProperties.HORIZONTAL_AXIS,
                                 state.getValue(TrackBlock.SHAPE) == TrackShape.XO ? Direction.Axis.X : Direction.Axis.Z)
         );
-    }
+    }*/
 }

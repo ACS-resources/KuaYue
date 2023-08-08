@@ -4,6 +4,7 @@ package willow.train.kuayue.init;
 import com.simibubi.create.content.trains.bogey.BogeyBlockEntityRenderer;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import willow.train.kuayue.Blocks.Bogeys.df11g_bogey.DF11GBogeyBlockEntity;
 import willow.train.kuayue.Blocks.Bogeys.standard_bogey.KYStandardBogeyBlockEntity;
 import willow.train.kuayue.Main;
 
@@ -15,6 +16,12 @@ public class KYCreateEntities {
             .blockEntity("ky_standard_bogey", KYStandardBogeyBlockEntity::new)
             .renderer(() -> BogeyBlockEntityRenderer::new)
             .validBlocks(KYCreateBlock.KY_STANDARD_BOGEY)
+            .register();
+
+    public static final BlockEntityEntry<DF11GBogeyBlockEntity> DF11G_BOGEY = REGISTRATE
+            .blockEntity("df11g_bogey", DF11GBogeyBlockEntity::new)
+            .renderer(() -> BogeyBlockEntityRenderer::new)
+            .validBlocks(KYCreateBlock.DF11G_BOGEY)
             .register();
 
 //    public static final BlockEntityEntry<DF11GFrontTileEntity> DF11G_FRONT = Main.registrate()
