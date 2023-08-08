@@ -7,6 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import willow.train.kuayue.BlockEntity.CarriageNoSignEntity;
 import willow.train.kuayue.BlockEntity.CarriageTypeSignEntity;
+import willow.train.kuayue.BlockEntity.LaqueredBoardEntity;
 import willow.train.kuayue.Blocks.Entities.MegaphoneBlockEntity;
 import willow.train.kuayue.Main;
 
@@ -32,6 +33,10 @@ public class BlockEntitiesInit {
     public static final RegistryObject<BlockEntityType<CarriageNoSignEntity>> CARRIAGE_NO_SIGN =
             BLOCK_ENTITIES.register("carriage_no_sign" , () ->
                     BlockEntityType.Builder.of(CarriageNoSignEntity::new, BlockInit.TRAIN_NO_BLOCK.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<LaqueredBoardEntity>> LAQUERED_BOARD =
+            BLOCK_ENTITIES.register("laquered_board" , () ->
+                    BlockEntityType.Builder.of(LaqueredBoardEntity::new, BlockInit.LAQUERED_BOARD_BLOCK.get()).build(null));
 
     //public static final RegistryObject<BlockEntityType<CarriageTypeSignEntity>> CARRIAGE_TYPE_SIGN2 =
             //BLOCK_ENTITIES.register("carriage_type_sign2" , () ->

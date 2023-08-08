@@ -66,7 +66,7 @@ public class CarriageTypeSignRenderer implements BlockEntityRenderer<CarriageTyp
             pPoseStack.translate(-0.4d, 0.0d, 0.0d);
         }
 
-        pPoseStack.scale(0.133f * 0.5f, -0.133f * 0.5f, 0.133f * 0.5f);  // standard size
+        pPoseStack.scale(0.133f * 0.55f, -0.133f * 0.55f, 0.133f * 0.55f);  // standard size
 
         pPoseStack.scale(0.08f, 0.08f, 1.0f);
         renderText(aformattedcharsequence, 1, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);  // 硬座车

@@ -18,6 +18,7 @@ import willow.train.kuayue.Blocks.Locos.HXD3D.HXD3DPanelBlocks;
 import willow.train.kuayue.Blocks.Locos.PantographBlock;
 import willow.train.kuayue.Blocks.Locos.SS8PantographBlock;
 import willow.train.kuayue.Blocks.Locos.df11g.*;
+import willow.train.kuayue.Blocks.Signs.LaqueredBoardBlock;
 import willow.train.kuayue.Blocks.Signs.TrainNoBlock;
 import willow.train.kuayue.Blocks.Signs.TrainPanelBlock;
 import willow.train.kuayue.Blocks.Structure.*;
@@ -51,6 +52,11 @@ public class BlockInit {
 
     public static final RegistryObject<TrainNoBlock> TRAIN_NO_BLOCK = register("train_no_block",
             () -> new TrainNoBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
+                    .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
+            object -> () -> new TrainNoItem(object.get(), new Item.Properties()));
+
+    public static final RegistryObject<LaqueredBoardBlock> LAQUERED_BOARD_BLOCK = register("laquered_board_block",
+            () -> new LaqueredBoardBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.PLANT).strength(3.0f)
                     .sound(SoundType.COPPER).requiresCorrectToolForDrops()),
             object -> () -> new TrainNoItem(object.get(), new Item.Properties()));
 

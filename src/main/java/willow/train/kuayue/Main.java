@@ -22,6 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageNoSignRenderer;
 import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageTypeSignRenderer;
+import willow.train.kuayue.BlockEntity.BlockEntityRenderer.LaqueredBoardEntityRenderer;
 import willow.train.kuayue.Client.CatenaryConnectionHandler;
 import willow.train.kuayue.MultiLoader.Env;
 import willow.train.kuayue.Network.KuayueNetworkHandler;
@@ -277,6 +278,7 @@ public class Main {
     protected void registerRenderers(final FMLClientSetupEvent fmlClientSetupEvent){
         BlockEntityRenderers.register(BlockEntitiesInit.CARRIAGE_TYPE_SIGN.get(), CarriageTypeSignRenderer::new);
         BlockEntityRenderers.register(BlockEntitiesInit.CARRIAGE_NO_SIGN.get(), CarriageNoSignRenderer::new);
+        BlockEntityRenderers.register(BlockEntitiesInit.LAQUERED_BOARD.get(), LaqueredBoardEntityRenderer::new);
     }
 
     protected void registerMenus(final FMLClientSetupEvent fmlClientSetupEvent){
