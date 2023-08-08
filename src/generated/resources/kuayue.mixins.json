@@ -12,6 +12,7 @@
     "MixinStationBlockEntity",
     "MixinTrackBlock",
     "MixinTrackBlockEntity",
+    "MixinRollerMovementBehaviour",
 
     "ServerGamePacketListenerMixin"
   ],

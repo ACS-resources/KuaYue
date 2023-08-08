@@ -31,7 +31,7 @@ public class DF11GBogeyRenderer {
 
             boolean inInstancedContraption = vb == null;
             BogeyModelData frame = getTransform(DF11G_FRAME, ms, inInstancedContraption);
-            frame.render(ms, light, vb);
+            frame.translate(0,0.375,0).render(ms, light, vb);
 
             BogeyModelData[] wheels = getTransform(DF11G_WHEEL, ms, inInstancedContraption, 3);
 
@@ -39,23 +39,12 @@ public class DF11GBogeyRenderer {
                 if (!inInstancedContraption)
                     ms.pushPose();
                 BogeyModelData wheel = wheels[(side + 1)/2];
-                wheel.translate(0, 0.805, ((double)side) * 2d)
+                wheel.translate(0, 0.88, ((double)side) * 2d)
                         .rotateX(wheelAngle)
                         .render(ms, light, vb);
                 if (!inInstancedContraption)
                     ms.popPose();
             }
-
-            /*for (int side : Iterate.positiveAndNegative) {
-                if (!inInstancedContraption)
-                    ms.pushPose();
-                BogeyModelData wheel = wheels[(side + 1)/2];
-                wheel.translate(0, 0.805, ((double)side) *1.2d)
-                        .rotateX(wheelAngle);
-                wheel.render(ms, light, vb);
-                if (!inInstancedContraption)
-                    ms.popPose();
-            }*/
         }
     }
 }
