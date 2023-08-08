@@ -16,7 +16,6 @@
     "ServerGamePacketListenerMixin"
   ],
   "client": [
-    "client.AccessorCarriageParticles",
     "client.AccessorInstance",
     "client.MixinBezierConnectionClient",
     "client.MixinBogeyInstance",
