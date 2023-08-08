@@ -1,4 +1,4 @@
-package willow.train.kuayue.eventss;
+package willow.train.kuayue.events;
 
 import net.minecraft.client.Minecraft;
 

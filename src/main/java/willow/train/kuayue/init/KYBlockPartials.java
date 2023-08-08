@@ -14,7 +14,6 @@ public class KYBlockPartials {
     public record ModelTransform(double x, double y, double z, float rx, float ry, float rz) {
         public static final willow.train.kuayue.init.KYBlockPartials.ModelTransform ZERO = new willow.train.kuayue.init.KYBlockPartials.ModelTransform(0, 0, 0, 0, 0, 0);
 
-        //                                                            pitch?    YAW       roll?
         public static willow.train.kuayue.init.KYBlockPartials.ModelTransform of(double x, double y, double z, float rx, float ry, float rz) {
             return new willow.train.kuayue.init.KYBlockPartials.ModelTransform(x, y, z, rx, ry, rz);
         }
