@@ -30,13 +30,13 @@ public class KYBogeyStyles {
 
     public static final String KY_STANDARD_BOGEY_CYCLE_GROUP = "kystandardbogey";
 
-    public static final BogeyStyle KYSTANDARDBOGEY = create("kystandardbogey", Create.asResource(STANDARD_CYCLE_GROUP))
+    public static final BogeyStyle KYSTANDARDBOGEY = create("kystandardbogey", KY_STANDARD_BOGEY_CYCLE_GROUP)
             .displayName(Components.translatable("kuayue.bogeys.styles.kystandardbogey"))
             .size(BogeySizes.SMALL, () -> KYStandardBogeyRenderer.SmallKYStandardBogeyRenderer::new, KYCreateBlock.KY_STANDARD_BOGEY)
             .contactParticle(ParticleTypes.CRIT).smokeParticle(null).soundType(AllSoundEvents.TRAIN.getId())
             .build();
 
-    public static final BogeyStyle DF11GBOGEY = create("df11gbogey", Create.asResource(STANDARD_CYCLE_GROUP))
+    public static final BogeyStyle DF11GBOGEY = create("df11gbogey", KY_STANDARD_BOGEY_CYCLE_GROUP)
             .displayName(Components.translatable("kuayue.bogeys.styles.df11gbogey"))
             .size(BogeySizes.SMALL, () -> DF11GBogeyRenderer.SmallDF11GBogeyRenderer::new, KYCreateBlock.DF11G_BOGEY)
             .build();
