@@ -27,7 +27,7 @@ public class Config {
     }
 
     private static void setupGeneralCategory(ForgeConfigSpec.Builder builder) {
-        DISABLE_DATAFIXER = builder.comment("Disable kuayue datafixers. Do not enable this config if you world contains pre-Create 0.5.1 monobogeys, because then they will be destroyed").define("disableDatafixer", false);
+        DISABLE_DATAFIXER = builder.comment("Disable kuayue datafixers.").define("disableDatafixer", false);
     }
 
     public static void loadConfig(ForgeConfigSpec spec, Path path) {

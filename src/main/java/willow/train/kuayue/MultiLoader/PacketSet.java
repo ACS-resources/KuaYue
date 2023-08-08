@@ -215,7 +215,7 @@ public class PacketSet {
         public void handle(Minecraft mc) {
             if (KYPackets.PACKETS.version == serverVersion)
                 return;
-            Component error = Components.literal("Steam n' Rails on the client uses a different network format than the server.")
+            Component error = Components.literal("KuaYue on the client uses a different network format than the server.")
                     .append(" You should use the same version of the mod on both sides.");
             mc.getConnection().onDisconnect(error);
         }

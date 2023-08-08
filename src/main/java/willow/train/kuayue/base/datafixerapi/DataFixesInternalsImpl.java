@@ -28,7 +28,7 @@ public final class DataFixesInternalsImpl extends DataFixesInternals {
     public void registerFixer(@Range(from = 0, to = Integer.MAX_VALUE) int currentVersion,
                               @NotNull DataFixer dataFixer) {
         if (this.dataFixer != null) {
-            throw new IllegalArgumentException("Railways already has a registered data fixer");
+            throw new IllegalArgumentException("Already has a registered data fixer");
         }
 
         this.dataFixer = new DataFixerEntry(dataFixer, currentVersion);
