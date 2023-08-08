@@ -16,13 +16,14 @@
     "ServerGamePacketListenerMixin"
   ],
   "client": [
+    "client.AccessorCarriageParticles",
     "client.AccessorInstance",
     "client.MixinBezierConnectionClient",
     "client.MixinBogeyInstance",
     "client.MixinTrackInstance_BezierTrackInstance",
     "client.MixinTrackRenderer",
     "client.MixinTrackTargetingClient",
-
+    "client.MixinCarriageContraptionEntity",
     "client.ClientPacketListenerMixin"
   ],
   "minVersion": "0.8"
