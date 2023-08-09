@@ -38,7 +38,7 @@ public class DF11GBogeyRenderer {
             for (int side = -1; side < 2; side++) {
                 if (!inInstancedContraption)
                     ms.pushPose();
-                BogeyModelData wheel = wheels[(side + 1)/2];
+                BogeyModelData wheel = wheels[side + 1];
                 wheel.translate(0, 0.88, ((double)side) * 2d)
                         .rotateX(wheelAngle)
                         .render(ms, light, vb);
