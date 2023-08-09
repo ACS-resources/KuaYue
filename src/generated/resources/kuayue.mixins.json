@@ -13,6 +13,7 @@
     "MixinStationBlockEntity",
     "MixinTrackBlock",
     "MixinTrackBlockEntity",
+    "MixinCarriageParticles",
 
     "ServerGamePacketListenerMixin"
   ],
@@ -22,8 +23,8 @@
     "client.ClientPacketListenerMixin",
 
     "client.MixinBezierConnectionClient",
+    "MixinCarriageParticles",
     "client.MixinBogeyInstance",
-    "client.MixinCarriageParticles",
     "client.MixinTrackInstance_BezierTrackInstance",
     "client.MixinTrackRenderer",
     "client.MixinTrackTargetingClient",

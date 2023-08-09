@@ -294,7 +294,7 @@
   "item.kuayue.train_panel_item.tooltip": "Press \" Shift \" and right click at the same time to change cart panel type",
   "item.kuayue.brush.tooltip": "create letters on the panel",
   "item.kuayue.colored_brush.tooltip": "change the letter's color",
-  "item.kuayue.laquered_board_tooltip": "Light click any train bottom panel with me to create a laquered board on it, then use colored brush to edit",
+  "item.kuayue.laquered_board_tooltip": "Light click any train bottom panel with me to create a laquered board on it, then use colored brush to edit (Please close \" Force Unicode Font \" in Options... -> Language...)",
 
   "tips.group": "--------------------------------all groups above here-------------------------------------------",
 

@@ -284,7 +284,7 @@
   "item.kuayue.train_panel_item.tooltip": "同时按住 shift 与右键来改变车厢板种类",
   "item.kuayue.brush.tooltip": "在车厢板上生成字",
   "item.kuayue.colored_brush.tooltip": "改变字的颜色",
-  "item.kuayue.laquered_board_tooltip": "在下厢板上右键以创建水牌，然后用带颜色的刷子来编辑",
+  "item.kuayue.laquered_board_tooltip": "在下厢板上右键以创建水牌，然后用带颜色的刷子来编辑 (请关闭 选项 -> 语言 中的 \" 强制使用 unicode 字体 \")",
   "tips.group": "--------------------------------以下是分组-------------------------------------------",
   "itemGroup.item_group_main": "跨越·结构体",
   "itemGroup.item_group_diet": "跨越·餐饮",
