@@ -85,7 +85,7 @@ public class LaqueredBoardEntity extends BlockEntity implements MenuProvider {
         this.backGroundColor = tag.getInt("beltColor");
         this.forGroundColor = tag.getInt("textColor");
         this.beltForGroundColor = tag.getInt("pinyinColor");
-        this.x_offset = tag.getInt("x_offset");
+        this.x_offset = tag.getDouble("x_offset");
     }
 
     public double getXOffset(){
