@@ -3,10 +3,14 @@ package willow.train.kuayue.Blocks.Signs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -15,14 +19,20 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
+import willow.train.kuayue.BlockEntity.CarriageTypeSignEntity;
 import willow.train.kuayue.BlockEntity.LaqueredBoardEntity;
 import willow.train.kuayue.Util.PanelTypes;
 import willow.train.kuayue.init.BlockEntitiesInit;
 import willow.train.kuayue.init.BlockInit;
+import willow.train.kuayue.init.ItemInit;
 
 public class LaqueredBoardBlock extends KuayueSignBlock{
 
@@ -101,8 +111,46 @@ public class LaqueredBoardBlock extends KuayueSignBlock{
         return super.getStateForPlacement(context).setValue(HINGE, this.getHinge(context)).setValue(TYPE, PanelTypes.P25G);
     }
 
+    public BlockState getStateForPlacement(BlockPlaceContext context, PanelTypes types, DoorHingeSide hinge) {
+        return super.getStateForPlacement(context).setValue(HINGE, hinge).setValue(TYPE, types);
+    }
+
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         super.createBlockStateDefinition(pBuilder);
         pBuilder.add(HINGE, TYPE, MIRROR);
+    }
+
+    @Override
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if(pPlayer.getItemInHand(pHand).is(ItemInit.ColoredBrush.get())){
+            if(!pLevel.isClientSide){
+                NetworkHooks.openScreen((ServerPlayer) pPlayer, (LaqueredBoardEntity) pLevel.getBlockEntity(pPos), pPos);
+                ((LaqueredBoardEntity) pLevel.getBlockEntity(pPos)).markUpdated();
+                return InteractionResult.PASS;
+            }
+            return InteractionResult.PASS;
+        }
+        return InteractionResult.PASS;
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
+        PanelTypes types = state.getValue(TYPE);
+        switch (types){
+            case P25B -> {return BlockInit.PANEL_25B_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
+            case P25G -> {return BlockInit.PANEL_25G_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
+            case P25Z -> {return BlockInit.PANEL_25Z_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
+            case P25KA -> {return BlockInit.PANEL_25K_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
+            case P25KB -> {return BlockInit.PANEL_25K_ORIGINAL_LINE.get().asItem().getDefaultInstance();}
+            case P25TA -> {return BlockInit.PANEL_25T_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
+            case P25TB -> {return BlockInit.PANEL_25T_ORIGINAL_BOTTOM_B.get().asItem().getDefaultInstance();}
+            case M25B -> {return BlockInit.PANEL_25B_MARSHALLED_SYMBOL.get().asItem().getDefaultInstance();}
+            case M25G -> {return BlockInit.PANEL_25G_MARSHALLED_SYMBOL.get().asItem().getDefaultInstance();}
+            case M25Z -> {return BlockInit.PANEL_25_MARSHALLED_BOTTOM.get().asItem().getDefaultInstance();}
+            case M25T -> {return BlockInit.PANEL_25_MARSHALLED_BOTTOM_LINE.get().asItem().getDefaultInstance();}
+            case M25KA -> {return BlockInit.PANEL_25K_MARSHALLED_SYMBOL.get().asItem().getDefaultInstance();}
+            case M25KB -> {return BlockInit.PANEL_CR200J_MARSHALLED_BOTTOM.get().asItem().getDefaultInstance();}
+            default -> {return BlockInit.PANEL_25B_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
+        }
     }
 }

@@ -23,6 +23,7 @@ public class KuayueNetworkHandler {
 
         register(CarriageTypeSignUpdatePacket.class, CarriageTypeSignUpdatePacket::new);
         register(CarriageNoSignUpdatePacket.class, CarriageNoSignUpdatePacket::new);
+        register(LaqueredBoardPacket.class, LaqueredBoardPacket::new);
     }
 
     private static <T extends KuayuePacket> void register(Class<T> type, Function<FriendlyByteBuf, T> decoder){

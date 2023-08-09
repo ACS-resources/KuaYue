@@ -19,7 +19,7 @@ public class CarriageNoSignEditScreen  extends AbstractContainerScreen<CarriageN
             Component.translatable("container." + Main.MOD_ID + ".carriage_no_sign_edit_menu.content"),  // 内容
             Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.confirm"),  // 确认
             Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.cancel"),  // 取消
-            Component.translatable("container." + Main.MOD_ID + ".carriage_no_sign_edit_menu.hinge")  // 取消
+            Component.translatable("container." + Main.MOD_ID + ".carriage_no_sign_edit_menu.hinge")  // 对称
     };
 
     private static int editBoxWidth = 200;

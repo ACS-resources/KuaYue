@@ -10,6 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import willow.train.kuayue.Client.CarriageNoSignEditMenu;
 import willow.train.kuayue.Client.CarriageTypeSignEditMenu;
+import willow.train.kuayue.Client.LaqueredBoardEditMenu;
 import willow.train.kuayue.Main;
 
 public class MenuInit {
@@ -17,6 +18,7 @@ public class MenuInit {
 
     public static final RegistryObject<MenuType<CarriageTypeSignEditMenu>> CARRIAGE_TYPE_SIGN_EDIT_MENU = registerMenuType(CarriageTypeSignEditMenu::new, "carriage_type_sign_edit_menu");
     public static final RegistryObject<MenuType<CarriageNoSignEditMenu>> CARRIAGE_NO_SIGN_EDIT_MENU = registerMenuType(CarriageNoSignEditMenu::new, "carriage_no_sign_edit_menu");
+    public static final RegistryObject<MenuType<LaqueredBoardEditMenu>> LAQUERED_BOARD_EDIT_MENU = registerMenuType(LaqueredBoardEditMenu::new, "laquered_board_edit_menu");
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, String name){
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

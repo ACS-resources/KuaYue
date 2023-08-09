@@ -53,7 +53,15 @@ public class LaqueredBoardEntityRenderer implements BlockEntityRenderer<Laquered
         pPoseStack.translate(-0.5d, 0.5d,  - 0.425d);
         pPoseStack.scale(1, -1, 1);
 
+        pPoseStack.translate(pBlockEntity.getXOffset(), 0.0, 0.0); // offset
+
+        pPoseStack.translate(0.4375, - 2.3625, 0.0);
+        pPoseStack.translate(0.00625, 0.00625 + 0.15, 0.0);
+        pPoseStack.scale(0.9f, 0.9f, 1.0f);
         logoModel.renderToBuffer(pPoseStack, pBufferSource.getBuffer(RenderType.entityTranslucent(LAYER_A.getModel())), pPackedLight, pPackedOverlay);
+        pPoseStack.scale(1/0.9f, 1/0.9f, 1.0f);
+        pPoseStack.translate(- 0.00625, - 0.00625 - 0.15, 0.0);
+        pPoseStack.translate(- 0.4375,  2.3625, 0.0);
 
         pPoseStack.translate(0.0, - 0.91, -0.001d);
 
@@ -63,6 +71,7 @@ public class LaqueredBoardEntityRenderer implements BlockEntityRenderer<Laquered
         renderBg(Belt, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
 
         pPoseStack.translate(0, 0, 0.001f);
+
         switch (pBlockEntity.getBoardType()) {
             case 0:
                 // 条带1
@@ -95,6 +104,7 @@ public class LaqueredBoardEntityRenderer implements BlockEntityRenderer<Laquered
                 pPoseStack.scale(20f, 20f, 1.0f);
                 pPoseStack.translate( - (2.8 + (2.2 - length2 * 0.05)/2), 0.0f, 0.0f);
 
+                // 拼音1
                 int length3 = this.font.width(formattedcharsequence[3]);
                 pPoseStack.translate((2.2 - length3 * 0.023)/2, 0.5f, 0.001f);
                 pPoseStack.scale(0.023f, 0.023f, 1.0f);
@@ -102,6 +112,7 @@ public class LaqueredBoardEntityRenderer implements BlockEntityRenderer<Laquered
                 pPoseStack.scale(1/0.023f, 1/0.023f, 1.0f);
                 pPoseStack.translate( - (2.2 - length3 * 0.023)/2, 0.0f, 0.0f);
 
+                // 拼音2
                 int length4 = this.font.width(formattedcharsequence[4]);
                 pPoseStack.translate(3.9 - length4 * 0.0115, 0.0f, 0.0f);
                 pPoseStack.scale(0.023f, 0.023f, 1.0f);
@@ -109,19 +120,25 @@ public class LaqueredBoardEntityRenderer implements BlockEntityRenderer<Laquered
                 pPoseStack.scale(1/0.023f, 1/0.023f, 1.0f);
                 pPoseStack.translate( - 3.9 + length4 * 0.0115, - 0.8f, 0.0f);
 
+                // 车种
                 int lenght5 = this.font.width(formattedcharsequence[5]);
-                pPoseStack.translate(2.5 - lenght5*0.005, 0.25f, 0.0f);
-                pPoseStack.scale(0.01f, 0.01f, 1.0f);
+                pPoseStack.translate(2.5 - lenght5*0.0075, 0.25f, 0.0f);
+                pPoseStack.scale(0.015f, 0.015f, 1.0f);
                 renderText(formattedcharsequence[5], 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
-                pPoseStack.scale(1/0.01f, 1/0.01f, 1.0f);
-                pPoseStack.translate(- 2.5 + lenght5*0.005, 0.68f, 0.0f);
+                pPoseStack.scale(1/0.015f, 1/0.015f, 1.0f);
+                pPoseStack.translate(- 2.5 + lenght5*0.0075, 0.68f, 0.0f);
 
+                // 车次
                 int lenght6 = this.font.width(formattedcharsequence[6]);
                 pPoseStack.translate(2.5 - lenght6*0.004, 0.0f, 0.0f);
                 pPoseStack.scale(0.008f, 0.008f, 1.0f);
                 renderText(formattedcharsequence[6], 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
                 pPoseStack.scale(1/0.008f, 1/0.008f, 1.0f);
                 pPoseStack.translate(- 2.5 + lenght6*0.004, 0.0f, 0.0f);
+                break;
+            default:
+                // default 就是初始状态，不显示任何东西
+                break;
         }
 
         pPoseStack.popPose();
@@ -133,6 +150,15 @@ public class LaqueredBoardEntityRenderer implements BlockEntityRenderer<Laquered
 
     private static int getForgroundColor(LaqueredBoardEntity pBlockEntity) {
         int i = pBlockEntity.getForGroundColor();
+        double d0 = 0.4D;
+        int j = (int)((double) NativeImage.getR(i) * 0.4D);
+        int k = (int)((double)NativeImage.getG(i) * 0.4D);
+        int l = (int)((double)NativeImage.getB(i) * 0.4D);
+        return NativeImage.combine(0, l, k, j);
+    }
+
+    private static int getBeltForgroundColor(LaqueredBoardEntity pBlockEntity) {
+        int i = pBlockEntity.getBeltForGroundColor();
         double d0 = 0.4D;
         int j = (int)((double) NativeImage.getR(i) * 0.4D);
         int k = (int)((double)NativeImage.getG(i) * 0.4D);
@@ -163,11 +189,6 @@ public class LaqueredBoardEntityRenderer implements BlockEntityRenderer<Laquered
     }
 
     private void renderWhite(FormattedCharSequence formattedcharsequence, int pX, int pY, LaqueredBoardEntity pBlockEntity, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight){
-        int i = 0xffffff;
-        double d0 = 0.4D;
-        int j = (int)((double) NativeImage.getR(i) * 0.4D);
-        int k = (int)((double)NativeImage.getG(i) * 0.4D);
-        int l = (int)((double)NativeImage.getB(i) * 0.4D);
-        this.font.drawInBatch(formattedcharsequence, pX, pY, NativeImage.combine(0,l,k,j)*2, false, pPoseStack.last().pose(), pBufferSource, false, 0, pPackedLight);
+        this.font.drawInBatch(formattedcharsequence, pX, pY, getBeltForgroundColor(pBlockEntity)*2, false, pPoseStack.last().pose(), pBufferSource, false, 0, pPackedLight);
     }
 }

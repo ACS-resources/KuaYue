@@ -55,6 +55,12 @@ public class OrdinaryTrainPanelBlock extends SideMirrorBlock {
                 ((TrainPanelBlock)pLevel.getBlockState(pPos).getBlock()).use(pLevel.getBlockState(pPos), pLevel, pPos, pPlayer, pHand, pHit);
             }
         }
+        if(pPlayer.getItemInHand(pHand).is(ItemInit.LaqueredBoard.get())) {
+            onLaqueredBoard(pLevel, pPlayer, pHand, pHit, pState);
+            if(pLevel.getBlockState(pPos).getBlock().equals(BlockInit.LAQUERED_BOARD_BLOCK)){
+                ((TrainPanelBlock)pLevel.getBlockState(pPos).getBlock()).use(pLevel.getBlockState(pPos), pLevel, pPos, pPlayer, pHand, pHit);
+            }
+        }
         return InteractionResult.SUCCESS;
     }
 
@@ -109,6 +115,61 @@ public class OrdinaryTrainPanelBlock extends SideMirrorBlock {
         }
         if(this.equals(BlockInit.PANEL_CR200J_MARSHALLED_BOTTOM.get())) {
             pLevel.setBlock(pHit.getBlockPos(), BlockInit.TRAIN_BOTTOM_PANEL_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.M25KB, blockState.getValue(HINGE)), 2);
+            return;
+        }
+    }
+
+    public void onLaqueredBoard(Level pLevel, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, BlockState blockState){
+        if(this.equals(BlockInit.PANEL_25B_ORIGINAL_BOTTOM.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.P25B, blockState.getValue(HINGE)), 2);
+            return;
+        }
+        if(this.equals(BlockInit.PANEL_25G_ORIGINAL_BOTTOM.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.P25G, blockState.getValue(HINGE)), 2);
+            return;
+        }
+        if(this.equals(BlockInit.PANEL_25Z_ORIGINAL_BOTTOM.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.P25Z, blockState.getValue(HINGE)), 2);
+            return;
+        }
+        if(this.equals(BlockInit.PANEL_25K_ORIGINAL_BOTTOM.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.P25KA, blockState.getValue(HINGE)), 2);
+            return;
+        }
+        if(this.equals(BlockInit.PANEL_25K_ORIGINAL_LINE.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.P25KB, blockState.getValue(HINGE)), 2);
+            return;
+        }
+        if(this.equals(BlockInit.PANEL_25T_ORIGINAL_BOTTOM.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.P25TA, blockState.getValue(HINGE)), 2);
+            return;
+        }
+        if(this.equals(BlockInit.PANEL_25T_ORIGINAL_BOTTOM_B.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.P25TB, blockState.getValue(HINGE)), 2);
+            return;
+        }
+        if(this.equals(BlockInit.PANEL_25B_MARSHALLED_SYMBOL.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.M25B, blockState.getValue(HINGE)), 2);
+            return;
+        }
+        if(this.equals(BlockInit.PANEL_25G_MARSHALLED_SYMBOL.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.M25G, blockState.getValue(HINGE)), 2);
+            return;
+        }
+        if(this.equals(BlockInit.PANEL_25K_MARSHALLED_SYMBOL.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.M25KA, blockState.getValue(HINGE)), 2);
+            return;
+        }
+        if(this.equals(BlockInit.PANEL_25_MARSHALLED_BOTTOM.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.M25Z, blockState.getValue(HINGE)), 2);
+            return;
+        }
+        if(this.equals(BlockInit.PANEL_25_MARSHALLED_BOTTOM_LINE.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.M25T, blockState.getValue(HINGE)), 2);
+            return;
+        }
+        if(this.equals(BlockInit.PANEL_CR200J_MARSHALLED_BOTTOM.get())) {
+            pLevel.setBlock(pHit.getBlockPos(), BlockInit.LAQUERED_BOARD_BLOCK.get().getStateForPlacement(new BlockPlaceContext(pLevel, pPlayer, pHand, ItemStack.EMPTY, pHit), PanelTypes.M25KB, blockState.getValue(HINGE)), 2);
             return;
         }
     }
