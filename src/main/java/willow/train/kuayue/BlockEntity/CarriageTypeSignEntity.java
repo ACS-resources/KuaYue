@@ -27,7 +27,7 @@ import willow.train.kuayue.init.BlockEntitiesInit;
 import java.util.List;
 import java.util.function.Function;
 
-public class CarriageTypeSignEntity extends SmartBlockEntity implements MenuProvider, ClipboardCloneable {
+public class CarriageTypeSignEntity extends SmartBlockEntity implements MenuProvider, ClipboardCloneable {// 072566
     CarriageTypeSignEditMenu ctsem;
     private FormattedCharSequence[] renderMessages;
     public static final int YELLOW = 14725893, YELLOW2 = 16776960, RED = 15216648, BLUE = 22220, BLUE2 = 45263,BLUE3 = 468326, BLACK = 789516;

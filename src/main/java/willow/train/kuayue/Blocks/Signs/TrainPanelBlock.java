@@ -156,6 +156,7 @@ public class TrainPanelBlock extends KuayueSignBlock {
                 }
             return InteractionResult.PASS;
         }
+            /*
         if(pPlayer.getItemInHand(pHand).is(ItemInit.ColoredBrush.get())) {
             if(!pLevel.isClientSide) {
                 CarriageTypeSignEntity entity = ((CarriageTypeSignEntity) pLevel.getBlockEntity(pPos));
@@ -164,6 +165,7 @@ public class TrainPanelBlock extends KuayueSignBlock {
                 entity.markUpdated();
             }
         }
+             */
         if(pPlayer.getMainHandItem().is(ItemStack.EMPTY.getItem())) {
             pState = pState.cycle(MIRROR);
             pLevel.setBlock(pPos, pState, 10);
