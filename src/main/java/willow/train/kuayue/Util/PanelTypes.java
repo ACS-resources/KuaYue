@@ -11,6 +11,7 @@ public enum PanelTypes implements StringRepresentable {
     P25TB,
     P25KA,
     P25KB,  //标识线
+    P25KC,
     M25B,
     M25G,
     M25Z,
@@ -31,6 +32,7 @@ public enum PanelTypes implements StringRepresentable {
             case P25TB -> {return "p25tb";}
             case P25KA -> {return "p25ka";}
             case P25KB -> {return "p25kb";}
+            case P25KC -> {return "p25kc";}
             case M25B -> {return "m25b";}
             case M25G -> {return "m25g";}
             case M25Z -> {return "m25z";}
@@ -50,6 +52,7 @@ public enum PanelTypes implements StringRepresentable {
             case "p25tb" -> {return P25TB;}
             case "p25ka" -> {return P25KA;}
             case "p25kb" -> {return P25KB;}
+            case "p25kc" -> {return P25KC;}
             case "m25b" -> {return M25B;}
             case "m25g" -> {return M25G;}
             case "m25z" -> {return M25Z;}

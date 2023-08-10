@@ -1,5 +1,6 @@
 package willow.train.kuayue.Blocks.Signs;
 
+import com.simibubi.create.content.equipment.clipboard.ClipboardCloneable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -7,6 +8,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -34,7 +36,9 @@ import willow.train.kuayue.init.BlockEntitiesInit;
 import willow.train.kuayue.init.BlockInit;
 import willow.train.kuayue.init.ItemInit;
 
-public class LaqueredBoardBlock extends KuayueSignBlock{
+import static willow.train.kuayue.Util.PanelTypes.P25B;
+
+public class LaqueredBoardBlock extends KuayueSignBlock {
 
     public static final EnumProperty<DoorHingeSide> HINGE = BlockStateProperties.DOOR_HINGE;
     public static final BooleanProperty MIRROR = BlockStateProperties.OPEN;
@@ -142,6 +146,7 @@ public class LaqueredBoardBlock extends KuayueSignBlock{
             case P25Z -> {return BlockInit.PANEL_25Z_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
             case P25KA -> {return BlockInit.PANEL_25K_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
             case P25KB -> {return BlockInit.PANEL_25K_ORIGINAL_LINE.get().asItem().getDefaultInstance();}
+            case P25KC -> {return BlockInit.PANEL_25K_ORIGINAL_SYMBOL.get().asItem().getDefaultInstance();}
             case P25TA -> {return BlockInit.PANEL_25T_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
             case P25TB -> {return BlockInit.PANEL_25T_ORIGINAL_BOTTOM_B.get().asItem().getDefaultInstance();}
             case M25B -> {return BlockInit.PANEL_25B_MARSHALLED_SYMBOL.get().asItem().getDefaultInstance();}

@@ -141,6 +141,13 @@
   "block.kuayue.carport_25bgzk_air_condition_side": "25系列车厢空调2",
   "block.kuayue.air_condition_bsp25t": "BSP25T车厢空调",
 
+  "block.kuayue.ladder_25z_original": "原色25Z车梯",
+  "block.kuayue.slab_25z_original_top": "原色25Z列车地板",
+  "block.kuayue.end_face_25z_original": "原色25Z端面",
+  "block.kuayue.panel_25z_original_bottom": "原色25Z车厢下厢板",
+  "block.kuayue.panel_25z_original_mid": "原色25Z车厢中厢板",
+  "block.kuayue.panel_25z_original_top": "原色25Z车厢上厢板",
+
   "block.kuayue.carport_25t": "25T车厢车棚",
   "block.kuayue.carport_25t_toilet": "25T车厢卫生间排气扇",
   "block.kuayue.smooth_quartz_panel_half": "平滑石英竖半砖",
@@ -246,6 +253,9 @@
   "block.kuayue.hxd3d_cab_door": "HXD3D驾驶室门",
 
   "block.kuayue.boiling_water_place": "茶炉",
+  "block.kuayue.train_bottom_panel_block": "车种标签",
+  "block.kuayue.train_no_block": "车厢号码贴纸",
+  "block.kuayue.laquered_board_block": "水牌贴纸",
   "tips.item": "--------------------------------以下是物品-------------------------------------------",
   "item.kuayue.train_diet_1": "火车餐A",
   "item.kuayue.ca_25t": "餐车25T",

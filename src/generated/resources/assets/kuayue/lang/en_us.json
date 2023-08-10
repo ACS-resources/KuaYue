@@ -252,7 +252,9 @@
   "block.kuayue.hxd3d_cab_door": "HXD3D Cab Door",
 
   "block.kuayue.boiling_water_place": "Tea Stove",
-  "block.kuayue.train_bottom_panel_block": "universal train bottom panel",
+  "block.kuayue.train_bottom_panel_block": "train type sign",
+  "block.kuayue.train_no_block": "train no stick",
+  "block.kuayue.laquered_board_block": "laquered board",
   "tips.item": "--------------------------------all items above here-------------------------------------------",
   "item.kuayue.train_diet_1": "Train Meal A",
   "item.kuayue.ca_25t": "Dining Car CA25T",
