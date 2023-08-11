@@ -1,6 +1,10 @@
 package willow.train.kuayue.BlockEntity;
 
+import com.simibubi.create.content.equipment.clipboard.ClipboardCloneable;
+import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
+import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -18,6 +22,7 @@ import willow.train.kuayue.Network.CarriageNoSignUpdatePacket;
 import willow.train.kuayue.Network.KuayueNetworkHandler;
 import willow.train.kuayue.init.BlockEntitiesInit;
 
+import java.util.List;
 import java.util.function.Function;
 
 
@@ -28,7 +33,7 @@ import java.util.function.Function;
  * 这个 Entity 是根据 Block.newBlockEntity() 来调用的，记得在对应的 Block 里写明这个方法
  * 这个 Entity 对应的 Block 是 TrainNoBlock ，在 Blocks/Signs 包内
  */
-public class CarriageNoSignEntity extends BlockEntity implements MenuProvider {
+public class CarriageNoSignEntity extends SmartBlockEntity implements MenuProvider, ClipboardCloneable {
 
     private int color = CarriageTypeSignEntity.RED;
 
@@ -72,16 +77,21 @@ public class CarriageNoSignEntity extends BlockEntity implements MenuProvider {
     public Component getMessage(){return this.message;}
 
     @Override
-    protected void saveAdditional(CompoundTag pTag) {
-        super.saveAdditional(pTag);
+    protected void write(CompoundTag pTag, boolean clientPacket) {
+        super.write(pTag, clientPacket);
         pTag.putString("message", message.getString());
         pTag.putBoolean("left", isLeftSide);
         pTag.putInt("color", color);
     }
 
     @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
+    public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
+
+    }
+
+    @Override
+    public void read(CompoundTag pTag, boolean clientPacket) {
+        super.read(pTag, clientPacket);
         this.message = Component.literal(pTag.getString("message"));
         this.isLeftSide = pTag.getBoolean("left");
         this.color = pTag.getInt("color");
@@ -125,4 +135,29 @@ public class CarriageNoSignEntity extends BlockEntity implements MenuProvider {
     }
 
 
+    @Override
+    public String getClipboardKey() {
+        return "carriage_no_sign";
+    }
+
+    @Override
+    public boolean writeToClipboard(CompoundTag tag, Direction side) {
+        tag.putString("sign", "carriage_no_sign");
+        tag.putString("message", message.getString());
+        tag.putBoolean("left", isLeftSide);
+        tag.putInt("color", color);
+        return true;
+    }
+
+    @Override
+    public boolean readFromClipboard(CompoundTag tag, Player player, Direction side, boolean simulate) {
+        if (simulate) return true;
+        if(!tag.contains("sign") || !tag.contains("message") || !tag.contains("left") || !tag.contains("color")) return false;
+        if(!tag.getString("sign").equals("carriage_no_sign")) return false;
+        this.color = tag.getInt("color");
+        this.message = Component.literal(tag.getString("message"));
+        this.isLeftSide = tag.getBoolean("left");
+        markUpdated();
+        return true;
+    }
 }

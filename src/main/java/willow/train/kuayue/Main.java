@@ -24,6 +24,7 @@ import willow.train.kuayue.MultiLoader.Env;
 import willow.train.kuayue.Network.KuayueNetworkHandler;
 import willow.train.kuayue.Screen.CarriageNoSignEditScreen;
 import willow.train.kuayue.Screen.CarriageTypeSignEditScreen;
+import willow.train.kuayue.Screen.LaqueredBoardEditScreen;
 import willow.train.kuayue.effect.EffectInit;
 import willow.train.kuayue.init.*;
 import willow.train.kuayue.sounds.ModSounds;
@@ -277,6 +278,7 @@ public class Main {
     protected void registerMenus(final FMLClientSetupEvent fmlClientSetupEvent){
         MenuScreens.register(MenuInit.CARRIAGE_TYPE_SIGN_EDIT_MENU.get(), CarriageTypeSignEditScreen::new);
         MenuScreens.register(MenuInit.CARRIAGE_NO_SIGN_EDIT_MENU.get(), CarriageNoSignEditScreen::new);
+        MenuScreens.register(MenuInit.LAQUERED_BOARD_EDIT_MENU.get(), LaqueredBoardEditScreen::new);
     }
 
     public static ResourceLocation asResource(String name) {

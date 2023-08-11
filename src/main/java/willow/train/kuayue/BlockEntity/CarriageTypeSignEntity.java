@@ -1,6 +1,10 @@
 package willow.train.kuayue.BlockEntity;
 
+import com.simibubi.create.content.equipment.clipboard.ClipboardCloneable;
+import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
+import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -20,9 +24,10 @@ import willow.train.kuayue.Network.KuayueNetworkHandler;
 import willow.train.kuayue.Util.PanelTypes;
 import willow.train.kuayue.init.BlockEntitiesInit;
 
+import java.util.List;
 import java.util.function.Function;
 
-public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider {
+public class CarriageTypeSignEntity extends SmartBlockEntity implements MenuProvider, ClipboardCloneable {// 072566
     CarriageTypeSignEditMenu ctsem;
     private FormattedCharSequence[] renderMessages;
     public static final int YELLOW = 14725893, YELLOW2 = 16776960, RED = 15216648, BLUE = 22220, BLUE2 = 45263,BLUE3 = 468326, BLACK = 789516;
@@ -98,17 +103,19 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
      * @param pTag 传入的保存Tag
      */
     @Override
-    protected void saveAdditional(CompoundTag pTag) {
+    protected void write(CompoundTag pTag, boolean clientPacket) {
 
         for(int i = 0; i < 5; i++) {
             pTag.putString(name[i], this.messages[i].getString());
         }
         pTag.putInt("Color", this.color);
-        System.out.println("saving datas " + pTag.toString());
 
-        super.saveAdditional(pTag);
+        super.write(pTag, clientPacket);
     }
 
+
+    @Override
+    public void addBehaviours(List<BlockEntityBehaviour> behaviours) {}
 
     /**
      * 这个方法用于从磁盘读取数据，一般来说我们不需要调用它
@@ -116,8 +123,8 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
      * @param pTag 接收数据的Tag
      */
     @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
+    public void read(CompoundTag pTag, boolean clientPacket) {
+        super.read(pTag, clientPacket);
 
         this.color = pTag.getInt("Color");
 
@@ -206,5 +213,41 @@ public class CarriageTypeSignEntity extends BlockEntity implements MenuProvider 
             case BLACK -> {return YELLOW;}
             default -> {return YELLOW;}
         }
+    }
+
+    @Override
+    public String getClipboardKey() {
+        return "carriage_type_sign";
+    }
+
+    @Override
+    public boolean writeToClipboard(CompoundTag tag, Direction side) {
+        tag.putString("sign", "carriage_type_sign");
+        for(int i = 0; i < 5; i++) {
+            tag.putString(name[i], this.messages[i].getString());
+        }
+        tag.putInt("Color", this.color);
+        return true;
+    }
+
+    @Override
+    public boolean readFromClipboard(CompoundTag tag, Player player, Direction side, boolean simulate) {
+        if(simulate) return true;
+        if (tag.contains("sign") && tag.contains("Color")) {
+            for(int i = 0; i < 5; i++){
+                if(!tag.contains(name[i])) return false;
+            }
+
+            this.color = tag.getInt("Color");
+            for(int i = 0; i < 5; i++) {
+                if(tag.contains(name[i])) {
+                    String s = tag.getString(name[i]);
+                    messages[i] = Component.literal(s);
+                }
+            }
+            markUpdated();
+            return true;
+        }
+        return false;
     }
 }

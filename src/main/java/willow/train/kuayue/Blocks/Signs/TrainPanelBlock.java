@@ -156,6 +156,7 @@ public class TrainPanelBlock extends KuayueSignBlock {
                 }
             return InteractionResult.PASS;
         }
+            /*
         if(pPlayer.getItemInHand(pHand).is(ItemInit.ColoredBrush.get())) {
             if(!pLevel.isClientSide) {
                 CarriageTypeSignEntity entity = ((CarriageTypeSignEntity) pLevel.getBlockEntity(pPos));
@@ -164,6 +165,7 @@ public class TrainPanelBlock extends KuayueSignBlock {
                 entity.markUpdated();
             }
         }
+             */
         if(pPlayer.getMainHandItem().is(ItemStack.EMPTY.getItem())) {
             pState = pState.cycle(MIRROR);
             pLevel.setBlock(pPos, pState, 10);
@@ -196,6 +198,7 @@ public class TrainPanelBlock extends KuayueSignBlock {
             case P25Z -> {return BlockInit.PANEL_25Z_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
             case P25KA -> {return BlockInit.PANEL_25K_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
             case P25KB -> {return BlockInit.PANEL_25K_ORIGINAL_LINE.get().asItem().getDefaultInstance();}
+            case P25KC -> {return BlockInit.PANEL_25K_ORIGINAL_SYMBOL.get().asItem().getDefaultInstance();}
             case P25TA -> {return BlockInit.PANEL_25T_ORIGINAL_BOTTOM.get().asItem().getDefaultInstance();}
             case P25TB -> {return BlockInit.PANEL_25T_ORIGINAL_BOTTOM_B.get().asItem().getDefaultInstance();}
             case M25B -> {return BlockInit.PANEL_25B_MARSHALLED_SYMBOL.get().asItem().getDefaultInstance();}

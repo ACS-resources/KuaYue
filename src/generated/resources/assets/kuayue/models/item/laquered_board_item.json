@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "kuayue:laquered_board/laquered_board_logo"
+  }
+}

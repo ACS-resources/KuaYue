@@ -55,7 +55,6 @@ public class CarriageTypeSignUpdatePacket implements KuayuePacket {
      */
     @Override
     public boolean handle(NetworkEvent.Context context) {
-        System.out.println("handling");
 
         context.enqueueWork(() -> {
             ServerLevel level = context.getSender().getLevel();

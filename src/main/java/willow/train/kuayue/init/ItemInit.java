@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import willow.train.kuayue.Items.EditablePanels.Brush;
 import willow.train.kuayue.Items.EditablePanels.ColoredBrush;
+import willow.train.kuayue.Items.EditablePanels.LaqueredBoardItem;
 import willow.train.kuayue.Items.catenary.CatenaryScissors;
 import willow.train.kuayue.Items.catenary.GeneralCatenary;
 import willow.train.kuayue.Items.foods.Food1;
@@ -61,6 +62,9 @@ public class ItemInit {
 
     public static final RegistryObject<Item> ColoredBrush = register("colored_brush",
             () -> new ColoredBrush(new Item.Properties().tab(Main.KUAYUE_MAIN)));
+
+    public static final RegistryObject<Item> LaqueredBoard = register("laquered_board_item",
+            () -> new LaqueredBoardItem(new Item.Properties().tab(Main.KUAYUE_MAIN)));
 
 //   public static final RegistryObject<Item> TRAIN_PANEL_SIGN_ITEM = register("train_panel_sign_item",
 //            () -> new SignItem(new Item.Properties().tab(Main.KUAYUE_MAIN),

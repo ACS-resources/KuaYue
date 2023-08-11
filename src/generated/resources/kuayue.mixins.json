@@ -9,22 +9,25 @@
     "AccessorTrackMaterialFactory",
 
     "MixinAbstractBogeyBlock",
+    "MixinRollerMovementBehaviour",
     "MixinStationBlockEntity",
     "MixinTrackBlock",
     "MixinTrackBlockEntity",
-    "MixinRollerMovementBehaviour",
 
     "ServerGamePacketListenerMixin"
   ],
   "client": [
     "client.AccessorInstance",
+
+    "client.ClientPacketListenerMixin",
+
     "client.MixinBezierConnectionClient",
+    "client.MixinCarriageParticles",
     "client.MixinBogeyInstance",
     "client.MixinTrackInstance_BezierTrackInstance",
     "client.MixinTrackRenderer",
     "client.MixinTrackTargetingClient",
-    "client.MixinCarriageParticles",
-    "client.ClientPacketListenerMixin"
+    "client.MixinCarriageContraptionEntityRenderer"
   ],
   "minVersion": "0.8"
 }

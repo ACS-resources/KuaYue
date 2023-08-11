@@ -7,14 +7,13 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.Nullable;
-import willow.train.kuayue.BlockEntity.CarriageTypeSignEntity;
+import willow.train.kuayue.BlockEntity.LaqueredBoardEntity;
 import willow.train.kuayue.init.MenuInit;
 
-public class CarriageTypeSignEditMenu extends AbstractContainerMenu {
+public class LaqueredBoardEditMenu  extends AbstractContainerMenu {
+    LaqueredBoardEntity lbe;
 
-    CarriageTypeSignEntity ctse;
-
-    public CarriageTypeSignEditMenu(@Nullable MenuType<?> pMenuType, int pContainerId) {
+    public LaqueredBoardEditMenu(@Nullable MenuType<?> pMenuType, int pContainerId) {
         super(pMenuType, pContainerId);
 
         this.addDataSlot(new DataSlot() {
@@ -31,13 +30,13 @@ public class CarriageTypeSignEditMenu extends AbstractContainerMenu {
         return null;
     }
 
-    public CarriageTypeSignEditMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData){
+    public LaqueredBoardEditMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData){
         this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public CarriageTypeSignEditMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data){
-        super(MenuInit.CARRIAGE_TYPE_SIGN_EDIT_MENU.get(), pContainerId);
-        this.ctse = ((CarriageTypeSignEntity) entity);
+    public LaqueredBoardEditMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data){
+        super(MenuInit.LAQUERED_BOARD_EDIT_MENU.get(), pContainerId);
+        this.lbe = ((LaqueredBoardEntity) entity);
     }
 
     @Override
@@ -45,16 +44,15 @@ public class CarriageTypeSignEditMenu extends AbstractContainerMenu {
         return true;
     }
 
-    public CarriageTypeSignEditMenu setCtse(CarriageTypeSignEntity ctse){
-        this.ctse = ctse;
-        return this;
+    public void setLbe(LaqueredBoardEntity lbe){
+        this.lbe = lbe;
     }
 
     /**
      * 这个方法将负责将方块实体向Screen传递
      * @return 对应的方块实体
      */
-    public CarriageTypeSignEntity getCtse(){
-        return ctse;
+    public LaqueredBoardEntity getLbe(){
+        return lbe;
     }
 }
