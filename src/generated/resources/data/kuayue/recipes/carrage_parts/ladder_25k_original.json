@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "g",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "kuayue:weathering_resistant_steel_board"
+    },
+    "g": {
+      "item": "kuayue:slab_25k_original_top"
+    }
+  },
+  "result": {
+    "item": "kuayue:ladder_25k_original_sliding",
+    "count": 1
+  }
+}
