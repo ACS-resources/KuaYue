@@ -82,8 +82,6 @@ public class ItemInit {
 //耐候钢和混合物
     private static final RegistryObject<Item> WeatheringResistantSteel = register("weathering_resistant_steel",
         () -> new weathering_resistant_steel(new Item.Properties()));//.tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
-    private static final RegistryObject<Item> MineralMixture = register("mineral_mixture",
-        () -> new mixture(new Item.Properties()));//.tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
     private static final RegistryObject<Item> WeatheringResistantSteelBoard = register("weathering_resistant_steel_board",
         () -> new weathering_resistant_steel_board(new Item.Properties()));//.tab(Main.KUAYUE_NormalSpeedPassageCarriageTab)));
 
