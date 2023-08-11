@@ -21,7 +21,7 @@ public class KYCreateEntities {
     public static final BlockEntityEntry<DF11GBogeyBlockEntity> DF11G_BOGEY = REGISTRATE
             .blockEntity("df11g_bogey", DF11GBogeyBlockEntity::new)
             .renderer(() -> BogeyBlockEntityRenderer::new)
-            .validBlocks(KYCreateBlock.DF11G_BOGEY)
+            .validBlocks(KYCreateBlock.DF11G_BOGEY,KYCreateBlock.DF11G_BACKWARD_BOGEY)
             .register();
 
 //    public static final BlockEntityEntry<DF11GFrontTileEntity> DF11G_FRONT = Main.registrate()

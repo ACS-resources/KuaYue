@@ -29,9 +29,9 @@ import java.util.List;
 public class DF11GBogeyBlock extends AbstractBogeyBlock<DF11GBogeyBlockEntity> implements
         IBE<DF11GBogeyBlockEntity>, ProperWaterloggedBlock, ISpecialBlockItemRequirement {
 
-    public DF11GBogeyBlock(BlockBehaviour.Properties props){
+    public DF11GBogeyBlock(BlockBehaviour.Properties props, BogeySizes.BogeySize size){
 
-        super(props, BogeySizes.SMALL);
+        super(props, size);
         registerDefaultState(defaultBlockState().setValue(WATERLOGGED, false));
     }
 
