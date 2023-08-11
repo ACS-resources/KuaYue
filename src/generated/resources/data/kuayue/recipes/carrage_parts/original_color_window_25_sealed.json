@@ -7,7 +7,7 @@
   ],
   "key": {
     "#": {
-      "tag": "forge:plates/iron"
+      "item": "kuayue:weathering_resistant_steel_board"
     },
     "g": {
       "tag": "forge:glass_panes/colorless"

@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "d",
+        "www"
+    ],
+    "key": {
+        "d": {
+            "tag": "forge:dyes/red"
+        },
+        "w": {
+            "item": "kuayue:weathering_resistant_steel_board"
+        }
+    },
+    "result": {
+        "item": "kuayue:slab_25g_original_top",
+        "count": 2
+    }
+}
