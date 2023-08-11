@@ -1,20 +1,22 @@
 package willow.train.kuayue.BlockEntity;
 
 import com.mojang.blaze3d.platform.NativeImage;
+import com.simibubi.create.content.equipment.clipboard.ClipboardCloneable;
+import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
+import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.SimpleTexture;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.SimpleContainerData;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
@@ -24,10 +26,10 @@ import willow.train.kuayue.Network.KuayueNetworkHandler;
 import willow.train.kuayue.Network.LaqueredBoardPacket;
 import willow.train.kuayue.init.BlockEntitiesInit;
 
-import java.io.IOException;
+import java.util.List;
 import java.util.function.Function;
 
-public class LaqueredBoardEntity extends BlockEntity implements MenuProvider {
+public class LaqueredBoardEntity extends SmartBlockEntity implements MenuProvider, ClipboardCloneable {
 
     private final Component[] messages = new Component[]{Component.empty(), Component.empty(), Component.empty(), Component.empty(),
             Component.empty(), Component.empty(), Component.empty(), Component.empty(), Component.empty(), Component.empty(),
@@ -47,6 +49,9 @@ public class LaqueredBoardEntity extends BlockEntity implements MenuProvider {
         super(pType, pPos, pBlockState);
     }
 
+    @Override
+    public void addBehaviours(List<BlockEntityBehaviour> behaviours) {}
+
     public LaqueredBoardEntity(BlockPos pPos, BlockState pBlockState) {
         this(BlockEntitiesInit.LAQUERED_BOARD.get(), pPos, pBlockState);
     }
@@ -64,8 +69,8 @@ public class LaqueredBoardEntity extends BlockEntity implements MenuProvider {
         return menu;
     }
 
-    public void saveAdditional(CompoundTag tag){
-        super.saveAdditional(tag);
+    public void write(CompoundTag tag, boolean clientPacket){
+        super.write(tag, clientPacket);
         tag.putInt("type", type);
         for(int i = 0; i < messages.length; i++){
             tag.putString("content " + i, messages[i].getString());
@@ -76,8 +81,8 @@ public class LaqueredBoardEntity extends BlockEntity implements MenuProvider {
         tag.putDouble("x_offset", x_offset);
     }
 
-    public void load(CompoundTag tag){
-        super.load(tag);
+    public void read(CompoundTag tag, boolean clientPacket){
+        super.read(tag, clientPacket);
         this.type = tag.getInt("type");
         for(int i = 0; i < messages.length; i++){
             messages[i] = Component.literal(tag.getString("content " + i));
@@ -151,5 +156,46 @@ public class LaqueredBoardEntity extends BlockEntity implements MenuProvider {
         this.setChanged();
         KuayueNetworkHandler.sendToServer(new LaqueredBoardPacket(this.getBlockPos(), this.messages, this.x_offset, this.backGroundColor, this.forGroundColor, this.beltForGroundColor));
         this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
+    }
+
+    @Override
+    public String getClipboardKey() {
+        return "laquered_board";
+    }
+
+    @Override
+    public boolean writeToClipboard(CompoundTag tag, Direction side) {
+        tag.putString("sign", "laquered_board");
+        tag.putInt("type", type);
+        for(int i = 0; i < messages.length; i++){
+            tag.putString("content " + i, messages[i].getString());
+        }
+        tag.putInt("beltColor", backGroundColor);
+        tag.putInt("textColor", forGroundColor);
+        tag.putInt("pinyinColor", beltForGroundColor);
+        tag.putDouble("x_offset", x_offset);
+        return true;
+    }
+
+    @Override
+    public boolean readFromClipboard(CompoundTag tag, Player player, Direction side, boolean simulate) {
+        if(simulate) return true;
+        if(tag.contains("sign") && tag.contains("type") && tag.contains("beltColor") && tag.contains("textColor") && tag.contains("pinyinColor") && tag.contains("x_offset")){
+            if(!tag.getString("sign").equals("laquered_board")) return false;
+            for(int i = 0; i < this.messages.length; i++){
+                if(!tag.contains("content " + i)) return false;
+            }
+            this.type = tag.getInt("type");
+            for(int i = 0; i < messages.length; i++){
+                messages[i] = Component.literal(tag.getString("content " + i));
+            }
+            this.backGroundColor = tag.getInt("beltColor");
+            this.forGroundColor = tag.getInt("textColor");
+            this.beltForGroundColor = tag.getInt("pinyinColor");
+            this.x_offset = tag.getDouble("x_offset");
+            markUpdated();
+            return true;
+        }
+        return false;
     }
 }

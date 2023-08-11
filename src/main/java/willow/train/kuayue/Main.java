@@ -2,13 +2,9 @@ package willow.train.kuayue;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,11 +27,8 @@ import willow.train.kuayue.Screen.CarriageTypeSignEditScreen;
 import willow.train.kuayue.Screen.LaqueredBoardEditScreen;
 import willow.train.kuayue.effect.EffectInit;
 import willow.train.kuayue.init.*;
-import willow.train.kuayue.renderer.TrainPanelSignRenderer;
 import willow.train.kuayue.sounds.ModSounds;
 import willow.train.kuayue.tabs.*;
-
-import static willow.train.kuayue.init.KYTrackMaterials.STANDARD;
 
 @Mod("kuayue")
 public class Main {

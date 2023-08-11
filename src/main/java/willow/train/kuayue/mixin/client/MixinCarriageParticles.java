@@ -1,4 +1,4 @@
-package willow.train.kuayue.mixin;
+package willow.train.kuayue.mixin.client;
 
 import com.simibubi.create.AllBogeyStyles;
 import com.simibubi.create.content.trains.bogey.BogeyInstance;
@@ -21,6 +21,7 @@ import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import willow.train.kuayue.mixin.AccessorCarriageBogey;
 
 @Mixin(CarriageParticles.class)
 public class MixinCarriageParticles {
@@ -37,8 +38,8 @@ public class MixinCarriageParticles {
     @Shadow(remap = false)
     LerpedFloat brakes;
     /**
-     * @author
-     * @reason
+     * @author MegumiKasuga(Carole)
+     * @reason Redirect不起作用
      */
     @Overwrite(remap = false)
     public void tick(Carriage.DimensionalCarriageEntity dce){

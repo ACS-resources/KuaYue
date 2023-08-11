@@ -45,8 +45,9 @@ public class CarriageTypeSignEditMenu extends AbstractContainerMenu {
         return true;
     }
 
-    public void setCtse(CarriageTypeSignEntity ctse){
+    public CarriageTypeSignEditMenu setCtse(CarriageTypeSignEntity ctse){
         this.ctse = ctse;
+        return this;
     }
 
     /**

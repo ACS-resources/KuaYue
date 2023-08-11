@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "www",
+        "dw ",
+        "w  "
+    ],
+    "key": {
+        "d": {
+            "tag": "forge:dyes/white"
+        },
+        "w": {
+            "item": "kuayue:weathering_resistant_steel_board"
+        }
+    },
+    "result": {
+        "item": "kuayue:ladder_25t_original",
+        "count": 2
+    }
+}
