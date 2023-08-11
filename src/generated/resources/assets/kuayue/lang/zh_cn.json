@@ -137,8 +137,8 @@
   "block.kuayue.carport_25bgzkt_centre": "25B/G/Z/K车厢中央车棚",
   "block.kuayue.carport_bsp25t_centre": "BSP25T车厢中央车棚",
   "block.kuayue.carport_25bgzkt_water_tank": "25B/G/Z/K车厢上水箱",
-  "block.kuayue.carport_25bgzk_air_condition_all": "25系列车厢空调1",
-  "block.kuayue.carport_25bgzk_air_condition_side": "25系列车厢空调2",
+  "block.kuayue.carport_25bgzk_air_condition_all": "25系列车厢空调",
+  "block.kuayue.carport_25bgzk_air_condition_side": "25系列车厢空调(侧边)",
   "block.kuayue.air_condition_bsp25t": "BSP25T车厢空调",
 
   "block.kuayue.ladder_25z_original": "原色25Z车梯",
