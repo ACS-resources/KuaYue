@@ -31,4 +31,9 @@ public class ToolTipsItemHelper extends BlockItem {
         if(!translatableComponent3.getString().equals("")&&!translatableComponent3.getString().equals(pStack.getDescriptionId()+".tooltip3")) pTooltip.add(translatableComponent3);
         super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
     }
+
+    @Override
+    public ItemStack getDefaultInstance() {
+        return super.getDefaultInstance();
+    }
 }

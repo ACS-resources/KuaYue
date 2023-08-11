@@ -1,7 +1,7 @@
 {
 	"parent": "kuayue:block/kuayue_panel",
 	"textures": {
-		"0": "kuayue:block/carriage_panel/origenal_25z/panel_25z_original_top",
-		"particle": "kuayue:block/carriage_panel/origenal_25z/panel_slab_25z"
+		"0": "kuayue:block/carriage_panel/original_25z/panel_25z_original_top",
+		"particle": "kuayue:block/carriage_panel/original_25z/panel_slab_25z"
 	}
 }

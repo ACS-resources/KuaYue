@@ -1,4 +1,4 @@
-package willow.train.kuayue.Client;
+package willow.train.kuayue.Client.event;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;

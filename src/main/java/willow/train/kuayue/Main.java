@@ -20,6 +20,7 @@ import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageNoSignRendere
 import willow.train.kuayue.BlockEntity.BlockEntityRenderer.CarriageTypeSignRenderer;
 import willow.train.kuayue.BlockEntity.BlockEntityRenderer.LaqueredBoardEntityRenderer;
 import willow.train.kuayue.Client.CatenaryConnectionHandler;
+import willow.train.kuayue.Client.event.KyInventoryEvents;
 import willow.train.kuayue.MultiLoader.Env;
 import willow.train.kuayue.Network.KuayueNetworkHandler;
 import willow.train.kuayue.Screen.CarriageNoSignEditScreen;
@@ -103,6 +104,8 @@ public class Main {
         bus.addListener(this::clientSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+
+        MinecraftForge.EVENT_BUS.register(new KyInventoryEvents());
 
         KYPackets.PACKETS.registerC2SListener();
 

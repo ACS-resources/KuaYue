@@ -367,6 +367,15 @@
   "container.kuayue.laquered_board_edit_menu.edit_color": "编辑颜色",
   "container.kuayue.laquered_board_edit_menu.edit_text": "编辑文本",
 
+  "container.kuayue.inventory.button.all": "所有",
+  "container.kuayue.inventory.button.25b": "25B",
+  "container.kuayue.inventory.button.25g": "25G",
+  "container.kuayue.inventory.button.25k": "25K",
+  "container.kuayue.inventory.button.25z": "25Z",
+  "container.kuayue.inventory.button.25t": "25T",
+  "container.kuayue.inventory.button.marshalled_25_series": "统型",
+  "container.kuayue.inventory.button.cr200j": "cr200j",
+
   "tips.patchouli": "--------------------------------帕秋莉辞典内容--------------------------------",
   "block.kuayue.Carrier": "Gantry Cast Catenary Hanger",
   "item.kuayue.weathering_resistant_steel": "Weathering Resistant Steel",
