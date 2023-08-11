@@ -2,6 +2,7 @@ package willow.train.kuayue.init;
 
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.content.trains.bogey.BogeySizes;
 import com.simibubi.create.content.trains.track.TrackBlock;
 import com.simibubi.create.content.trains.track.TrackBlockItem;
 import com.simibubi.create.content.trains.track.TrackMaterial;
@@ -100,10 +101,17 @@ public class KYCreateBlock {
                     .register();
 
     public static final BlockEntry<DF11GBogeyBlock> DF11G_BOGEY =
-            REGISTRATE.block("df11g_bogey", DF11GBogeyBlock::new)
+            REGISTRATE.block("df11g_bogey", p -> new DF11GBogeyBlock(p, BogeySizes.SMALL))
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BuilderTransformers.df11gbogey())
                     .lang("DF11G Bogey")
+                    .register();
+
+    public static final BlockEntry<DF11GBogeyBlock> DF11G_BACKWARD_BOGEY =
+            REGISTRATE.block("df11g_backward_bogey", p -> new DF11GBogeyBlock(p, KYBogeySizes.BACKWARD))
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .transform(BuilderTransformers.df11gbogey())
+                    .lang("DF11G Backward Bogey")
                     .register();
 
     private static final CreateRegistrate bogeyREGISTRATE = Main.registrate();

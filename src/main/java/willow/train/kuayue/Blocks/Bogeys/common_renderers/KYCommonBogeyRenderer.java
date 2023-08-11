@@ -15,16 +15,6 @@ import willow.train.kuayue.base.data.BogeyPaintColour;
 
 public abstract class KYCommonBogeyRenderer extends BogeyRenderer {
 
-    public static <B extends Transform<?>> void finalize(B b, CompoundTag bogeyData, PoseStack ms, int light,
-                                                         @Nullable VertexConsumer vb) {
-        boolean isFacingForward =
-                bogeyData.contains("direction") && bogeyData.getBoolean("direction");
-        b.scale(1 - 1/512f)
-                .rotateY(isFacingForward ? 180 : 0);
-        if (b instanceof SuperByteBuffer byteBuf && vb != null)
-            byteBuf.light(light).renderInto(ms, vb);
-    }
-
     public abstract void render(boolean forwards, BogeyPaintColour color, float wheelAngle, PoseStack ms, int light,
                                 VertexConsumer vb, boolean inContraption);
 
