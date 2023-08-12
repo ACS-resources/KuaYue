@@ -58,18 +58,21 @@ public class OrdinaryTrainPanelBlock extends SideMirrorBlock {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if(pLevel.isClientSide) return InteractionResult.SUCCESS;
         if(pPlayer.getItemInHand(pHand).is(ItemInit.Brush.get())) {
+            if(pLevel.isClientSide) return InteractionResult.SUCCESS;
             onBrush(pLevel, pPlayer, pHand, pHit, pState);
             Minecraft minecraft = Minecraft.getInstance();
+            return InteractionResult.SUCCESS;
             //minecraft.setScreen(new CarriageTypeSignEditScreen(MenuInit.CARRIAGE_TYPE_SIGN_EDIT_MENU.get().create(
                     //0, pPlayer.getInventory()).setCtse((CarriageTypeSignEntity) pLevel.getBlockEntity(pPos)),
                     //pPlayer.getInventory(), Component.empty()));
         }
         if(pPlayer.getItemInHand(pHand).is(ItemInit.LaqueredBoard.get())) {
+            if(pLevel.isClientSide) return InteractionResult.SUCCESS;
             onLaqueredBoard(pLevel, pPlayer, pHand, pHit, pState);
+            return InteractionResult.SUCCESS;
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.FAIL;
     }
 
     public void onBrush(Level pLevel, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, BlockState blockState){

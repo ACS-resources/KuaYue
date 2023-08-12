@@ -51,16 +51,17 @@ public class OrdinaryTrainUpperPanelBlock extends SideMirrorBlock {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if(pLevel.isClientSide) return InteractionResult.SUCCESS;
         if(pPlayer.getItemInHand(pHand).is(Items.PAPER.asItem())) {
+            if(pLevel.isClientSide) return InteractionResult.SUCCESS;
             onPaper(pLevel, pPlayer, pHand, pHit, pState);
             if(pLevel.getBlockState(pPos).getBlock().equals(BlockInit.TRAIN_NO_BLOCK)){
                 //NetworkHooks.openGui((ServerPlayer) pPlayer,(CarriageNoSignEntity) pLevel.getBlockEntity(pPos), pPos);
                 //((TrainPanelBlock)pLevel.getBlockState(pPos).getBlock()).use(pLevel.getBlockState(pPos), pLevel, pPos, pPlayer, pHand, pHit);
                 //((CarriageNoSignEntity)pLevel.getBlockEntity(pPos)).markUpdated();
             }
+            return InteractionResult.SUCCESS;
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.FAIL;
     }
 
     public void onPaper(Level pLevel, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, BlockState blockState){

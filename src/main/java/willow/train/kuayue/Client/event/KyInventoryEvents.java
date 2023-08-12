@@ -49,7 +49,7 @@ public class KyInventoryEvents {
         icons[4] = new ItemStack(BlockInit.PANEL_25Z_ORIGINAL_BOTTOM.get());
         icons[5] = new ItemStack(BlockInit.PANEL_25T_ORIGINAL_BOTTOM.get());
         icons[6] = new ItemStack(BlockInit.PANEL_25B_MARSHALLED_SYMBOL.get());
-        //icons[7] = new ItemStack(BlockInit.PANEL_CR200J_MARSHALLED_BOTTOM.get());
+        icons[7] = new ItemStack(BlockInit.PANEL_CR200J_MARSHALLED_BOTTOM.get());
 
         initMapping();
         
@@ -96,10 +96,16 @@ public class KyInventoryEvents {
     public void updateButtons(){
         Screen screen = Minecraft.getInstance().screen;
         int tab = ((CreativeModeInventoryScreen) screen).getSelectedTab();
-
+        CreativeModeInventoryScreen.ItemPickerMenu menu = ((CreativeModeInventoryScreen) screen).getMenu();
         if(screen instanceof CreativeModeInventoryScreen) {
+            boolean vis = tab == Main.KUAYUE_NormalSpeedPassageCarriageTab.getId();
             for(ItemIconButton b : imgBtn) {
-                b.visible = tab == Main.KUAYUE_NormalSpeedPassageCarriageTab.getId();
+                b.visible = vis;
+            }
+            if(vis){
+                updateMenuItem(menu);
+                menu.scrollTo(0.0f);
+
             }
         }
     }
@@ -278,18 +284,18 @@ public class KyInventoryEvents {
             ));  // 25 Marshalled Series 5
 
             add(List.of(
-                    BlockInit.PANEL_CR200J_MARSHALLED_BOTTOM.get().asItem().getDefaultInstance(),
-                    BlockInit.WIDEPANEL_CR200J_MARSHALLED_MID.get().asItem().getDefaultInstance(),
-                    BlockInit.PANEL_CR200J_MARSHALLED_TOP.get().asItem().getDefaultInstance(),
-                    BlockInit.SLAB_CR200J_MARSHALLED_TOP.get().asItem().getDefaultInstance()
+                    //BlockInit.PANEL_CR200J_MARSHALLED_BOTTOM.get().asItem().getDefaultInstance(),
+                    //BlockInit.WIDEPANEL_CR200J_MARSHALLED_MID.get().asItem().getDefaultInstance(),
+                    //BlockInit.PANEL_CR200J_MARSHALLED_TOP.get().asItem().getDefaultInstance(),
+                    //BlockInit.SLAB_CR200J_MARSHALLED_TOP.get().asItem().getDefaultInstance()
 
             ));  // cr200j 6
 
             add(List.of(
-                    //BlockInit.ORIGINAL_COLOR_WINDOW_25_SEALED.get().asItem().getDefaultInstance(),
-                    //BlockInit.DIRECT_DRAINAGE_TOILET_ORIGINAL_25G.get().asItem().getDefaultInstance(),
-                    //BlockInit.DIRECT_DRAINAGE_TOILET_ORIGINAL_25T.get().asItem().getDefaultInstance(),
-                    //BlockInit.DIRECT_DRAINAGE_TOILET_ORIGINAL_25K.get().asItem().getDefaultInstance()
+                    BlockInit.ORIGINAL_COLOR_WINDOW_25_SEALED.get().asItem().getDefaultInstance(),
+                    BlockInit.DIRECT_DRAINAGE_TOILET_ORIGINAL_25G.get().asItem().getDefaultInstance(),
+                    BlockInit.DIRECT_DRAINAGE_TOILET_ORIGINAL_25T.get().asItem().getDefaultInstance(),
+                    BlockInit.DIRECT_DRAINAGE_TOILET_ORIGINAL_25K.get().asItem().getDefaultInstance()
             ));  // 通用 7
 
             add(List.of(
