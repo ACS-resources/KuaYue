@@ -14,6 +14,8 @@ import willow.train.kuayue.BlockEntity.LaqueredBoardEntity;
 import willow.train.kuayue.Client.LaqueredBoardEditMenu;
 import willow.train.kuayue.Main;
 
+import java.util.Locale;
+
 public class LaqueredBoardEditScreen extends AbstractContainerScreen<LaqueredBoardEditMenu> {
 
     private static final Component[] TEXT = new Component[]{
@@ -111,18 +113,18 @@ public class LaqueredBoardEditScreen extends AbstractContainerScreen<LaqueredBoa
                             if(forGroundColor.getValue().equals("")){forGroundColor.setValue("0");}
                             if(pinyinColor.getValue().equals("")){pinyinColor.setValue("0xffffff");}
                             if(xOffset.getValue().equals("")){xOffset.setValue("0.0");}
-                            if(beltColor.getValue().startsWith("0x")){
-                                beColor = Integer.parseInt(beltColor.getValue().substring(2), 16);
+                            if(beltColor.getValue().toLowerCase(Locale.ROOT).startsWith("0x")){
+                                beColor = Integer.parseInt(beltColor.getValue().toLowerCase(Locale.ROOT).substring(2), 16);
                             }else {
                                 beColor = Integer.parseInt(beltColor.getValue());
                             }
-                            if(forGroundColor.getValue().startsWith("0x")){
-                                foColor = Integer.parseInt(forGroundColor.getValue().substring(2), 16);
+                            if(forGroundColor.getValue().toLowerCase(Locale.ROOT).startsWith("0x")){
+                                foColor = Integer.parseInt(forGroundColor.getValue().toLowerCase(Locale.ROOT).substring(2), 16);
                             }else {
                                 foColor = Integer.parseInt(forGroundColor.getValue());
                             }
-                            if(pinyinColor.getValue().startsWith("0x")){
-                                pyColor = Integer.parseInt(pinyinColor.getValue().substring(2), 16);
+                            if(pinyinColor.getValue().toLowerCase(Locale.ROOT).startsWith("0x")){
+                                pyColor = Integer.parseInt(pinyinColor.getValue().toLowerCase(Locale.ROOT).substring(2), 16);
                             }else {
                                 pyColor = Integer.parseInt(pinyinColor.getValue());
                             }
