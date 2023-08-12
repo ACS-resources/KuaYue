@@ -2,15 +2,19 @@ package willow.train.kuayue.BlockEntity.BlockEntityRenderer;
 
 import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.*;
+import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.SimpleTexture;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,16 +33,30 @@ public class LaqueredBoardEntityRenderer implements BlockEntityRenderer<Laquered
 
     private final LaqueredBoardLogo logoModel;
 
+    private TextureManager textureManager;
+
+    RenderType renderType;
+
+    private DynamicTexture texture = new DynamicTexture(32, 32, true);
+
+    public static final ResourceLocation STICKER = new ResourceLocation(Main.MOD_ID, "textures/laquered_board/stick.png");
+
     private final Font font;
     public LaqueredBoardEntityRenderer(BlockEntityRendererProvider.Context pContext){
         logoModel = new LaqueredBoardLogo<>(pContext.bakeLayer(LAYER_A));
         font = pContext.getFont();
+        textureManager = Minecraft.getInstance().getTextureManager();
+        //ResourceLocation location = textureManager.register(Main.MOD_ID + "textures/laquered_board/stick.png", this.texture);
+        this.renderType = RenderType.text(STICKER);
     }
     @Override
     public void render(LaqueredBoardEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
         BlockState pState = pBlockEntity.getBlockState();
 
         pPoseStack.pushPose();
+
+        //RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
+        //RenderSystem.setShaderTexture(0, STICKER);
 
         FormattedCharSequence[] formattedcharsequence = pBlockEntity.getRenderMessages((p_173653_) -> {
             List<FormattedCharSequence> list = this.font.split(p_173653_, 180);
@@ -65,10 +83,14 @@ public class LaqueredBoardEntityRenderer implements BlockEntityRenderer<Laquered
 
         pPoseStack.translate(0.0, - 0.91, -0.001d);
 
+        int[] beltRGBA = pBlockEntity.getRGBAColor(pBlockEntity.getBackGroundColor());
+
         pPoseStack.scale(0.2f,  0.2f, 0.2f);  // standard size
 
         pPoseStack.scale(1.0f, 0.17955f, 1.0f);
-        renderBg(Belt, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
+        pPoseStack.translate(0.0, 0.9f, 0.0f);
+        renderBelt(pPoseStack, pBufferSource, (int)(pPackedLight * 0.8), 255, 255, 255, 255);
+        pPoseStack.translate(0.0, - 0.9f, 0.0f);
 
         pPoseStack.translate(0, 0, 0.001f);
 
@@ -77,13 +99,17 @@ public class LaqueredBoardEntityRenderer implements BlockEntityRenderer<Laquered
                 // 条带1
                 pPoseStack.translate(0, 3.9, 0.0);
                 pPoseStack.scale(0.44f, 0.3f, 1.0f);
-                renderBelt(Belt, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
+                pPoseStack.translate(0.0, 0.9f, 0.0f);
+                renderBelt(pPoseStack, pBufferSource, (int)(pPackedLight * 0.8), beltRGBA[0], beltRGBA[1], beltRGBA[2], beltRGBA[3]);
+                pPoseStack.translate(0.0, - 0.9f, 0.0f);
                 pPoseStack.scale(1/0.44f, 1.0f, 1.0f);
 
                 // 条带2
                 pPoseStack.translate((1-0.44) * 5, 0.0, 0.0);
                 pPoseStack.scale(0.44f, 1.0f, 1.0f);
-                renderBelt(Belt, 0, 0, pBlockEntity, pPoseStack, pBufferSource, pPackedLight);
+                pPoseStack.translate(0.0, 0.9f, 0.0f);
+                renderBelt(pPoseStack, pBufferSource, (int)(pPackedLight * 0.8), beltRGBA[0], beltRGBA[1], beltRGBA[2], beltRGBA[3]);
+                pPoseStack.translate(0.0, - 0.9f, 0.0f);
                 pPoseStack.scale(1/0.44f, 1/0.3f, 1.0f);
                 pPoseStack.translate( - (1-0.44) * 5, - 3.9, 0.001);
 
@@ -190,5 +216,14 @@ public class LaqueredBoardEntityRenderer implements BlockEntityRenderer<Laquered
 
     private void renderWhite(FormattedCharSequence formattedcharsequence, int pX, int pY, LaqueredBoardEntity pBlockEntity, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight){
         this.font.drawInBatch(formattedcharsequence, pX, pY, getBeltForgroundColor(pBlockEntity)*2, false, pPoseStack.last().pose(), pBufferSource, false, 0, pPackedLight);
+    }
+
+    private void renderBelt(PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int r, int g, int b, int a){
+        Matrix4f matrix4f = pPoseStack.last().pose();
+        VertexConsumer vertexconsumer = pBufferSource.getBuffer(this.renderType);
+        vertexconsumer.vertex(matrix4f, 0.0F, 5.0F, 0).color(r, g, b, a).uv(0.0F, 1.0F).uv2(pPackedLight).endVertex();
+        vertexconsumer.vertex(matrix4f, 5.0F, 5.0F, 0).color(r, g, b, a).uv(1.0F, 1.0F).uv2(pPackedLight).endVertex();
+        vertexconsumer.vertex(matrix4f, 5.0F, 0.0F, 0).color(r, g, b, a).uv(1.0F, 0.0F).uv2(pPackedLight).endVertex();
+        vertexconsumer.vertex(matrix4f, 0.0F, 0.0F, 0).color(r, g, b, a).uv(0.0F, 0.0F).uv2(pPackedLight).endVertex();
     }
 }

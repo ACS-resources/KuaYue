@@ -354,6 +354,22 @@
   "container.kuayue.carriage_type_sign_edit_menu.color.blue_3": "25T 蓝",
   "container.kuayue.carriage_type_sign_edit_menu.color.black": "黑色",
 
+  "container.kuayue.carriage_type_sign_edit_menu.random_confirm": "应用",
+  "container.kuayue.carriage_type_sign_edit_menu.random_cancel": "放弃",
+  "container.kuayue.carriage_type_sign_edit_menu.random_generate": "生成",
+  "container.kuayue.carriage_type_sign_edit_menu.random_title_left": "最小值",
+  "container.kuayue.carriage_type_sign_edit_menu.random_title_center": "结果",
+  "container.kuayue.carriage_type_sign_edit_menu.random_title_right": "最大值",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_title": "输入下列字母缩写以获得预定义参数",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_yz": "YZ -> 硬座车 -> 300000 - 399999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_rz": "RZ -> 软座车 -> 110000 - 119999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_yw": "YW -> 硬卧车 -> 600000 - 699999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_rw": "RW -> 软卧车 -> 500000 - 599999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_xl": "XL -> 行李车 -> 200000 - 299999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_ca": "CA -> 餐车 -> 800000 - 899999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_kd": "KD -> 空调发电车 -> 900000 - 999999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_yoz": "UZ -> 邮政车 -> 8000 - 8999",
+
   "container.kuayue.carriage_no_sign_edit_menu.content": "编号",
   "container.kuayue.carriage_no_sign_edit_menu.hinge": "左右镜像",
 

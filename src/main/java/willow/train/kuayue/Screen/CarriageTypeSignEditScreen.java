@@ -34,18 +34,22 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
             Component.translatable("container." + Main.MOD_ID + ".laquered_board_edit_menu.edit_text")  // 编辑字体 10
     };
 
-    Component random_confirm = Component.translatable("container." + Main.MOD_ID + "carriage_type_sign_edit_menu.random_confirm");
-    Component random_cancel = Component.translatable("container." + Main.MOD_ID + "carriage_type_sign_edit_menu.random_cancel");
-    Component random_title = Component.translatable("container." + Main.MOD_ID + "carriage_type_sign_edit_menu.random_title");
+    Component random_confirm = Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_confirm");
+    Component random_cancel = Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_cancel");
+    Component random_generate = Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_generate");
+    Component random_title_l = Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_title_left");
+    Component random_title_c = Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_title_center");
+    Component random_title_r = Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_title_right");
     Component[] random_tooltips = new Component[]{
-            Component.translatable("container." + Main.MOD_ID + "carriage_type_sign_edit_menu.random_tooltip_title"),
-            Component.translatable("container." + Main.MOD_ID + "carriage_type_sign_edit_menu.random_tooltip_yz"),
-            //Component.translatable("container." + Main.MOD_ID + "carriage_type_sign_edit_menu.random_tooltip_rz"),
-            Component.translatable("container." + Main.MOD_ID + "carriage_type_sign_edit_menu.random_tooltip_yw"),
-            Component.translatable("container." + Main.MOD_ID + "carriage_type_sign_edit_menu.random_tooltip_rw"),
-            Component.translatable("container." + Main.MOD_ID + "carriage_type_sign_edit_menu.random_tooltip_xl"),
-            Component.translatable("container." + Main.MOD_ID + "carriage_type_sign_edit_menu.random_tooltip_ca"),
-            Component.translatable("container." + Main.MOD_ID + "carriage_type_sign_edit_menu.random_tooltip_kd")
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_tooltip_title"),
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_tooltip_yz"),
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_tooltip_rz"),
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_tooltip_yw"),
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_tooltip_rw"),
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_tooltip_xl"),
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_tooltip_ca"),
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_tooltip_kd"),
+            Component.translatable("container." + Main.MOD_ID + ".carriage_type_sign_edit_menu.random_tooltip_yoz")
     };
 
 
@@ -96,13 +100,13 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
         TypeChs = new EditBox(minecraft.font, xPos, 45 - offsetY, editBoxWidth, editBoxHeight, TEXT[0]);
         TypePinyin = new EditBox(minecraft.font, xPos, 80 - offsetY, editBoxWidth, editBoxHeight, TEXT[1]);
         TypeAbbr = new EditBox(minecraft.font, xPos, 115 - offsetY, editBoxWidth, editBoxHeight, TEXT[2]);
-        SubType = new EditBox(minecraft.font, xPos, 150 - offsetY, editBoxWidth - 30, editBoxHeight, TEXT[3]);
-        No = new EditBox(minecraft.font, xPos, 185 - offsetY, editBoxWidth, editBoxHeight, TEXT[4]);
+        SubType = new EditBox(minecraft.font, xPos, 150 - offsetY, editBoxWidth, editBoxHeight, TEXT[3]);
+        No = new EditBox(minecraft.font, xPos, 185 - offsetY, editBoxWidth - 30, editBoxHeight, TEXT[4]);
         Color = new EditBox(minecraft.font, xPos, 45 - offsetY, editBoxWidth, editBoxHeight, TEXT[6]);
 
-        random_min = new EditBox(minecraft.font, xPos, 80 - offsetY, editBoxWidth/3 - 10, editBoxHeight, Component.empty());
-        random_box = new EditBox(minecraft.font, xPos + editBoxWidth/3 + 10, 80 - offsetY, editBoxWidth/3 - 10, editBoxHeight, Component.empty());
-        random_max = new EditBox(minecraft.font, xPos + editBoxWidth*2/3 + 20, 80 - offsetY, editBoxWidth/3 - 10, editBoxHeight, Component.empty());
+        random_min = new EditBox(minecraft.font, xPos, 50 - offsetY, editBoxWidth/3 - 10, editBoxHeight, Component.empty());
+        random_box = new EditBox(minecraft.font, xPos + editBoxWidth/3 + 5, 50 - offsetY, editBoxWidth/3 - 10, editBoxHeight, Component.empty());
+        random_max = new EditBox(minecraft.font, xPos + editBoxWidth*2/3 + 10, 50 - offsetY, editBoxWidth/3 - 10, editBoxHeight, Component.empty());
 
         TypeChs.setValue(entity.getMessage(0,false).getString());
         TypePinyin.setValue(entity.getMessage(1,false).getString());
@@ -110,6 +114,7 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
         SubType.setValue(entity.getMessage(3,false).getString());
         No.setValue(entity.getMessage(4,false).getString());
         Color.setValue(entity.getColor() + "");
+        random_box.setValue(No.getValue());
 
         for(int i = 0; i < colorButtons.length; i++) {
             colorButtons[i] = new Button(xPos + (i%2) * editBoxWidth / 2 + 5, 90 - offsetY + ((int)(((float)i)/2)) * 25,
@@ -122,33 +127,35 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
             });
         }
 
-        generate = new Button(xPos, 115 - offsetY, editBoxWidth, editBoxHeight, random_tooltips[0], b -> {
+        generate = new Button(xPos, 80 - offsetY, editBoxWidth, editBoxHeight, random_generate, b -> {
             Random random1 = new Random();
-            random_box.setValue(No.getValue());
+            //random_box.setValue(No.getValue());
             try {
                 int min = 0;
                 int bound = 0;
                 switch (random_box.getValue().toLowerCase(Locale.ROOT)) {
-                    case "yz" -> { min = 300000;  bound = 9999;}  // 硬座
-                    case "rz" -> { min = 110000;  bound = 99999;}  // 软座
-                    case "yw" -> { min = 600000;  bound = 99999;}  // 硬卧
-                    case "rw" -> { min = 500000;  bound = 99999;}  // 软卧
-                    case "xl" -> { min = 200000;  bound = 99999;}  // 行李
-                    case "ca" -> { min = 800000;  bound = 99999;}  // 餐车
-                    case "kd" -> { min = 900000;  bound = 99999;}  // 空电
-                    case "yoz" -> { min = 8000;  bound = 999;}  // 邮政
+                    case "yz" -> { min = 300000;  bound = 309999;break;}  // 硬座
+                    case "rz" -> { min = 110000;  bound = 119999;break;}  // 软座
+                    case "yw" -> { min = 600000;  bound = 699999;break;}  // 硬卧
+                    case "rw" -> { min = 500000;  bound = 599999;break;}  // 软卧
+                    case "xl" -> { min = 200000;  bound = 299999;break;}  // 行李
+                    case "ca" -> { min = 800000;  bound = 899999;break;}  // 餐车
+                    case "kd" -> { min = 900000;  bound = 999999;break;}  // 空电
+                    case "uz" -> { min = 8000;  bound = 8999;break;}  // 邮政
                     default -> {
                         min = Integer.parseInt(random_min.getValue());
-                        bound = Integer.parseInt(random_max.getValue()) - min;
+                        bound = Integer.parseInt(random_max.getValue());
                     }
                 }
                 random_box.setValue(random1.nextInt(min, bound) + "");
-            }catch (Exception e){}
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         });
 
         random_box.setValue(No.getValue());
 
-        random = new ImageButton(xPos + editBoxWidth - 25, 150 - offsetY, 20, 20, Component.empty(), b -> {
+        random = new ImageButton(xPos + editBoxWidth - 25, 185 - offsetY, 20, 20, Component.empty(), b -> {
             removeTextPanel();
             removeMainButtons();
             renderRandomPanel();
@@ -157,8 +164,13 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
         },DICE_TEXTURE, 0, 0, 32, 32);
 
         for(int i = 0; i < 2;i++) {
-            random_buttons[i] = new Button(xPos + i * editBoxWidth/2 + 5, 200, editBoxWidth/2 - 10, editBoxHeight, i == 0 ? random_confirm : random_cancel, b -> {
-                if(b.equals(random_buttons[0])) {No.setValue(random_box.getValue());}
+            random_buttons[i] = new Button(xPos + i * editBoxWidth/2 + 5, 230 - offsetY, editBoxWidth/2 - 10, editBoxHeight, i == 0 ? random_confirm : random_cancel, b -> {
+                if(b.equals(random_buttons[0])) {
+                    try{
+                        Integer.parseInt(random_box.getValue());
+                    }catch (Exception e){return;}
+                    No.setValue(random_box.getValue());
+                }
                 removeRandomPanel();
                 renderMainButtons();
                 renderTextPanel();
@@ -178,7 +190,7 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
                         int c = entity.getColor();
                         if(Color.getValue().equals("")) Color.setValue(entity.getColor() + "");
                         try{
-                            if(Color.getValue().startsWith("0x")) c = Integer.parseInt(Color.getValue().substring(2), 16);
+                            if(Color.getValue().toLowerCase(Locale.ROOT).startsWith("0x")) c = Integer.parseInt(Color.getValue().toLowerCase(Locale.ROOT).substring(2), 16);
                             else c = Integer.parseInt(Color.getValue());
                         }catch (Exception e){
                             error = true;
@@ -208,7 +220,15 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
             }));
         }
 
-        renderTextPanel();
+        if(!editColor && !randomPanel) {
+            renderTextPanel();
+        } else if (editColor) {
+            renderColorPanel();
+            buttons[1].setMessage(TEXT[10]);
+        } else if (randomPanel) {
+            removeMainButtons();
+            renderRandomPanel();
+        }
     }
 
     public void renderMainButtons(){
@@ -318,9 +338,11 @@ public class CarriageTypeSignEditScreen extends AbstractContainerScreen<Carriage
             this.font.draw(pPoseStack, TEXT[5], centreX - this.font.width(TEXT[5].getString()) / 2 - offsetX, 35 - offsetY, 0xFFFFFF);
             this.font.draw(pPoseStack, TEXT[6], centreX - this.font.width(TEXT[6].getString()) / 2 - offsetX, 80 - offsetY, 0xFFFFFF);
         } else if (randomPanel){
-            this.font.draw(pPoseStack, random_title, centreX - this.font.width(random_title.getString()) / 2 - offsetX, 70 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, random_title_l, random_min.x + editBoxWidth/6 - this.font.width(random_title_l.getString()) / 2 - 5, 40 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, random_title_c, random_box.x + editBoxWidth/6 - this.font.width(random_title_c.getString()) / 2 - 5, 40 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, random_title_r, random_max.x + editBoxWidth/6 - this.font.width(random_title_r.getString()) / 2 - 5, 40 - offsetY, 0xFFFFFF);
             for(int i = 0; i < random_tooltips.length; i++){
-                this.font.draw(pPoseStack, random_tooltips[i], centreX - this.font.width(random_tooltips[i].getString()) / 2 - offsetX, 137 - offsetY + i * 12, 0xFFFFFF);
+                this.font.draw(pPoseStack, random_tooltips[i], centreX - this.font.width(random_tooltips[i].getString()) / 2 - offsetX, 105 - offsetY + i * 14, 0xFFFFFF);
             }
         }
     }

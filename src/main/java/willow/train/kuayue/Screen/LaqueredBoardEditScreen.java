@@ -14,6 +14,8 @@ import willow.train.kuayue.BlockEntity.LaqueredBoardEntity;
 import willow.train.kuayue.Client.LaqueredBoardEditMenu;
 import willow.train.kuayue.Main;
 
+import java.util.Locale;
+
 public class LaqueredBoardEditScreen extends AbstractContainerScreen<LaqueredBoardEditMenu> {
 
     private static final Component[] TEXT = new Component[]{
@@ -34,9 +36,9 @@ public class LaqueredBoardEditScreen extends AbstractContainerScreen<LaqueredBoa
     };
 
     private static int editBoxWidth = 200;
-    private static int editBoxHeight = 20;
+    private static int editBoxHeight = 15;
     private static int offsetX = 70;
-    private static int offsetY = 30;
+    private static int offsetY = 15;
 
     private boolean editingColors = false;
 
@@ -71,11 +73,11 @@ public class LaqueredBoardEditScreen extends AbstractContainerScreen<LaqueredBoa
         Minecraft minecraft = Minecraft.getInstance();
 
         terminalChsL = new EditBox(minecraft.font, xPos, 45 - offsetY, editBoxWidth, editBoxHeight, TEXT[0]);
-        terminalPinyinL = new EditBox(minecraft.font, xPos, 80 - offsetY, editBoxWidth, editBoxHeight, TEXT[1]);
-        terminalChsR = new EditBox(minecraft.font, xPos, 115 - offsetY, editBoxWidth, editBoxHeight, TEXT[2]);
-        terminalPinyinR = new EditBox(minecraft.font, xPos, 150 - offsetY, editBoxWidth, editBoxHeight, TEXT[3]);
-        trainType = new EditBox(minecraft.font, xPos, 185 - offsetY, editBoxWidth, editBoxHeight, TEXT[4]);
-        No = new EditBox(minecraft.font, xPos, 220 - offsetY, editBoxWidth, editBoxHeight, TEXT[5]);
+        terminalPinyinL = new EditBox(minecraft.font, xPos, 75 - offsetY, editBoxWidth, editBoxHeight, TEXT[1]);
+        terminalChsR = new EditBox(minecraft.font, xPos, 105 - offsetY, editBoxWidth, editBoxHeight, TEXT[2]);
+        terminalPinyinR = new EditBox(minecraft.font, xPos, 135 - offsetY, editBoxWidth, editBoxHeight, TEXT[3]);
+        trainType = new EditBox(minecraft.font, xPos, 165 - offsetY, editBoxWidth, editBoxHeight, TEXT[4]);
+        No = new EditBox(minecraft.font, xPos, 195 - offsetY, editBoxWidth, editBoxHeight, TEXT[5]);
 
         terminalChsL.setValue(entity.getMessage(0).getString());
         terminalPinyinL.setValue(entity.getMessage(2).getString());
@@ -85,9 +87,9 @@ public class LaqueredBoardEditScreen extends AbstractContainerScreen<LaqueredBoa
         No.setValue(entity.getMessage(5).getString());
 
         beltColor = new EditBox(minecraft.font, xPos, 45 - offsetY, editBoxWidth, editBoxHeight, TEXT[6]);
-        forGroundColor = new EditBox(minecraft.font, xPos, 80 - offsetY, editBoxWidth, editBoxHeight, TEXT[7]);
-        pinyinColor = new EditBox(minecraft.font, xPos, 115 - offsetY, editBoxWidth, editBoxHeight, TEXT[8]);
-        xOffset = new EditBox(minecraft.font, xPos, 150 - offsetY, editBoxWidth, editBoxHeight, TEXT[9]);
+        forGroundColor = new EditBox(minecraft.font, xPos, 75 - offsetY, editBoxWidth, editBoxHeight, TEXT[7]);
+        pinyinColor = new EditBox(minecraft.font, xPos, 105 - offsetY, editBoxWidth, editBoxHeight, TEXT[8]);
+        xOffset = new EditBox(minecraft.font, xPos, 135 - offsetY, editBoxWidth, editBoxHeight, TEXT[9]);
 
         beltColor.setValue(entity.getBackGroundColor() + "");
         forGroundColor.setValue(entity.getForGroundColor() + "");
@@ -100,7 +102,7 @@ public class LaqueredBoardEditScreen extends AbstractContainerScreen<LaqueredBoa
             这个位置是定义按钮逻辑的
          */
         for(int i = 0; i< 3; i++){
-            buttons[i] = addRenderableWidget(new Button(xPos + i*editBoxWidth/3 + 5, 220, editBoxWidth/3 - 10, editBoxHeight, TEXT[i+10], b -> {
+            buttons[i] = addRenderableWidget(new Button(xPos + i*editBoxWidth/3 + 5, 200, editBoxWidth/3 - 10, editBoxHeight, TEXT[i+10], b -> {
                 if(b.equals(buttons[0])){
                     if(entity != null){
                         boolean error = false;
@@ -111,18 +113,18 @@ public class LaqueredBoardEditScreen extends AbstractContainerScreen<LaqueredBoa
                             if(forGroundColor.getValue().equals("")){forGroundColor.setValue("0");}
                             if(pinyinColor.getValue().equals("")){pinyinColor.setValue("0xffffff");}
                             if(xOffset.getValue().equals("")){xOffset.setValue("0.0");}
-                            if(beltColor.getValue().startsWith("0x")){
-                                beColor = Integer.parseInt(beltColor.getValue().substring(2), 16);
+                            if(beltColor.getValue().toLowerCase(Locale.ROOT).startsWith("0x")){
+                                beColor = Integer.parseInt(beltColor.getValue().toLowerCase(Locale.ROOT).substring(2), 16);
                             }else {
                                 beColor = Integer.parseInt(beltColor.getValue());
                             }
-                            if(forGroundColor.getValue().startsWith("0x")){
-                                foColor = Integer.parseInt(forGroundColor.getValue().substring(2), 16);
+                            if(forGroundColor.getValue().toLowerCase(Locale.ROOT).startsWith("0x")){
+                                foColor = Integer.parseInt(forGroundColor.getValue().toLowerCase(Locale.ROOT).substring(2), 16);
                             }else {
                                 foColor = Integer.parseInt(forGroundColor.getValue());
                             }
-                            if(pinyinColor.getValue().startsWith("0x")){
-                                pyColor = Integer.parseInt(pinyinColor.getValue().substring(2), 16);
+                            if(pinyinColor.getValue().toLowerCase(Locale.ROOT).startsWith("0x")){
+                                pyColor = Integer.parseInt(pinyinColor.getValue().toLowerCase(Locale.ROOT).substring(2), 16);
                             }else {
                                 pyColor = Integer.parseInt(pinyinColor.getValue());
                             }
@@ -199,17 +201,17 @@ public class LaqueredBoardEditScreen extends AbstractContainerScreen<LaqueredBoa
         int centreY = windowHeight/2;
 
         if(!editingColors) {
-            this.font.draw(pPoseStack, TEXT[0], centreX - this.font.width(TEXT[0].getString()) / 2 - offsetX, 35 - offsetY, 0xFFFFFF);
-            this.font.draw(pPoseStack, TEXT[1], centreX - this.font.width(TEXT[1].getString()) / 2 - offsetX, 70 - offsetY, 0xFFFFFF);
-            this.font.draw(pPoseStack, TEXT[2], centreX - this.font.width(TEXT[2].getString()) / 2 - offsetX, 105 - offsetY, 0xFFFFFF);
-            this.font.draw(pPoseStack, TEXT[3], centreX - this.font.width(TEXT[3].getString()) / 2 - offsetX, 140 - offsetY, 0xFFFFFF);
-            this.font.draw(pPoseStack, TEXT[4], centreX - this.font.width(TEXT[4].getString()) / 2 - offsetX, 175 - offsetY, 0xFFFFFF);
-            this.font.draw(pPoseStack, TEXT[5], centreX - this.font.width(TEXT[5].getString()) / 2 - offsetX, 210 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, TEXT[0], centreX - this.font.width(TEXT[0].getString()) / 2 - offsetX, 33 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, TEXT[1], centreX - this.font.width(TEXT[1].getString()) / 2 - offsetX, 63 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, TEXT[2], centreX - this.font.width(TEXT[2].getString()) / 2 - offsetX, 93 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, TEXT[3], centreX - this.font.width(TEXT[3].getString()) / 2 - offsetX, 123 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, TEXT[4], centreX - this.font.width(TEXT[4].getString()) / 2 - offsetX, 153 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, TEXT[5], centreX - this.font.width(TEXT[5].getString()) / 2 - offsetX, 183 - offsetY, 0xFFFFFF);
         }else {
-            this.font.draw(pPoseStack, TEXT[6], centreX - this.font.width(TEXT[6].getString()) / 2 - offsetX, 35 - offsetY, 0xFFFFFF);
-            this.font.draw(pPoseStack, TEXT[7], centreX - this.font.width(TEXT[7].getString()) / 2 - offsetX, 70 - offsetY, 0xFFFFFF);
-            this.font.draw(pPoseStack, TEXT[8], centreX - this.font.width(TEXT[8].getString()) / 2 - offsetX, 105 - offsetY, 0xFFFFFF);
-            this.font.draw(pPoseStack, TEXT[9], centreX - this.font.width(TEXT[9].getString()) / 2 - offsetX, 140 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, TEXT[6], centreX - this.font.width(TEXT[6].getString()) / 2 - offsetX, 33 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, TEXT[7], centreX - this.font.width(TEXT[7].getString()) / 2 - offsetX, 63 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, TEXT[8], centreX - this.font.width(TEXT[8].getString()) / 2 - offsetX, 93 - offsetY, 0xFFFFFF);
+            this.font.draw(pPoseStack, TEXT[9], centreX - this.font.width(TEXT[9].getString()) / 2 - offsetX, 123 - offsetY, 0xFFFFFF);
         }
     }
 

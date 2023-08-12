@@ -26,6 +26,7 @@ import willow.train.kuayue.Network.KuayueNetworkHandler;
 import willow.train.kuayue.Network.LaqueredBoardPacket;
 import willow.train.kuayue.init.BlockEntitiesInit;
 
+import java.awt.*;
 import java.util.List;
 import java.util.function.Function;
 
@@ -197,5 +198,15 @@ public class LaqueredBoardEntity extends SmartBlockEntity implements MenuProvide
             return true;
         }
         return false;
+    }
+
+    public int[] getRGBAColor(int octColor){
+        int[] result = new int[4];
+        Color color = new Color(octColor);
+        result[0] = color.getRed();
+        result[1] = color.getGreen();
+        result[2] = color.getBlue();
+        result[3] = color.getAlpha();
+        return result;
     }
 }

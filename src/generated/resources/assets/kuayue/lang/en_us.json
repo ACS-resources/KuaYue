@@ -353,6 +353,22 @@
   "container.kuayue.carriage_type_sign_edit_menu.color.blue_3": "25T blue",
   "container.kuayue.carriage_type_sign_edit_menu.color.black": "Black",
 
+  "container.kuayue.carriage_type_sign_edit_menu.random_confirm": "Apply",
+  "container.kuayue.carriage_type_sign_edit_menu.random_cancel": "Cancel",
+  "container.kuayue.carriage_type_sign_edit_menu.random_generate": "Generate",
+  "container.kuayue.carriage_type_sign_edit_menu.random_title_left": "MIN",
+  "container.kuayue.carriage_type_sign_edit_menu.random_title_center": "Result",
+  "container.kuayue.carriage_type_sign_edit_menu.random_title_right": "MAX",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_title": "Type following letters in Result Blank to get predefined combination",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_yz": "YZ -> hard seat cart -> 300000 - 399999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_rz": "RZ -> soft seat cart -> 110000 - 119999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_yw": "YW -> hard berth cart -> 600000 - 699999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_rw": "RW -> soft berth cart -> 500000 - 599999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_xl": "XL -> belongings cart -> 200000 - 299999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_ca": "CA -> dining cart -> 800000 - 899999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_kd": "KD -> generator cart -> 900000 - 999999",
+  "container.kuayue.carriage_type_sign_edit_menu.random_tooltip_yoz": "UZ -> post cart -> 8000 - 8999",
+
   "container.kuayue.carriage_no_sign_edit_menu.content": "content",
   "container.kuayue.carriage_no_sign_edit_menu.hinge": "mirror",
 
