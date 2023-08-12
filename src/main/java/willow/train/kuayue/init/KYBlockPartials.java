@@ -90,7 +90,11 @@ public class KYBlockPartials {
             KYSTANDARDBOGEY_FRAME = block("bogey/ky_standard/bogey_cw2_temple"),
             KYSTANDARDBOGEY_WHEEL = block("bogey/ky_standard/cw2_wheel"),
             DF11G_FRAME = block("bogey/df11g/df11g_bogey_temple"),
-            DF11G_WHEEL = block("bogey/df11g/df11g_wheel");
+            DF11G_WHEEL = block("bogey/df11g/df11g_wheel"),
+            PK209P_MAIN = block("bogey/pk209p/pk209p_main"),
+            PK209P_WHEEL = block("bogey/pk209p/pk209p_wheel"),
+            PK209P_WHEEL2 = block("bogey/pk209p/pk209p_wheel2"),
+            PK209P_MOTORWHEEL = block("bogey/pk209p/pk209_motorwheel");
 
     private static PartialModel createBlock(String path) {
         return new PartialModel(Main.asResource("block/" + path));

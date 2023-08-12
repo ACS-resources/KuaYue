@@ -32,9 +32,9 @@ import java.util.List;
 public class KYStandardBogeyBlock extends AbstractBogeyBlock<KYStandardBogeyBlockEntity> implements
         IBE<KYStandardBogeyBlockEntity>, ProperWaterloggedBlock, ISpecialBlockItemRequirement {
 
-    public KYStandardBogeyBlock(Properties props){
+    public KYStandardBogeyBlock(Properties props, BogeySizes.BogeySize size){
 
-        super(props, BogeySizes.SMALL);
+        super(props, size);
         registerDefaultState(defaultBlockState().setValue(WATERLOGGED, false));
     }
 

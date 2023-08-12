@@ -178,7 +178,7 @@ public class DF11GBogeyRenderer {
         }
     }
 
-    protected static boolean isForwards(CompoundTag bogeyData, boolean inContraption) {
+    public static boolean isForwards(CompoundTag bogeyData, boolean inContraption) {
         boolean isForwards = bogeyData.contains(Constants.BOGEY_DIRECTION_KEY) && bogeyData.getBoolean(Constants.BOGEY_DIRECTION_KEY);
 
         Direction direction = bogeyData.contains(Constants.BOGEY_ASSEMBLY_DIRECTION_KEY)

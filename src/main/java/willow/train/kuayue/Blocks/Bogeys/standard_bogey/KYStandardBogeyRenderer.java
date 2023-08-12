@@ -7,10 +7,16 @@ import com.simibubi.create.content.trains.bogey.BogeyRenderer;
 import com.simibubi.create.content.trains.bogey.BogeySizes;
 import com.simibubi.create.content.trains.entity.CarriageBogey;
 import com.simibubi.create.foundation.utility.Iterate;
+import com.simibubi.create.foundation.utility.NBTHelper;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import willow.train.kuayue.Blocks.Bogeys.df11g_bogey.DF11GBogeyRenderer;
+import willow.train.kuayue.base.Constants;
+import willow.train.kuayue.init.KYBogeySizes;
+import willow.train.kuayue.init.KYBogeyStyles;
 
-import static willow.train.kuayue.init.KYBlockPartials.KYSTANDARDBOGEY_FRAME;
-import static willow.train.kuayue.init.KYBlockPartials.KYSTANDARDBOGEY_WHEEL;
+import static willow.train.kuayue.init.KYBlockPartials.*;
+import static willow.train.kuayue.init.KYBlockPartials.DF11G_WHEEL;
 
 public class KYStandardBogeyRenderer {
 
@@ -72,6 +78,47 @@ public class KYStandardBogeyRenderer {
                 if (!inInstancedContraption)
                     ms.popPose();
             }
+        }
+    }
+
+    public static class PK209PBogeyRender extends BogeyRenderer{
+        @Override
+        public void initialiseContraptionModelData(MaterialManager materialManager, CarriageBogey carriageBogey) {
+            this.createModelInstance(materialManager,
+                    PK209P_MAIN,
+                    PK209P_WHEEL,
+                    PK209P_WHEEL2,
+                    PK209P_MOTORWHEEL);
+        }
+
+        @Override
+        public BogeySizes.BogeySize getSize() {
+            return KYBogeySizes.PK209P;
+        }
+
+        @Override
+        public void render(CompoundTag bogeyData, float wheelAngle, PoseStack ms, int light, VertexConsumer vb, boolean inContraption) {
+
+            boolean inInstancedContraption = vb == null;
+            //转向架架体
+            BogeyModelData main = getTransform(PK209P_MAIN, ms, inInstancedContraption);
+            //发电轮对
+            BogeyModelData wheel = getTransform(PK209P_WHEEL, ms, inInstancedContraption);
+            //普通轮对
+            BogeyModelData wheel2 = getTransform(PK209P_WHEEL2, ms, inInstancedContraption);
+            //发电机小轮
+            BogeyModelData motorWheel = getTransform(PK209P_MOTORWHEEL, ms, inInstancedContraption);
+
+            main.translate(0,0.91,0).render(ms, light, vb);
+            wheel.translate(0, 0.8, 1.2)
+                    .rotateX(wheelAngle)
+                    .render(ms, light, vb);
+            wheel2.translate(0, 0.8, -1.2)
+                    .rotateX(wheelAngle)
+                    .render(ms, light, vb);
+            motorWheel.translate(1.117, 0.82, 2.165)
+                    .rotateX(wheelAngle * 3.256)
+                    .render(ms, light, vb);
         }
     }
 }

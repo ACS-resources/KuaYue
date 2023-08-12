@@ -15,7 +15,7 @@ public class KYCreateEntities {
     public static final BlockEntityEntry<KYStandardBogeyBlockEntity> KY_STANDARD_BOGEY = REGISTRATE
             .blockEntity("ky_standard_bogey", KYStandardBogeyBlockEntity::new)
             .renderer(() -> BogeyBlockEntityRenderer::new)
-            .validBlocks(KYCreateBlock.KY_STANDARD_BOGEY)
+            .validBlocks(KYCreateBlock.KY_STANDARD_BOGEY,KYCreateBlock.PK209P_BOGEY)
             .register();
 
     public static final BlockEntityEntry<DF11GBogeyBlockEntity> DF11G_BOGEY = REGISTRATE

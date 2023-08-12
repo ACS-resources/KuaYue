@@ -91,7 +91,7 @@ public class KYCreateBlock {
             new StandardTrackBlockStateGenerator()::generate);
 
     public static final BlockEntry<KYStandardBogeyBlock> KY_STANDARD_BOGEY =
-            REGISTRATE.block("ky_standard_bogey", KYStandardBogeyBlock::new)
+            REGISTRATE.block("ky_standard_bogey", p -> new KYStandardBogeyBlock(p, BogeySizes.SMALL))
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BuilderTransformers.kystandardbogey())
                     .lang("KY Standard Bogey")
@@ -112,6 +112,13 @@ public class KYCreateBlock {
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BuilderTransformers.df11gbogey())
                     .lang("DF11G Backward Bogey")
+                    .register();
+
+    public static final BlockEntry<KYStandardBogeyBlock> PK209P_BOGEY =
+            REGISTRATE.block("pk209p_bogey", p -> new KYStandardBogeyBlock(p, KYBogeySizes.PK209P))
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .transform(BuilderTransformers.kystandardbogey())
+                    .lang("PK209P Bogey")
                     .register();
 
     private static final CreateRegistrate bogeyREGISTRATE = Main.registrate();

@@ -18,6 +18,7 @@ public class KYBogeyStyles {
     public static final BogeyStyle KYSTANDARDBOGEY = create("kystandardbogey", KY_STANDARD_BOGEY_CYCLE_GROUP)
             .displayName(Components.translatable("kuayue.bogeys.styles.kystandardbogey"))
             .size(BogeySizes.SMALL, () -> KYStandardBogeyRenderer.SmallKYStandardBogeyRenderer::new, KYCreateBlock.KY_STANDARD_BOGEY)
+            .size(KYBogeySizes.PK209P, () -> KYStandardBogeyRenderer.PK209PBogeyRender::new, KYCreateBlock.PK209P_BOGEY)
             .contactParticle(ParticleTypes.CRIT).smokeParticle(null).soundType(AllSoundEvents.TRAIN.getId())
             .build();
 
