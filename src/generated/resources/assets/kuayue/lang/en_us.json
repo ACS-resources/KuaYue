@@ -271,7 +271,7 @@
   "item.kuayue.train_diet_1.tooltip": "Guess who loves to eat it?",
   "block.kuayue.df11g_front2.tooltip": "§7I’am not A PIG!",
   "block.kuayue.df11g_panel_kuayue.tooltip": "§7Away went the paint, but never will it's history be...",
-  "block.kuayue.hxd3d_front.tooltip": "§cIt's NOT a DATE!",
+  "block.kuayue.hxd3d_front.tooltip": "§cIt's NOT a Jujube(the nickname of another series of locomotive train called HXD1D) !",
   "block.kuayue.pantograph.tooltip": "§7Right click to ⚡lower the pantograph⚡",
   "block.kuayue.pantograph.tooltip2": "§7Reminder: ⚡High-Voltage Electricity! DO NOT approach⚡",
 
@@ -294,8 +294,8 @@
 
   "item.kuayue.train_panel_item.tooltip": "Press \" Shift \" and right click at the same time to change cart panel type",
   "item.kuayue.brush.tooltip": "Write something on this panel",
-  "item.kuayue.colored_brush.tooltip": "Change the color of this",
-  "item.kuayue.laquered_board_tooltip": "Light click any train bottom panel with me to create a laquered board on it, then use colored brush to edit (Please close \" Force Unicode Font \" in Options... -> Language...)",
+  "item.kuayue.colored_brush.tooltip": "Change the color of the words",
+  "item.kuayue.laquered_board_tooltip": "Light click any train bottom panel with it to create a laquered board on it, then use brush with color to edit (Please close \" Force Unicode Font \" in Options... -> Language...)",
 
   "tips.group": "--------------------------------all groups below here-------------------------------------------",
 
@@ -332,7 +332,7 @@
   "msg.kuayue.second_block_chosen": "End Point At ",
   "msg.kuayue.cancelled": "Operation Cancelled",
   "msg.kuayue.same_block": "Cannot Link The Same Block",
-  "msg.kuayue.uncovergence": "error : Catenary Fitting Does Not Converge Within The Specified Number Of Steps",
+  "msg.kuayue.uncovergence": "Error : Catenary Fitting Does Not Converge Within The Specified Number Of Steps",
 
   "tips.container": "--------------------------------containers--------------------------------",
   "container.kuayue.carriage_type_sign_edit_menu.type_chs": "Cart Type",
@@ -343,7 +343,7 @@
   "container.kuayue.carriage_type_sign_edit_menu.color": "Color (HEX/OCT)",
   "container.kuayue.carriage_type_sign_edit_menu.confirm": "Confirm",
   "container.kuayue.carriage_type_sign_edit_menu.cancel": "Cancel",
-  "container.kuayue.carriage_type_sign_edit_menu.predefine_color": "Templates...",
+  "container.kuayue.carriage_type_sign_edit_menu.predefine_color": "Templates",
 
   "container.kuayue.carriage_type_sign_edit_menu.color.yellow": "Marshalled 25 Series Yellow",
   "container.kuayue.carriage_type_sign_edit_menu.color.yellow_2": "25B Yellow",
@@ -392,9 +392,9 @@
   "container.kuayue.inventory.button.25z": "25Z",
   "container.kuayue.inventory.button.25t": "25T",
   "container.kuayue.inventory.button.marshalled_25_series": "Marshalled",
-  "container.kuayue.inventory.button.cr200j": "Cr200j",
+  "container.kuayue.inventory.button.cr200j": "CR200J",
 
   "tips.patchouli": "---------------------Patchouli Contents--------------------------------",
-  "patchouli.kuayue.name":"Kuayue Railway Transit Patchouli",
-  "patchouli.kuayue.landing_text": "Be known to the world, be ready for the future."
+  "patchouli.kuayue.name": "跨越铁路车辆图鉴",
+  "patchouli.kuayue.landing_text": "放眼未来，走向世界"
 }
