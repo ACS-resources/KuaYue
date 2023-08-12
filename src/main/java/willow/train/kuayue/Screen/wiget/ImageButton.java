@@ -2,7 +2,7 @@ package willow.train.kuayue.Screen.wiget;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.*;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -16,11 +16,22 @@ public class ImageButton extends Button {
     ResourceLocation image;
     private int imgU;
     private int imgV;
-    public ImageButton(int pX, int pY, Component pMessage, OnPress pOnPress, ResourceLocation location, int imgU, int imgV) {
-        super(pX, pY, 20, 20, pMessage, pOnPress);
+
+    private int width;
+    private int height;
+
+    private int imgWidth;
+
+    private int imgHeight;
+    public ImageButton(int pX, int pY, int width, int height, Component pMessage, OnPress pOnPress, ResourceLocation location, int imgU, int imgV, int imgWidth, int imgHeight) {
+        super(pX, pY, width, height, pMessage, pOnPress);
         this.image = location;
         this.imgU = imgU;
         this.imgV = imgV;
+        this.width = width;
+        this.height = height;
+        this.imgHeight = imgHeight;
+        this.imgWidth = imgWidth;
     }
 
     @Override
@@ -28,24 +39,29 @@ public class ImageButton extends Button {
         if(!visible) return;
 
         RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
-        RenderSystem.setShaderTexture(0, WIDGETS_LOCATION);
 
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.enableBlend();
-        RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_CONSTANT_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-        RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_CONSTANT_ALPHA);
-        int offset = this.getYImage(this.isHoveredOrFocused());
 
         int x = this.x;
         int y = this.y;
 
-        blit(pPoseStack, x, y, 0, 46 + offset *20, width / 2, height);
-        blit(pPoseStack, x + width / 2, y, 200 - width / 2, 46 + offset * 20, width / 2, height);
         if(!this.active){
             RenderSystem.setShaderColor(0.5f, 0.5f, 0.5f, 0.5f);
         }
         RenderSystem.setShaderTexture(0, this.image);
 
-        blit(pPoseStack, x + 2, y + 2, imgU, imgV, 16, 16);
+        drawTexture(this.x, this.y, 0, 0, width, height);
+    }
+
+    private void drawTexture(int x, int y, int textureX, int textureY, int width, int height){
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        BufferBuilder buffer = Tesselator.getInstance().getBuilder();
+        buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        buffer.vertex(x, y, 0.0).uv(0, 0).endVertex();
+        buffer.vertex(x, y + height, 0.0).uv(0, 1).endVertex();
+        buffer.vertex(x + width, y + height, 0.0).uv(1, 1).endVertex();
+        buffer.vertex(x + width, y, 0.0).uv(1, 0).endVertex();
+        BufferUploader.drawWithShader(buffer.end());
     }
 }
